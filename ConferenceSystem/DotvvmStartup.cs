@@ -8,6 +8,7 @@ using DotVVM.Framework;
 using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Routing;
 using DotVVM.Framework.Controls.Bootstrap;
+using DotVVM.Framework.ResourceManagement;
 
 namespace ConferencySystem
 {
@@ -55,6 +56,10 @@ namespace ConferencySystem
 
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)
         {
+            config.Resources.Register("bootstrap-theme", new StylesheetResource(new UrlResourceLocation("maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css")) { Dependencies = new[] { "bootstrap" } });
+            config.Resources.Register("my-styles", new StylesheetResource(new FileResourceLocation("~/Content/MyStyles.css")) { Dependencies = new[] { "bootstrap-theme" } });
+
+
             // register custom resources and adjust paths to the built-in resources
             MapperInitializer.Initialize();
         }
