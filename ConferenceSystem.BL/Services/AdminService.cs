@@ -15,7 +15,7 @@ namespace ConferencySystem.BL.Services
         {
             using (var db = new DbContext())
             {
-                var people = db.Users/*.Where(p => p.Roles.Contains(new AppUserRole(){RoleId = 1, UserId = p.Id}))*/.ProjectTo<AppUserDTO>().ToList();
+                var people = db.Users.Where(user => user.Roles.All(role => role.RoleId != 1)).ProjectTo<AppUserDTO>().ToList();
                 peopleDataSet.LoadFromQueryable(people.AsQueryable());
             }
         }
@@ -69,7 +69,7 @@ namespace ConferencySystem.BL.Services
             using (var db = new DbContext())
             {
                 var organization = db.Organization.Find(organizationData.Id);
-                Mapper.Map(organizationData,organization);
+                Mapper.Map(organizationData, organization);
 
                 db.SaveChanges();
             }
