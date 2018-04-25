@@ -1,0 +1,40 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.CarteringOverviewPeopleViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <dot:UpdateProgress>
+        <br />
+        <div class="loader"></div>
+        <br />
+    </dot:UpdateProgress>
+    <div class="btn-group" role="group" style="margin-left:20px">
+        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewPeople" Enabled="false"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Počty porcí" RouteName="CarteringOverviewCartering" Enabled="true"></dot:RouteLink>
+    </div>
+    <dot:Button type="button" class="btn btn-default" style="float: right; margin-right:20px" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}"></dot:Button>
+    <br /><br />
+    <bp:GridView ID="people" DataSource="{value: PeopleCartering}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
+        <Columns>
+            <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Id}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - večeře - zeleninová polévka" ValueBinding="{value: HasSundaySoup}" />
+            <bp:GridViewTextColumn HeaderText="Ne - večeře" ValueBinding="{value: SundayDinner}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne večer - ochutnávka vína" ValueBinding="{value: HasSundayWine}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po dopoledne - Coffee break" ValueBinding="{value: HasMondayMorningCoffee}" />
+            <bp:GridViewTextColumn HeaderText="Po - oběd - polévka" ValueBinding="{value: MondaySoup}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Po - oběd" ValueBinding="{value: MondayLunch}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po odpoledne - Coffee break" ValueBinding="{value: HasMondayAfternoonCoffee}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - raut" ValueBinding="{value: HasMondayRaut}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út dopoledne - Coffee break" ValueBinding="{value: HasTuesdayCoffee}" />
+            <bp:GridViewTemplateColumn>
+                <ContentTemplate>
+                    <dot:RouteLink RouteName="CarteringPerson" Param-PersonId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </dot:RouteLink>
+                </ContentTemplate>
+            </bp:GridViewTemplateColumn>
+        </Columns>
+    </bp:GridView>
+</dot:Content>
+

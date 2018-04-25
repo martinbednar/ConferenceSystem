@@ -1,0 +1,32 @@
+﻿@viewModel ConferencySystem.ViewModels.User.CarteringSelectViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+    <div class="form-cartering">
+        <dot:Repeater DataSource="{value: OutputCategories}">
+            <ItemTemplate>
+                <div class="category">
+                    <div class="category-name" class="checkbox-inline">
+                        <dot:CheckBox Text="{value: Name}" Checked="{value: CategoryChecked}" Changed="{command: _parent.CategoryCheckedChanged(_this)}">
+                        </dot:CheckBox>
+                    </div>
+                    <div class="category-choices" class="radio-inline">
+                        <dot:Repeater DataSource="{value: Choices}">
+                            <ItemTemplate>
+                                <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _parent.ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _parent.CategoryChecked}" style="font-weight:normal;" /><br />
+                            </ItemTemplate>
+                        </dot:Repeater>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </dot:Repeater>
+        <div class="category"></div>
+        <dot:UpdateProgress>
+            <br />
+            <div class="loader"></div>
+            <br />
+        </dot:UpdateProgress>
+        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="false"></dot:Button></center>
+    </div>
+</dot:Content>
+

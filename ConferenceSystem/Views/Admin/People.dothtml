@@ -1,0 +1,69 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.PeopleViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+  
+    <div Visible="{value: IsSuperAdmin}">
+        <div class="btn-group" role="group" style="margin-left:20px">
+
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowOverview()}" Text="Přehled" Enabled="{value: OverviewEnabled}"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowInvoiceColumns()}" Text="Fakturační údaje" Enabled="{value: InvoiceColumnsEnabled}"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowAllColumns()}" Text="Všechny sloupce" Enabled="{value: AllColumnsEnabled}"></dot:Button>
+        </div>
+        <p style="float:right;font-size:larger;margin-top:8px;margin-right:20px;">Počet zaregistrovaných účastníků: <b>{{value: TotalPeopleCount}}</b></p>
+        <br /><br />
+        <dot:UpdateProgress>
+            <br />
+            <div class="loader"></div>
+            <br />
+        </dot:UpdateProgress>
+        <dot:Button type="button" ButtonTagName="button" class="btn btn-default" Click="{command: SendEmails()}" Enabled="false">Odeslat všem <br />účastníkům přihlašovací údaje</dot:Button>
+        <dot:Button type="button" class="btn btn-default" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}"></dot:Button>
+
+        <br /><br />
+
+        <bp:GridView ID="people" DataSource="{value: People}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" <%--InlineEditing="true"--%>>
+            <Columns>
+                <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Id}" AllowSorting="true" <%--IsEditable="false"--%> />
+                <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Jméno, tituly" ValueBinding="{value: TitleBefore + " " + FirstName + " " + LastName + " " + TitleAfter}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Místo narození" ValueBinding="{value: BirthPlace}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: Email}" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: PhoneNumber}" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Pracovní pozice" ValueBinding="{value: Position}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: VariableSymbol}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: InvoiceNumber}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Zaplaceno" ValueBinding="{value: PaidDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Požadována faktura" ValueBinding="{value: WantInvoice}" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: Organization.Name}" />
+                <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: Organization.IN}" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="DIČ" ValueBinding="{value: Organization.VATID}" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Ulice a číslo popisné" ValueBinding="{value: Organization.BillStreet}" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: Organization.Town}" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: Organization.PostalCode}" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: IsAlternate}" />
+                <bp:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <dot:RouteLink RouteName="Person" Param-PersonId="{value: Id}" Param-OrgId="{value: Organization.Id}" target="_blank" Enabled="{value: _parent.IsSuperAdmin}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </dot:RouteLink>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+                <bp:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <dot:Button ButtonTagName="button" Click="{command: _parent.DeletePerson(Id)}" Enabled="false">
+                            <PostBack.Handlers>
+                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat zaregistrovaného účastníka?" />
+                            </PostBack.Handlers>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </dot:Button>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+            </Columns>
+        </bp:GridView>
+    </div>
+</dot:Content>

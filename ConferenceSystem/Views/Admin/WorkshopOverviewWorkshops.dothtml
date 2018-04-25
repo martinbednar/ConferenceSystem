@@ -1,0 +1,58 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.WorkshopOverviewWorkshopsViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <dot:UpdateProgress>
+        <br />
+        <div class="loader"></div>
+        <br />
+    </dot:UpdateProgress>
+    <div class="btn-group" role="group" style="margin-left:20px">
+        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="WorkshopOverviewPeople" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Přehled workshopů" RouteName="WorkshopOverviewWorkshop" Enabled="false"></dot:RouteLink>
+    </div>
+    <br />
+    <br />
+
+    <div class="form-workshop">
+        <dot:Repeater DataSource="{value: WorkshopSumary}">
+            <ItemTemplate>
+                <div class="block">
+                    <div class="block-name">
+                        <h2 style="display:inline">{{value: Name}}</h2>
+                        <span style="float:right;margin-right:10%;font-weight:500;font-size:large">
+                            <span class="glyphicon glyphicon-time" style="font-size:large"></span>
+                            <dot:Literal Text="{value: Start}" FormatString="ddd HH:mm" /> -
+                            <dot:Literal Text="{value: End}" FormatString="ddd HH:mm" />
+                        </span>
+                    </div>
+                    <div style="width:90%;margin:auto;"><span><b>Název</b> (<span style="font-style:italic;">přednášející)<br />Zaregistrovaní účastníci</span></span><span style="float:right;margin-top:-1.5em;text-align:right;"><b>Zbývá volných míst</b><br />Počet zaregistrovaných</span></div>
+                    <div class="workshop-choices">
+                        <dot:Repeater DataSource="{value: Workshops}">
+                            <ItemTemplate>
+                                <div class="workshop-choice">
+                                    <div style="float:left;width:100%">
+                                        <div style="margin-left:5px;float:left;width:80%;">
+                                            <span style="font-size:17px;color:#2e6da4">{{value: Name}}</span><br />
+                                            <span style="font-style:italic">{{value: Presenter}}</span>
+                                            <span>
+                                                <dot:Repeater DataSource="{value: People}" style="color:black;font-size:small;margin-top:5px">
+                                                    <ItemTemplate>
+                                                        {{value: FirstName}} {{value: LastName}},
+                                                    </ItemTemplate>
+                                                </dot:Repeater>
+                                            </span>
+                                        </div>
+                                        <span style="float:right;margin:10px"><b>{{value: Capacity}}</b><br /><br />{{value: NumberOfRegistered}}</span>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </dot:Repeater>
+                        <div class="workshop-choice"></div>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </dot:Repeater>
+    </div>
+</dot:Content>
+

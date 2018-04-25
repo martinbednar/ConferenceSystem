@@ -1,0 +1,6 @@
+﻿@viewModel ConferencySystem.ViewModels.DefaultViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <center><h2>Vítejte v Konferečním systému!</h2></center>    
+</dot:Content>

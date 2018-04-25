@@ -1,0 +1,7 @@
+﻿@viewModel ConferencySystem.ViewModels.RegisterViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <center><h2><br /><br />Registrace na festival již byla ukončena. Pokud byste se přesto rád/a na konferenci podíval/a, napište na email <i>helena.hendrych@zamecke-navrsi.cz</i> .<br /><br /></h2></center>
+</dot:Content>
+

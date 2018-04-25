@@ -1,0 +1,41 @@
+﻿@viewModel ConferencySystem.ViewModels.LoginViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <form class="form-login" Validator.InvalidCssClass="has-error" Validator.SetToolTipText="true">
+        <div class="form-login-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Přihlášení</h1>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Email</span>
+                        <dot:TextBox Text="{value: Email}" class="textinput" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Heslo</span>
+                        <dot:TextBox Text="{value: Password}" class="textinput" Type="Password" />
+                    </label>
+                </div>
+                <dot:RouteLink Text="Zapomenuté heslo" RouteName="PwdForgotten" style="font-weight:normal;"></dot:RouteLink>
+
+                <div class="alert alert-danger" Visible="{value: LoginErrorMessage != null}">{{value: LoginErrorMessage}}</div>
+
+                <div class="form-row">
+                    <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" style="text-align:center;"/>
+                    <dot:UpdateProgress>
+                        <br />
+                        <div class="loader"></div>
+                        <br />
+                    </dot:UpdateProgress>
+                    <br />
+                    <dot:Button class="btn btn-primary" Text="Přihlásit" Click="{command: SignIn()}" Enabled="true" style="margin:auto;display:block;"></dot:Button>
+                </div>
+            </div>
+        </div>
+</form>
+</dot:Content>
+

@@ -1,0 +1,37 @@
+﻿using AutoMapper;
+using ConferencySystem.BL.DTO;
+using ConferencySystem.DAL.Data;
+using ConferencySystem.DAL.Data.UserIdentity;
+
+namespace ConferencySystem.BL
+{
+    public static class MapperInitializer
+    {
+        public static void Initialize()
+        {
+            Mapper.Initialize(cfg => {
+                cfg.CreateMap<Organization, OrganizationDTO>();
+                cfg.CreateMap<OrganizationDTO, Organization>()
+                    .ForMember(dest => dest.People, opt => opt.Ignore());
+                cfg.CreateMap<AppUser, AppUserDTO>()
+                    .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.Organization))
+                    .ForMember(dest => dest.Cartering, opt => opt.Ignore())
+                    .ForMember(dest => dest.Workshops, opt => opt.Ignore());
+                cfg.CreateMap<AppUserDTO, AppUser>()
+                    .ForMember(dest => dest.WasEmailCarteringSent, opt => opt.Ignore())
+                    .ForMember(dest => dest.WasEmailWorkshopSent, opt => opt.Ignore())
+                    .ForMember(dest => dest.EmailConfirmed, opt => opt.Ignore())
+                    .ForMember(dest => dest.SecurityStamp, opt => opt.Ignore())
+                    .ForMember(dest => dest.PhoneNumberConfirmed, opt => opt.Ignore())
+                    .ForMember(dest => dest.TwoFactorEnabled, opt => opt.Ignore())
+                    .ForMember(dest => dest.LockoutEndDateUtc, opt => opt.Ignore())
+                    .ForMember(dest => dest.LockoutEnabled, opt => opt.Ignore())
+                    .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore())
+                    .ForMember(dest => dest.Roles, opt => opt.Ignore())
+                    .ForMember(dest => dest.Claims, opt => opt.Ignore())
+                    .ForMember(dest => dest.Logins, opt => opt.Ignore())
+                    .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
+            });
+        }
+    }
+}

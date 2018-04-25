@@ -1,0 +1,197 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.PersonViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Údaje o účastníkovi</h1>
+                </div>
+                <div class="form-checkbox">
+                    <label class="form-checkbox">
+                        <dot:CheckBox Text="NÁHRADNÍK" Checked="{value: DataPerson.IsAlternate}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Id</span>
+                        <dot:TextBox Text="{value: DataPerson.Id}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Čas registrace</span>
+                        <dot:TextBox Text="{value: DataPerson.RegisterTimestamp}" ValueType="DateTime" FormatString="d" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Jméno<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataPerson.FirstName}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Příjmení<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataPerson.LastName}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Titul před jménem</span>
+                        <dot:TextBox Text="{value: DataPerson.TitleBefore}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Titul za jménem</span>
+                        <dot:TextBox Text="{value: DataPerson.TitleAfter}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Datum narození</span>
+                        <%--<span>{{value: DataPerson.BirthDate}}</span>--%>
+                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
+                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
+                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
+                        <%--  <bs:DateTimePicker style="display: block; margin: 0 auto; width: 230px; height:42px; float:right" SelectedDate="{value: BirthDate}" FormatString="d" Mode="Date" /> --%>
+                    </label>
+                    <%--{{value: SelectedBirthDay}}.{{value: SelectedBirthMonth}}.{{value SelectedBirthYear}}--%>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Místo narození</span>
+                        <dot:TextBox Text="{value: DataPerson.BirthPlace}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Email<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataPerson.Email}" Type="Email" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Telefonní číslo<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataPerson.PhoneNumber}" Type="Telephone" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="radio-button">
+                        <span style="text-align: right; margin-left:40px">Pracovní pozice<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <div style="width:290px;margin:auto">
+                            <dot:RadioButton Text="Ředitel" CheckedItem="{value: DataPerson.Position}" CheckedValue="Ředitel" /><br />
+                            <dot:RadioButton Text="Učitel" CheckedItem="{value: DataPerson.Position}" CheckedValue="Učitel" /><br />
+                            <dot:RadioButton Text="Student" CheckedItem="{value: DataPerson.Position}" CheckedValue="Student" /><br />
+                            <dot:RadioButton Text="Rodič" CheckedItem="{value: DataPerson.Position}" CheckedValue="Rodič" /><br />
+                            <dot:RadioButton Text="Jiné" CheckedItem="{value: DataPerson.Position}" CheckedValue="{value: PositionOther}" /><br />
+                            <dot:TextBox Text="{value: PositionOther}" style="float:left" />
+                        </div>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Poznámka uživatele</span>
+                        <dot:TextBox Text="{value: DataPerson.NoteUser}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Poznámka administrátora</span>
+                        <dot:TextBox Text="{value: DataPerson.NoteAdmin}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Variabilní číslo</span>
+                        <dot:TextBox Text="{value: DataPerson.VariableSymbol}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Číslo faktury</span>
+                        <dot:TextBox Text="{value: DataPerson.InvoiceNumber}" />
+                    </label>
+                </div>
+                <div class="form-row-date">
+                    <label>
+                        <span style="width: 175px;padding-right: 25px;display:inline-block;">Zaplaceno</span>
+                        <bs:DateTimePicker SelectedDate="{value: DataPerson.PaidDate}" FormatString="d.M.yyyy" Mode="Date" style="width:300px;float:right;" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Údaje o organizaci</h1>
+                </div>
+                <div class="form-checkbox">
+                    <label class="form-checkbox">
+                        <dot:CheckBox Text="Chci zaslat potvrzení o platbě (zaslat fakturu na email)." Checked="{value: DataPerson.WantInvoice}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>IČ</span>
+                        <dot:TextBox Text="{value: DataOrganization.IN}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>DIČ</span>
+                        <dot:TextBox Text="{value: DataOrganization.VATID}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Název organizace</span>
+                        <dot:TextBox Text="{value: DataOrganization.Name}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Ulice a číslo popisné</span>
+                        <dot:TextBox Text="{value: DataOrganization.BillStreet}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Obec</span>
+                        <dot:TextBox Text="{value: DataOrganization.Town}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>PSČ</span>
+                        <dot:TextBox Text="{value: DataOrganization.PostalCode}" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div style="width:660px; margin:auto;">
+            <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
+                <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
+                <div class="form-row">
+                    <label class="form-checkbox">
+                        <span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>
+                        <dot:CheckBox Enabled="false" Text="Souhlasím se zpracováním osobních údajů a s pořizováním audiovizuálního záznamu se svojí osobou za účelem propagace této akce" Checked="{value: DataPerson.Agreement}" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <dot:Button class="btn btn-primary" Text="Uložit změny" Click="{command: SavePerson()}"  Enabled="{value: IsSuperAdmin}"></dot:Button>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="People"></dot:RouteLink>
+                </div>
+            </div>
+        </div>
+    </form>
+</dot:Content>

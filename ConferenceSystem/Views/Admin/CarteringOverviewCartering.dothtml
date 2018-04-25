@@ -1,0 +1,32 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.CarteringOverviewCarteringViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <dot:UpdateProgress>
+        <br />
+        <div class="loader"></div>
+        <br />
+    </dot:UpdateProgress>
+    <div class="btn-group" role="group" style="margin-left:20px">
+        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewPeople" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Počty porcí" RouteName="CarteringOverviewCartering" Enabled="false"></dot:RouteLink>
+    </div>
+    <br /><br />
+
+    <dot:GridView ID="cartering" DataSource="{value: CarteringSumary}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true">
+        <Columns>
+            <dot:GridViewTextColumn HeaderText="Jídlo" ValueBinding="{value: Name}" />
+            <dot:GridViewTextColumn HeaderText="Počet zaregistrovaných porcí" ValueBinding="{value: Count}" />
+            <dot:GridViewTemplateColumn HeaderText="Seznam strávníků">
+                <ContentTemplate>
+                    <dot:Repeater DataSource="{value: People}" >
+                        <ItemTemplate>
+                            {{value: FirstName + " " + LastName + ", "}}
+                        </ItemTemplate>
+                    </dot:Repeater>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </dot:GridView>
+</dot:Content>
+

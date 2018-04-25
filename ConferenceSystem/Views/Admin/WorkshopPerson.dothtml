@@ -1,0 +1,7 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.WorkshopPersonViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+
+</dot:Content>

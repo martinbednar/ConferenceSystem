@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceSystemApp", "ConferenceSystem\ConferenceSystemApp.csproj", "{1C7A9914-8CDC-4075-9422-37BD0E51C076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceSystemTests", "ConferenceSystemTests\ConferenceSystemTests.csproj", "{1BE9A03B-49D4-4EE9-80F8-8E005683252A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceSystem.DAL", "ConferenceSystem.DAL\ConferenceSystem.DAL.csproj", "{7049F7CD-DD20-418A-BA63-F6C07EBDAA73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceSystem.BL", "ConferenceSystem.BL\ConferenceSystem.BL.csproj", "{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE9A03B-49D4-4EE9-80F8-8E005683252A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE9A03B-49D4-4EE9-80F8-8E005683252A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE9A03B-49D4-4EE9-80F8-8E005683252A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE9A03B-49D4-4EE9-80F8-8E005683252A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7049F7CD-DD20-418A-BA63-F6C07EBDAA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7049F7CD-DD20-418A-BA63-F6C07EBDAA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7049F7CD-DD20-418A-BA63-F6C07EBDAA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7049F7CD-DD20-418A-BA63-F6C07EBDAA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D366116B-F17B-40B3-B8EB-EB7C8382896E}
+	EndGlobalSection
+EndGlobal

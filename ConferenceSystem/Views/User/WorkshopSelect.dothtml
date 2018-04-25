@@ -1,0 +1,52 @@
+﻿@viewModel ConferencySystem.ViewModels.User.WorkshopSelectViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+    <dot:UpdateProgress>
+        <br />
+        <div class="loader"></div>
+        <br />
+    </dot:UpdateProgress>
+    <div class="form-workshop">
+        <bs:Alert Type="Danger" Visible="{value: Alert}" IsDismissible="true" style="position:fixed;top:5%;left:15%;width:70%;z-index:9999;text-align:center;font-size:large;box-shadow: 0px 0px 100px 90px white;">
+            Chyba při registraci - kapacita požadovaného workshopu je již pravděpodobně naplněna!
+        </bs:Alert>
+        <dot:Repeater DataSource="{value: WorkshopsBlocks}">
+            <ItemTemplate>
+                <div class="block">
+                    <div class="block-name">
+                        <h2 style="display:inline">{{value: Name}}</h2>
+                        <span style="float:right;margin-right:10%;font-weight:500;font-size:large">
+                            <span class="glyphicon glyphicon-time" style="font-size:large"></span>
+                            <dot:Literal Text="{value: Start}" FormatString="ddd HH:mm" /> -
+                            <dot:Literal Text="{value: End}" FormatString="ddd HH:mm" />
+                        </span>
+                    </div>
+                    <div style="width:90%;margin:auto;"><span><b>Název (<span style="font-style:italic;">přednášející)</span></b></span><span style="float:right;margin-right:15%;"><b>Volných míst</b></span></div>
+                    <div class="workshop-choices">
+                        <dot:Repeater DataSource="{value: Workshops}">
+                            <ItemTemplate>
+                                <div class="workshop-choice">
+                                    <div style="float:left;width:80%">
+                                        <div style="margin-left:5px;float:left;width:80%;">
+                                            <span style="font-size:17px;color:#2e6da4">{{value: Name}}</span><br />
+                                            <span style="font-style:italic">{{value: Presenter}}</span>
+                                        </div>
+                                        <span style="float:right;margin:10px">{{value: Capacity}}</span>
+                                    </div>
+                                    <div style="float:right;width:20%">
+                                        <dot:Button Text="Přihlásit" style="margin:3px;" Click="{command: _parent2.Register(_this.Id)}" class="btn btn-primary" Visible="{value: !Registered && !_parent.AnyWorkshopRegistered && (Capacity > 0)}" Enabled="false"></dot:Button>
+                                        <dot:Button Text="Odhlásit" style="margin:3px;" Click="{command: _parent2.Unregister(_this.Id)}" class="btn btn-default" Visible="{value: Registered}" Enabled="false"></dot:Button>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </dot:Repeater>
+                        <div class="workshop-choice"></div>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </dot:Repeater>
+    </div>
+    <div class="block"></div>
+</dot:Content>
+
