@@ -25,10 +25,10 @@ namespace ConferencySystem.BL.DTO
         public string BirthPlace { get; set; }
 
         [MaxLength(30, ErrorMessage = "Byla překročena maximální délka titulu před jménem - maximální délka pole \"Titul před jménem\" je 30 znaků.")]
-        public string TitleBefore { get; set; }
+        public string TitleBefore { get; set; } = "";
 
         [MaxLength(30, ErrorMessage = "Byla překročena maximální délka titulu za jménem - maximální délka pole \"Titul za jménem\" je 30 znaků.")]
-        public string TitleAfter { get; set; }
+        public string TitleAfter { get; set; } = "";
 
         [Required(ErrorMessage = "Vyplňte svůj email - pole \"Email\" je povinné.")]
         [EmailAddress(ErrorMessage = "Zadaná emailová adresa je ve špatném formátu. Zadejte emailovou adresu ve formátu uzivatelskejmeno@domena.koncovka")]
