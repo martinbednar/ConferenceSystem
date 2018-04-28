@@ -36,15 +36,15 @@ namespace ConferencySystem.ViewModels.Admin
                         Id = person.Id,
                         FirstName = person.FirstName,
                         LastName = person.LastName,
-                        HasSundaySoup = (person.Cartering.Where(c => c.Id == 15).Count() == 0) ? false : true,
-                        SundayDinner = (person.Cartering.Where(c => ((c.Id == 1) || (c.Id == 4))).Count() == 0) ? "" : person.Cartering.Where(c => ((c.Id == 1) || (c.Id == 4))).First().Name,
-                        HasSundayWine = (person.Cartering.Where(c => c.Id == 5).Count() == 0) ? false : true,
-                        HasMondayMorningCoffee = (person.Cartering.Where(c => c.Id == 12).Count() == 0) ? false : true,
-                        MondaySoup = (person.Cartering.Where(c => ((c.Id == 10) || (c.Id == 16))).Count() == 0) ? "" : person.Cartering.Where(c => ((c.Id == 10) || (c.Id == 16))).First().Name,
-                        MondayLunch = (person.Cartering.Where(c => ((c.Id == 8) || (c.Id == 9))).Count() == 0) ? "" : person.Cartering.Where(c => ((c.Id == 8) || (c.Id == 9))).First().Name,
-                        HasMondayAfternoonCoffee = (person.Cartering.Where(c => c.Id == 13).Count() == 0) ? false : true,
-                        HasMondayRaut = (person.Cartering.Where(c => c.Id == 11).Count() == 0) ? false : true,
-                        HasTuesdayCoffee = (person.Cartering.Where(c => c.Id == 14).Count() == 0) ? false : true
+                        HasSundaySoup = (person.Cartering.Where(c => c.Id == 11).Count() == 0) ? false : true,
+                        SundayDinner = (person.Cartering.Where(c => ((c.Id == 1) || (c.Id == 2))).Count() == 0) ? "" : person.Cartering.Where(c => ((c.Id == 1) || (c.Id == 2))).First().Name,
+                        HasSundayWine = (person.Cartering.Where(c => c.Id == 3).Count() == 0) ? false : true,
+                        HasMondayMorningCoffee = (person.Cartering.Where(c => c.Id == 8).Count() == 0) ? false : true,
+                        MondaySoup = (person.Cartering.Where(c => ((c.Id == 6) || (c.Id == 12))).Count() == 0) ? "" : person.Cartering.Where(c => ((c.Id == 6) || (c.Id == 12))).First().Name,
+                        MondayLunch = (person.Cartering.Where(c => ((c.Id == 4) || (c.Id == 5))).Count() == 0) ? "" : person.Cartering.Where(c => ((c.Id == 4) || (c.Id == 5))).First().Name,
+                        HasMondayAfternoonCoffee = (person.Cartering.Where(c => c.Id == 9).Count() == 0) ? false : true,
+                        HasMondayRaut = (person.Cartering.Where(c => c.Id == 7).Count() == 0) ? false : true,
+                        HasTuesdayCoffee = (person.Cartering.Where(c => c.Id == 10).Count() == 0) ? false : true
                      });
                 }
             }
