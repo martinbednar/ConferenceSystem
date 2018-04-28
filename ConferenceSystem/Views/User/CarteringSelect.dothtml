@@ -26,7 +26,7 @@
             <div class="loader"></div>
             <br />
         </dot:UpdateProgress>
-        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="false"></dot:Button></center>
+        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="true"></dot:Button></center>
     </div>
 </dot:Content>
 

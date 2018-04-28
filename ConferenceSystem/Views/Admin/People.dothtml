@@ -4,7 +4,7 @@
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
   
-    <div Visible="{value: IsSuperAdmin}">
+    <div Visible="{value: IsSuperAdmin || IsAdmin}">
         <div class="btn-group" role="group" style="margin-left:20px">
 
             <dot:Button type="button" class="btn btn-default" Click="{command: ShowOverview()}" Text="Přehled" Enabled="{value: OverviewEnabled}"></dot:Button>
