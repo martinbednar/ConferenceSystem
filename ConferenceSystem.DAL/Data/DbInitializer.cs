@@ -1,26 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using ConferencySystem.DAL.Data;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using ConferencySystem.DAL.Data.UserIdentity;
-using Microsoft.AspNet.Identity;
 
-namespace ConferencySystem.DAL.Migrations
+namespace ConferencySystem.DAL.Data
 {
-    using System.Data.Entity.Migrations;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<Data.DbContext>
+    public class DbInitializer : DropCreateDatabaseAlways<DbContext>
     {
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = true;
-            CommandTimeout = 1000;
-        }
-
-        protected override void Seed(Data.DbContext context)
+        protected override void Seed(DbContext context)
         {
             context.Roles.AddOrUpdate(x => x.Id,
-                new AppRole(){ Id = 1, Name = "user"},
+                new AppRole() { Id = 1, Name = "user" },
                 new AppRole() { Id = 2, Name = "admin" },
                 new AppRole() { Id = 3, Name = "super" }
                 );
@@ -88,7 +79,7 @@ namespace ConferencySystem.DAL.Migrations
                 {
                     Id = 1,
                     Name = "WORKSHOP 1",
-                    Start = new DateTime(2018,2,19,14,00,00,00),
+                    Start = new DateTime(2018, 2, 19, 14, 00, 00, 00),
                     End = new DateTime(2018, 2, 19, 16, 00, 00, 00),
                     Workshops = new List<Workshop>()
                     {
@@ -239,6 +230,8 @@ namespace ConferencySystem.DAL.Migrations
                     Category = "19. 2. – oběd – polévka"
                 }
             );
+
+            base.Seed(context);
         }
     }
 }
