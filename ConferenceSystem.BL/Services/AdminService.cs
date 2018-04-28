@@ -15,7 +15,7 @@ namespace ConferencySystem.BL.Services
         {
             using (var db = new DbContext())
             {
-                var people = db.Users.Where(user => user.Roles.All(role => role.RoleId != 1)).ProjectTo<AppUserDTO>().ToList();
+                var people = db.Users.Where(user => user.Roles.All(role => role.RoleId == 1)).ProjectTo<AppUserDTO>().ToList();
                 peopleDataSet.LoadFromQueryable(people.AsQueryable());
             }
         }
