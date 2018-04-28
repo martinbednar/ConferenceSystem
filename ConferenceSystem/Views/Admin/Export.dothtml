@@ -1,7 +1,7 @@
 ﻿@viewModel ConferencySystem.ViewModels.Admin.ExportViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
-<dot:Content ContentPlaceHolderID="MainContent">
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
     <dot:UpdateProgress>
         <br />
         <div class="loader"></div>
