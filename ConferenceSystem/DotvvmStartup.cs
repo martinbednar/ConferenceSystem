@@ -1,4 +1,5 @@
 using ConferencySystem.BL;
+using ConferencySystem.BL.Services;
 using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Controls.Bootstrap;
 using DotVVM.Framework.ResourceManagement;
@@ -55,6 +56,10 @@ namespace ConferencySystem
 
             // register custom resources and adjust paths to the built-in resources
             MapperInitializer.Initialize();
+            
+            //first Db call to init Db on aplication start
+            AdminService adminService = new AdminService();
+            adminService.GetPerson(1);
         }
     }
 }
