@@ -167,6 +167,7 @@
     <Compile Include="ViewModels\Admin\CarteringOverviewCarteringViewModel.cs" />
     <Compile Include="ViewModels\Admin\CarteringOverviewPeopleViewModel.cs" />
     <Compile Include="ViewModels\Admin\CarteringPersonViewModel.cs" />
+    <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\Admin\ExportViewModel.cs" />
@@ -257,6 +258,7 @@
     <Content Include="Views\Admin\Export.dothtml" />
     <Content Include="Views\User\RegisterForm.dothtml" />
     <Content Include="Views\Admin\WorkshopPerson.dothtml" />
+    <Content Include="Views\PwdReset.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

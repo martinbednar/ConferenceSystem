@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.PwdForgottenViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.PwdResetViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent">
@@ -10,12 +10,11 @@
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Email</span>
-                        <dot:TextBox Text="{value: Email}" class="textinput" />
+                        <span>Nové heslo</span>
+                        <dot:TextBox Text="{value: NewPassword}" class="textinput" Type="Password" />
                     </label>
                 </div>
 
-                <div class="alert alert-danger" Visible="{value: ErrorMessage != null}">{{value: ErrorMessage}}</div>
                 <div class="alert alert-success" Visible="{value: SuccessMessage != null}">{{value: SuccessMessage}}</div>
 
                 <div class="form-row">
@@ -26,10 +25,9 @@
                         <br />
                     </dot:UpdateProgress>
                     <br />
-                    <dot:Button class="btn btn-primary" Text="Odeslat email pro obnovení hesla" Click="{command: RequestPwd()}" Enabled="true" style="margin:auto;display:block;"></dot:Button>
+                    <dot:Button class="btn btn-primary" Text="Nastavit nové heslo" Click="{command: ResetPassword()}" Enabled="true" style="margin:auto;display:block;"></dot:Button>
                 </div>
             </div>
         </div>
     </form>
 </dot:Content>
-

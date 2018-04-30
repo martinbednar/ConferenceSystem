@@ -38,6 +38,7 @@ namespace ConferencySystem
             config.RouteTable.Add("Export", "export", "Views/Admin/Export.dothtml");
             config.RouteTable.Add("RegisterForm", "registerform", "Views/User/RegisterForm.dothtml");
             config.RouteTable.Add("WorkshopPerson", "workshopperson/{PersonId}", "Views/Admin/WorkshopPerson.dothtml");
+            config.RouteTable.Add("PwdReset", "password/reset", "Views/PwdReset.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    
