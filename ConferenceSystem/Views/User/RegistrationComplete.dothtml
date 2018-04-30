@@ -4,7 +4,7 @@
 <dot:Content ContentPlaceHolderID="MainContent">
     <div class="text-center">
         <br />
-        <h3>Registrace úspěšně dokončena. Ve svém emailu najdete informace k platbě.</h3>
+        <h3>Registrace úspěšně dokončena. Ve svém emailu najdete do 30 minut informace k platbě.</h3>
     </div>
 </dot:Content>
 
