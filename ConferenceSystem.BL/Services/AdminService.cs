@@ -32,6 +32,17 @@ namespace ConferencySystem.BL.Services
         }
 
 
+        public void DeleteOrganization(int id)
+        {
+            using (var db = new DbContext())
+            {
+                var organization = db.Organization.Find(id);
+                db.Organization.Remove(organization);
+                db.SaveChanges();
+            }
+        }
+
+
         public OrganizationDTO GetOrganization(int organizationId)
         {
             using (var db = new DbContext())
