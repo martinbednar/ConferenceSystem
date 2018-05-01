@@ -16,6 +16,6 @@ namespace ConferencySystem.BL.DTO
         [StringLength(255)]
         public string Category { get; set; }
 
-        public virtual IEnumerable<AppUserDTO> People { get; set; }
+        public virtual IEnumerable<AppUserDTO> Users { get; set; }
     }
 }

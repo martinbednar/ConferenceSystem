@@ -14,33 +14,33 @@
     <br />
     <br />
 
-    <bp:GridView ID="people" DataSource="{value: People}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" Visible="{value: false}">
+    <bp:GridView ID="users" DataSource="{value: Users}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" Visible="{value: false}">
         <Columns>
-            <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Person.Id}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: Person.RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Titul/y před jménem" ValueBinding="{value: Person.TitleBefore}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: Person.FirstName}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Příjmení" ValueBinding="{value: Person.LastName}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Titul/y za jménem" ValueBinding="{value: Person.TitleAfter}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: Person.BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Místo narození" ValueBinding="{value: Person.BirthPlace}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: Person.Email}" />
-            <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: Person.PhoneNumber}" />
-            <bp:GridViewTextColumn HeaderText="Pracovní pozice" ValueBinding="{value: Person.Position}" AllowSorting="true" />
-            <bp:GridViewCheckBoxColumn HeaderText="Souhlas se zpracováním osobních údajů" ValueBinding="{value: Person.Agreement}" />
-            <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: Person.NoteUser}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: Person.NoteAdmin}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: Person.VariableSymbol}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: Person.InvoiceNumber}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Zaplaceno" ValueBinding="{value: Person.PaidDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
-            <bp:GridViewCheckBoxColumn HeaderText="Požadována faktura" ValueBinding="{value: Person.WantInvoice}" />
-            <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: Person.IsAlternate}" />
-            <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: Person.Organization.Name}" />
-            <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: Person.Organization.IN}" />
-            <bp:GridViewTextColumn HeaderText="DIČ" ValueBinding="{value: Person.Organization.VATID}" />
-            <bp:GridViewTextColumn HeaderText="Ulice a číslo popisné" ValueBinding="{value: Person.Organization.BillStreet}" />
-            <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: Person.Organization.Town}" />
-            <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: Person.Organization.PostalCode}" />
+            <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: User.Id}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: User.RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Titul/y před jménem" ValueBinding="{value: User.TitleBefore}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: User.FirstName}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Příjmení" ValueBinding="{value: User.LastName}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Titul/y za jménem" ValueBinding="{value: User.TitleAfter}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: User.BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Místo narození" ValueBinding="{value: User.BirthPlace}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: User.Email}" />
+            <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: User.PhoneNumber}" />
+            <bp:GridViewTextColumn HeaderText="Pracovní pozice" ValueBinding="{value: User.Position}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Souhlas se zpracováním osobních údajů" ValueBinding="{value: User.Agreement}" />
+            <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: User.NoteUser}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: User.NoteAdmin}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: User.VariableSymbol}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: User.InvoiceNumber}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Zaplaceno" ValueBinding="{value: User.PaidDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Požadována faktura" ValueBinding="{value: User.WantInvoice}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: User.IsAlternate}" />
+            <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: User.Organization.Name}" />
+            <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: User.Organization.IN}" />
+            <bp:GridViewTextColumn HeaderText="DIČ" ValueBinding="{value: User.Organization.VATID}" />
+            <bp:GridViewTextColumn HeaderText="Ulice a číslo popisné" ValueBinding="{value: User.Organization.BillStreet}" />
+            <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: User.Organization.Town}" />
+            <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: User.Organization.PostalCode}" />
 
             <bp:GridViewCheckBoxColumn HeaderText="Ne - večeře - zeleninová polévka" ValueBinding="{value: Cartering.HasSundaySoup}" />
             <bp:GridViewTextColumn HeaderText="Ne - večeře" ValueBinding="{value: Cartering.SundayDinner}" />

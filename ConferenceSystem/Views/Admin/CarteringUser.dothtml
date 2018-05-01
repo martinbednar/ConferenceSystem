@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.Admin.CarteringPersonViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Admin.CarteringUserViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">

@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.Admin.CarteringOverviewPeopleViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Admin.CarteringOverviewUsersViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent">
@@ -9,12 +9,12 @@
         <br />
     </dot:UpdateProgress>
     <div class="btn-group" role="group" style="margin-left:20px">
-        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewPeople" Enabled="false"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewUsers" Enabled="false"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Počty porcí" RouteName="CarteringOverviewCartering" Enabled="true"></dot:RouteLink>
     </div>
     <dot:Button type="button" class="btn btn-default" style="float: right; margin-right:20px" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}"></dot:Button>
     <br /><br />
-    <bp:GridView ID="people" DataSource="{value: PeopleCartering}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
+    <bp:GridView ID="users" DataSource="{value: UsersCartering}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
         <Columns>
             <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Id}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
@@ -29,7 +29,7 @@
             <bp:GridViewCheckBoxColumn HeaderText="Út dopoledne - Coffee break" ValueBinding="{value: HasTuesdayCoffee}" />
             <bp:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <dot:RouteLink RouteName="CarteringPerson" Param-PersonId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin}">
+                    <dot:RouteLink RouteName="CarteringUser" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin}">
                         <span class="glyphicon glyphicon-edit"></span>
                     </dot:RouteLink>
                 </ContentTemplate>

@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.Admin.WorkshopPersonViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Admin.WorkshopUserViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">

@@ -8,13 +8,13 @@ using DotVVM.Framework.Runtime.Filters;
 namespace ConferencySystem.ViewModels.Admin
 {
     [Authorize(Roles = new[] { "admin", "super" })]
-    public class WorkshopPersonViewModel : MainMasterPageViewModel
+    public class WorkshopUserViewModel : MainMasterPageViewModel
     {
         public int CurrentUserId
         {
             get
             {
-                return Convert.ToInt32(Context.Parameters["PersonId"]);
+                return Convert.ToInt32(Context.Parameters["UserId"]);
             }
         }
 
@@ -37,9 +37,9 @@ namespace ConferencySystem.ViewModels.Admin
                 {
                     foreach (WorkshopDTO workshop in workshopBlock.Workshops)
                     {
-                        foreach (AppUserDTO person in workshop.People)
+                        foreach (AppUserDTO user in workshop.Users)
                         {
-                            if (person.Id == CurrentUserId)
+                            if (user.Id == CurrentUserId)
                             {
                                 workshop.Registered = true;
                                 anyWorkshopRegistered = true;

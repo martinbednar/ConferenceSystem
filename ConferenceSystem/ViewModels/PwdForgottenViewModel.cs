@@ -40,16 +40,16 @@ namespace ConferencySystem.ViewModels
         public void RequestPwd()
         {
             var loginService = new LoginService();
-            AppUserDTO person = loginService.GetPerson(Email);
+            AppUserDTO user = loginService.GetUser(Email);
 
-            if(person == null)
+            if(user == null)
             {
                 ErrorMessage = "Zadaný email nebyl nalezen. Zkontrolujte, zda jste při registraci nezadali jiný email.";
             }
             else
             {
                 ResetPasswordService resetPasswordService = new ResetPasswordService();
-                resetPasswordService.SendResetPasswordEmail(person);
+                resetPasswordService.SendResetPasswordEmail(user);
                 SuccessMessage = "Odkaz pro obnovení hesla jsme Vám zaslali na zadaný email.";
             }
         }

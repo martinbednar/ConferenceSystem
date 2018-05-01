@@ -30,9 +30,9 @@ namespace ConferencySystem.ViewModels
         {
             LoginService loginService = new LoginService();
 
-            AppUserDTO person = loginService.GetPerson(Email);
+            AppUserDTO user = loginService.GetUser(Email);
 
-            if (person == null)
+            if (user == null)
             {
                 LoginErrorMessage = "Chybně zadán přihlašovací email. Uživatel nebyl nalezen.";
             }
@@ -40,7 +40,7 @@ namespace ConferencySystem.ViewModels
             {
                 PasswordHasher passwordHasher = new PasswordHasher();
 
-                PasswordVerificationResult passwordVerificationResult = passwordHasher.VerifyHashedPassword(person.PasswordHash, Password);
+                PasswordVerificationResult passwordVerificationResult = passwordHasher.VerifyHashedPassword(user.PasswordHash, Password);
 
                 if (passwordVerificationResult == PasswordVerificationResult.Success)
                 {

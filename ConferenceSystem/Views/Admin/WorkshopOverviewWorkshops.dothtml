@@ -8,7 +8,7 @@
         <br />
     </dot:UpdateProgress>
     <div class="btn-group" role="group" style="margin-left:20px">
-        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="WorkshopOverviewPeople" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="WorkshopOverviewUsers" Enabled="true"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Přehled workshopů" RouteName="WorkshopOverviewWorkshop" Enabled="false"></dot:RouteLink>
     </div>
     <br />
@@ -36,7 +36,7 @@
                                             <span style="font-size:17px;color:#2e6da4">{{value: Name}}</span><br />
                                             <span style="font-style:italic">{{value: Presenter}}</span>
                                             <span>
-                                                <dot:Repeater DataSource="{value: People}" style="color:black;font-size:small;margin-top:5px">
+                                                <dot:Repeater DataSource="{value: Users}" style="color:black;font-size:small;margin-top:5px">
                                                     <ItemTemplate>
                                                         {{value: FirstName}} {{value: LastName}},
                                                     </ItemTemplate>

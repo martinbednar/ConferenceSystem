@@ -17,11 +17,11 @@ namespace ConferencySystem.DAL.Data
         [StringLength(255)]
         public string Category { get; set; }
 
-        public virtual ICollection<AppUser> People { get; set; }
+        public virtual ICollection<AppUser> User { get; set; }
 
         public Cartering()
         {
-            People = new List<AppUser>();
+            User = new List<AppUser>();
         }
     }
 

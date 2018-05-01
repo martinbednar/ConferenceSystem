@@ -26,11 +26,11 @@ namespace ConferencySystem.DAL.Data
         [StringLength(10)]
         public string PostalCode { get; set; }
 
-        public virtual ICollection<AppUser> People { get; set; }
+        public virtual ICollection<AppUser> Users { get; set; }
 
         public Organization()
         {
-            People = new List<AppUser>();
+            Users = new List<AppUser>();
         }
     }
 }

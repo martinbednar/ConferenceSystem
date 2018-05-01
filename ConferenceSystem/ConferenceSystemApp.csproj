@@ -165,23 +165,23 @@
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
     <Compile Include="ViewModels\Admin\CarteringOverviewCarteringViewModel.cs" />
-    <Compile Include="ViewModels\Admin\CarteringOverviewPeopleViewModel.cs" />
-    <Compile Include="ViewModels\Admin\CarteringPersonViewModel.cs" />
+    <Compile Include="ViewModels\Admin\CarteringOverviewUsersViewModel.cs" />
+    <Compile Include="ViewModels\Admin\CarteringUserViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="ViewModels\Admin\ExportViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainMasterPageViewModel.cs" />
-    <Compile Include="ViewModels\Admin\PeopleViewModel.cs" />
-    <Compile Include="ViewModels\Admin\PersonViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UsersViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UserViewModel.cs" />
     <Compile Include="ViewModels\PwdForgottenViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterFormViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterViewModel.cs" />
     <Compile Include="ViewModels\User\RegistrationCompleteViewModel.cs" />
-    <Compile Include="ViewModels\Admin\WorkshopOverviewPeopleViewModel.cs" />
+    <Compile Include="ViewModels\Admin\WorkshopOverviewUsersViewModel.cs" />
     <Compile Include="ViewModels\Admin\WorkshopOverviewWorkshopsViewModel.cs" />
-    <Compile Include="ViewModels\Admin\WorkshopPersonViewModel.cs" />
+    <Compile Include="ViewModels\Admin\WorkshopUserViewModel.cs" />
     <Compile Include="ViewModels\User\WorkshopSelectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,8 +231,8 @@
     <Content Include="Views\default.dothtml" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\NakopneteSvojiSkolu - Web Deploy.pubxml" />
-    <Content Include="Views\Admin\People.dothtml" />
-    <Content Include="Views\Admin\Person.dothtml" />
+    <Content Include="Views\Admin\Users.dothtml" />
+    <Content Include="Views\Admin\User.dothtml" />
     <Content Include="Views\MainMasterPage.dotmaster" />
     <Content Include="Views\User\Register.dothtml" />
     <Content Include="Views\User\RegistrationComplete.dothtml" />
@@ -249,15 +249,15 @@
     <Content Include="Views\Login.dothtml" />
     <Content Include="Views\PwdForgotten.dothtml" />
     <Content Include="Views\User\CarteringSelect.dothtml" />
-    <Content Include="Views\Admin\CarteringOverviewPeople.dothtml" />
+    <Content Include="Views\Admin\CarteringOverviewUsers.dothtml" />
     <Content Include="Views\User\WorkshopSelect.dothtml" />
-    <Content Include="Views\Admin\WorkshopOverviewPeople.dothtml" />
+    <Content Include="Views\Admin\WorkshopOverviewUsers.dothtml" />
     <Content Include="Views\Admin\WorkshopOverviewWorkshops.dothtml" />
     <Content Include="Views\Admin\CarteringOverviewCartering.dothtml" />
-    <Content Include="Views\Admin\CarteringPerson.dothtml" />
+    <Content Include="Views\Admin\CarteringUser.dothtml" />
     <Content Include="Views\Admin\Export.dothtml" />
     <Content Include="Views\User\RegisterForm.dothtml" />
-    <Content Include="Views\Admin\WorkshopPerson.dothtml" />
+    <Content Include="Views\Admin\WorkshopUser.dothtml" />
     <Content Include="Views\PwdReset.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

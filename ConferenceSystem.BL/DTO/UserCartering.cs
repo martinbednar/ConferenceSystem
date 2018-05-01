@@ -1,6 +1,6 @@
 ﻿namespace ConferencySystem.BL.DTO
 {
-    public class PersonCartering
+    public class UserCartering
     {
         public int Id { get; set; }
 

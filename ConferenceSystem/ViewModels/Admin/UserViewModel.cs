@@ -7,9 +7,9 @@ using DotVVM.Framework.Runtime.Filters;
 namespace ConferencySystem.ViewModels.Admin
 {
     [Authorize(Roles = new[] { "admin", "super" })]
-    public class PersonViewModel : MainMasterPageViewModel
+    public class UserViewModel : MainMasterPageViewModel
     {
-        public AppUserDTO DataPerson { get; set; }
+        public AppUserDTO DataUser { get; set; }
 
         public OrganizationDTO DataOrganization { get; set; }
 
@@ -27,9 +27,9 @@ namespace ConferencySystem.ViewModels.Admin
             get { return Convert.ToInt32(Context.Parameters["OrgId"]); }
         }
 
-        public int? PersonId
+        public int? UserId
         {
-            get { return Convert.ToInt32(Context.Parameters["PersonId"]); }
+            get { return Convert.ToInt32(Context.Parameters["UserId"]); }
         }
         
         public override Task PreRender()
@@ -37,16 +37,16 @@ namespace ConferencySystem.ViewModels.Admin
             if (!Context.IsPostBack)
             {
                 var adminService = new AdminService();
-                if (PersonId != null) DataPerson = adminService.GetPerson(PersonId.Value);
+                if (UserId != null) DataUser = adminService.GetUser(UserId.Value);
                 if (OrganizationId != null) DataOrganization = adminService.GetOrganization(OrganizationId.Value);
 
                 DateProcessing = new DateProcessing();
 
-                if (DataPerson.BirthDate != null)
+                if (DataUser.BirthDate != null)
                 {
-                    SelectedBirthYear = DataPerson.BirthDate.ToString().Substring(6,4);
-                    SelectedBirthMonth = DateProcessing.MonthFromDb(DataPerson.BirthDate.ToString().Substring(3, 2));
-                    SelectedBirthDay = DateProcessing.DayFromDb(DataPerson.BirthDate.ToString().Substring(0, 2));
+                    SelectedBirthYear = DataUser.BirthDate.ToString().Substring(6,4);
+                    SelectedBirthMonth = DateProcessing.MonthFromDb(DataUser.BirthDate.ToString().Substring(3, 2));
+                    SelectedBirthDay = DateProcessing.DayFromDb(DataUser.BirthDate.ToString().Substring(0, 2));
                 }
                 else
                 {
@@ -56,25 +56,25 @@ namespace ConferencySystem.ViewModels.Admin
                 }
                 
 
-                if ((DataPerson.Position != "ředitel") && (DataPerson.Position != "Učitel") && (DataPerson.Position != "Student") && (DataPerson.Position != "Rodič"))
+                if ((DataUser.Position != "ředitel") && (DataUser.Position != "Učitel") && (DataUser.Position != "Student") && (DataUser.Position != "Rodič"))
                 {
-                    PositionOther = DataPerson.Position;
+                    PositionOther = DataUser.Position;
                 }
             }
 
             return base.PreRender();
         }
 
-        public void SavePerson()
+        public void SaveUser()
         {
             /*Date processing*/
-            DataPerson.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay),0,0,0,0);
+            DataUser.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay),0,0,0,0);
 
             var adminService = new AdminService();
-            adminService.SavePerson(DataPerson);
+            adminService.SaveUser(DataUser);
             adminService.SaveOrganization(DataOrganization);
 
-            Context.RedirectToRoute("People");
+            Context.RedirectToRoute("Users");
         }
     }
 }

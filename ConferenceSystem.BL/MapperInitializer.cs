@@ -7,12 +7,14 @@ namespace ConferencySystem.BL
 {
     public static class MapperInitializer
     {
+        public static bool IsInicialized { get; set; }
+
         public static void Initialize()
         {
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<Organization, OrganizationDTO>();
                 cfg.CreateMap<OrganizationDTO, Organization>()
-                    .ForMember(dest => dest.People, opt => opt.Ignore());
+                    .ForMember(dest => dest.Users, opt => opt.Ignore());
                 cfg.CreateMap<AppUser, AppUserDTO>()
                     .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.Organization))
                     .ForMember(dest => dest.Cartering, opt => opt.Ignore())

@@ -8,7 +8,7 @@
         <br />
     </dot:UpdateProgress>
     <div class="btn-group" role="group" style="margin-left:20px">
-        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewPeople" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewUsers" Enabled="true"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Počty porcí" RouteName="CarteringOverviewCartering" Enabled="false"></dot:RouteLink>
     </div>
     <br /><br />
@@ -19,7 +19,7 @@
             <dot:GridViewTextColumn HeaderText="Počet zaregistrovaných porcí" ValueBinding="{value: Count}" />
             <dot:GridViewTemplateColumn HeaderText="Seznam strávníků">
                 <ContentTemplate>
-                    <dot:Repeater DataSource="{value: People}" >
+                    <dot:Repeater DataSource="{value: Users}" >
                         <ItemTemplate>
                             {{value: FirstName + " " + LastName + ", "}}
                         </ItemTemplate>

@@ -39,8 +39,8 @@ namespace ConferencySystem.ViewModels.User
                 {
                     workingOutputCategories.Add(new Category(category,
                         DataCartering.Where(c => c.Category == category).First().Id,
-                        DataCartering.Where(c => c.Category == category).Where(c => c.People.Any(p => p.Id == CurrentUserId)).Count() != 0,
-                        DataCartering.Where(c => c.Category == category).Where(c => c.People.Any(p => p.Id == CurrentUserId)).SingleOrDefault() != null ? DataCartering.Where(c => c.Category == category).Where(c => c.People.Any(p => p.Id == CurrentUserId)).SingleOrDefault()?.Name : null,
+                        DataCartering.Where(c => c.Category == category).Where(c => c.Users.Any(p => p.Id == CurrentUserId)).Count() != 0,
+                        DataCartering.Where(c => c.Category == category).Where(c => c.Users.Any(p => p.Id == CurrentUserId)).SingleOrDefault() != null ? DataCartering.Where(c => c.Category == category).Where(c => c.Users.Any(p => p.Id == CurrentUserId)).SingleOrDefault()?.Name : null,
                         (DataCartering.Where(c => c.Category == category).Count() > 1) ? DataCartering.Where(c => c.Category == category).Select(c => c.Name) : null));
                 }
                 OutputCategories = workingOutputCategories;

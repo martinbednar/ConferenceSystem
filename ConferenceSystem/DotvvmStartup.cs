@@ -22,22 +22,22 @@ namespace ConferencySystem
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add("Default", "", "Views/default.dothtml");
-            config.RouteTable.Add("People", "people", "Views/Admin/People.dothtml");
-            config.RouteTable.Add("Person", "person/{OrgId}/{PersonId}", "Views/Admin/Person.dothtml");
+            config.RouteTable.Add("Users", "users", "Views/Admin/Users.dothtml");
+            config.RouteTable.Add("User", "user/{OrgId}/{UserId}", "Views/Admin/User.dothtml");
             config.RouteTable.Add("Register", "register", "Views/User/Register.dothtml");
             config.RouteTable.Add("RegistrationComplete", "complete", "Views/User/RegistrationComplete.dothtml");
             config.RouteTable.Add("Login", "login", "Views/Login.dothtml");
             config.RouteTable.Add("PwdForgotten", "password", "Views/PwdForgotten.dothtml");
             config.RouteTable.Add("CarteringSelect", "cartering", "Views/User/CarteringSelect.dothtml");
-            config.RouteTable.Add("CarteringOverviewPeople", "carteringoverviewpeople", "Views/Admin/CarteringOverviewPeople.dothtml");
+            config.RouteTable.Add("CarteringOverviewUsers", "carteringoverviewusers", "Views/Admin/CarteringOverviewUsers.dothtml");
             config.RouteTable.Add("CarteringOverviewCartering", "carteringoverviewcartering", "Views/Admin/CarteringOverviewCartering.dothtml");
             config.RouteTable.Add("WorkshopSelect", "workshop", "Views/User/WorkshopSelect.dothtml");
-            config.RouteTable.Add("WorkshopOverviewPeople", "workshopoverviewpeople", "Views/Admin/WorkshopOverviewPeople.dothtml");
+            config.RouteTable.Add("WorkshopOverviewUsers", "workshopoverviewusers", "Views/Admin/WorkshopOverviewUsers.dothtml");
             config.RouteTable.Add("WorkshopOverviewWorkshop", "workshopoverviewworkshop", "Views/Admin/WorkshopOverviewWorkshops.dothtml");
-            config.RouteTable.Add("CarteringPerson", "carteringperson/{PersonId}", "Views/Admin/CarteringPerson.dothtml");
+            config.RouteTable.Add("CarteringUser", "carteringuser/{UserId}", "Views/Admin/CarteringUser.dothtml");
             config.RouteTable.Add("Export", "export", "Views/Admin/Export.dothtml");
             config.RouteTable.Add("RegisterForm", "registerform", "Views/User/RegisterForm.dothtml");
-            config.RouteTable.Add("WorkshopPerson", "workshopperson/{PersonId}", "Views/Admin/WorkshopPerson.dothtml");
+            config.RouteTable.Add("WorkshopUser", "workshopuser/{UserId}", "Views/Admin/WorkshopUser.dothtml");
             config.RouteTable.Add("PwdReset", "password/reset", "Views/PwdReset.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
@@ -60,7 +60,7 @@ namespace ConferencySystem
             
             //first Db call to init Db on aplication start
             AdminService adminService = new AdminService();
-            adminService.GetPerson(1);
+            adminService.GetUser(1);
         }
     }
 }

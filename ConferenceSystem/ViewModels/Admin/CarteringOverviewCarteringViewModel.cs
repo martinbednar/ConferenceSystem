@@ -10,7 +10,7 @@ namespace ConferencySystem.ViewModels.Admin
     [Authorize(Roles = new[] { "admin", "super" })]
     public class CarteringOverviewCarteringViewModel : MainMasterPageViewModel
     {
-        public List<CarteringPeople> CarteringSumary { get; set; }
+        public List<CarteringUsers> CarteringSumary { get; set; }
 
         public GridViewUserSettings UserSettings { get; set; }
 

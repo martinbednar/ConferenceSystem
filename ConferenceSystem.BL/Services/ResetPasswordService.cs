@@ -20,14 +20,14 @@ namespace ConferencySystem.BL.Services
             userManager.ResetPassword(userId, token, newPassword);
         }
 
-        public void SendResetPasswordEmail(AppUserDTO dataPerson)
+        public void SendResetPasswordEmail(AppUserDTO dataUser)
         {
             var provider = new DpapiDataProtectionProvider("KonferencniSystem");
             var appUserManager = new AppUserManager(new DbContext());
             appUserManager.UserTokenProvider = new DataProtectorTokenProvider<AppUser, int>(provider.Create("EmailReset"));
             
-            string token = appUserManager.GeneratePasswordResetToken(dataPerson.Id);
-            var callbackUrl = new Uri(string.Format(HttpContext.Current.Request.Url + "/reset?userid={0}&token={1}", dataPerson.Id, HttpUtility.UrlEncode(token)));
+            string token = appUserManager.GeneratePasswordResetToken(dataUser.Id);
+            var callbackUrl = new Uri(string.Format(HttpContext.Current.Request.Url + "/reset?userid={0}&token={1}", dataUser.Id, HttpUtility.UrlEncode(token)));
             
             EmailService emailService = new EmailService();
 
@@ -35,7 +35,7 @@ namespace ConferencySystem.BL.Services
                 "<p>Zaznamenali jsme požadavek na obnovení hesla ke Konferenčnímu systému festivalu vzdělání Nakopněte svoji školu (<a href=\"http://nakopnetesvojiskolu.azurewebsites.net/\">http://nakopnetesvojiskolu.azurewebsites.net/</a>).</p><br><p>Pro obnovení hesla klikněte na odkaz:</p><br><p><a href=\"" + callbackUrl + "\">OBNOVIT HESLO</a></p><br><p>Pokud se Vám nedaří na odkaz kliknout, překopírujte do adresního řádku prohlížeče následující adresu: <a href=\"" + callbackUrl + "\">" + callbackUrl + "</a></p><br>Pro získání aktuálních informací můžete sledovat náš <a href=\"http://www.nakopnetesvojiskolu.cz/\" target=\"_blank\">web</a> nebo <a href=\"https://www.facebook.com/nakopnete.svoji.skolu/\" target=\"_blank\">Facebook</a>.";
             string subject = "Nakopněte svoji školu - Resetování hesla";
 
-            emailService.SendEmail(dataPerson.Email, subject, mailBodyhtml);
+            emailService.SendEmail(dataUser.Email, subject, mailBodyhtml);
         }
     }
 }

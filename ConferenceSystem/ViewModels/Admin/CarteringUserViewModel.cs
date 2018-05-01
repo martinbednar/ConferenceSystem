@@ -10,11 +10,11 @@ using DotVVM.Framework.Runtime.Filters;
 namespace ConferencySystem.ViewModels.Admin
 {
     [Authorize(Roles = new[] { "admin", "super" })]
-    public class CarteringPersonViewModel : MainMasterPageViewModel
+    public class CarteringUserViewModel : MainMasterPageViewModel
     {
         public int UserId
         {
-            get { return Convert.ToInt32(Context.Parameters["PersonId"]); }
+            get { return Convert.ToInt32(Context.Parameters["UserId"]); }
         }
 
         public List<CarteringSelectViewModel.Category> OutputCategories { get; set; }
@@ -36,8 +36,8 @@ namespace ConferencySystem.ViewModels.Admin
                 {
                     workingOutputCategories.Add(new CarteringSelectViewModel.Category(category,
                         DataCartering.Where(c => c.Category == category).First().Id,
-                        DataCartering.Where(c => c.Category == category).Where(c => c.People.Any(p => p.Id == UserId)).Count() != 0,
-                        DataCartering.Where(c => c.Category == category).Where(c => c.People.Any(p => p.Id == UserId)).SingleOrDefault() != null ? DataCartering.Where(c => c.Category == category).Where(c => c.People.Any(p => p.Id == UserId)).SingleOrDefault()?.Name : null,
+                        DataCartering.Where(c => c.Category == category).Where(c => c.Users.Any(p => p.Id == UserId)).Count() != 0,
+                        DataCartering.Where(c => c.Category == category).Where(c => c.Users.Any(p => p.Id == UserId)).SingleOrDefault() != null ? DataCartering.Where(c => c.Category == category).Where(c => c.Users.Any(p => p.Id == UserId)).SingleOrDefault()?.Name : null,
                         (DataCartering.Where(c => c.Category == category).Count() > 1) ? DataCartering.Where(c => c.Category == category).Select(c => c.Name) : null));
                 }
                 OutputCategories = workingOutputCategories;
@@ -76,7 +76,7 @@ namespace ConferencySystem.ViewModels.Admin
                     (category.LastChosenOption != null) ? DataCartering.Where(c => c.Category == category.Name).Where(c => c.Name == category.LastChosenOption).First().Id : 0,
                     UserId);
             }
-            Context.RedirectToRoute("CarteringOverviewPeople");
+            Context.RedirectToRoute("CarteringOverviewUsers");
         }
     }
 }

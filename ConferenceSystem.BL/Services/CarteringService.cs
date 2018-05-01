@@ -25,9 +25,9 @@ namespace ConferencySystem.BL.Services
 
                 var currentUser = db.Users.Find(idUser);
 
-                if(cartering != null && !cartering.People.Contains(currentUser))
+                if(cartering != null && !cartering.User.Contains(currentUser))
                 {
-                    cartering.People.Add(currentUser);
+                    cartering.User.Add(currentUser);
                     db.SaveChanges();
                 }
             }
@@ -41,9 +41,9 @@ namespace ConferencySystem.BL.Services
 
                 var currentUser = db.Users.Find(idUser);
 
-                if (cartering != null && cartering.People.Contains(currentUser))
+                if (cartering != null && cartering.User.Contains(currentUser))
                 {
-                    cartering.People.Remove(currentUser);
+                    cartering.User.Remove(currentUser);
                     db.SaveChanges();
                 }
             }
@@ -60,7 +60,7 @@ namespace ConferencySystem.BL.Services
                         Name = c.Name,
                         When = c.When,
                         Category = c.Category,
-                        People = c.People
+                        Users = c.User
                         .Select(p => new AppUserDTO()
                         {
                             Id = p.Id,
@@ -107,7 +107,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public List<AppUserDTO> GetPeopleOverview()
+        public List<AppUserDTO> GetUsersOverview()
         {
             using (var db = new DbContext())
             {
@@ -136,7 +136,7 @@ namespace ConferencySystem.BL.Services
                 {
                     Name = c.Name,
                     When = c.When,
-                    People = c.People
+                    Users = c.User
                         .Select(p => new AppUserDTO()
                         {
                             Id = p.Id,
@@ -149,7 +149,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public List<CarteringPeople> GetCarteringSumary()
+        public List<CarteringUsers> GetCarteringSumary()
         {
             using (var db = new DbContext())
             {
@@ -158,7 +158,7 @@ namespace ConferencySystem.BL.Services
                     Id = c.Id,
                     Name = c.Name,
                     When = c.When,
-                    People = c.People
+                    Users = c.User
                         .Select(p => new AppUserDTO()
                         {
                             Id = p.Id,
@@ -167,11 +167,11 @@ namespace ConferencySystem.BL.Services
                         })
                 }).OrderBy(c => c.When);
 
-                List<CarteringPeople> carteringSumary = new List<CarteringPeople>();
+                List<CarteringUsers> carteringSumary = new List<CarteringUsers>();
 
                 foreach (CarteringDTO cartering in query.ToList())
                 {
-                    carteringSumary.Add(new CarteringPeople(cartering.Name, cartering.People));
+                    carteringSumary.Add(new CarteringUsers(cartering.Name, cartering.Users));
                 }
 
                 return carteringSumary;

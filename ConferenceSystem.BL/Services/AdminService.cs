@@ -11,22 +11,22 @@ namespace ConferencySystem.BL.Services
 {
     public class AdminService
     {
-        public void GetPersons(GridViewDataSet<AppUserDTO> peopleDataSet)
+        public void GetUsers(GridViewDataSet<AppUserDTO> usersDataSet)
         {
             using (var db = new DbContext())
             {
-                var people = db.Users.Where(user => user.Roles.All(role => role.RoleId == 1)).ProjectTo<AppUserDTO>().ToList();
-                peopleDataSet.LoadFromQueryable(people.AsQueryable());
+                var users = db.Users.Where(user => user.Roles.All(role => role.RoleId == 1)).ProjectTo<AppUserDTO>().ToList();
+                usersDataSet.LoadFromQueryable(users.AsQueryable());
             }
         }
 
 
-        public void DeletePerson(int id)
+        public void DeleteUser(int id)
         {
             using (var db = new DbContext())
             {
-                var person = db.Users.Find(id);
-                db.Users.Remove(person);
+                var user = db.Users.Find(id);
+                db.Users.Remove(user);
                 db.SaveChanges();
             }
         }
@@ -43,7 +43,7 @@ namespace ConferencySystem.BL.Services
         }
 
 
-        public AppUserDTO GetPerson(int id)
+        public AppUserDTO GetUser(int id)
         {
             using (var db = new DbContext())
             {
@@ -51,13 +51,13 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public void SavePerson(AppUserDTO personData)
+        public void SaveUser(AppUserDTO userData)
         {
             using (var db = new DbContext())
             {
-                var person = db.Users.Find(personData.Id);
+                var user = db.Users.Find(userData.Id);
 
-                Mapper.Map(personData, person);
+                Mapper.Map(userData, user);
 
                 db.SaveChanges();
             }

@@ -11,11 +11,11 @@ namespace ConferencySystem.BL.Services
 {
     public class LoginService
     {
-        public AppUserDTO GetPerson(string email)
+        public AppUserDTO GetUser(string email)
         {
             using (var db = new DbContext())
             {
-                var person = db.Users.Select(p => new AppUserDTO()
+                var user = db.Users.Select(p => new AppUserDTO()
                 {
                     Id = p.Id,
                     FirstName = p.FirstName,
@@ -25,11 +25,11 @@ namespace ConferencySystem.BL.Services
                 })
                 .SingleOrDefault(p => p.Email == email);
 
-                return person;
+                return user;
             }
         }
 
-        public List<AppUserDTO> GetAllPeople()
+        public List<AppUserDTO> GetAllUsers()
         {
             using (var db = new DbContext())
             {

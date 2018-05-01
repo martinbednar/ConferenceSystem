@@ -121,12 +121,12 @@
   <ItemGroup>
     <Compile Include="DTO\AppUserDTO.cs" />
     <Compile Include="DTO\CarteringDTO.cs" />
-    <Compile Include="DTO\CarteringPeople.cs" />
+    <Compile Include="DTO\CarteringUsers.cs" />
     <Compile Include="MapperInitializer.cs" />
     <Compile Include="DTO\OrganizationDTO.cs" />
-    <Compile Include="DTO\PersonCartering.cs" />
-    <Compile Include="DTO\PersonCompletInfo.cs" />
-    <Compile Include="DTO\PersonWorkshops.cs" />
+    <Compile Include="DTO\UserCartering.cs" />
+    <Compile Include="DTO\UserCompletInfo.cs" />
+    <Compile Include="DTO\UserWorkshops.cs" />
     <Compile Include="DTO\WorkshopDTO.cs" />
     <Compile Include="DTO\WorkshopsBlockDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

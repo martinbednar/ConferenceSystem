@@ -8,22 +8,22 @@ using DotVVM.Framework.Runtime.Filters;
 namespace ConferencySystem.ViewModels.Admin
 {
     [Authorize(Roles = new[] { "admin", "super" })]
-    public class WorkshopOverviewPeopleViewModel : MainMasterPageViewModel
+    public class WorkshopOverviewUsersViewModel : MainMasterPageViewModel
     {
         public GridViewUserSettings UserSettings { get; set; }
 
-        public BusinessPackDataSet<PersonWorkshops> PeopleWorkshops { get; set; } = new BusinessPackDataSet<PersonWorkshops>();
+        public BusinessPackDataSet<UserWorkshops> UsersWorkshops { get; set; } = new BusinessPackDataSet<UserWorkshops>();
 
         public override Task PreRender()
         {
             if (!Context.IsPostBack)
             {
-                PeopleWorkshops.PagingOptions.PageSize = 500;
-                PeopleWorkshops.SortingOptions.SortExpression = nameof(PersonWorkshops.Id);
-                PeopleWorkshops.SortingOptions.SortDescending = false;
+                UsersWorkshops.PagingOptions.PageSize = 500;
+                UsersWorkshops.SortingOptions.SortExpression = nameof(UserWorkshops.Id);
+                UsersWorkshops.SortingOptions.SortDescending = false;
 
                 var workshopService = new WorkshopService();
-                workshopService.GetPeopleOverview(PeopleWorkshops);
+                workshopService.GetUsersOverview(UsersWorkshops);
             }
 
             return base.PreRender();
@@ -31,10 +31,10 @@ namespace ConferencySystem.ViewModels.Admin
 
         public void ExportToExcel()
         {
-            var exporter = new GridViewExportExcel<PersonWorkshops>(new GridViewExportExcelSettings<PersonWorkshops>());
-            var gridView = Context.View.FindControlByClientId<GridView>("people", true);
+            var exporter = new GridViewExportExcel<UserWorkshops>(new GridViewExportExcelSettings<UserWorkshops>());
+            var gridView = Context.View.FindControlByClientId<GridView>("users", true);
 
-            using (var file = exporter.Export(gridView, PeopleWorkshops))
+            using (var file = exporter.Export(gridView, UsersWorkshops))
             {
                 Context.ReturnFile(file, "NakopneteSvojiSkolu-Workshopy.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             }

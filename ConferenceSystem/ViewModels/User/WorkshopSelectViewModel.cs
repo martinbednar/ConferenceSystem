@@ -41,9 +41,9 @@ namespace ConferencySystem.ViewModels.User
                 {
                     foreach (WorkshopDTO workshop in workshopBlock.Workshops)
                     {
-                        foreach (AppUserDTO person in workshop.People)
+                        foreach (AppUserDTO user in workshop.Users)
                         {
-                            if (person.Id == CurrentUserId)
+                            if (user.Id == CurrentUserId)
                             {
                                 workshop.Registered = true;
                                 anyWorkshopRegistered = true;

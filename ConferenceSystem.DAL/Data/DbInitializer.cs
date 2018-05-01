@@ -26,7 +26,7 @@ namespace ConferencySystem.DAL.Data
                     PostalCode = "",
                     Town = "",
                     VATID = "",
-                    People = new List<AppUser>()
+                    Users = new List<AppUser>()
                     {
                         new AppUser()
                         {

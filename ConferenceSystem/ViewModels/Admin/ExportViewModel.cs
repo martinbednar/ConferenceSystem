@@ -12,26 +12,26 @@ namespace ConferencySystem.ViewModels.Admin
     {
         public GridViewUserSettings UserSettings { get; set; }
 
-        public BusinessPackDataSet<PersonCompletInfo> People { get; set; } = new BusinessPackDataSet<PersonCompletInfo>();
+        public BusinessPackDataSet<UserCompletInfo> Users { get; set; } = new BusinessPackDataSet<UserCompletInfo>();
 
         public override Task PreRender()
         {
             var exportService = new ExportService();
 
 
-            People.PagingOptions.PageSize = 500;
+            Users.PagingOptions.PageSize = 500;
 
-            exportService.GetAllData(People);
+            exportService.GetAllData(Users);
 
             return base.PreRender();
         }
 
         public void ExportToExcel()
         {
-            var exporter = new GridViewExportExcel<PersonCompletInfo>(new GridViewExportExcelSettings<PersonCompletInfo>());
-            var gridView = Context.View.FindControlByClientId<GridView>("people", true);
+            var exporter = new GridViewExportExcel<UserCompletInfo>(new GridViewExportExcelSettings<UserCompletInfo>());
+            var gridView = Context.View.FindControlByClientId<GridView>("users", true);
 
-            using (var file = exporter.Export(gridView, People))
+            using (var file = exporter.Export(gridView, Users))
             {
                 Context.ReturnFile(file, "NakopneteSvojiSkolu-KompletniPrehled.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             }

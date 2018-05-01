@@ -24,6 +24,6 @@ namespace ConferencySystem.BL.DTO
 
         public virtual WorkshopsBlockDTO WorkshopsBlock { get; set; }
 
-        public virtual IEnumerable<AppUserDTO> People { get; set; }
+        public virtual IEnumerable<AppUserDTO> Users { get; set; }
     }
 }

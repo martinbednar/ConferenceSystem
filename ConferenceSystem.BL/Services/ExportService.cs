@@ -8,7 +8,7 @@ namespace ConferencySystem.BL.Services
 {
     public class ExportService
     {
-        public void GetAllData (GridViewDataSet<PersonCompletInfo> peopleDataSet)
+        public void GetAllData (GridViewDataSet<UserCompletInfo> usersDataSet)
         {
             using (var db = new DbContext())
             {
@@ -65,14 +65,14 @@ namespace ConferencySystem.BL.Services
                     }).OrderBy(w => w.WorkshopsBlock.Start)
                 });
 
-                List<PersonCompletInfo> peopleCompletInfo = new List<PersonCompletInfo>();
+                List<UserCompletInfo> usersCompletInfo = new List<UserCompletInfo>();
 
-                foreach (AppUserDTO person in query.ToList())
+                foreach (AppUserDTO user in query.ToList())
                 {
-                    peopleCompletInfo.Add(new PersonCompletInfo(person));
+                    usersCompletInfo.Add(new UserCompletInfo(user));
                 }
                 
-                peopleDataSet.LoadFromQueryable(peopleCompletInfo.AsQueryable());
+                usersDataSet.LoadFromQueryable(usersCompletInfo.AsQueryable());
             }
         }
     }

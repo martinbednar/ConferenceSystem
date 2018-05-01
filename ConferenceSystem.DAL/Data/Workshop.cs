@@ -21,11 +21,11 @@ namespace ConferencySystem.DAL.Data
 
         public virtual WorkshopsBlock WorkshopsBlock { get; set; }
 
-        public virtual ICollection<AppUser> People { get; set; }
+        public virtual ICollection<AppUser> Users { get; set; }
 
         public Workshop()
         {
-            People = new List<AppUser>();
+            Users = new List<AppUser>();
         }
     }
 }

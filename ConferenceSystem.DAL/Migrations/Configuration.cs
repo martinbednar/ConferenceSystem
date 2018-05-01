@@ -35,7 +35,7 @@ namespace ConferencySystem.DAL.Migrations
                     PostalCode = "",
                     Town = "",
                     VATID = "",
-                    People = new List<AppUser>()
+                    Users = new List<AppUser>()
                     {
                         new AppUser()
                         {

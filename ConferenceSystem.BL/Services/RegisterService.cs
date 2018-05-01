@@ -12,18 +12,18 @@ namespace ConferencySystem.BL.Services
 {
     public class RegisterService
     {
-        public int AddPerson (AppUserDTO personData)
+        public int AddUser (AppUserDTO userData)
         {
-            AppUser person = Mapper.Map<AppUserDTO, AppUser>(personData);
+            AppUser user = Mapper.Map<AppUserDTO, AppUser>(userData);
 
             using (AppUserManager userManager = new AppUserManager(new DbContext()))
             {
                 userManager.UserValidator =
                     new UserValidator<AppUser, int>(userManager) {AllowOnlyAlphanumericUserNames = false};
                 
-                userManager.Create(person, personData.PasswordHash);
+                userManager.Create(user, userData.PasswordHash);
                 
-                AppUser currentUser = userManager.FindByName(person.UserName);
+                AppUser currentUser = userManager.FindByName(user.UserName);
 
                 userManager.AddToRole(currentUser.Id, "user");
 
@@ -31,7 +31,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public int AddOrganization(OrganizationDTO organizationData, AppUserDTO personData)
+        public int AddOrganization(OrganizationDTO organizationData, AppUserDTO userData)
         {
             using (var db = new DbContext())
             {
@@ -39,17 +39,17 @@ namespace ConferencySystem.BL.Services
                 db.Organization.Add(organization);
                 db.SaveChanges();
 
-                int addedPersonId = AddPerson(personData);
+                int addedUserId = AddUser(userData);
 
-                AppUser addedPerson = db.Users.Find(addedPersonId);
+                AppUser addedUser = db.Users.Find(addedUserId);
 
-                organization.People.Add(addedPerson);
+                organization.Users.Add(addedUser);
 
-                addedPerson.VariableSymbol = 2018000 + addedPersonId;
+                addedUser.VariableSymbol = 2018000 + addedUserId;
 
                 db.SaveChanges();
 
-                return addedPerson.Id;
+                return addedUser.Id;
             }
         }
 
@@ -70,31 +70,31 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public int UpdateOrganization(int id, AppUserDTO personData)
+        public int UpdateOrganization(int id, AppUserDTO userData)
         {
             using (var db = new DbContext())
             {
                 Organization organization = db.Organization.Find(id);
 
-                int addedPersonId = AddPerson(personData);
+                int addedUserId = AddUser(userData);
 
-                AppUser addedPerson = db.Users.Find(addedPersonId);
+                AppUser addedUser = db.Users.Find(addedUserId);
 
-                if (organization != null) organization.People.Add(addedPerson);
-
-                db.SaveChanges();
-
-                AppUser person = db.Users.Find(addedPerson.Id);
-
-                person.VariableSymbol = 2018000 + person.Id;
+                if (organization != null) organization.Users.Add(addedUser);
 
                 db.SaveChanges();
 
-                return person.Id;
+                AppUser user = db.Users.Find(addedUser.Id);
+
+                user.VariableSymbol = 2018000 + user.Id;
+
+                db.SaveChanges();
+
+                return user.Id;
             }
         }
 
-        public AppUserDTO GetPerson(int id)
+        public AppUserDTO GetUser(int id)
         {
             using (var db = new DbContext())
             {
@@ -102,7 +102,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public List<AppUserDTO> GetPersonEmails()
+        public List<AppUserDTO> GetUserEmails()
         {
             using (var db = new DbContext())
             {

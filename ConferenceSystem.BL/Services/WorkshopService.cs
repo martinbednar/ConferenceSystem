@@ -39,7 +39,7 @@ namespace ConferencySystem.BL.Services
                         Capacity = s.Capacity,
                         Presenter = s.Presenter,
                         Room = s.Room,
-                        People = s.People.Select(p => new AppUserDTO()
+                        Users = s.Users.Select(p => new AppUserDTO()
                         {
                             Id = p.Id,
                             RegisterTimestamp = new DateTime(1990, 1, 1, 1, 0, 0, 0)
@@ -67,9 +67,9 @@ namespace ConferencySystem.BL.Services
                     }
                     else
                     {
-                        if (workshop != null && !workshop.People.Contains(currentUser))
+                        if (workshop != null && !workshop.Users.Contains(currentUser))
                         {
-                            workshop.People.Add(currentUser);
+                            workshop.Users.Add(currentUser);
                             workshop.Capacity = workshop.Capacity - 1;
                             db.SaveChanges();
 
@@ -93,16 +93,16 @@ namespace ConferencySystem.BL.Services
 
                 AppUser currentUser = db.Users.Find(userId);
 
-                if (workshop != null && workshop.People.Contains(currentUser))
+                if (workshop != null && workshop.Users.Contains(currentUser))
                 {
-                    workshop.People.Remove(currentUser);
+                    workshop.Users.Remove(currentUser);
                     workshop.Capacity = workshop.Capacity + 1;
                     db.SaveChanges();
                 }
             }
         }
 
-        public void GetPeopleOverview(GridViewDataSet<PersonWorkshops> peopleDataSet)
+        public void GetUsersOverview(GridViewDataSet<UserWorkshops> usersDataSet)
         {
             using (var db = new DbContext())
             {
@@ -123,23 +123,23 @@ namespace ConferencySystem.BL.Services
                         })
                 });
 
-                List<PersonWorkshops> peopleWorkshops = new List<PersonWorkshops>();
+                List<UserWorkshops> usersWorkshops = new List<UserWorkshops>();
 
-                foreach (AppUserDTO person in query.ToList())
+                foreach (AppUserDTO user in query.ToList())
                 {
-                    peopleWorkshops.Add(new PersonWorkshops()
+                    usersWorkshops.Add(new UserWorkshops()
                     {
-                        Id = person.Id,
-                        FirstName = person.FirstName,
-                        LastName = person.LastName,
-                        Block1 = (person.Workshops.Where(w => w.WorkshopsBlock.Id == 1).Count() == 0) ? "" : person.Workshops.Where(w => w.WorkshopsBlock.Id == 1).First().Name,
-                        Lecture = (person.Workshops.Where(w => w.WorkshopsBlock.Id == 4).Count() == 0) ? "" : person.Workshops.Where(w => w.WorkshopsBlock.Id == 4).First().Name,
-                        Block2 = (person.Workshops.Where(w => w.WorkshopsBlock.Id == 2).Count() == 0) ? "" : person.Workshops.Where(w => w.WorkshopsBlock.Id == 2).First().Name,
-                        Block3 = (person.Workshops.Where(w => w.WorkshopsBlock.Id == 3).Count() == 0) ? "" : person.Workshops.Where(w => w.WorkshopsBlock.Id == 3).First().Name
+                        Id = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Block1 = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 1).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 1).First().Name,
+                        Lecture = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 4).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 4).First().Name,
+                        Block2 = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 2).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 2).First().Name,
+                        Block3 = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 3).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 3).First().Name
                     });
                 }
 
-                peopleDataSet.LoadFromQueryable(peopleWorkshops.AsQueryable());
+                usersDataSet.LoadFromQueryable(usersWorkshops.AsQueryable());
             }
         }
 
@@ -160,7 +160,7 @@ namespace ConferencySystem.BL.Services
                             Name = w.Name,
                             Presenter = w.Presenter,
                             Capacity = w.Capacity,
-                            People = w.People
+                            Users = w.Users
                                 .Select(p => new AppUserDTO()
                                 {
                                     Id = p.Id,
@@ -169,7 +169,7 @@ namespace ConferencySystem.BL.Services
                                     TitleBefore = p.TitleBefore,
                                     TitleAfter = p.TitleAfter
                                 }),
-                            NumberOfRegistered = w.People.Count
+                            NumberOfRegistered = w.Users.Count
                         })
                 }).OrderBy(c => c.Start).ToList();
             }
