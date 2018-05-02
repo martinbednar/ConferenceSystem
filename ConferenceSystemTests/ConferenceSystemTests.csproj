@@ -90,8 +90,10 @@
       <HintPath>..\packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateProcessingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbContextTests.cs" />
     <Compile Include="AdminServiceTests.cs" />
