@@ -37,7 +37,7 @@ namespace ConferencySystem.BL.Services
                 {
                     Id = a.Id,
                     Email = a.Email,
-                }).Where(p => p.Id == 6).ToList();
+                }).ToList();
             }
         }
 

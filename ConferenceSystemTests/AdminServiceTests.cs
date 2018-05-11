@@ -1,5 +1,4 @@
-﻿using System.Transactions;
-using ConferencySystem.BL;
+﻿using ConferencySystem.BL;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
 using DotVVM.Framework.Controls;

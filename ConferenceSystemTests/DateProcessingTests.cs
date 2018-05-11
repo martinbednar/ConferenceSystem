@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Transactions;
-using ConferencySystem.BL;
-using ConferencySystem.BL.DTO;
+﻿using ConferencySystem.BL;
 using ConferencySystem.BL.Services;
-using DotVVM.Framework.Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ConferencySystemTests
@@ -36,7 +31,7 @@ namespace ConferencySystemTests
             InitializeMapper();
             DateProcessing dateProcessing = new DateProcessing();
 
-            Assert.IsTrue(dateProcessing.BirthMonth.Length == 33);
+            Assert.IsTrue(dateProcessing.BirthMonth.Length == 13);
         }
 
         [TestMethod]
@@ -62,6 +57,55 @@ namespace ConferencySystemTests
             for (int day = 10; day <= 31; day++)
             {
                 Assert.IsTrue(dateProcessing.DayToDb(day.ToString()) == day.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void ConvertDayFromDbFormat_DayFromDb_IsEqualToExpected()
+        {
+            InitializeMapper();
+            DateProcessing dateProcessing = new DateProcessing();
+
+            for (int day = 1; day < 10; day++)
+            {
+                Assert.IsTrue(dateProcessing.DayFromDb("0" + day) == day.ToString());
+            }
+
+            for (int day = 10; day <= 31; day++)
+            {
+                Assert.IsTrue(dateProcessing.DayFromDb(day.ToString()) == day.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void ConvertMonthToDbFormat_MonthToDb_IsEqualToExpected()
+        {
+            InitializeMapper();
+            DateProcessing dateProcessing = new DateProcessing();
+
+            for (int month = 1; month <= 9; month++)
+            {
+                Assert.IsTrue(dateProcessing.MonthToDb(dateProcessing.BirthMonth[month]) == "0" + month);
+            }
+            for (int month = 10; month <= 12; month++)
+            {
+                Assert.IsTrue(dateProcessing.MonthToDb(dateProcessing.BirthMonth[month]) == month.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void ConvertMonthFromDbFormat_MonthFromDb_IsEqualToExpected()
+        {
+            InitializeMapper();
+            DateProcessing dateProcessing = new DateProcessing();
+
+            for (int month = 1; month <= 9; month++)
+            {
+                Assert.IsTrue(dateProcessing.MonthFromDb("0" + month) == dateProcessing.BirthMonth[month]);
+            }
+            for (int month = 10; month <= 12; month++)
+            {
+                Assert.IsTrue(dateProcessing.MonthFromDb(month.ToString()) == dateProcessing.BirthMonth[month]);
             }
         }
     }

@@ -8,8 +8,9 @@ namespace ConferencySystem.BL.Services
         public void SendEmail(string receiverEmail, string subject, string body)
         {
             var msg = new MailMessage("nakopnetesvojiskolu@gmail.com", receiverEmail, subject, body);
-
+            
             msg.IsBodyHtml = true;
+            
             var smtpClient = new SmtpClient("smtp.gmail.com", 587)
             {
                 UseDefaultCredentials = true,
