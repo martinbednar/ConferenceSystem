@@ -16,6 +16,7 @@
                 </div>
 
                 <div class="alert alert-success" Visible="{value: SuccessMessage != null}">{{value: SuccessMessage}}</div>
+                <div class="alert alert-danger" Visible="{value: ErrorMessage != null}">{{value: ErrorMessage}}</div>
 
                 <div class="form-row">
                     <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" style="text-align:center;" />

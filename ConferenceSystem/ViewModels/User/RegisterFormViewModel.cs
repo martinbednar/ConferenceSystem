@@ -13,7 +13,11 @@ namespace ConferencySystem.ViewModels.User
 
         public bool Alert { get; set; } = false;
 
+        public string AlertValue { get; set; }
+
         public string IN { get; set; } = "";
+
+        public string PasswordControl { get; set; }
 
         public DateTime BirthDate;
 
@@ -70,6 +74,12 @@ namespace ConferencySystem.ViewModels.User
             emailService.SendEmail(DataUser.Email, subject, mailBody);
         }
 
+        public void DismissAlert()
+        {
+            Alert = false;
+            AlertValue = string.Empty;
+        }
+
         public void Save()
         {
             DisplayLoader = false;
@@ -123,26 +133,48 @@ namespace ConferencySystem.ViewModels.User
             if (alreadyRegistered)
             {
                 Alert = true;
+                AlertValue = "Chyba při registraci - email " + DataUser.Email +
+                             " byl již jednou při registraci použit! Jestliže jste se již zaregistroval/a, použijte prosím přihlašovací údaje pro přístup do Konferenčního systému.";
             }
             else
             {
-                int addedUserId;
-
-                int organizationId = register.GetOrganizationId(DataOrganization.IN);
-
-                if (organizationId == -1)
+                if (DataUser.PasswordHash != PasswordControl)
                 {
-                    addedUserId = register.AddOrganization(DataOrganization, DataUser);
+                    Alert = true;
+                    AlertValue = "Chyba kontroly hesla. Zadaná hesla se neshodují";
+                    DataUser.PasswordHash = string.Empty;
+                    PasswordControl = string.Empty;
                 }
                 else
                 {
-                    addedUserId = register.UpdateOrganization(organizationId, DataUser);
+                    if (DataUser.PasswordHash.Length < 6)
+                    {
+                        Alert = true;
+                        AlertValue = "Heslo musí mít délku minimálně 6 znaků.";
+                        DataUser.PasswordHash = string.Empty;
+                        PasswordControl = string.Empty;
+                    }
+                    else
+                    {
+                        int addedUserId;
+
+                        int organizationId = register.GetOrganizationId(DataOrganization.IN);
+
+                        if (organizationId == -1)
+                        {
+                            addedUserId = register.AddOrganization(DataOrganization, DataUser);
+                        }
+                        else
+                        {
+                            addedUserId = register.UpdateOrganization(organizationId, DataUser);
+                        }
+
+                        DataUser = register.GetUser(addedUserId);
+                        SendEmail();
+
+                        Context.RedirectToRoute("RegistrationComplete");
+                    }
                 }
-
-                DataUser = register.GetUser(addedUserId);
-                SendEmail();
-
-                Context.RedirectToRoute("RegistrationComplete");
             }
         }
     }

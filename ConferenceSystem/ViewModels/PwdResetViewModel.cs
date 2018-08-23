@@ -14,12 +14,22 @@ namespace ConferencySystem.ViewModels
         public string NewPassword { get; set; }
 
         public string SuccessMessage { get; set; }
+        public string ErrorMessage { get; set; }
 
         public void ResetPassword()
         {
-            ResetPasswordService resetPasswordService = new ResetPasswordService();
-            resetPasswordService.ResetPassword(UserId,Token,NewPassword);
-            SuccessMessage = "Heslo bylo úspěšně obnoveno. Nyní se můžete přihlásit s použitím nového hesla.";
+            if (NewPassword.Length < 6)
+            {
+                ErrorMessage = "Délka hesla musí být minimálně 6 znaků.";
+            }
+            else
+            {
+                ErrorMessage = string.Empty;
+                ErrorMessage = null;
+                ResetPasswordService resetPasswordService = new ResetPasswordService();
+                resetPasswordService.ResetPassword(UserId,Token,NewPassword);
+                SuccessMessage = "Heslo bylo úspěšně obnoveno. Nyní se můžete přihlásit s použitím nového hesla.";
+            }
         }
     }
 }
