@@ -16,6 +16,7 @@ namespace ConferencySystem.BL
                 cfg.CreateMap<OrganizationDTO, Organization>()
                     .ForMember(dest => dest.Users, opt => opt.Ignore());
                 cfg.CreateMap<AppUser, AppUserDTO>()
+                    .ForMember(dest => dest.SequenceNumber, opt => opt.Ignore())
                     .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.Organization))
                     .ForMember(dest => dest.Cartering, opt => opt.Ignore())
                     .ForMember(dest => dest.Workshops, opt => opt.Ignore());

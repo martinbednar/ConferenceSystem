@@ -16,6 +16,15 @@ namespace ConferencySystem.BL.Services
             using (var db = new DbContext())
             {
                 var users = db.Users.Where(user => user.Roles.All(role => role.RoleId == 1)).ProjectTo<AppUserDTO>().ToList();
+
+                int sequencenumber = 1;
+
+                foreach (var userDTO in users)
+                {
+                    userDTO.SequenceNumber = sequencenumber;
+                    sequencenumber++;
+                }
+
                 usersDataSet.LoadFromQueryable(users.AsQueryable());
             }
         }

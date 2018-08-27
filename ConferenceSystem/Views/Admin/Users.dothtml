@@ -25,7 +25,7 @@
 
         <bp:GridView ID="users" DataSource="{value: Users}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" <%--InlineEditing="true"--%>>
             <Columns>
-                <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Id}" AllowSorting="true" <%--IsEditable="false"--%> />
+                <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" <%--IsEditable="false"--%> />
                 <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Jméno, tituly" ValueBinding="{value: TitleBefore + " " + FirstName + " " + LastName + " " + TitleAfter}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: AllColumns}" />

@@ -8,6 +8,8 @@ namespace ConferencySystem.BL.DTO
     {
         public int Id { get; set; }
 
+        public int SequenceNumber { get; set; }
+
         public DateTime RegisterTimestamp { get; set; } = DateTime.Now;
 
         [Required(ErrorMessage = "Vyplňte své křestní jméno - pole \"Jméno\" je povinné.")]
