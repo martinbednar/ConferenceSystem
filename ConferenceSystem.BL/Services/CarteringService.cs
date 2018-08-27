@@ -122,7 +122,7 @@ namespace ConferencySystem.BL.Services
                             Name = c.Name,
                             Id = c.Id
                         })
-                });
+                }).Where(user => (user.Id != 2) && (user.Id != 3));
 
                 return query.ToList();
             }
