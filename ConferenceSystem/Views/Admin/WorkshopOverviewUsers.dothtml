@@ -16,7 +16,6 @@
     <br />
     <bp:GridView ID="users" DataSource="{value: UsersWorkshops}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true">
         <Columns>
-            <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Id}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Workshop 1" ValueBinding="{value: Block1}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Přednáška" ValueBinding="{value: Lecture}" AllowSorting="true" />

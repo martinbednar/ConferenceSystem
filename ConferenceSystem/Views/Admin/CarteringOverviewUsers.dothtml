@@ -16,7 +16,6 @@
     <br /><br />
     <bp:GridView ID="users" DataSource="{value: UsersCartering}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
         <Columns>
-            <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: Id}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
             <bp:GridViewCheckBoxColumn HeaderText="Ne - večeře - zeleninová polévka" ValueBinding="{value: HasSundaySoup}" />
             <bp:GridViewTextColumn HeaderText="Ne - večeře" ValueBinding="{value: SundayDinner}" AllowSorting="true" />
