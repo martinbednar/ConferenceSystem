@@ -156,18 +156,7 @@ namespace ConferencySystem.ViewModels.User
                     }
                     else
                     {
-                        int addedUserId;
-
-                        int organizationId = register.GetOrganizationId(DataOrganization.IN);
-
-                        if (organizationId == -1)
-                        {
-                            addedUserId = register.AddOrganization(DataOrganization, DataUser);
-                        }
-                        else
-                        {
-                            addedUserId = register.UpdateOrganization(organizationId, DataUser);
-                        }
+                        int addedUserId = register.AddOrganization(DataOrganization, DataUser);
 
                         DataUser = register.GetUser(addedUserId);
                         SendEmail();
