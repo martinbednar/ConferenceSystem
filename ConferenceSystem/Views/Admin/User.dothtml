@@ -189,7 +189,7 @@
                 </div>
                 <div class="form-row">
                     <dot:Button class="btn btn-primary" Text="Uložit změny" Click="{command: SaveUser()}"  Enabled="{value: IsSuperAdmin}"></dot:Button>
-                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="People"></dot:RouteLink>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
                 </div>
             </div>
         </div>
