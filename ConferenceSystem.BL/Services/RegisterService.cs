@@ -45,7 +45,7 @@ namespace ConferencySystem.BL.Services
 
                 organization.Users.Add(addedUser);
 
-                addedUser.VariableSymbol = 2018000 + addedUserId;
+                addedUser.VariableSymbol = 2019000 + addedUserId;
 
                 db.SaveChanges();
 
@@ -86,7 +86,7 @@ namespace ConferencySystem.BL.Services
 
                 AppUser user = db.Users.Find(addedUser.Id);
 
-                user.VariableSymbol = 2018000 + user.Id;
+                user.VariableSymbol = 2019000 + user.Id;
 
                 db.SaveChanges();
 
