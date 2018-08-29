@@ -23,33 +23,46 @@
                         <dot:TextBox Text="{value: DataUser.LastName}" />
                     </label>
                 </div><br />
-                <div class="form-row">
-                    <p style="font-size:small; font-weight:normal; float:right;">Všechny nepovinné údaje jsou potřebné pro vystavení certifikátu.</p>
-                    <label>
-                        <span>Titul před jménem</span>
-                        <dot:TextBox Text="{value: DataUser.TitleBefore}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Titul za jménem</span>
-                        <dot:TextBox Text="{value: DataUser.TitleAfter}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Datum narození</span>
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Místo narození</span>
-                        <dot:TextBox Text="{value: DataUser.BirthPlace}" />
-                    </label>
-                </div><br />
+                <div style="background:#E7E7E7;padding-top:20px;padding-bottom:15px;">
+                    <div class="form-checkbox">
+                        <label class="form-checkbox">
+                            <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
+                            <dot:CheckBox Text="Požaduji vystavení certifikátu" Checked="{value: DataUser.WantCert}" />
+                        </label>
+                    </div><br  Visible="{value: DataUser.WantCert}" />
+                    <div class="form-checkbox" Visible="{value: DataUser.WantCert}">
+                        <label class="form-row">
+                            <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
+                            <a href="#">Prohlášení o ochraně osobních údajů</a>
+                        </label>
+                    </div><br  Visible="{value: DataUser.WantCert}" />
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Titul před jménem</span>
+                            <dot:TextBox Text="{value: DataUser.TitleBefore}" />
+                        </label>
+                    </div>
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Titul za jménem</span>
+                            <dot:TextBox Text="{value: DataUser.TitleAfter}" />
+                        </label>
+                    </div>
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Datum narození<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
+                        </label>
+                    </div>
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Místo narození<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                            <dot:TextBox Text="{value: DataUser.BirthPlace}" />
+                        </label>
+                    </div>
+                </div><br /><br />
                 <div class="form-row">
                     <p style="font-size:small; font-weight:normal; float:right;">Pomocí emailu a hesla se budete přihlašovat do tohoto Konferenčního systému.</p>
                     <label>
@@ -104,45 +117,39 @@
                 <div class="form-title-row">
                     <h1>Fakturační údaje</h1>
                 </div>
-                <div class="form-checkbox">
-                    <label class="form-checkbox">
-                        <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
-                        <dot:CheckBox Text="Chci zaslat potvrzení o platbě (zaslat fakturu na email)." Checked="{value: DataUser.WantInvoice}" />
-                    </label>
-                </div>
                 <div class="form-row">
                     <label>
-                        <span>IČ<%--<span style="display:inline; color:red; padding-right:0px"> *</span>--%></span>
+                        <span>IČ</span>
                         <dot:TextBox Text="{value: IN}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>DIČ<%--<span style="display:inline; color:red; padding-right:0px"> *</span>--%></span>
+                        <span>DIČ</span>
                         <dot:TextBox Text="{value: DataOrganization.VATID}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Název organizace<%-- <span style="display:inline; color:red; padding-right:0px"> *</span> --%></span>
+                        <span>Název organizace<span style="display:inline; color:red; padding-right:0px"> *</span></span>
                         <dot:TextBox Text="{value: DataOrganization.Name}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Ulice a číslo popisné<%-- <span style="display:inline; color:red; padding-right:0px"> *</span> --%></span>
+                        <span>Ulice a číslo popisné<span style="display:inline; color:red; padding-right:0px"> *</span></span>
                         <dot:TextBox Text="{value: DataOrganization.BillStreet}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Obec<%-- <span style="display:inline; color:red; padding-right:0px"> *</span> --%></span>
+                        <span>Obec<span style="display:inline; color:red; padding-right:0px"> *</span></span>
                         <dot:TextBox Text="{value: DataOrganization.Town}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>PSČ<%-- <span style="display:inline; color:red; padding-right:0px"> *</span> --%></span>
+                        <span>PSČ<span style="display:inline; color:red; padding-right:0px"> *</span></span>
                         <dot:TextBox Text="{value: DataOrganization.PostalCode}" />
                     </label>
                 </div>
