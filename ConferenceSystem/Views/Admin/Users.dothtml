@@ -38,7 +38,7 @@
                 <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: VariableSymbol}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
                 <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: InvoiceNumber}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
                 <bp:GridViewTextColumn HeaderText="Zaplaceno" ValueBinding="{value: PaidDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: InvoiceColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Požadována faktura" ValueBinding="{value: WantInvoice}" Visible="{value: AllColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Požadován certifikát" ValueBinding="{value: WantCert}" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: Organization.Name}" />
                 <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: Organization.IN}" Visible="{value: InvoiceColumns}" />
                 <bp:GridViewTextColumn HeaderText="DIČ" ValueBinding="{value: Organization.VATID}" Visible="{value: InvoiceColumns}" />
@@ -48,7 +48,7 @@
                 <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: IsAlternate}" />
                 <bp:GridViewTemplateColumn>
                     <ContentTemplate>
-                        <dot:RouteLink RouteName="User" Param-UserId="{value: Id}" Param-OrgId="{value: Organization.Id}" target="_blank" Enabled="{value: _parent.IsSuperAdmin}">
+                        <dot:RouteLink RouteName="User" Param-UserId="{value: Id}" Param-OrgId="{value: Organization.Id}" Enabled="{value: _parent.IsSuperAdmin}">
                             <span class="glyphicon glyphicon-edit"></span>
                         </dot:RouteLink>
                     </ContentTemplate>

@@ -38,6 +38,11 @@
                         <dot:TextBox Text="{value: DataUser.LastName}" />
                     </label>
                 </div>
+                <div class="form-checkbox">
+                    <label class="form-checkbox">
+                        <dot:CheckBox Text="Požaduji vystavení certifikátu." Checked="{value: DataUser.WantCert}" />
+                    </label>
+                </div>
                 <div class="form-row">
                     <label>
                         <span>Titul před jménem</span>
@@ -131,11 +136,6 @@
             <div class="form-white-background">
                 <div class="form-title-row">
                     <h1>Údaje o organizaci</h1>
-                </div>
-                <div class="form-checkbox">
-                    <label class="form-checkbox">
-                        <dot:CheckBox Text="Chci zaslat potvrzení o platbě (zaslat fakturu na email)." Checked="{value: DataUser.WantInvoice}" />
-                    </label>
                 </div>
                 <div class="form-row">
                     <label>
