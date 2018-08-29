@@ -29,11 +29,11 @@ namespace ConferencySystem.DAL.Migrations
                 new Organization()
                 {
                     Id = 1,
-                    BillStreet = "",
-                    IN = 0,
-                    Name = "",
-                    PostalCode = "",
-                    Town = "",
+                    BillStreet = "Ulice 123",
+                    IN = 123456789,
+                    Name = "Moje organizace",
+                    PostalCode = "100 00",
+                    Town = "Město",
                     VATID = "",
                     Users = new List<AppUser>()
                     {
