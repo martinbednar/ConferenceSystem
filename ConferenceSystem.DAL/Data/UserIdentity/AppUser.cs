@@ -44,7 +44,7 @@ namespace ConferencySystem.DAL.Data.UserIdentity
         [StringLength(1000)]
         public string NoteAdmin { get; set; }
 
-        public bool WantInvoice { get; set; }
+        public bool WantCert { get; set; }
 
         public bool IsAlternate { get; set; }
 

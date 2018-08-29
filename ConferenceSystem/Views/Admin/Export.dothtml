@@ -33,7 +33,6 @@
             <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: User.VariableSymbol}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: User.InvoiceNumber}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Zaplaceno" ValueBinding="{value: User.PaidDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
-            <bp:GridViewCheckBoxColumn HeaderText="Požadována faktura" ValueBinding="{value: User.WantInvoice}" />
             <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: User.IsAlternate}" />
             <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: User.Organization.Name}" />
             <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: User.Organization.IN}" />

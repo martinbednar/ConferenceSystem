@@ -57,8 +57,8 @@ namespace ConferencySystem.BL.DTO
 
         [MaxLength(1000, ErrorMessage = "Byla překročena maximální délka poznámky - maximální délka pole \"Poznámka\" je 1000 znaků.")]
         public string NoteAdmin { get; set; }
-
-        public bool WantInvoice { get; set; }
+        
+        public bool WantCert { get; set; }
 
         public bool IsAlternate { get; set; }
 

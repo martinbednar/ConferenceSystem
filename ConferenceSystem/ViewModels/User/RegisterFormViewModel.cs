@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
 
@@ -51,7 +52,7 @@ namespace ConferencySystem.ViewModels.User
             return base.PreRender();
         }
 
-        public void SendEmail()
+        private void SendEmail()
         {
             string mailBody;
 
@@ -78,6 +79,18 @@ namespace ConferencySystem.ViewModels.User
         {
             Alert = false;
             AlertValue = string.Empty;
+        }
+
+        private void RegisterUser()
+        {
+            var register = new RegisterService();
+
+            int addedUserId = register.AddOrganization(DataOrganization, DataUser);
+
+            DataUser = register.GetUser(addedUserId);
+            SendEmail();
+
+            Context.RedirectToRoute("RegistrationComplete");
         }
 
         public void Save()
@@ -156,12 +169,30 @@ namespace ConferencySystem.ViewModels.User
                     }
                     else
                     {
-                        int addedUserId = register.AddOrganization(DataOrganization, DataUser);
-
-                        DataUser = register.GetUser(addedUserId);
-                        SendEmail();
-
-                        Context.RedirectToRoute("RegistrationComplete");
+                        if (DataUser.WantCert)
+                        {
+                            if (DataUser.BirthDate != null)
+                            {
+                                if (DataUser.BirthPlace.Length > 0)
+                                {
+                                    RegisterUser();
+                                }
+                                else
+                                {
+                                    Alert = true;
+                                    AlertValue = "Pro vystavení certifikátu je požadováno Místo narození.";
+                                }
+                            }
+                            else
+                            {
+                                Alert = true;
+                                AlertValue = "Pro vystavení certifikátu je požadováno Datum narození.";
+                            }
+                        }
+                        else
+                        {
+                            RegisterUser();
+                        }
                     }
                 }
             }

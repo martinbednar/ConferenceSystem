@@ -28,7 +28,6 @@ namespace ConferencySystem.BL.Services
                     Agreement = p.Agreement,
                     PaidDate = p.PaidDate,
                     VariableSymbol = p.VariableSymbol,
-                    WantInvoice = p.WantInvoice,
                     NoteAdmin = p.NoteAdmin,
                     NoteUser = p.NoteUser,
                     IsAlternate = p.IsAlternate,
