@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceSystem.DAL", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceSystem.BL", "ConferenceSystem.BL\ConferenceSystem.BL.csproj", "{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateInvoiceAndSendEmail", "GenerateInvoiceAndSendEmail\GenerateInvoiceAndSendEmail.csproj", "{FB3BD06D-7F31-46C9-AED4-85057A75036C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAA8D170-FED3-40FA-A201-7F86E11ED0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB3BD06D-7F31-46C9-AED4-85057A75036C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3BD06D-7F31-46C9-AED4-85057A75036C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3BD06D-7F31-46C9-AED4-85057A75036C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3BD06D-7F31-46C9-AED4-85057A75036C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
