@@ -132,25 +132,6 @@ namespace ConferencySystemTests
         }
 
         [TestMethod]
-        public void UserAddedToOrganization_UpdateOrganization_IsTrue()
-        {
-            InitializeMapper();
-            RegisterService registerService = new RegisterService();
-            AdminService adminService = new AdminService();
-
-            AppUserDTO newUser = new AppUserDTO()
-            {
-                Email = "testUser",
-                PasswordHash = "AAvuhHR+UhsEgslJ1FDgtBpfipMZ4IYqY62Bst5BwU2MYbP4SPld7bQgG6ZmENQC7A=="
-            };
-
-            int newUserId = registerService.UpdateOrganization(1, newUser);
-
-            Assert.IsTrue(adminService.GetUser(newUserId).Organization.Id == 1);
-            adminService.DeleteUser(newUserId);
-        }
-
-        [TestMethod]
         public void GetUser_GetUser_NotNull()
         {
             InitializeMapper();
