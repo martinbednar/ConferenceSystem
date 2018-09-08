@@ -173,6 +173,7 @@
                     <dot:UpdateProgress>
                         <br />
                         <div class="loader"></div>
+                        <div style="font-size:large">Vyčkejte prosím, probíhá registace a generování zálohová faktury.</div>
                         <br />
                     </dot:UpdateProgress>
                     <br />

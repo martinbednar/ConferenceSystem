@@ -94,5 +94,13 @@ namespace ConferencySystem.BL.Services
                 db.SaveChanges();
             }
         }
+
+        public InvoiceDTO GetInvoice(int userId)
+        {
+            using (var db = new DbContext())
+            {
+                return Mapper.Map<Invoice, InvoiceDTO>(db.Invoice.SingleOrDefault(i => i.UserId == userId));
+            }
+        }
     }
 }

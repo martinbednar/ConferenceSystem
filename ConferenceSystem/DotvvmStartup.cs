@@ -1,5 +1,6 @@
 using ConferencySystem.BL;
 using ConferencySystem.BL.Services;
+using ConferencySystem.ViewModels.Admin;
 using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Controls.Bootstrap;
 using DotVVM.Framework.ResourceManagement;
@@ -39,6 +40,7 @@ namespace ConferencySystem
             config.RouteTable.Add("RegisterForm", "registerform", "Views/User/RegisterForm.dothtml");
             config.RouteTable.Add("WorkshopUser", "workshopuser/{UserId}", "Views/Admin/WorkshopUser.dothtml");
             config.RouteTable.Add("PwdReset", "password/reset", "Views/PwdReset.dothtml");
+            config.RouteTable.Add("AttachmentDownload", "attachment/{UserId}", null, presenterFactory: () => new AttachmentPresenter());
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    

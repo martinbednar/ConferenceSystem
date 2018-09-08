@@ -13,6 +13,8 @@ namespace ConferencySystem.ViewModels.Admin
 
         public OrganizationDTO DataOrganization { get; set; }
 
+        public InvoiceDTO DataInvoice { get; set; }
+
         public string SelectedBirthYear { get; set; }
         public string SelectedBirthMonth { get; set; }
         public string SelectedBirthDay { get; set; }
@@ -39,6 +41,7 @@ namespace ConferencySystem.ViewModels.Admin
                 var adminService = new AdminService();
                 if (UserId != null) DataUser = adminService.GetUser(UserId.Value);
                 if (OrganizationId != null) DataOrganization = adminService.GetOrganization(OrganizationId.Value);
+                DataInvoice = adminService.GetInvoice(DataUser.Id);
 
                 DateProcessing = new DateProcessing();
 

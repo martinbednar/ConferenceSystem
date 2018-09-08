@@ -1,11 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Web.UI;
 using AutoMapper;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services.UserManagment;
 using ConferencySystem.DAL.Data;
 using ConferencySystem.DAL.Data.UserIdentity;
 using Microsoft.AspNet.Identity;
+using PdfSharp;
+using PdfSharp.Pdf;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
 using DbContext = ConferencySystem.DAL.Data.DbContext;
 
 namespace ConferencySystem.BL.Services
@@ -47,6 +56,13 @@ namespace ConferencySystem.BL.Services
 
                 addedUser.VariableSymbol = 2019000 + addedUserId;
 
+                addedUser.Invoice = new Invoice()
+                {
+                    FileName = "Test",
+                    FileBytes = PdfSharpConvert("<p><h1>Hello World</h1>This is html rendered text</p>"),
+                    UserId = addedUser.Id
+                };
+
                 db.SaveChanges();
 
                 return addedUser.Id;
@@ -70,30 +86,6 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public int UpdateOrganization(int id, AppUserDTO userData)
-        {
-            using (var db = new DbContext())
-            {
-                Organization organization = db.Organization.Find(id);
-
-                int addedUserId = AddUser(userData);
-
-                AppUser addedUser = db.Users.Find(addedUserId);
-
-                if (organization != null) organization.Users.Add(addedUser);
-
-                db.SaveChanges();
-
-                AppUser user = db.Users.Find(addedUser.Id);
-
-                user.VariableSymbol = 2019000 + user.Id;
-
-                db.SaveChanges();
-
-                return user.Id;
-            }
-        }
-
         public AppUserDTO GetUser(int id)
         {
             using (var db = new DbContext())
@@ -113,6 +105,18 @@ namespace ConferencySystem.BL.Services
                     RegisterTimestamp = p.RegisterTimestamp
                 }).ToList();
             }
+        }
+
+        public byte[] PdfSharpConvert(String html)
+        {
+            byte[] res;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var pdf = PdfGenerator.GeneratePdf(html, PageSize.A4);
+                pdf.Save(ms);
+                res = ms.ToArray();
+            }
+            return res;
         }
     }
 }

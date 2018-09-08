@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using PdfSharp.Pdf;
 
 namespace ConferencySystem.BL.DTO
 {
@@ -71,5 +73,7 @@ namespace ConferencySystem.BL.DTO
         public virtual IEnumerable<CarteringDTO> Cartering { get; set; }
 
         public virtual IEnumerable<WorkshopDTO> Workshops { get; set; }
+
+        public virtual InvoiceDTO Invoice { get; set; }
     }
 }

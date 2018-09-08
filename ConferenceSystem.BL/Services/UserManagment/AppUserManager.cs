@@ -1,5 +1,6 @@
 ﻿using ConferencySystem.DAL.Data.UserIdentity;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using DbContext = ConferencySystem.DAL.Data.DbContext;
 
 namespace ConferencySystem.BL.Services.UserManagment

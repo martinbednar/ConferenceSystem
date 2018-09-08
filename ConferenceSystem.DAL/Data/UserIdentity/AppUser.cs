@@ -61,6 +61,8 @@ namespace ConferencySystem.DAL.Data.UserIdentity
 
         public virtual ICollection<Workshop> Workshops { get; set; }
 
+        public virtual Invoice Invoice { get; set; }
+
         public AppUser()
         {
             Cartering = new List<Cartering>();

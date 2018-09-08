@@ -117,8 +117,14 @@
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Číslo faktury</span>
-                        <dot:TextBox Text="{value: DataUser.InvoiceNumber}" />
+                        <span>Číslo zálohové faktury</span>
+                        <dot:TextBox Text="{value: DataUser.InvoiceNumber}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Zálohová faktura</span>
+                        <dot:RouteLink RouteName="AttachmentDownload" Param-Id="{value: DataUser.Id}" Text="{value: DataInvoice.FileName}" />
                     </label>
                 </div>
                 <div class="form-row-date">

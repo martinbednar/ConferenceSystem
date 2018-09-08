@@ -28,5 +28,7 @@ namespace ConferencySystem.DAL.Data
         public virtual DbSet<Workshop> Workshop { get; set; }
 
         public virtual DbSet<WorkshopsBlock> WorkshopsBlock { get; set; }
+
+        public virtual DbSet<Invoice> Invoice { get; set; }
     }
 }
