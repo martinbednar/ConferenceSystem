@@ -36,6 +36,8 @@ namespace ConferencySystem.ViewModels.User
 
         public OrganizationDTO DataOrganization { get; set; }
 
+        public InvoiceDTO DataInvoice { get; set; }
+
         public override Task PreRender()
         {
             if (!Context.IsPostBack)
@@ -72,7 +74,7 @@ namespace ConferencySystem.ViewModels.User
 
             EmailService emailService = new EmailService();
 
-            emailService.SendEmail(DataUser.Email, subject, mailBody);
+            emailService.SendEmail(DataUser.Email, subject, mailBody, DataInvoice.FileBytes);
         }
 
         public void DismissAlert()
@@ -84,10 +86,12 @@ namespace ConferencySystem.ViewModels.User
         private void RegisterUser()
         {
             var register = new RegisterService();
+            var admin = new AdminService();
 
             int addedUserId = register.AddOrganization(DataOrganization, DataUser);
 
             DataUser = register.GetUser(addedUserId);
+            DataInvoice = admin.GetInvoice(DataUser.Id);
             SendEmail();
 
             Context.RedirectToRoute("RegistrationComplete");

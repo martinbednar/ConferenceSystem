@@ -15,6 +15,7 @@ using Microsoft.AspNet.Identity;
 using PdfSharp;
 using PdfSharp.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
+using TheArtOfDev.HtmlRenderer.Core;
 using DbContext = ConferencySystem.DAL.Data.DbContext;
 
 namespace ConferencySystem.BL.Services
@@ -56,10 +57,12 @@ namespace ConferencySystem.BL.Services
 
                 addedUser.VariableSymbol = 2019000 + addedUserId;
 
+                addedUser.InvoiceNumber = addedUser.VariableSymbol.ToString();
+
                 addedUser.Invoice = new Invoice()
                 {
-                    FileName = "Test",
-                    FileBytes = PdfSharpConvert("<p><h1>Hello World</h1>This is html rendered text</p>"),
+                    FileName = "Zálohová faktura-" + addedUser.InvoiceNumber + "-" + addedUser.FirstName + " " + addedUser.LastName + ".pdf",
+                    FileBytes = PdfSharpConvert(CreateHtmlInvoice(addedUser, organizationData)),
                     UserId = addedUser.Id
                 };
 
@@ -67,6 +70,128 @@ namespace ConferencySystem.BL.Services
 
                 return addedUser.Id;
             }
+        }
+
+        public string CreateHtmlInvoice(AppUser user, OrganizationDTO organization)
+        {
+            string htmlInvoice = @"
+            
+                <html>
+	                <body>
+		                <br>
+		                <table width=""100%"">
+			                <tr>
+				                <td width=""60%"" align=""left"">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=""https://konferencnisystem.azurewebsites.net/Content/ZNlogo.png""></td>
+				                <td width=""40%"" align=""right"">Zálohová faktura číslo: {InvoiceNumber}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			                </tr>
+		                </table>
+		
+		                <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+			                <p align=""center"" style='text-align:center;border:none;padding:0cm;margin-bottom:0px'><b><span style='font-size:25.0pt;line-height:115%'>Zálohová faktura</span></b></p>
+		                </div>
+		                <br>
+		                <table width=""100%"">
+			                <tr>
+				                <th width=""50%"" align=""left"">Dodavatel</th>
+				                <th width=""50%"" align=""left"">Odběratel</th>
+			                </tr>
+			                <tr>
+				                <td width=""50%"" align=""left"">Zámecké návrší</td>
+				                <td width=""50%"" align=""left"">{OrganizationName}</td>
+			                </tr>
+			                <tr>
+				                <td width=""50%"" align=""left"">Jiráskova 133</td>
+				                <td width=""50%"" align=""left"">{OrganizationBillStreet}</td>
+			                </tr>
+			                <tr>
+				                <td width=""50%"" align=""left"">570 01  Litomyšl</td>
+				                <td width=""50%"" align=""left"">{OrganizationPostalCode} {OrganizationTown}</td>
+			                </tr>
+			                <tr>
+				                <td width=""50%"" align=""left"">IČ: 71294058</td>
+				                <td width=""50%"" align=""left"">IČ: {OrganizationIN}</td>
+			                </tr>
+			                <tr>
+				                <td width=""50%"" align=""left"">DIČ: CZ71294058</td>
+				                <td width=""50%"" align=""left"">DIČ: {OrganizationVATID}</td>
+			                </tr>
+			                <tr>
+				                <td width=""50%"" align=""left"">&nbsp;</td>
+				                <td width=""50%"" align=""left"">&nbsp;</td>
+			                </tr>
+			                <tr>
+				                <td colspan=""2"" width=""100%"" align=""left"">Vyřizuje: Lenka Backová</td>
+			                </tr>
+			                <tr>
+				                <td colspan=""2"" width=""100%"" align=""left"">Telefon: 608 885 826</td>
+			                </tr>
+		                </table>
+		
+		                <br>
+		                <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'></div>
+		                <br>
+		
+		                <table width=""100%"">
+			                <tr>
+				                <th width=""100%"" align=""left"">Údaje pro platbu</th>
+			                </tr>
+			                <tr>
+				                <th width=""100%"" align=""left"">&nbsp;</th>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Číslo účtu: 257996309 / 0300 (Československá obchodní banka)</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Variabilní symbol: {VariableSymbol}</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Celkem k úhradě: 1990,- Kč</td>
+			                </tr>
+		                </table>
+		
+		                <br>
+		                <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'></div>
+		                <br>
+		
+		                <table width=""100%"">
+			                <tr>
+				                <td width=""100%"" align=""left"">Datum vystavení: {today}</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Datum splatnosti: {duedate}</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Forma úhrady: bankovním převodem</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">&nbsp;</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">&nbsp;</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Zálohová faktura není daňový doklad a neobsahuje rozpis DPH.</td>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Daňový doklad Vám zašleme po úhradě zálohy.</td>
+			                </tr>
+		                </table>
+	                <body>
+                </html>
+            ";
+
+            htmlInvoice = htmlInvoice.Replace("{InvoiceNumber}", user.InvoiceNumber);
+            htmlInvoice = htmlInvoice.Replace("{OrganizationName}", organization.Name);
+            htmlInvoice = htmlInvoice.Replace("{OrganizationBillStreet}", organization.BillStreet);
+            htmlInvoice = htmlInvoice.Replace("{OrganizationPostalCode}", organization.PostalCode);
+            htmlInvoice = htmlInvoice.Replace("{OrganizationTown}", organization.Town);
+            htmlInvoice = htmlInvoice.Replace("{OrganizationIN}", organization.IN == 0 ? "" : organization.IN.ToString());
+            htmlInvoice = htmlInvoice.Replace("{OrganizationVATID}", organization.VATID);
+            htmlInvoice = htmlInvoice.Replace("{VariableSymbol}", user.VariableSymbol.ToString());
+            htmlInvoice = htmlInvoice.Replace("{today}", DateTime.Today.ToString("dd.MM.yyyy"));
+            htmlInvoice = htmlInvoice.Replace("{duedate}", (DateTime.Today.AddDays(10)).ToString("dd.MM.yyyy"));
+
+            return htmlInvoice;
         }
 
         public int GetOrganizationId (long IN)
@@ -107,12 +232,12 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public byte[] PdfSharpConvert(String html)
+        public byte[] PdfSharpConvert(string html)
         {
             byte[] res;
             using (MemoryStream ms = new MemoryStream())
             {
-                var pdf = PdfGenerator.GeneratePdf(html, PageSize.A4);
+                PdfSharp.Pdf.PdfDocument pdf = TheArtOfDev.HtmlRenderer.PdfSharp.PdfGenerator.GeneratePdf(html, PageSize.A4);
                 pdf.Save(ms);
                 res = ms.ToArray();
             }

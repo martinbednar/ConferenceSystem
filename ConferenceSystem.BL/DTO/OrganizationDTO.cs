@@ -5,7 +5,7 @@ namespace ConferencySystem.BL.DTO
     public class OrganizationDTO
     {
         public int Id { get; set; }
-
+        
         public long IN { get; set; }
 
         public string VATID { get; set; }

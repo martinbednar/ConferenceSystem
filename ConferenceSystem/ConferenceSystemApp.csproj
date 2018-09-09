@@ -199,6 +199,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MyStyles.css" />
+    <Content Include="Content\ZNlogo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\logo_konference.png" />
     <Content Include="Images\skolnilogin-logo.png" />
