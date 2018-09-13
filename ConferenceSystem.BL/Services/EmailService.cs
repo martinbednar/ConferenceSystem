@@ -20,7 +20,6 @@ namespace ConferencySystem.BL.Services
                 msg.Attachments.Add(sMailAttachment);
             }
             
-            
             var smtpClient = new SmtpClient("smtp.gmail.com", 587)
             {
                 UseDefaultCredentials = true,

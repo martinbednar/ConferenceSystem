@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Web.UI;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services.UserManagment;
 using ConferencySystem.DAL.Data;
@@ -66,9 +67,24 @@ namespace ConferencySystem.BL.Services
                     UserId = addedUser.Id
                 };
 
+                var constantService = new ConstantService();
+
+                if (GetUsers().Count > constantService.GetConstant(1).Value)
+                {
+                    addedUser.IsAlternate = true;
+                }
+
                 db.SaveChanges();
 
                 return addedUser.Id;
+            }
+        }
+
+        public List<AppUserDTO> GetUsers()
+        {
+            using (var db = new DbContext())
+            {
+                return db.Users.Where(user => user.Roles.All(role => role.RoleId == 1)).ProjectTo<AppUserDTO>().ToList();
             }
         }
 
