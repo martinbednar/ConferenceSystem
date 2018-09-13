@@ -38,6 +38,10 @@ namespace ConferencySystem.BL
                     .ForMember(dest => dest.Invoice, opt => opt.Ignore());
                 cfg.CreateMap<InvoiceDTO, Invoice>();
                 cfg.CreateMap<Invoice, InvoiceDTO>();
+                cfg.CreateMap<TextDTO, Text>();
+                cfg.CreateMap<Text, TextDTO>();
+                cfg.CreateMap<ConstantDTO, Constant>();
+                cfg.CreateMap<Constant, ConstantDTO>();
             });
         }
     }

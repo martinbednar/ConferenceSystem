@@ -54,27 +54,44 @@ namespace ConferencySystem.ViewModels.User
             return base.PreRender();
         }
 
+        private string TranslateText( string text )
+        {
+            text = text.Replace("{FirstName}", DataUser.FirstName);
+            text = text.Replace("{LastName}", DataUser.LastName);
+            text = text.Replace("{TitleBefore}", DataUser.TitleBefore);
+            text = text.Replace("{TitleAfter}", DataUser.TitleAfter);
+            text = text.Replace("{VariableSymbol}", DataUser.VariableSymbol.ToString());
+            text = text.Replace("{Email}", DataUser.Email);
+
+            return text;
+        }
+
         private void SendEmail()
         {
+            var textService = new TextService();
+
+            EmailService emailService = new EmailService();
+
+            var emailDefault = textService.GetText(7721);
+
+            var emailAlternate = textService.GetText(7722);
+
             string mailBody;
+            string subject;
 
             if (DataUser.IsAlternate)
             {
                 //naplnena kapacita
-                mailBody =
-                "<p>Vážíme si energie, kterou chcete věnovat  svému vzdělání. Je to skvělá cesta pro lepší školy. Děkujeme.</p><br><p>Aktuálně již byla naplněna kapacita festivalu Nakopněte svoji školu. Byl/a jste zaregistrován/a jako náhradník/náhradnice. Může se však stát, že některý z přihlášených nezašle včas platbu nebo se nakonec nebude moci zúčastnit. V tomto případě bychom se Vám ozvali a zjistili zda Váš zájem o účast stále trvá.</p><br><p>Přesný program ještě ladíme. Můžete sledovat náš <a href=\"http://www.nakopnetesvojiskolu.cz/\" target=\"_blank\">web</a> nebo <a href=\"https://www.facebook.com/nakopnete.svoji.skolu/\" target=\"_blank\">Facebook</a>.</p>";
+                mailBody = TranslateText(emailAlternate.Content);
+                subject = emailAlternate.Subject;
+                emailService.SendEmail(DataUser.Email, subject, mailBody, null);
             }
             else
             {
-                mailBody =
-                "<p>Vážíme si energie, kterou chcete věnovat  svému vzdělání. Je to skvělá cesta pro lepší školy. Děkujeme.</p><br><p>Místo na konferenci Vám závazně potvrdíme po přijetí platby na náš účet. Pokud platbu neobdržíme do 15 dnů od zaslání této zprávy, bude vaše registrace stornována.</p><br><p>Jméno účastníka: " + DataUser.TitleBefore + " " + DataUser.FirstName + " " + DataUser.LastName + " " + DataUser.TitleAfter + "</p><br><br><p><u>Údaje k provedení platby</u></p><p>Číslo účtu pro platbu: 257996309 / 0300</p><p>Variabilní symbol: " + DataUser.VariableSymbol + "</p><p>Částka: 1990,- Kč</p><br><p>V případě, že budete potřebovat pro odeslání platby zálohovou fakturu, napište si o ní prosím na adresu <b>lenka.backova@zamecke-navrsi.cz</b>. V případě, že budete provádět platbu za více osob, nezapomeňte v žádosti uvést celá jména všech osob a čísla variabilních symbolů, která jim byla přidělena při registraci.</p><br><p><u>Přihlašovací údaje</u></p>Níže v emailu naleznete přihlašovací email do Konfereèního systému festivalu (<a href=\"http://konferencnisystem.azurewebsites.net/\">http://konferencnisystem.azurewebsites.net/</a>).</p><p>Přes tento systém bude probíhat registrace jednotlivých workshopů a výběr jídel.</p><br><p>Email: " + DataUser.Email + "</p><br><p>Přesný program ještě ladíme. Všechny informace vám včas zašleme.Můžete sledovat náš <a href=\"http://www.nakopnetesvojiskolu.cz/\" target=\"_blank\">web</a> nebo <a href=\"https://www.facebook.com/nakopnete.svoji.skolu/\" target=\"_blank\">Facebook</a>. Nezapomeňte si také včas rezervovat ubytování. Více informací najdete na webu.</p><br><p>Těšíme se na Vás v Litomyšli.</p>";
+                mailBody = TranslateText(emailDefault.Content);
+                subject = emailDefault.Subject;
+                emailService.SendEmail(DataUser.Email, subject, mailBody, DataInvoice.FileBytes);
             }
-
-            string subject = "Nakopněte svoji školu - Potvrzení registrace";
-
-            EmailService emailService = new EmailService();
-
-            emailService.SendEmail(DataUser.Email, subject, mailBody, DataInvoice.FileBytes);
         }
 
         public void DismissAlert()

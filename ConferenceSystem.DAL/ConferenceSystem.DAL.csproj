@@ -97,11 +97,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Cartering.cs" />
+    <Compile Include="Data\Constant.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbInitializer.cs" />
     <Compile Include="Data\Invoice.cs" />
     <Compile Include="Data\Organization.cs" />
     <Compile Include="Data\Secrets.cs" />
+    <Compile Include="Data\Text.cs" />
     <Compile Include="Data\UserIdentity\AppRole.cs" />
     <Compile Include="Data\UserIdentity\AppUser.cs" />
     <Compile Include="Data\UserIdentity\AppUserClaim.cs" />
