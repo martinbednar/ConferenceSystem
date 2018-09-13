@@ -1,0 +1,111 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.EmailRegisterViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
+
+    <dot:InlineScript>
+        dotvvm.events.beforePostback.subscribe(function () {
+            var contentFromEditor = document.querySelector('[aria-label="Rich Text Editor, main"]').innerHTML;
+            dotvvm.viewModels.root.viewModel.Emails()[0]().Content(contentFromEditor)
+        });
+    </dot:InlineScript>
+    
+    <div class="btn-group" role="group" style="margin-left:20px">
+        <dot:RouteLink class="btn btn-default" Text="Email po registraci" RouteName="EmailRegister" Enabled="false"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Email po registraci - naplněná kapacita" RouteName="EmailRegisterFull" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Email - odeslat hned" RouteName="EmailNow" Enabled="true"></dot:RouteLink>
+    </div>
+    <br />
+    <br />
+
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background:lightblue">
+            <center><b><span style="font-size:large">Email po registraci<span></b></center>
+        </div>
+        <div class="panel-body">
+            <div style="width:100%;">
+                <span style="width:20%;"><b>Příjemce:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
+                <dot:TextBox style="width:91%;padding:3px;" Text={Email} Enabled="false" />
+            </div>
+            <br />
+            <div style="width:100%;">
+                <span style="width:20%;"><b>Předmět:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
+                <dot:TextBox style="width:91%;padding:3px;" Text="{value: Emails[0].Subject}" />
+            </div>
+
+            <br /><br />
+
+            <div style="margin-bottom:8px;"><b>Tělo emailu:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></div>
+
+            <dot:TextBox id="contentTextBox" style="display:none" Text="{value: Emails[0].Content}"></dot:TextBox>
+            <textarea id="editor" RenderSettings.Mode="Server">{{value: Emails[0].Content}}</textarea>
+            <br /><br />
+
+            <div style="width:100%;">
+                <span><b>Příloha:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
+                <span style="padding:3px;">Zálohová faktura.pdf</span>
+            </div>
+
+            <br />
+
+            <dot:UpdateProgress>
+                <br />
+                <div class="loader"></div>
+                <br />
+            </dot:UpdateProgress>
+
+            <div style="text-align:center;">
+                <dot:Button class="btn btn-primary" Click="{command: Save()}" Text="Uložit" IsSubmitButton="true" />
+                <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="EmailRegister"></dot:RouteLink>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Řetězec v těle emailu</th>
+            <th>Hodnota, která bude doplněna do těla emailu</th>
+        </tr>
+        <tr>
+            <td>{FirstName}</td>
+            <td>Křestní jméno uživatele</td>
+        </tr>
+        <tr>
+            <td>{LastName}</td>
+            <td>Příjmení uživatele</td>
+        </tr>
+        <tr>
+            <td>{TitleBefore}</td>
+            <td>Titul před jménem uživatele</td>
+        </tr>
+        <tr>
+            <td>{TitleAfter}</td>
+            <td>Titul za jménem uživatele</td>
+        </tr>
+        <tr>
+            <td>{VariableSymbol}</td>
+            <td>Variabilní symbol uživatele</td>
+        </tr>
+        <tr>
+            <td>{Email}</td>
+            <td>Email uživatele</td>
+        </tr>
+    </table>
+
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor0 => {
+                console.log(editor0);
+            })
+            .catch(error => {
+                console.error(error0);
+            });
+    </script>
+
+</dot:Content>

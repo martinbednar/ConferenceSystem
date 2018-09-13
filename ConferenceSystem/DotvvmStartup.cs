@@ -41,6 +41,9 @@ namespace ConferencySystem
             config.RouteTable.Add("WorkshopUser", "workshopuser/{UserId}", "Views/Admin/WorkshopUser.dothtml");
             config.RouteTable.Add("PwdReset", "password/reset", "Views/PwdReset.dothtml");
             config.RouteTable.Add("AttachmentDownload", "attachment/{UserId}", null, presenterFactory: () => new AttachmentPresenter());
+            config.RouteTable.Add("EmailRegister", "emailregister", "Views/Admin/EmailRegister.dothtml");
+            config.RouteTable.Add("EmailRegisterFull", "emailregisterfull", "Views/Admin/EmailRegisterFull.dothtml");
+            config.RouteTable.Add("EmailNow", "emailnow", "Views/Admin/EmailNow.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    

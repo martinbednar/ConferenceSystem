@@ -80,6 +80,7 @@
                                 <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Stravování" RouteName="CarteringOverviewCartering"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Workshopy" RouteName="WorkshopOverviewWorkshop"></dot:RouteLink></li>
+                                <li><dot:RouteLink Text="Nastavení emailů" RouteName="EmailRegister"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Kompletní export" RouteName="Export"></dot:RouteLink></li>
                                 <%-- <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>

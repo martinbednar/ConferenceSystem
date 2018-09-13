@@ -176,6 +176,9 @@
     <Compile Include="ViewModels\Admin\CarteringOverviewCarteringViewModel.cs" />
     <Compile Include="ViewModels\Admin\CarteringOverviewUsersViewModel.cs" />
     <Compile Include="ViewModels\Admin\CarteringUserViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EmailNowViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EmailRegisterFullViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EmailRegisterViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
@@ -270,6 +273,9 @@
     <Content Include="Views\User\RegisterForm.dothtml" />
     <Content Include="Views\Admin\WorkshopUser.dothtml" />
     <Content Include="Views\PwdReset.dothtml" />
+    <Content Include="Views\Admin\EmailRegister.dothtml" />
+    <Content Include="Views\Admin\EmailRegisterFull.dothtml" />
+    <Content Include="Views\Admin\EmailNow.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
