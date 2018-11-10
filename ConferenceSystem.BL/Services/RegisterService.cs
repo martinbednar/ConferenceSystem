@@ -62,7 +62,7 @@ namespace ConferencySystem.BL.Services
 
                 addedUser.Invoice = new Invoice()
                 {
-                    FileName = "Zálohová faktura-" + addedUser.InvoiceNumber + "-" + addedUser.FirstName + " " + addedUser.LastName + ".pdf",
+                    FileName = "Zalohova faktura-" + addedUser.InvoiceNumber + "-" + addedUser.FirstName + " " + addedUser.LastName + ".pdf",
                     FileBytes = PdfSharpConvert(CreateHtmlInvoice(addedUser, organizationData)),
                     UserId = addedUser.Id
                 };
@@ -146,7 +146,29 @@ namespace ConferencySystem.BL.Services
 		                <br>
 		                <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'></div>
 		                <br>
-		
+
+                        <table width=""100%"">
+			                <tr>
+				                <th width=""100%"" align=""left"">Položky</th>
+			                </tr>
+			                <tr>
+				                <th width=""100%"" align=""left"">&nbsp;</th>
+			                </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Účastnický poplatek za Festival vzdělávání v Litomyšli - Nakopněte svoji školu ve dnech 24. - 26. 2. 2019</td>
+                           </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Účastník / Účastnice: {TitleBefore} {FirstName} {LastName} {TitleAfter}</td>
+                           </tr>
+			                <tr>
+				                <td width=""100%"" align=""left"">Účastnictký poplatek: {price},- Kč</td>
+                           </tr>
+		                </table>
+
+		                <br>
+		                <div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'></div>
+		                <br>		
+
 		                <table width=""100%"">
 			                <tr>
 				                <th width=""100%"" align=""left"">Údaje pro platbu</th>
@@ -161,7 +183,7 @@ namespace ConferencySystem.BL.Services
 				                <td width=""100%"" align=""left"">Variabilní symbol: {VariableSymbol}</td>
 			                </tr>
 			                <tr>
-				                <td width=""100%"" align=""left"">Celkem k úhradě: 1990,- Kč</td>
+				                <td width=""100%"" align=""left"">Celkem k úhradě: {price},- Kč</td>
 			                </tr>
 		                </table>
 		
@@ -192,11 +214,26 @@ namespace ConferencySystem.BL.Services
 				                <td width=""100%"" align=""left"">Daňový doklad Vám zašleme po úhradě zálohy.</td>
 			                </tr>
 		                </table>
+
+                        <br><br>
+		                <div style='border:none;border-bottom:solid windowtext 1.0pt;border-color:gray;padding:0cm 0cm 1.0pt 0cm'></div>
+		                <br>
+
+                        <div style='color:gray'>S dotazy, které se týkají platby, se můžete obracet na Lenku Backovou:<br>lenka.backova@zamecke-navrsi.cz, 608 885 826</div>
+
 	                <body>
                 </html>
             ";
 
+            var constantService = new ConstantService();
+            int dueDate = constantService.GetConstant(2).Value;
+            int price = constantService.GetConstant(3).Value;
+
             htmlInvoice = htmlInvoice.Replace("{InvoiceNumber}", user.InvoiceNumber);
+            htmlInvoice = htmlInvoice.Replace("{FirstName}", user.FirstName);
+            htmlInvoice = htmlInvoice.Replace("{LastName}", user.LastName);
+            htmlInvoice = htmlInvoice.Replace("{TitleBefore}", user.TitleBefore);
+            htmlInvoice = htmlInvoice.Replace("{TitleAfter}", user.TitleAfter);
             htmlInvoice = htmlInvoice.Replace("{OrganizationName}", organization.Name);
             htmlInvoice = htmlInvoice.Replace("{OrganizationBillStreet}", organization.BillStreet);
             htmlInvoice = htmlInvoice.Replace("{OrganizationPostalCode}", organization.PostalCode);
@@ -205,7 +242,8 @@ namespace ConferencySystem.BL.Services
             htmlInvoice = htmlInvoice.Replace("{OrganizationVATID}", organization.VATID);
             htmlInvoice = htmlInvoice.Replace("{VariableSymbol}", user.VariableSymbol.ToString());
             htmlInvoice = htmlInvoice.Replace("{today}", DateTime.Today.ToString("dd.MM.yyyy"));
-            htmlInvoice = htmlInvoice.Replace("{duedate}", (DateTime.Today.AddDays(10)).ToString("dd.MM.yyyy"));
+            htmlInvoice = htmlInvoice.Replace("{duedate}", (DateTime.Today.AddDays(dueDate)).ToString("dd.MM.yyyy"));
+            htmlInvoice = htmlInvoice.Replace("{price}", price.ToString());
 
             return htmlInvoice;
         }
