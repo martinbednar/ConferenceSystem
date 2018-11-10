@@ -131,7 +131,7 @@
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Název organizace<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <span>Název organizace /<br />jméno<span style="display:inline; color:red; padding-right:0px"> *</span></span>
                         <dot:TextBox Text="{value: DataOrganization.Name}" />
                     </label>
                 </div>
