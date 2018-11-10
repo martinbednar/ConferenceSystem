@@ -9,7 +9,7 @@
     </dot:UpdateProgress>
     <div class="btn-group" role="group" style="margin-left:20px">
         <dot:RouteLink class="btn btn-default" Text="Podrobný rozpis" RouteName="CarteringOverviewUsers" Enabled="false"></dot:RouteLink>
-        <dot:RouteLink class="btn btn-default" Text="Přehled workshopů" RouteName="CarteringOverviewCartering" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Přehled workshopů" RouteName="WorkshopOverviewWorkshop" Enabled="true"></dot:RouteLink>
     </div>
     <dot:Button type="button" class="btn btn-default" style="float: right; margin-right:20px" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}"></dot:Button>
     <br />
@@ -23,7 +23,7 @@
             <bp:GridViewTextColumn HeaderText="Workshop 3" ValueBinding="{value: Block3}" AllowSorting="true" />
             <bp:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <dot:RouteLink RouteName="WorkshopUser" Param-UserId="{value: Id}"  Enabled="{value: _parent.IsSuperAdmin}">
+                    <dot:RouteLink RouteName="WorkshopUser" Param-UserId="{value: Id}"  Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
                         <span class="glyphicon glyphicon-edit"></span>
                     </dot:RouteLink>
                 </ContentTemplate>

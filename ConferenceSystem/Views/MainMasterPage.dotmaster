@@ -48,15 +48,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button> --%>
-                    <a href="http://www.nakopnetesvojiskolu.cz/" target="_blank"><img src="~/Images/logo_konference.png" style="float:left; margin-top:6px;margin-right:25px" /></a>
+                    <a href="http://www.nakopnetesvojiskolu.cz/" target="_blank"><img src="~/Content/NSS_LOGO.svg" style="float:left; margin-top:3px;margin-right:25px;margin-left:25px;height:46px;" /></a>
                     <%-- <a class="navbar-brand">Nakopněte svoji školu</a> --%>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="{value: MainPageActive}"><dot:RouteLink Text="Hlavní stránka" RouteName="Default"></dot:RouteLink></li>
                         <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="Register"></dot:RouteLink></li>
-                        <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
-                        <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Workshopy a přednášky" RouteName="WorkshopSelect"></dot:RouteLink></li>
+                        <%-- <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
+                        <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Workshopy a přednášky" RouteName="WorkshopSelect"></dot:RouteLink></li> --%>
                         <%-- <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li> --%>
                         <%-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -81,6 +81,7 @@
                                 <li><dot:RouteLink Text="Stravování" RouteName="CarteringOverviewCartering"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Workshopy" RouteName="WorkshopOverviewWorkshop"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Nastavení emailů" RouteName="EmailRegister"></dot:RouteLink></li>
+                                <li><dot:RouteLink Text="Nastavení proměnných" RouteName="SettingVariables"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Kompletní export" RouteName="Export"></dot:RouteLink></li>
                                 <%-- <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
