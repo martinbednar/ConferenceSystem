@@ -302,3 +302,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 ConferenceSystem/temp/
+DBconnection.txt
+ConferenceSystem.DAL/Web.config
+ConferenceSystem/Web.config
