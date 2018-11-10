@@ -14,6 +14,7 @@
     <div class="btn-group" role="group" style="margin-left:20px">
         <dot:RouteLink class="btn btn-default" Text="Email po registraci" RouteName="EmailRegister" Enabled="false"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Email po registraci - naplněná kapacita" RouteName="EmailRegisterFull" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Email - potvrzení přijetí platby" RouteName="EmailPaidConfirmation" Enabled="true"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Email - odeslat hned" RouteName="EmailNow" Enabled="true"></dot:RouteLink>
     </div>
     <br />

@@ -177,8 +177,10 @@
     <Compile Include="ViewModels\Admin\CarteringOverviewUsersViewModel.cs" />
     <Compile Include="ViewModels\Admin\CarteringUserViewModel.cs" />
     <Compile Include="ViewModels\Admin\EmailNowViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EmailPaidConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Admin\EmailRegisterFullViewModel.cs" />
     <Compile Include="ViewModels\Admin\EmailRegisterViewModel.cs" />
+    <Compile Include="ViewModels\Admin\SettingVariablesViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
@@ -202,6 +204,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MyStyles.css" />
+    <Content Include="Content\NSS_LOGO.svg" />
     <Content Include="Content\ZNlogo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\logo_konference.png" />
@@ -276,6 +279,8 @@
     <Content Include="Views\Admin\EmailRegister.dothtml" />
     <Content Include="Views\Admin\EmailRegisterFull.dothtml" />
     <Content Include="Views\Admin\EmailNow.dothtml" />
+    <Content Include="Views\Admin\SettingVariables.dothtml" />
+    <Content Include="Views\Admin\EmailPaidConfirmation.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

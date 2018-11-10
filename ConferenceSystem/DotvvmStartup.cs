@@ -44,6 +44,8 @@ namespace ConferencySystem
             config.RouteTable.Add("EmailRegister", "emailregister", "Views/Admin/EmailRegister.dothtml");
             config.RouteTable.Add("EmailRegisterFull", "emailregisterfull", "Views/Admin/EmailRegisterFull.dothtml");
             config.RouteTable.Add("EmailNow", "emailnow", "Views/Admin/EmailNow.dothtml");
+            config.RouteTable.Add("SettingVariables", "setting", "Views/Admin/SettingVariables.dothtml");
+            config.RouteTable.Add("EmailPaidConfirmation", "emailpaidconfirmation", "Views/Admin/EmailPaidConfirmation.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    

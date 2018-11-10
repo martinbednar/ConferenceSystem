@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.Admin.EmailRegisterFullViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Admin.EmailPaidConfirmationViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
@@ -7,14 +7,14 @@
     <dot:InlineScript>
         dotvvm.events.beforePostback.subscribe(function () {
             var contentFromEditor = document.querySelector('[aria-label="Rich Text Editor, main"]').innerHTML;
-            dotvvm.viewModels.root.viewModel.Emails()[1]().Content(contentFromEditor)
+            dotvvm.viewModels.root.viewModel.Emails()[2]().Content(contentFromEditor)
         });
     </dot:InlineScript>
 
     <div class="btn-group" role="group" style="margin-left:20px">
         <dot:RouteLink class="btn btn-default" Text="Email po registraci" RouteName="EmailRegister" Enabled="true"></dot:RouteLink>
-        <dot:RouteLink class="btn btn-default" Text="Email po registraci - naplněná kapacita" RouteName="EmailRegisterFull" Enabled="false"></dot:RouteLink>
-        <dot:RouteLink class="btn btn-default" Text="Email - potvrzení přijetí platby" RouteName="EmailPaidConfirmation" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Email po registraci - naplněná kapacita" RouteName="EmailRegisterFull" Enabled="true"></dot:RouteLink>
+        <dot:RouteLink class="btn btn-default" Text="Email - potvrzení přijetí platby" RouteName="EmailPaidConfirmation" Enabled="false"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Email - odeslat hned" RouteName="EmailNow" Enabled="true"></dot:RouteLink>
     </div>
     <br />
@@ -23,19 +23,9 @@
 
     <div class="panel panel-default">
         <div class="panel-heading" style="background:lightblue">
-            <center><b><span style="font-size:large">Email po registraci - naplněná kapacita<span></b></center>
+            <center><b><span style="font-size:large">Email - potvrzení přijetí platby (odeslán účastníkovi po zadání datumu přijetí platby administrátorem)<span></b></center>
         </div>
         <div class="panel-body">
-            <div style="width:100%;">
-                <span style="width:20%;"><b>Kapacita konference (maximální počet účastníků, po jehož dosažení bude rozesílán tento email po registraci):</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
-                <dot:TextBox style="width:20%;padding:3px;" Text="{value: MaxParticipants.Value}" />
-            </div>
-            <br />
-            <div style="width:100%;">
-                <span style="width:20%;"><b>Počet aktuálně zaregistrovaných účastníků:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
-                <dot:TextBox style="width:20%;padding:3px;" Text="{value: ActualParticipantsNumber}" Enabled="false" />
-            </div>
-            <br /><hr /><br />
             <div style="width:100%;">
                 <span style="width:20%;"><b>Příjemce:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
                 <dot:TextBox style="width:91%;padding:3px;" Text={Email} Enabled="false" />
@@ -43,15 +33,15 @@
             <br />
             <div style="width:100%;">
                 <span style="width:20%;"><b>Předmět:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></span>
-                <dot:TextBox style="width:91%;padding:3px;" Text="{value: Emails[1].Subject}" />
+                <dot:TextBox style="width:91%;padding:3px;" Text="{value: Emails[2].Subject}" />
             </div>
 
             <br /><br />
 
             <div style="margin-bottom:8px;"><b>Tělo emailu:</b><span style="display:inline; color:red; padding-right:2%;"> *</span></div>
 
-            <dot:TextBox id="contentTextBox" style="display:none" Text="{value: Emails[1].Content}"></dot:TextBox>
-            <textarea id="editor" RenderSettings.Mode="Server">{{value: Emails[1].Content}}</textarea>
+            <dot:TextBox id="contentTextBox" style="display:none" Text="{value: Emails[2].Content}"></dot:TextBox>
+            <textarea id="editor" RenderSettings.Mode="Server">{{value: Emails[2].Content}}</textarea>
             <br /><br />
 
             <dot:UpdateProgress>
@@ -114,3 +104,4 @@
     </script>
 
 </dot:Content>
+
