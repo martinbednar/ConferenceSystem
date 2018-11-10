@@ -68,12 +68,43 @@ namespace ConferencySystem.ViewModels.Admin
             return base.PreRender();
         }
 
+        private void sendEmail()
+        {
+            var textService = new TextService();
+
+            EmailService emailService = new EmailService();
+
+            var emailPaidConfirmation = textService.GetText(7723);
+
+            string mailBody = textService.TranslateText(emailPaidConfirmation.Content, DataUser);
+            string subject = emailPaidConfirmation.Subject;
+            emailService.SendEmail(DataUser.Email, subject, mailBody, null);
+        }
+
         public void SaveUser()
         {
             /*Date processing*/
-            DataUser.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay),0,0,0,0);
+            if ((SelectedBirthDay == "") || (SelectedBirthMonth == "") || (SelectedBirthYear == ""))
+            {
+                DataUser.BirthDate = null;
+            }
+            else
+            {
+                DataUser.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay),0,0,0,0);
+            }
+
 
             var adminService = new AdminService();
+
+            if (UserId != null)
+            {
+                var dataUserOld = adminService.GetUser(UserId.Value);
+                if (dataUserOld.PaidDate == null && DataUser.PaidDate != null)
+                {
+                    sendEmail();
+                }
+            }
+
             adminService.SaveUser(DataUser);
             adminService.SaveOrganization(DataOrganization);
 
