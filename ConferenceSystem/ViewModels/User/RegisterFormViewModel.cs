@@ -54,18 +54,6 @@ namespace ConferencySystem.ViewModels.User
             return base.PreRender();
         }
 
-        private string TranslateText( string text )
-        {
-            text = text.Replace("{FirstName}", DataUser.FirstName);
-            text = text.Replace("{LastName}", DataUser.LastName);
-            text = text.Replace("{TitleBefore}", DataUser.TitleBefore);
-            text = text.Replace("{TitleAfter}", DataUser.TitleAfter);
-            text = text.Replace("{VariableSymbol}", DataUser.VariableSymbol.ToString());
-            text = text.Replace("{Email}", DataUser.Email);
-
-            return text;
-        }
-
         private void SendEmail()
         {
             var textService = new TextService();
@@ -82,13 +70,13 @@ namespace ConferencySystem.ViewModels.User
             if (DataUser.IsAlternate)
             {
                 //naplnena kapacita
-                mailBody = TranslateText(emailAlternate.Content);
+                mailBody = textService.TranslateText(emailAlternate.Content,DataUser);
                 subject = emailAlternate.Subject;
                 emailService.SendEmail(DataUser.Email, subject, mailBody, null);
             }
             else
             {
-                mailBody = TranslateText(emailDefault.Content);
+                mailBody = textService.TranslateText(emailDefault.Content,DataUser);
                 subject = emailDefault.Subject;
                 emailService.SendEmail(DataUser.Email, subject, mailBody, DataInvoice.FileBytes);
             }
