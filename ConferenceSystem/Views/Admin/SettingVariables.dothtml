@@ -1,0 +1,49 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.SettingVariablesViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-row">
+                    <label>
+                        <span>Počet dnů na splacení zálohové faktury<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DueDate.Value}" />
+                    </label>
+                </div>
+                <div class="form-row" style="font-weight:normal; ">
+                    <span>Datum "Splatnost faktury" bude nastaveno u zálohové faktury tak, že k akuálnímu (dnešnímu) datumu bude přičteno číslo zadané výše.</span><br />
+                    <span>Příklad: Pokud bude výše zadané číslo "4" a účastník se zaregistruje v pondělí, bude mu splatnost faktury nastavena do pátku.</span>
+                </div><br /><br />
+                <div class="form-row">
+                    <label>
+                        <span>Cena na zálohové faktuře<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: Price.Value}" />
+                    </label>
+                </div>
+                <div class="form-row" style="font-weight:normal; ">
+                    <span>Cena, která bude zadána na automaticky generovanou zálohovanou fakturu.</span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div style="width:660px; margin:auto;">
+            <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
+                <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
+                <div class="form-row">
+
+                    <dot:UpdateProgress>
+                        <div class="loader"></div>
+                    </dot:UpdateProgress>
+                    <br />
+
+                    <dot:Button class="btn btn-primary" Text="Uložit změny" Click="{command: Save()}" Enabled="{value: IsSuperAdmin || IsAdmin}"></dot:Button>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="SettingVariables"></dot:RouteLink>
+                </div>
+            </div>
+        </div>
+    </form>
+</dot:Content>
+
