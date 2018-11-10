@@ -46,5 +46,17 @@ namespace ConferencySystem.BL.Services
                 }
             }
         }
+
+        public string TranslateText(string text, AppUserDTO dataUser)
+        {
+            text = text.Replace("{FirstName}", dataUser.FirstName);
+            text = text.Replace("{LastName}", dataUser.LastName);
+            text = text.Replace("{TitleBefore}", dataUser.TitleBefore);
+            text = text.Replace("{TitleAfter}", dataUser.TitleAfter);
+            text = text.Replace("{VariableSymbol}", dataUser.VariableSymbol.ToString());
+            text = text.Replace("{Email}", dataUser.Email);
+
+            return text;
+        }
     }
 }
