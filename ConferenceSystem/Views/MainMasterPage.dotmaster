@@ -55,8 +55,8 @@
                     <ul class="nav navbar-nav">
                         <li class="{value: MainPageActive}"><dot:RouteLink Text="Hlavní stránka" RouteName="Default"></dot:RouteLink></li>
                         <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="Register"></dot:RouteLink></li>
-                        <%-- <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
-                        <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Workshopy a přednášky" RouteName="WorkshopSelect"></dot:RouteLink></li> --%>
+                        <li Visible="{value: (!IsAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
+                        <%-- <li Visible="{value: (!IsAdmin && !IsSuperAdmin)}" class="{value: CarteringActive}"><dot:RouteLink Text="Workshopy a přednášky" RouteName="WorkshopSelect"></dot:RouteLink></li> --%>
                         <%-- <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li> --%>
                         <%-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

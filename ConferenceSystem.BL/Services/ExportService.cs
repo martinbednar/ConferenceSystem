@@ -62,7 +62,7 @@ namespace ConferencySystem.BL.Services
                             End = w.WorkshopsBlock.End
                         }
                     }).OrderBy(w => w.WorkshopsBlock.Start)
-                }).Where(user => (user.Id != 2) && (user.Id != 3));
+                }).Where(user => (user.Id != 2) && (user.Id != 2));
 
                 List<UserCompletInfo> usersCompletInfo = new List<UserCompletInfo>();
 

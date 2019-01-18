@@ -21,15 +21,13 @@ namespace ConferencySystem.BL.DTO
                 Id = user.Id,
                 FirstName = User.FirstName,
                 LastName = User.LastName,
-                HasSundaySoup = (user.Cartering.Where(c => c.Id == 11).Count() == 0) ? false : true,
-                SundayDinner = (user.Cartering.Where(c => ((c.Id == 1) || (c.Id == 2))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 1) || (c.Id == 2))).First().Name,
-                HasSundayWine = (user.Cartering.Where(c => c.Id == 3).Count() == 0) ? false : true,
-                HasMondayMorningCoffee = (user.Cartering.Where(c => c.Id == 8).Count() == 0) ? false : true,
-                MondaySoup = (user.Cartering.Where(c => ((c.Id == 6) || (c.Id == 12))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 6) || (c.Id == 12))).First().Name,
-                MondayLunch = (user.Cartering.Where(c => ((c.Id == 4) || (c.Id == 5))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 4) || (c.Id == 5))).First().Name,
-                HasMondayAfternoonCoffee = (user.Cartering.Where(c => c.Id == 13).Count() == 0) ? false : true,
-                HasMondayRaut = (user.Cartering.Where(c => c.Id == 7).Count() == 0) ? false : true,
-                HasTuesdayCoffee = (user.Cartering.Where(c => c.Id == 10).Count() == 0) ? false : true
+                SundaySoup = (user.Cartering.Where(c => ((c.Id == 1) || (c.Id == 2))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 1) || (c.Id == 2))).First().Name,
+                SundayDinner = (user.Cartering.Where(c => ((c.Id == 3) || (c.Id == 4))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 3) || (c.Id == 4))).First().Name,
+                MondaySoup = (user.Cartering.Where(c => ((c.Id == 5) || (c.Id == 6))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 5) || (c.Id == 6))).First().Name,
+                MondayLunch = (user.Cartering.Where(c => ((c.Id == 7) || (c.Id == 8))).Count() == 0) ? "" : user.Cartering.Where(c => ((c.Id == 7) || (c.Id == 8))).First().Name,
+                HasMondayRaut = (user.Cartering.Where(c => c.Id == 9).Count() == 0) ? false : true,
+                HasTuesdaySoup = (user.Cartering.Where(c => c.Id == 10).Count() == 0) ? false : true,
+                HasTuesdayLunch = (user.Cartering.Where(c => c.Id == 11).Count() == 0) ? false : true
             };
 
             Workshops = new UserWorkshops()
