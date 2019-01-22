@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ConferencySystem.BL.DTO;
+using System.Net;
+using System.Net.Mail;
 using ConferencySystem.BL.Services;
 using DotVVM.Framework.Runtime.Filters;
 
@@ -17,14 +14,33 @@ namespace ConferencySystem.ViewModels.Admin
 
         public void Send()
         {
-            var emailService = new EmailService();
             var registerService = new RegisterService();
+            var textService = new TextService();
 
             var participants = registerService.GetUsers();
 
+            string translatedBody;
+
+            var smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential("nakopnetesvojiskolu@gmail.com", "KonfSysEmail123"),
+                EnableSsl = true
+            };
+
             foreach (var participant in participants)
             {
-                emailService.SendEmail(participant.Email, Subject, Body, null);
+                translatedBody = textService.TranslateText(Body, participant);
+
+
+                /*******  Send email  ********/
+                var msg = new MailMessage("nakopnetesvojiskolu@gmail.com", participant.Email, Subject, translatedBody)
+                {
+                    IsBodyHtml = true
+                };
+
+                smtpClient.Send(msg);
+                /***************/
             }
 
             Context.RedirectToRoute("EmailNow");
