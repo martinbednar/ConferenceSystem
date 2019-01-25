@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using ConferencySystem.BL.Services;
@@ -17,7 +18,8 @@ namespace ConferencySystem.ViewModels.Admin
             var registerService = new RegisterService();
             var textService = new TextService();
 
-            var participants = registerService.GetUsers();
+            var participantsPart1 = registerService.GetUsers().Where(p => p.Id <= 100);
+            var participantsPart2 = registerService.GetUsers().Where(p => p.Id > 100);
 
             string translatedBody;
 
@@ -28,7 +30,22 @@ namespace ConferencySystem.ViewModels.Admin
                 EnableSsl = true
             };
 
-            foreach (var participant in participants)
+            foreach (var participant in participantsPart1)
+            {
+                translatedBody = textService.TranslateText(Body, participant);
+
+
+                /*******  Send email  ********/
+                var msg = new MailMessage("nakopnetesvojiskolu@gmail.com", participant.Email, Subject, translatedBody)
+                {
+                    IsBodyHtml = true
+                };
+
+                smtpClient.Send(msg);
+                /***************/
+            }
+
+            foreach (var participant in participantsPart2)
             {
                 translatedBody = textService.TranslateText(Body, participant);
 
