@@ -16,49 +16,74 @@ namespace ConferencySystem.ViewModels.Admin
         public void Send()
         {
             var registerService = new RegisterService();
-            var textService = new TextService();
 
-            var participantsPart1 = registerService.GetUsers().Where(p => p.Id <= 100);
-            var participantsPart2 = registerService.GetUsers().Where(p => p.Id > 100);
+            var allParticipants = registerService.GetUsers();
 
-            string translatedBody;
+            var firtThird = allParticipants[allParticipants.Count / 3].Id;
+            var secondThird = allParticipants[2 * (allParticipants.Count / 3)].Id;
 
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            var participantsPart1 = allParticipants.Where(p => p.Id <= firtThird);
+            var participantsPart2 = registerService.GetUsers().Where(p => p.Id > firtThird && p.Id <= secondThird);
+            var participantsPart3 = registerService.GetUsers().Where(p => p.Id > secondThird);
+
+            var smtpClient1 = new SmtpClient("smtp.gmail.com", 587)
             {
                 UseDefaultCredentials = true,
                 Credentials = new NetworkCredential("nakopnetesvojiskolu@gmail.com", "KonfSysEmail123"),
                 EnableSsl = true
             };
 
+            var msg1 = new MailMessage("nakopnetesvojiskolu@gmail.com", "nakopnetesvojiskolu@gmail.com", Subject, Body)
+            {
+                IsBodyHtml = true
+            };
+
             foreach (var participant in participantsPart1)
             {
-                translatedBody = textService.TranslateText(Body, participant);
-
-
-                /*******  Send email  ********/
-                var msg = new MailMessage("nakopnetesvojiskolu@gmail.com", participant.Email, Subject, translatedBody)
-                {
-                    IsBodyHtml = true
-                };
-
-                smtpClient.Send(msg);
-                /***************/
+                msg1.Bcc.Add(participant.Email);
             }
+
+            smtpClient1.Send(msg1);
+
+
+            var smtpClient2 = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential("nakopnetesvojiskolu@gmail.com", "KonfSysEmail123"),
+                EnableSsl = true
+            };
+
+            var msg2 = new MailMessage("nakopnetesvojiskolu@gmail.com", "nakopnetesvojiskolu@gmail.com", Subject, Body)
+            {
+                IsBodyHtml = true
+            };
 
             foreach (var participant in participantsPart2)
             {
-                translatedBody = textService.TranslateText(Body, participant);
-
-
-                /*******  Send email  ********/
-                var msg = new MailMessage("nakopnetesvojiskolu@gmail.com", participant.Email, Subject, translatedBody)
-                {
-                    IsBodyHtml = true
-                };
-
-                smtpClient.Send(msg);
-                /***************/
+                msg2.Bcc.Add(participant.Email);
             }
+
+            smtpClient2.Send(msg2);
+
+
+            var smtpClient3 = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential("nakopnetesvojiskolu@gmail.com", "KonfSysEmail123"),
+                EnableSsl = true
+            };
+
+            var msg3 = new MailMessage("nakopnetesvojiskolu@gmail.com", "nakopnetesvojiskolu@gmail.com", Subject, Body)
+            {
+                IsBodyHtml = true
+            };
+
+            foreach (var participant in participantsPart3)
+            {
+                msg3.Bcc.Add(participant.Email);
+            }
+
+            smtpClient3.Send(msg3);
 
             Context.RedirectToRoute("EmailNow");
         }

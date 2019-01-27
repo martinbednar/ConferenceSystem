@@ -60,7 +60,7 @@
     <br>
     <br>
 
-    <table class="table table-bordered">
+    <%--<table class="table table-bordered">
         <tr>
             <th>Řetězec v těle emailu</th>
             <th>Hodnota, která bude doplněna do těla emailu</th>
@@ -89,7 +89,7 @@
             <td>{Email}</td>
             <td>Email uživatele</td>
         </tr>
-    </table>
+    </table>--%>
 
 
     <script>
