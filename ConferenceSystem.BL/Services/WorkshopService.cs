@@ -121,7 +121,7 @@ namespace ConferencySystem.BL.Services
                                 Id = c.WorkshopsBlock.Id
                             }
                         })
-                }).Where(user => (user.Id != 2) && (user.Id != 3));
+                })/*.Where(user => (user.Id != 2) && (user.Id != 3))*/;
 
                 List<UserWorkshops> usersWorkshops = new List<UserWorkshops>();
 

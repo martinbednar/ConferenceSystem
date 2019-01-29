@@ -10,7 +10,7 @@ using DotVVM.Framework.Runtime.Filters;
 
 namespace ConferencySystem.ViewModels.User
 {
-    [Authorize(Roles = new[] { "user" })]
+    [Authorize(Roles = new[] { "user", "super", "admin" })]
     public class WorkshopSelectViewModel : MainMasterPageViewModel
     {
         public int CurrentUserId
@@ -25,6 +25,8 @@ namespace ConferencySystem.ViewModels.User
         public List<WorkshopsBlockDTO> WorkshopsBlocks { get; set; }
 
         public bool Alert { get; set; } = false;
+
+        public Boolean RegistrationEnabled { get; set; } = DateTime.Now >= new DateTime(2019,01,30,17,00,00);
 
         public override Task PreRender()
         {
