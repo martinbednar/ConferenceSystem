@@ -28,6 +28,10 @@
                 <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" <%--IsEditable="false"--%> />
                 <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Jméno, tituly" ValueBinding="{value: TitleBefore + " " + FirstName + " " + LastName + " " + TitleAfter}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Titul před jménem" ValueBinding="{value: TitleBefore}" AllowSorting="true" Visible="{value: false}" />
+                <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName}" AllowSorting="true" Visible="{value: false}" />
+                <bp:GridViewTextColumn HeaderText="Příjmení" ValueBinding="{value: LastName}" AllowSorting="true" Visible="{value: false}" />
+                <bp:GridViewTextColumn HeaderText="Titul za jménem" ValueBinding="{value: TitleAfter}" AllowSorting="true" Visible="{value: false}" />
                 <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: VariableSymbol}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Místo narození" ValueBinding="{value: BirthPlace}" AllowSorting="true" Visible="{value: AllColumns}" />
