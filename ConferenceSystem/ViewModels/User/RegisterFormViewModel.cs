@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
+using DotVVM.Framework.Runtime.Filters;
 
 namespace ConferencySystem.ViewModels.User
 {
@@ -40,7 +41,8 @@ namespace ConferencySystem.ViewModels.User
 
         public override Task PreRender()
         {
-            if (!Context.IsPostBack)
+            Context.RedirectToRoute("Register");
+            /*if (!Context.IsPostBack)
             {
                 DateProcessing = new DateProcessing();
                 DataUser = new AppUserDTO();
@@ -49,7 +51,7 @@ namespace ConferencySystem.ViewModels.User
 
             RegisterActive = "active";
             MainPageActive = "";
-            AdminActive = "";
+            AdminActive = "";*/
 
             return base.PreRender();
         }

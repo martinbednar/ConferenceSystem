@@ -26,7 +26,7 @@ namespace ConferencySystem.ViewModels.User
 
         public bool Alert { get; set; } = false;
 
-        public Boolean RegistrationEnabled { get; set; } = DateTime.Now >= new DateTime(2019,01,30,17,00,00);
+        public Boolean RegistrationEnabled { get; set; } = false;//DateTime.Now >= new DateTime(2019,01,30,17,00,00);
 
         public override Task PreRender()
         {
