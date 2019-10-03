@@ -89,6 +89,10 @@
             <td>{Email}</td>
             <td>Email uživatele</td>
         </tr>
+        <tr>
+            <td>{Price}</td>
+            <td>Cena z nastavení konstant</td>
+        </tr>
     </table>
 
 

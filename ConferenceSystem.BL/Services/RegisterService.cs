@@ -216,7 +216,7 @@ namespace ConferencySystem.BL.Services
 		                </table>
 
                         <br><br>
-		                <div style='border:none;border-bottom:solid windowtext 1.0pt;border-color:gray;padding:0cm 0cm 1.0pt 0cm'></div>
+		                <div style='border:none;border-bottom:solid windowtext 1.0pt;border-color:black;padding:0cm 0cm 1.0pt 0cm'></div>
 		                <br>
 
                         <div style='color:gray'>S dotazy, které se týkají platby, se můžete obracet na Lenku Backovou:<br>lenka.backova@zamecke-navrsi.cz, 608 885 826</div>
