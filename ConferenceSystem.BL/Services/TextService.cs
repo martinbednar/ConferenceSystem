@@ -56,6 +56,9 @@ namespace ConferencySystem.BL.Services
             text = text.Replace("{VariableSymbol}", dataUser.VariableSymbol.ToString());
             text = text.Replace("{Email}", dataUser.Email);
 
+            var constans = new ConstantService();
+            text = text.Replace("{Price}",constans.GetConstant(3).Value.ToString());
+
             return text;
         }
     }
