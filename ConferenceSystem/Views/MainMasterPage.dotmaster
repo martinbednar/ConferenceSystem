@@ -54,7 +54,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="{value: MainPageActive}"><dot:RouteLink Text="Hlavní stránka" RouteName="Default"></dot:RouteLink></li>
-                        <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="Register"></dot:RouteLink></li>
+                        <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="RegisterForm"></dot:RouteLink></li>
                         <li class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
                         <li <%--Visible="{value: (!IsAdmin && !IsSuperAdmin)}"--%> class="{value: CarteringActive}"><dot:RouteLink Text="Workshopy" RouteName="WorkshopSelect"></dot:RouteLink></li>
                         <%-- <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li> --%>

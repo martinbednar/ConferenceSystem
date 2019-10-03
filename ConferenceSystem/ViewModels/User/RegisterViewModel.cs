@@ -4,12 +4,12 @@ namespace ConferencySystem.ViewModels.User
 {
     public class RegisterViewModel : MainMasterPageViewModel
     {
-        /*public override Task PreRender()
+        public override Task PreRender()
         {
             Context.RedirectToRoute("RegisterForm");
 
             return base.PreRender();
-        }*/
+        }
     }
 }
 
