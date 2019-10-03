@@ -56,7 +56,7 @@ namespace ConferencySystem.BL.Services
 
                 organization.Users.Add(addedUser);
 
-                addedUser.VariableSymbol = 2019000 + addedUserId;
+                addedUser.VariableSymbol = 2020000 + addedUserId;
 
                 addedUser.InvoiceNumber = addedUser.VariableSymbol.ToString();
 
@@ -155,7 +155,7 @@ namespace ConferencySystem.BL.Services
 				                <th width=""100%"" align=""left"">&nbsp;</th>
 			                </tr>
 			                <tr>
-				                <td width=""100%"" align=""left"">Účastnický poplatek za Festival vzdělávání v Litomyšli - Nakopněte svoji školu ve dnech 24. - 26. 2. 2019</td>
+				                <td width=""100%"" align=""left"">Účastnický poplatek za Festival vzdělávání v Litomyšli - Nakopněte svoji školu ve dnech ??. - ??. 2. 2020</td>
                            </tr>
 			                <tr>
 				                <td width=""100%"" align=""left"">Účastník / Účastnice: {TitleBefore} {FirstName} {LastName} {TitleAfter}</td>
