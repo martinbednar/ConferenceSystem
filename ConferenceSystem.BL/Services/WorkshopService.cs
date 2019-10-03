@@ -120,8 +120,14 @@ namespace ConferencySystem.BL.Services
                             {
                                 Id = c.WorkshopsBlock.Id
                             }
+                        }),
+                    Roles = p.Roles
+                        .Select(r => new AppUserRoleDTO
+                        {
+                            UserId = r.UserId,
+                            RoleId = r.RoleId,
                         })
-                })/*.Where(user => (user.Id != 2) && (user.Id != 3))*/;
+                }).Where(user => user.Roles.All(role => role.RoleId == 1));
 
                 List<UserWorkshops> usersWorkshops = new List<UserWorkshops>();
 

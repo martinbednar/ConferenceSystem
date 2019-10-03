@@ -42,6 +42,8 @@ namespace ConferencySystem.BL
                 cfg.CreateMap<Text, TextDTO>();
                 cfg.CreateMap<ConstantDTO, Constant>();
                 cfg.CreateMap<Constant, ConstantDTO>();
+                cfg.CreateMap<AppUserRole, AppUserRoleDTO>();
+                cfg.CreateMap<AppUserRoleDTO, AppUserRole>();
             });
         }
     }

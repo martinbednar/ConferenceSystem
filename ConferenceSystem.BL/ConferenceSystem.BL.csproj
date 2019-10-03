@@ -137,6 +137,7 @@
     <Compile Include="DTO\CarteringUsers.cs" />
     <Compile Include="DTO\ConstantDTO.cs" />
     <Compile Include="DTO\InvoiceDTO.cs" />
+    <Compile Include="DTO\AppUserRoleDTO.cs" />
     <Compile Include="DTO\TextDTO.cs" />
     <Compile Include="MapperInitializer.cs" />
     <Compile Include="DTO\OrganizationDTO.cs" />

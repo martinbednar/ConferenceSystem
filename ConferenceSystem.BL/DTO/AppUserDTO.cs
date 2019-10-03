@@ -75,5 +75,7 @@ namespace ConferencySystem.BL.DTO
         public virtual IEnumerable<WorkshopDTO> Workshops { get; set; }
 
         public virtual InvoiceDTO Invoice { get; set; }
+
+        public virtual IEnumerable<AppUserRoleDTO> Roles { get; set; }
     }
 }
