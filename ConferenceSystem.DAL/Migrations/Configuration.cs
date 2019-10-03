@@ -22,7 +22,8 @@ namespace ConferencySystem.DAL.Migrations
             context.Roles.AddOrUpdate(x => x.Id,
                 new AppRole(){ Id = 1, Name = "user"},
                 new AppRole() { Id = 2, Name = "admin" },
-                new AppRole() { Id = 3, Name = "super" }
+                new AppRole() { Id = 3, Name = "super" },
+                new AppRole() { Id = 1, Name = "lecturer" }
                 );
 
             context.Organization.AddOrUpdate(x => x.Id,
@@ -61,7 +62,7 @@ namespace ConferencySystem.DAL.Migrations
                             TitleAfter = "",
                             Email = "poradatel",
                             UserName = "poradatel",
-                            PasswordHash = "APQllKazNwOG3R+S+mrg/s9hrVsZReQIxp9n1/Rtv8r7XqeTbb6VTLVkkKUfWs+iyA==",
+                            PasswordHash = "AKgDu4/v7mFLpkoQE3CfxdwIA2Hh3ajXcbbyDzeaeZwBbMfv4MVen2Jflhw+FVWhAQ==",
                             SecurityStamp = "4b11c192-172f-4fb5-af64-2ce367b7ed35",
                             Roles = { new AppUserRole() { RoleId = 2, UserId = 2 } }
                         },
@@ -75,9 +76,23 @@ namespace ConferencySystem.DAL.Migrations
                             TitleAfter = "",
                             Email = "admin",
                             UserName = "admin",
-                            PasswordHash = "ALD08pqBjaeKt7k+Er35FpQ1Aj+Hioq194qP2uwRmWmG8APqkc9LEGt5iMIvssbYuA==",
+                            PasswordHash = "AL01QLlICX+zWoyJt6vt3EWlPXXFcrBxgKVpKpddDCCYAgU+9gc1QhJOgRLPUfds3Q==",
                             SecurityStamp = "4b11c192-172f-4fb5-af64-2ce367b7ed35",
                             Roles = { new AppUserRole() { RoleId = 3, UserId = 3 } }
+                        },
+                        new AppUser()
+                        {
+                            Id = 4,
+                            RegisterTimestamp = DateTime.Now,
+                            FirstName = "",
+                            LastName = "Přednášející",
+                            TitleBefore = "",
+                            TitleAfter = "",
+                            Email = "prednasejici",
+                            UserName = "prednasejici",
+                            PasswordHash = "AAvuhHR+UhsEgslJ1FDgtBpfipMZ4IYqY62Bst5BwU2MYbP4SPld7bQgG6ZmENQC7A==",
+                            SecurityStamp = "4b11c192-172f-4fb5-af64-2ce367b7ed35",
+                            Roles = { new AppUserRole() { RoleId = 4, UserId = 4 } }
                         }
                     }
                 }
