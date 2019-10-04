@@ -190,6 +190,7 @@
     <Compile Include="ViewModels\Admin\UsersViewModel.cs" />
     <Compile Include="ViewModels\Admin\UserViewModel.cs" />
     <Compile Include="ViewModels\PwdForgottenViewModel.cs" />
+    <Compile Include="ViewModels\User\RegisterFormLecturerViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterFormViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterViewModel.cs" />
     <Compile Include="ViewModels\User\RegistrationCompleteViewModel.cs" />
@@ -281,6 +282,7 @@
     <Content Include="Views\Admin\EmailNow.dothtml" />
     <Content Include="Views\Admin\SettingVariables.dothtml" />
     <Content Include="Views\Admin\EmailPaidConfirmation.dothtml" />
+    <Content Include="Views\User\RegisterFormLecturer.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

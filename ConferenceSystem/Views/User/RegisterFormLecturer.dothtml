@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.User.RegisterFormViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.User.RegisterFormLecturerViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent">
@@ -7,19 +7,19 @@
     </bs:Alert>
 
     <div class="btn-group" role="group" style="margin:auto;width: 345px;display: flex;">
-        <dot:Button type="button" class="btn btn-default" Text="Registrace účastníka" Enabled="true" style="color:black;font-size: 18px;background: lightblue;border: 2px solid #5fc0e0;"></dot:Button>
-        <dot:RouteLink class="btn btn-default" Text="Registrace přednášejícího" Enabled="true" RouteName="RegisterFormLecturer" style="background:lightcoral;padding-top: 9px;"></dot:RouteLink>
-</div>
+        <dot:RouteLink class="btn btn-default" Text="Registrace účastníka" Enabled="true" RouteName="RegisterForm" style="background:lightblue;padding-top: 9px;"></dot:RouteLink>
+        <dot:Button type="button" class="btn btn-default" Text="Registrace přednášejícího" Enabled="true" style="color:black;font-size: 18px;background: lightcoral;border: 2px solid #e85353;"></dot:Button>
+    </div>
 
-    <div class="lightblue-triangle" style="width: 25px;margin-left: 43%;margin-top: -1px;"></div>
+    <div class="lightred-triangle" style="margin-left: 57%;"></div>
 
-    <div class="register-form-wrapper" style="background:lightblue;">
+    <div class="register-form-wrapper" style="background:lightcoral;">
 
         <form class="form-register">
             <div class="form-register-with-email">
                 <div class="form-white-background">
                     <div class="form-title-row">
-                        <h1>Údaje o účastníkovi</h1>
+                        <h1 style="border-bottom-color:lightcoral;">Údaje o přednášejícím</h1>
                     </div>
                     <div class="form-row">
                         <label>
@@ -43,7 +43,7 @@
                         <div class="form-checkbox" Visible="{value: DataUser.WantCert}">
                             <label class="form-row">
                                 <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
-                                <a href="#">Prohlášení o ochraně osobních údajů</a>
+                                <a href="#" >Prohlášení o ochraně osobních údajů</a>
                             </label>
                         </div><br Visible="{value: DataUser.WantCert}" />
                         <div class="form-row" Visible="{value: DataUser.WantCert}">
@@ -125,7 +125,7 @@
             <div class="form-register-with-email">
                 <div class="form-white-background">
                     <div class="form-title-row">
-                        <h1>Fakturační údaje</h1>
+                        <h1 style="border-bottom-color:lightcoral;">Informace o přednášce</h1>
                     </div>
                     <div class="form-row">
                         <label>
