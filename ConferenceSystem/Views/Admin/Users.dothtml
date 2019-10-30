@@ -38,6 +38,8 @@
                 <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: Email}" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: PhoneNumber}" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Pracovní pozice" ValueBinding="{value: Position}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Kde jste se o festivalu dozvěděli?" ValueBinding="{value: InfoFrom}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Pro co si na festival jedete?" ValueBinding="{value: WantGet}" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: InvoiceNumber}" AllowSorting="true" Visible="{value: InvoiceColumns}" />

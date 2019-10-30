@@ -28,6 +28,8 @@ namespace ConferencySystem.BL.Services
                     Agreement = p.Agreement,
                     PaidDate = p.PaidDate,
                     VariableSymbol = p.VariableSymbol,
+                    InfoFrom = p.InfoFrom,
+                    WantGet = p.WantGet,
                     NoteAdmin = p.NoteAdmin,
                     NoteUser = p.NoteUser,
                     IsAlternate = p.IsAlternate,

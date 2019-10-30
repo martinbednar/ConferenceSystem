@@ -68,6 +68,12 @@ namespace ConferencySystem.BL.DTO
 
         public string PasswordHash { get; set; }
 
+        [MaxLength(1000, ErrorMessage = "Byla překročena maximální délka poznámky - maximální délka pole \"Kde jste se o festivalu dozvěděli?\" je 1000 znaků.")]
+        public string InfoFrom { get; set; }
+
+        [MaxLength(1000, ErrorMessage = "Byla překročena maximální délka poznámky - maximální délka pole \"Pro co si na festival jedete?\" je 1000 znaků.")]
+        public string WantGet { get; set; }
+
         public virtual OrganizationDTO Organization { get; set; }
 
         public virtual IEnumerable<CarteringDTO> Cartering { get; set; }

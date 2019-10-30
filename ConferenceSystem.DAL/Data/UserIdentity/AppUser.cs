@@ -55,6 +55,12 @@ namespace ConferencySystem.DAL.Data.UserIdentity
 
         public bool WasEmailCarteringSent { get; set; }
 
+        [StringLength(1000)]
+        public string InfoFrom { get; set; }
+
+        [StringLength(1000)]
+        public string WantGet { get; set; }
+
         public virtual Organization Organization { get; set; }
 
         public virtual ICollection<Cartering> Cartering { get; set; }

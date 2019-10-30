@@ -111,8 +111,17 @@
     <Compile Include="Data\UserIdentity\AppUserRole.cs" />
     <Compile Include="Data\Workshop.cs" />
     <Compile Include="Data\WorkshopsBlock.cs" />
+    <Compile Include="Migrations\201910301901176_AddFieldsToPrticipantUer.cs" />
+    <Compile Include="Migrations\201910301901176_AddFieldsToPrticipantUer.Designer.cs">
+      <DependentUpon>201910301901176_AddFieldsToPrticipantUer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910301901176_AddFieldsToPrticipantUer.resx">
+      <DependentUpon>201910301901176_AddFieldsToPrticipantUer.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

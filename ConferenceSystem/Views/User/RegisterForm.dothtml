@@ -113,6 +113,18 @@
                     </div><br />
                     <div class="form-row">
                         <label>
+                            <span>Kde jste se o festivalu dozvěděli?</span>
+                            <dot:TextBox Text="{value: DataUser.InfoFrom}" />
+                        </label>
+                    </div><br />
+                    <div class="form-row">
+                        <label>
+                            <span>Pro co si na festival jedete?</span>
+                            <dot:TextBox Text="{value: DataUser.WantGet}" />
+                        </label>
+                    </div><br />
+                    <div class="form-row">
+                        <label>
                             <span>Poznámka</span>
                             <dot:TextBox Text="{value: DataUser.NoteUser}" />
                         </label>
