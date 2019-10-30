@@ -19,8 +19,6 @@ namespace ConferencySystem.ViewModels.User
 
         public string AlertValue { get; set; }
 
-        public string IN { get; set; } = "";
-
         public string PasswordControl { get; set; }
 
         public DateTime BirthDate;
@@ -37,10 +35,6 @@ namespace ConferencySystem.ViewModels.User
 
         public AppUserDTO DataUser { get; set; }
 
-        public OrganizationDTO DataOrganization { get; set; }
-
-        public InvoiceDTO DataInvoice { get; set; }
-
         public override Task PreRender()
         {
             /*Context.RedirectToRoute("Register");*/
@@ -48,7 +42,6 @@ namespace ConferencySystem.ViewModels.User
             {
                 DateProcessing = new DateProcessing();
                 DataUser = new AppUserDTO();
-                DataOrganization = new OrganizationDTO();
             }
 
             RegisterActive = "active";
@@ -56,34 +49,6 @@ namespace ConferencySystem.ViewModels.User
             AdminActive = "";
 
             return base.PreRender();
-        }
-
-        private void SendEmail()
-        {
-            var textService = new TextService();
-
-            EmailService emailService = new EmailService();
-
-            var emailDefault = textService.GetText(7721);
-
-            var emailAlternate = textService.GetText(7722);
-
-            string mailBody;
-            string subject;
-
-            if (DataUser.IsAlternate)
-            {
-                //naplnena kapacita
-                mailBody = textService.TranslateText(emailAlternate.Content, DataUser);
-                subject = emailAlternate.Subject;
-                emailService.SendEmail(DataUser.Email, subject, mailBody, null);
-            }
-            else
-            {
-                mailBody = textService.TranslateText(emailDefault.Content, DataUser);
-                subject = emailDefault.Subject;
-                emailService.SendEmail(DataUser.Email, subject, mailBody, DataInvoice.FileBytes);
-            }
         }
 
         public void DismissAlert()
@@ -94,14 +59,13 @@ namespace ConferencySystem.ViewModels.User
 
         private void RegisterUser()
         {
+            var registerLecturer = new RegisterLecturerService();
             var register = new RegisterService();
             var admin = new AdminService();
 
-            int addedUserId = register.AddOrganization(DataOrganization, DataUser);
+            int addedUserId = registerLecturer.AddUser(DataUser);
 
             DataUser = register.GetUser(addedUserId);
-            DataInvoice = admin.GetInvoice(DataUser.Id);
-            SendEmail();
 
             Context.RedirectToRoute("RegistrationComplete");
         }
@@ -134,14 +98,8 @@ namespace ConferencySystem.ViewModels.User
             //nastaveni informaci o zaplaceni
             DataUser.PaidDate = null;
 
-            if (IN.Length != 0)
-            {
-                DataOrganization.IN = Convert.ToInt64(IN.Replace(" ", string.Empty));
-            }
-            else
-            {
-                DataOrganization.IN = 0;
-            }
+            //nastaveni pozice
+            DataUser.Position = null;
 
 
             var register = new RegisterService();
@@ -182,30 +140,7 @@ namespace ConferencySystem.ViewModels.User
                     }
                     else
                     {
-                        if (DataUser.WantCert)
-                        {
-                            if (DataUser.BirthDate != null)
-                            {
-                                if (DataUser.BirthPlace.Length > 0)
-                                {
-                                    RegisterUser();
-                                }
-                                else
-                                {
-                                    Alert = true;
-                                    AlertValue = "Pro vystavení certifikátu je požadováno Místo narození.";
-                                }
-                            }
-                            else
-                            {
-                                Alert = true;
-                                AlertValue = "Pro vystavení certifikátu je požadováno Datum narození.";
-                            }
-                        }
-                        else
-                        {
-                            RegisterUser();
-                        }
+                        RegisterUser();
                     }
                 }
             }

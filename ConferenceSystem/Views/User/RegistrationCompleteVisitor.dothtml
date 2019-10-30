@@ -1,0 +1,10 @@
+﻿@viewModel ConferencySystem.ViewModels.User.RegistrationCompleteViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="text-center">
+        <br />
+        <h3>Registrace úspěšně dokončena. Nyní se můžete přihlásit do Konferenčního systému.</h3>
+    </div>
+</dot:Content>
+

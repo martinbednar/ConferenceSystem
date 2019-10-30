@@ -283,6 +283,7 @@
     <Content Include="Views\Admin\SettingVariables.dothtml" />
     <Content Include="Views\Admin\EmailPaidConfirmation.dothtml" />
     <Content Include="Views\User\RegisterFormLecturer.dothtml" />
+    <Content Include="Views\User\RegistrationCompleteVisitor.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
