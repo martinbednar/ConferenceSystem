@@ -181,6 +181,7 @@
     <Compile Include="ViewModels\Admin\EmailRegisterFullViewModel.cs" />
     <Compile Include="ViewModels\Admin\EmailRegisterViewModel.cs" />
     <Compile Include="ViewModels\Admin\SettingVariablesViewModel.cs" />
+    <Compile Include="ViewModels\Admin\LecturersViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Views\Admin\EmailPaidConfirmation.dothtml" />
     <Content Include="Views\User\RegisterFormLecturer.dothtml" />
     <Content Include="Views\User\RegistrationCompleteVisitor.dothtml" />
+    <Content Include="Views\Admin\Lecturers.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
