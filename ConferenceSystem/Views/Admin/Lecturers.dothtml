@@ -18,7 +18,6 @@
             <div class="loader"></div>
             <br />
         </dot:UpdateProgress>
-        <dot:Button type="button" ButtonTagName="button" class="btn btn-default" Click="{command: SendEmails()}" Enabled="false" style="display:none;">Odeslat všem <br />účastníkům přihlašovací údaje</dot:Button>
         <dot:Button type="button" class="btn btn-default" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}" style="margin-right:20px;float:right;"></dot:Button>
 
         <br /><br />
