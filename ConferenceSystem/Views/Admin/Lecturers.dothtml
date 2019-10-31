@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.Admin.UsersViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Admin.LecturersViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 
@@ -11,7 +11,7 @@
             <dot:Button type="button" class="btn btn-default" Click="{command: ShowInvoiceColumns()}" Text="Fakturační údaje" Enabled="{value: InvoiceColumnsEnabled}"></dot:Button>
             <dot:Button type="button" class="btn btn-default" Click="{command: ShowAllColumns()}" Text="Všechny sloupce" Enabled="{value: AllColumnsEnabled}"></dot:Button>
         </div>
-        <p style="float:right;font-size:larger;margin-top:8px;margin-right:20px;">Počet zaregistrovaných účastníků: <b>{{value: TotalUsersCount}}</b></p>
+        <p style="float:right;font-size:larger;margin-top:8px;margin-right:20px;">Počet zaregistrovaných přednášejících a lektorů: <b>{{value: TotalUsersCount}}</b></p>
         <br /><br />
         <dot:UpdateProgress>
             <br />
@@ -60,7 +60,7 @@
                 <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: IsAlternate}" />
                 <bp:GridViewTemplateColumn>
                     <ContentTemplate>
-                        <dot:RouteLink RouteName="User" Param-UserId="{value: Id}" Param-OrgId="{value: Organization.Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
+                        <dot:RouteLink RouteName="Lecturer" Param-UserId="{value: Id}" Param-OrgId="{value: Organization.Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
                             <span class="glyphicon glyphicon-edit"></span>
                         </dot:RouteLink>
                     </ContentTemplate>

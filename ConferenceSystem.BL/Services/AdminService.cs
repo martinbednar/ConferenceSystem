@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ConferencySystem.BL.DTO;
@@ -33,7 +34,7 @@ namespace ConferencySystem.BL.Services
         {
             using (var db = new DbContext())
             {
-                var users = db.Users.Where(user => user.Roles.All(role => role.RoleId == 4)).ProjectTo<AppUserDTO>().ToList();
+                var users = db.Users.Where(user => user.Roles.All(role => role.RoleId == 4)).ProjectTo<AppUserDTO>().ToList().OrderBy(u => u.RegisterTimestamp);
 
                 int sequencenumber = 1;
 
@@ -44,6 +45,55 @@ namespace ConferencySystem.BL.Services
                 }
 
                 usersDataSet.LoadFromQueryable(users.AsQueryable());
+            }
+        }
+
+            public void GetLecturersNEW(GridViewDataSet<AppUserDTO> usersDataSet)
+        {
+            using (var db = new DbContext())
+            {
+                var query = db.Users.Select(p => new AppUserDTO()
+                {
+                    Id = p.Id,
+                    RegisterTimestamp = p.RegisterTimestamp,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    BirthDate = p.BirthDate,
+                    BirthPlace = p.BirthPlace,
+                    TitleBefore = p.TitleBefore,
+                    TitleAfter = p.TitleAfter,
+                    Email = p.Email,
+                    PhoneNumber = p.PhoneNumber,
+                    Position = p.Position,
+                    Agreement = p.Agreement,
+                    PaidDate = p.PaidDate,
+                    VariableSymbol = p.VariableSymbol,
+                    InfoFrom = p.InfoFrom,
+                    WantGet = p.WantGet,
+                    NoteAdmin = p.NoteAdmin,
+                    NoteUser = p.NoteUser,
+                    IsAlternate = p.IsAlternate,
+                    InvoiceNumber = p.InvoiceNumber,
+                    Organization = new OrganizationDTO()
+                    {
+                        Id = p.Organization.Id,
+                        IN = p.Organization.IN,
+                        VATID = p.Organization.VATID,
+                        Name = p.Organization.Name,
+                        BillStreet = p.Organization.BillStreet,
+                        Town = p.Organization.Town,
+                        PostalCode = p.Organization.PostalCode
+                    }
+                }).Where(user => user.Roles.All(role => role.RoleId == 4));
+
+                List<AppUserDTO> usersCompletInfo = new List<AppUserDTO>();
+
+                foreach (AppUserDTO user in query.ToList())
+                {
+                    usersCompletInfo.Add(Mapper.Map<AppUserDTO, AppUserDTO>(user));
+                }
+
+                usersDataSet.LoadFromQueryable(usersCompletInfo.AsQueryable());
             }
         }
 
