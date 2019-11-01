@@ -42,8 +42,7 @@ namespace ConferencySystem.BL.DTO
         [Required(ErrorMessage = "Vyplňte své telefonní číslo - pole \"Telefonní číslo\" je povinné.")]
         [MaxLength(30, ErrorMessage = "Byla překročena maximální délka telefonního čísla - maximální délka pole \"Telefonní číslo\" je 30 znaků.")]
         public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessage = "Vyplňte svoji pracovní pozici - pole \"Pracovní pozice\" je povinné.")]
+        
         [MaxLength(200, ErrorMessage = "Byla překročena maximální délka pracovní pozice - maximální délka pole \"Pracovní pozice\" je 200 znaků.")]
         public string Position { get; set; } = "Ředitel";
 
@@ -83,5 +82,7 @@ namespace ConferencySystem.BL.DTO
         public virtual InvoiceDTO Invoice { get; set; }
 
         public virtual IEnumerable<AppUserRoleDTO> Roles { get; set; }
+
+        public virtual LecturerInfoDTO LecturerInfo { get; set; }
     }
 }

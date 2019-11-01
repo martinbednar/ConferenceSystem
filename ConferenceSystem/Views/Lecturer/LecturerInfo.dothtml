@@ -1,18 +1,12 @@
-﻿@viewModel ConferencySystem.ViewModels.Admin.UserViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Lecturer.LecturerInfoViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
-
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <form class="form-register">
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Údaje o účastníkovi</h1>
-                </div>
-                <div class="form-checkbox">
-                    <label class="form-checkbox">
-                        <dot:CheckBox Text="NÁHRADNÍK" Checked="{value: DataUser.IsAlternate}" />
-                    </label>
+                    <h1>Základní údaje</h1>
                 </div>
                 <div class="form-row">
                     <label>
@@ -91,9 +85,7 @@
                             <dot:RadioButton Text="Ředitel" CheckedItem="{value: DataUser.Position}" CheckedValue="Ředitel" /><br />
                             <dot:RadioButton Text="Učitel" CheckedItem="{value: DataUser.Position}" CheckedValue="Učitel" /><br />
                             <dot:RadioButton Text="Student" CheckedItem="{value: DataUser.Position}" CheckedValue="Student" /><br />
-                            <dot:RadioButton Text="Rodič" CheckedItem="{value: DataUser.Position}" CheckedValue="Rodič" /><br />
-                            <dot:RadioButton Text="Jiné" CheckedItem="{value: DataUser.Position}" CheckedValue="{value: PositionOther}" /><br />
-                            <dot:TextBox Text="{value: PositionOther}" style="float:left" />
+                            <dot:RadioButton Text="Rodič" CheckedItem="{value: DataUser.Position}" CheckedValue="Rodič" />
                         </div>
                     </label>
                 </div>
@@ -133,12 +125,6 @@
                         <dot:TextBox Text="{value: DataUser.InvoiceNumber}" Enabled="false" />
                     </label>
                 </div>
-                <div class="form-row">
-                    <label>
-                        <span>Zálohová faktura</span>
-                        <dot:RouteLink RouteName="AttachmentDownload" Param-Id="{value: DataUser.Id}" Text="{value: DataInvoice.FileName}" />
-                    </label>
-                </div>
                 <div class="form-row-date">
                     <label>
                         <span style="width: 175px;padding-right: 25px;display:inline-block;">Zaplaceno</span>
@@ -153,42 +139,30 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Údaje o organizaci</h1>
+                    <h1>Údaje pro platbu za Vaši účast</h1>
                 </div>
                 <div class="form-row">
                     <label>
                         <span>IČ</span>
-                        <dot:TextBox Text="{value: DataOrganization.IN}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>DIČ</span>
-                        <dot:TextBox Text="{value: DataOrganization.VATID}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Název organizace</span>
-                        <dot:TextBox Text="{value: DataOrganization.Name}" />
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
                         <span>Ulice a číslo popisné</span>
-                        <dot:TextBox Text="{value: DataOrganization.BillStreet}" />
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
                         <span>Obec</span>
-                        <dot:TextBox Text="{value: DataOrganization.Town}" />
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
                         <span>PSČ</span>
-                        <dot:TextBox Text="{value: DataOrganization.PostalCode}" />
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
                     </label>
                 </div>
             </div>
@@ -213,10 +187,11 @@
                         <br />
                     </dot:UpdateProgress>
 
-                    <dot:Button class="btn btn-primary" Text="Uložit změny" Click="{command: SaveUser()}" Enabled="{value: IsSuperAdmin || IsAdmin}"></dot:Button>
+                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}" ></dot:Button>
                     <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
                 </div>
             </div>
         </div>
     </form>
 </dot:Content>
+

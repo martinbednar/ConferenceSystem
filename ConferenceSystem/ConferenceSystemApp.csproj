@@ -183,6 +183,7 @@
     <Compile Include="ViewModels\Admin\SettingVariablesViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturersViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturerViewModel.cs" />
+    <Compile Include="ViewModels\Lecturer\LecturerInfoViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
@@ -192,7 +193,7 @@
     <Compile Include="ViewModels\Admin\UsersViewModel.cs" />
     <Compile Include="ViewModels\Admin\UserViewModel.cs" />
     <Compile Include="ViewModels\PwdForgottenViewModel.cs" />
-    <Compile Include="ViewModels\User\RegisterFormLecturerViewModel.cs" />
+    <Compile Include="ViewModels\Lecturer\RegisterFormLecturerViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterFormViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterViewModel.cs" />
     <Compile Include="ViewModels\User\RegistrationCompleteViewModel.cs" />
@@ -284,10 +285,11 @@
     <Content Include="Views\Admin\EmailNow.dothtml" />
     <Content Include="Views\Admin\SettingVariables.dothtml" />
     <Content Include="Views\Admin\EmailPaidConfirmation.dothtml" />
-    <Content Include="Views\User\RegisterFormLecturer.dothtml" />
+    <Content Include="Views\Lecturer\RegisterFormLecturer.dothtml" />
     <Content Include="Views\User\RegistrationCompleteVisitor.dothtml" />
     <Content Include="Views\Admin\Lecturers.dothtml" />
     <Content Include="Views\Admin\Lecturer.dothtml" />
+    <Content Include="Views\Lecturer\LecturerInfo.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

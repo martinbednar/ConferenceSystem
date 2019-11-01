@@ -101,6 +101,7 @@
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbInitializer.cs" />
     <Compile Include="Data\Invoice.cs" />
+    <Compile Include="Data\LecturerInfo.cs" />
     <Compile Include="Data\Organization.cs" />
     <Compile Include="Data\Secrets.cs" />
     <Compile Include="Data\Text.cs" />
@@ -115,12 +116,47 @@
     <Compile Include="Migrations\201910301901176_AddFieldsToPrticipantUer.Designer.cs">
       <DependentUpon>201910301901176_AddFieldsToPrticipantUer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911010803407_AddLecturerInfo.cs" />
+    <Compile Include="Migrations\201911010803407_AddLecturerInfo.Designer.cs">
+      <DependentUpon>201911010803407_AddLecturerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011012010_RemoveSelfReferencingInLectureInfo.cs" />
+    <Compile Include="Migrations\201911011012010_RemoveSelfReferencingInLectureInfo.Designer.cs">
+      <DependentUpon>201911011012010_RemoveSelfReferencingInLectureInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011036481_RemoveLecturerInfoTable.cs" />
+    <Compile Include="Migrations\201911011036481_RemoveLecturerInfoTable.Designer.cs">
+      <DependentUpon>201911011036481_RemoveLecturerInfoTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011041459_RemoveLecturerInfoTable1.cs" />
+    <Compile Include="Migrations\201911011041459_RemoveLecturerInfoTable1.Designer.cs">
+      <DependentUpon>201911011041459_RemoveLecturerInfoTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011045330_CreateLecurerInfoTableAgain.cs" />
+    <Compile Include="Migrations\201911011045330_CreateLecurerInfoTableAgain.Designer.cs">
+      <DependentUpon>201911011045330_CreateLecurerInfoTableAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910301901176_AddFieldsToPrticipantUer.resx">
       <DependentUpon>201910301901176_AddFieldsToPrticipantUer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911010803407_AddLecturerInfo.resx">
+      <DependentUpon>201911010803407_AddLecturerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011012010_RemoveSelfReferencingInLectureInfo.resx">
+      <DependentUpon>201911011012010_RemoveSelfReferencingInLectureInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011036481_RemoveLecturerInfoTable.resx">
+      <DependentUpon>201911011036481_RemoveLecturerInfoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011041459_RemoveLecturerInfoTable1.resx">
+      <DependentUpon>201911011041459_RemoveLecturerInfoTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011045330_CreateLecurerInfoTableAgain.resx">
+      <DependentUpon>201911011045330_CreateLecurerInfoTableAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

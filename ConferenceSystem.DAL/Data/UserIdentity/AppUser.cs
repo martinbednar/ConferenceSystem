@@ -69,6 +69,8 @@ namespace ConferencySystem.DAL.Data.UserIdentity
 
         public virtual Invoice Invoice { get; set; }
 
+        public virtual LecturerInfo LecturerInfo { get; set; }
+
         public AppUser()
         {
             Cartering = new List<Cartering>();

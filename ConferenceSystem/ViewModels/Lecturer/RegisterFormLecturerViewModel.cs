@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
+using DotVVM.Framework.Hosting;
 using DotVVM.Framework.ViewModel;
+using Microsoft.AspNet.Identity;
 
 namespace ConferencySystem.ViewModels.User
 {
@@ -63,11 +65,25 @@ namespace ConferencySystem.ViewModels.User
             var register = new RegisterService();
             var admin = new AdminService();
 
+            string password = DataUser.PasswordHash;
+
             int addedUserId = registerLecturer.AddUser(DataUser);
+
+            registerLecturer.AddBlankLecturerInfo(addedUserId);
 
             DataUser = register.GetUser(addedUserId);
 
-            Context.RedirectToRoute("RegistrationComplete");
+            LoginService loginService = new LoginService();
+
+            PasswordHasher passwordHasher = new PasswordHasher();
+
+            PasswordVerificationResult passwordVerificationResult = passwordHasher.VerifyHashedPassword(DataUser.PasswordHash, password);
+
+            var identity = loginService.Login(DataUser.Email, password);
+
+            Context.GetOwinContext().Authentication.SignIn(identity);
+
+            Context.RedirectToRoute("LecturerInfo");
         }
 
         public void Save()

@@ -21,9 +21,18 @@ using DbContext = ConferencySystem.DAL.Data.DbContext;
 
 namespace ConferencySystem.BL.Services
 {
-    public class RegisterLecturerService
+    public class LecturerInfoService
     {
-        public int AddUser (AppUserDTO userData)
+        public LecturerInfoDTO GetLecturerInfo (int userId)
+        {
+            using (var db = new DbContext())
+            {
+                var user = db.Users.Find(userId);
+                return Mapper.Map<LecturerInfo, LecturerInfoDTO>(db.LecturerInfo.SingleOrDefault(l => l.Id == user.LecturerInfo.Id));
+            }
+        }
+
+        public int UpdateLecturerInfo (AppUserDTO userData)
         {
             AppUser user = Mapper.Map<AppUserDTO, AppUser>(userData);
 
@@ -37,18 +46,8 @@ namespace ConferencySystem.BL.Services
                 AppUser currentUser = userManager.FindByName(user.UserName);
 
                 userManager.AddToRole(currentUser.Id, "lecturer");
-                
-                return currentUser.Id;
-            }
-        }
 
-        public void AddBlankLecturerInfo (int userId)
-        {
-            using (var db = new DbContext())
-            {
-                var user = db.Users.Find(userId);
-                user.LecturerInfo = new LecturerInfo();
-                db.SaveChanges();
+                return currentUser.Id;
             }
         }
     }

@@ -91,7 +91,7 @@ namespace ConferencySystem.ViewModels.Admin
 
             using (var file = exporter.Export(gridView, Users))
             {
-                Context.ReturnFile(file, "NakopneteSvojiSkolu-Ucastnici.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                Context.ReturnFile(file, "NakopneteSvojiSkolu-PrednasejiciALektori.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             }
         }
     }

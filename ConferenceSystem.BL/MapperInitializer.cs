@@ -20,7 +20,8 @@ namespace ConferencySystem.BL
                     .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.Organization))
                     .ForMember(dest => dest.Cartering, opt => opt.Ignore())
                     .ForMember(dest => dest.Workshops, opt => opt.Ignore())
-                    .ForMember(dest => dest.Invoice, opt => opt.Ignore());
+                    .ForMember(dest => dest.Invoice, opt => opt.Ignore())
+                    .ForMember(dest => dest.LecturerInfo, opt => opt.MapFrom(src => src.LecturerInfo));
                 cfg.CreateMap<AppUserDTO, AppUser>()
                     .ForMember(dest => dest.WasEmailCarteringSent, opt => opt.Ignore())
                     .ForMember(dest => dest.WasEmailWorkshopSent, opt => opt.Ignore())
@@ -35,7 +36,8 @@ namespace ConferencySystem.BL
                     .ForMember(dest => dest.Claims, opt => opt.Ignore())
                     .ForMember(dest => dest.Logins, opt => opt.Ignore())
                     .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
-                    .ForMember(dest => dest.Invoice, opt => opt.Ignore());
+                    .ForMember(dest => dest.Invoice, opt => opt.Ignore())
+                    .ForMember(dest => dest.LecturerInfo, opt => opt.MapFrom(src => src.LecturerInfo));
                 cfg.CreateMap<InvoiceDTO, Invoice>();
                 cfg.CreateMap<Invoice, InvoiceDTO>();
                 cfg.CreateMap<TextDTO, Text>();
@@ -44,6 +46,8 @@ namespace ConferencySystem.BL
                 cfg.CreateMap<Constant, ConstantDTO>();
                 cfg.CreateMap<AppUserRole, AppUserRoleDTO>();
                 cfg.CreateMap<AppUserRoleDTO, AppUserRole>();
+                cfg.CreateMap<LecturerInfoDTO, LecturerInfo>();
+                cfg.CreateMap<LecturerInfo, LecturerInfoDTO>();
             });
         }
     }
