@@ -7,17 +7,25 @@
             <div class="form-white-background">
                 <div class="form-title-row">
                     <h1>Základní údaje</h1>
-                </div>
+                </div><br /><br />
+
+
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: top; margin-top: 22px;">Medailonek</span>
-                        <dot:TextBox Text="{value: DataUser.Id}" Type="MultiLine" />
+                        <span style="vertical-align: top; margin-top: 80px;">Medailonek</span>
+                        <dot:TextBox style="font-weight:normal;" rows="10" Text="{value: DataUser.LecturerInfo.Introduce}" Type="MultiLine" />
+                        <span class="form-row-note">
+                            Představte se účastníkům - <b>maximálně 250 slov</b>. Prodejte vše, co umíte a co jste dokázali. Text bude zveřejněn u Vašeho profilu na webu konference.<br />
+                            Pište o sobě prosím ve třetí osobě (Jan Novák je absolventem…). Příklady najdete na <a href="https://www.nakopnetesvojiskolu.cz/kopie-z-lektori/" target="_blank">webu konference</a>.
+                        </span>
                     </label>
-                </div>
+                </div><br /><br /><br />
+
+
                 <div class="form-row">
                     <label>
-                        <span>Čas registrace</span>
-                        <dot:TextBox Text="{value: DataUser.RegisterTimestamp}" ValueType="DateTime" FormatString="g" Enabled="false" />
+                        <span>Fotografie</span>
+                        <dot:FileUpload UploadedFiles="{value: Files}" AllowMultipleFiles="false" AllowedFileTypes="image/*" MaxFileSize="100" SuccessMessageText="Fotka byla úspěšně nahrána." UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných fotografií: {0}" UploadErrorMessageText="Fotografii se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte fotografii například do svého OneDrive a sdílejte nám ji pomocí odkazu." />
                     </label>
                 </div>
                 <div class="form-row">

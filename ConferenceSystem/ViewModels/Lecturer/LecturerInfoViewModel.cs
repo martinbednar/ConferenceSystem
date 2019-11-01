@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
+using DotVVM.Framework.Controls;
 using DotVVM.Framework.Hosting;
 using DotVVM.Framework.ViewModel;
 
@@ -33,6 +34,8 @@ namespace ConferencySystem.ViewModels.Lecturer
         /* BirthDate processing */
         public DateProcessing DateProcessing { get; set; }
 
+        public UploadedFilesCollection Files { get; set; }
+
         public override Task PreRender()
         {
             if (!Context.IsPostBack)
@@ -58,6 +61,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                 /*var lecturerInfoService = new LecturerInfoService();
                 LecturerInfo = lecturerInfoService.GetLecturerInfo(CurrentUserId);*/
             }
+            Files = new UploadedFilesCollection();
 
             return base.PreRender();
         }
@@ -79,5 +83,6 @@ namespace ConferencySystem.ViewModels.Lecturer
             
             adminService.SaveUser(DataUser);
         }
+
     }
 }
