@@ -113,8 +113,8 @@
 
                 <div class="form-row">
                     <label>
-                        <span>Poznámka</span>
-                        <dot:TextBox Text="{value: DataUser.NoteUser}" />
+                        <span style="vertical-align: top; margin-top: 22px;">Poznámka</span>
+                        <dot:TextBox Text="{value: DataUser.NoteUser}" Type="MultiLine" />
                     </label>
                 </div>
             </div>

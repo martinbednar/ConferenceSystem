@@ -10,8 +10,8 @@
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Id</span>
-                        <dot:TextBox Text="{value: DataUser.Id}" Enabled="false" />
+                        <span style="vertical-align: top; margin-top: 22px;">Medailonek</span>
+                        <dot:TextBox Text="{value: DataUser.Id}" Type="MultiLine" />
                     </label>
                 </div>
                 <div class="form-row">

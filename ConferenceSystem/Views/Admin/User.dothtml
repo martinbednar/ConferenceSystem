@@ -99,26 +99,26 @@
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Kde jste se o festivalu dozvěděli?</span>
-                        <dot:TextBox Text="{value: DataUser.InfoFrom}" />
+                        <span style="vertical-align: top; margin-top: 12px;">Kde jste se o festivalu dozvěděli?</span>
+                        <dot:TextBox Text="{value: DataUser.InfoFrom}" Type="MultiLine" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Pro co si na festival jedete?</span>
-                        <dot:TextBox Text="{value: DataUser.WantGet}" />
+                        <span style="vertical-align: top; margin-top: 12px;">Pro co si na festival jedete?</span>
+                        <dot:TextBox Text="{value: DataUser.WantGet}" Type="MultiLine" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Poznámka uživatele</span>
-                        <dot:TextBox Text="{value: DataUser.NoteUser}" />
+                        <span style="vertical-align: top; margin-top: 22px;">Poznámka uživatele</span>
+                        <dot:TextBox Text="{value: DataUser.NoteUser}" Type="MultiLine" />
                     </label>
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>Poznámka administrátora</span>
-                        <dot:TextBox Text="{value: DataUser.NoteAdmin}" />
+                        <span style="vertical-align: top; margin-top: 22px;">Poznámka administrátora</span>
+                        <dot:TextBox Text="{value: DataUser.NoteAdmin}" Type="MultiLine" />
                     </label>
                 </div>
                 <div class="form-row">

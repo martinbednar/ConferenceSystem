@@ -53,6 +53,7 @@
         width: 175px;
         text-align: right;
         padding-right: 25px;
+        vertical-align: middle;
     }
 
     .form-register-with-email .form-row-date > label span {
@@ -65,7 +66,7 @@
         width: 10px;
     }*/
 
-    .form-register-with-email input {
+    .form-register-with-email input, .form-register-with-email textarea {
         color: #5f5f5f;
         box-sizing: border-box;
         width: 300px;
