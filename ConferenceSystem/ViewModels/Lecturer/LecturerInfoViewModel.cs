@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
 using DotVVM.Framework.Controls;
 using DotVVM.Framework.Hosting;
+using DotVVM.Framework.Runtime.Filters;
 using DotVVM.Framework.ViewModel;
 
 namespace ConferencySystem.ViewModels.Lecturer
 {
+    [Authorize(Roles = new[] { "lecturer" })]
     public class LecturerInfoViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
     {
         public int CurrentUserId
@@ -23,8 +26,6 @@ namespace ConferencySystem.ViewModels.Lecturer
             }
         }
 
-        //public LecturerInfoDTO LecturerInfo { get; set; }
-
         public AppUserDTO DataUser { get; set; }
 
         public string SelectedBirthYear { get; set; }
@@ -33,6 +34,10 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         /* BirthDate processing */
         public DateProcessing DateProcessing { get; set; }
+
+        public bool SaveConfirmationIsVisible { get; set; } = false;
+
+        public bool SaveConfirmationDismissed { get; set; } = false;
 
         public UploadedFilesCollection Files { get; set; }
 
@@ -57,9 +62,6 @@ namespace ConferencySystem.ViewModels.Lecturer
                     SelectedBirthMonth = "";
                     SelectedBirthDay = "";
                 }
-
-                /*var lecturerInfoService = new LecturerInfoService();
-                LecturerInfo = lecturerInfoService.GetLecturerInfo(CurrentUserId);*/
             }
             Files = new UploadedFilesCollection();
 
@@ -82,6 +84,9 @@ namespace ConferencySystem.ViewModels.Lecturer
             var adminService = new AdminService();
             
             adminService.SaveUser(DataUser);
+
+            SaveConfirmationDismissed = false;
+            SaveConfirmationIsVisible = true;
         }
 
     }

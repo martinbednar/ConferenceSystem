@@ -28,35 +28,39 @@
                         <dot:FileUpload UploadedFiles="{value: Files}" AllowMultipleFiles="false" AllowedFileTypes="image/*" MaxFileSize="100" SuccessMessageText="Fotka byla úspěšně nahrána." UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných fotografií: {0}" UploadErrorMessageText="Fotografii se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte fotografii například do svého OneDrive a sdílejte nám ji pomocí odkazu." />
                     </label>
                 </div>
+
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Údaje pro platbu za Vaši účast</h1>
+                </div>
+
                 <div class="form-row">
                     <label>
-                        <span>Jméno<span style="display:inline; color:red; padding-right:0px"> *</span></span>
-                        <dot:TextBox Text="{value: DataUser.FirstName}" />
+                        <span>Ulice a číslo popisné</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
                     </label>
                 </div>
+
                 <div class="form-row">
                     <label>
-                        <span>Příjmení<span style="display:inline; color:red; padding-right:0px"> *</span></span>
-                        <dot:TextBox Text="{value: DataUser.LastName}" />
+                        <span>Obec</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
                     </label>
                 </div>
-                <div class="form-checkbox">
-                    <label class="form-checkbox">
-                        <dot:CheckBox Text="Požaduji vystavení certifikátu." Checked="{value: DataUser.WantCert}" />
-                    </label>
-                </div>
+
                 <div class="form-row">
                     <label>
-                        <span>Titul před jménem</span>
-                        <dot:TextBox Text="{value: DataUser.TitleBefore}" />
+                        <span>PSČ</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
                     </label>
                 </div>
-                <div class="form-row">
-                    <label>
-                        <span>Titul za jménem</span>
-                        <dot:TextBox Text="{value: DataUser.TitleAfter}" />
-                    </label>
-                </div>
+
                 <div class="form-row">
                     <label>
                         <span>Datum narození</span>
@@ -68,75 +72,18 @@
                     </label>
                     <%--{{value: SelectedBirthDay}}.{{value: SelectedBirthMonth}}.{{value SelectedBirthYear}}--%>
                 </div>
+
                 <div class="form-row">
                     <label>
-                        <span>Místo narození</span>
-                        <dot:TextBox Text="{value: DataUser.BirthPlace}" />
+                        <span>Číslo účtu</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.AccountNumber}" />
                     </label>
                 </div>
+
                 <div class="form-row">
                     <label>
-                        <span>Email<span style="display:inline; color:red; padding-right:0px"> *</span></span>
-                        <dot:TextBox Text="{value: DataUser.Email}" Type="Email" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Telefonní číslo<span style="display:inline; color:red; padding-right:0px"> *</span></span>
-                        <dot:TextBox Text="{value: DataUser.PhoneNumber}" Type="Telephone" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:40px">Pracovní pozice<span style="display:inline; color:red; padding-right:0px"> *</span></span>
-                        <div style="width:290px;margin:auto">
-                            <dot:RadioButton Text="Ředitel" CheckedItem="{value: DataUser.Position}" CheckedValue="Ředitel" /><br />
-                            <dot:RadioButton Text="Učitel" CheckedItem="{value: DataUser.Position}" CheckedValue="Učitel" /><br />
-                            <dot:RadioButton Text="Student" CheckedItem="{value: DataUser.Position}" CheckedValue="Student" /><br />
-                            <dot:RadioButton Text="Rodič" CheckedItem="{value: DataUser.Position}" CheckedValue="Rodič" />
-                        </div>
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Kde jste se o festivalu dozvěděli?</span>
-                        <dot:TextBox Text="{value: DataUser.InfoFrom}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Pro co si na festival jedete?</span>
-                        <dot:TextBox Text="{value: DataUser.WantGet}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Poznámka uživatele</span>
-                        <dot:TextBox Text="{value: DataUser.NoteUser}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Poznámka administrátora</span>
-                        <dot:TextBox Text="{value: DataUser.NoteAdmin}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Variabilní číslo</span>
-                        <dot:TextBox Text="{value: DataUser.VariableSymbol}" Enabled="false" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Číslo zálohové faktury</span>
-                        <dot:TextBox Text="{value: DataUser.InvoiceNumber}" Enabled="false" />
-                    </label>
-                </div>
-                <div class="form-row-date">
-                    <label>
-                        <span style="width: 175px;padding-right: 25px;display:inline-block;">Zaplaceno</span>
-                        <bs:DateTimePicker SelectedDate="{value: DataUser.PaidDate}" FormatString="d.M.yyyy" Mode="Date" style="width:300px;float:right;" />
+                        <span>IČ</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
                     </label>
                 </div>
             </div>
@@ -147,30 +94,20 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Údaje pro platbu za Vaši účast</h1>
+                    <h1>Ubytování</h1>
                 </div>
+
                 <div class="form-row">
                     <label>
-                        <span>IČ</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
+                        <span>Termíny, pro které chcete zajistit ubytování</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Accomodation}" />
                     </label>
                 </div>
+
                 <div class="form-row">
                     <label>
-                        <span>Ulice a číslo popisné</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>Obec</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
-                    </label>
-                </div>
-                <div class="form-row">
-                    <label>
-                        <span>PSČ</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
+                        <span>Spolubydlící</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.RoomMate}" />
                     </label>
                 </div>
             </div>
@@ -182,12 +119,6 @@
             <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
                 <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
                 <div class="form-row">
-                    <label class="form-checkbox">
-                        <span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>
-                        <dot:CheckBox Enabled="false" Text="Souhlasím se zpracováním osobních údajů a s pořizováním audiovizuálního záznamu se svojí osobou za účelem propagace této akce" Checked="{value: DataUser.Agreement}" />
-                    </label>
-                </div>
-                <div class="form-row">
 
                     <dot:UpdateProgress>
                         <br />
@@ -195,7 +126,9 @@
                         <br />
                     </dot:UpdateProgress>
 
-                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}" ></dot:Button>
+                    <bs:Alert Type="Success" IsDismissible="true" Text="Údaje byly úspěšně uloženy." Visible="{value: SaveConfirmationIsVisible}" IsDismissed="{value: SaveConfirmationDismissed}"></bs:Alert>
+
+                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}"></dot:Button>
                     <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
                 </div>
             </div>
