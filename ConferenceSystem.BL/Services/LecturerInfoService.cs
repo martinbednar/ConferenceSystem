@@ -18,6 +18,8 @@ using PdfSharp.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using TheArtOfDev.HtmlRenderer.Core;
 using DbContext = ConferencySystem.DAL.Data.DbContext;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ConferencySystem.BL.Services
 {
@@ -48,6 +50,44 @@ namespace ConferencySystem.BL.Services
                 userManager.AddToRole(currentUser.Id, "lecturer");
 
                 return currentUser.Id;
+            }
+        }
+
+        public void SavePhoto (string photoPath, int userId)
+        {
+            using (var db = new DbContext())
+            {
+                Image img = Image.FromFile(photoPath);
+                MemoryStream tmpStream = new MemoryStream();
+
+                ImageFormat imageFormat = ImageFormat.Jpeg;
+                switch (Path.GetExtension(photoPath).ToLower())
+                {
+                    case "png":
+                        imageFormat = ImageFormat.Png;
+                        break;
+                    case "bmp":
+                        imageFormat = ImageFormat.Bmp;
+                        break;
+                    case "gif":
+                        imageFormat = ImageFormat.Gif;
+                        break;
+                    case "tiff":
+                        imageFormat = ImageFormat.Tiff;
+                        break;
+                    default:
+                        imageFormat = ImageFormat.Jpeg;
+                        break;
+                }
+                
+                img.Save(tmpStream, imageFormat);
+                tmpStream.Seek(0, SeekOrigin.Begin);
+                byte[] imgBytes = tmpStream.ToArray();
+
+                var user = db.Users.Find(userId);
+                user.LecturerInfo.Photo = imgBytes;
+                user.LecturerInfo.PhotoName = user.FirstName + " " + user.LastName + "-profilova fotka" + Path.GetExtension(photoPath);
+                db.SaveChanges();
             }
         }
     }

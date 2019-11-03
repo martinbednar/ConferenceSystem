@@ -32,6 +32,13 @@
                 <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: PhoneNumber}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTemplateColumn HeaderText="Profilový obrázek">
+                    <ContentTemplate>
+                        <a href="{value: "/profilephoto/" + LecturerInfo.Id}">
+                            <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
+                        </a>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
                 <bp:GridViewTemplateColumn>
                     <ContentTemplate>
                         <dot:RouteLink RouteName="Lecturer" Param-UserId="{value: Id}" Param-OrgId="{value: Organization.Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">

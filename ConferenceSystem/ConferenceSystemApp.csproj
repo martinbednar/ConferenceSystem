@@ -172,6 +172,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\Admin\ProfilePhotoPresenter.cs" />
     <Compile Include="ViewModels\Admin\AttachmentPresenter.cs" />
     <Compile Include="ViewModels\Admin\CarteringOverviewCarteringViewModel.cs" />
     <Compile Include="ViewModels\Admin\CarteringOverviewUsersViewModel.cs" />

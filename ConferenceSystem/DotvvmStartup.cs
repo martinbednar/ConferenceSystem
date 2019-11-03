@@ -50,6 +50,7 @@ namespace ConferencySystem
             config.RouteTable.Add("Lecturers", "lecturers", "Views/Admin/Lecturers.dothtml");
             config.RouteTable.Add("Lecturer", "lecturer/{UserId}", "Views/Admin/Lecturer.dothtml");
             config.RouteTable.Add("LecturerInfo", "lecturerinfo", "Views/Lecturer/LecturerInfo.dothtml");
+            config.RouteTable.Add("ProfilePhotoDownload", "profilephoto/{LecturerInfoId}", null, presenterFactory: () => new ProfilePhotoPresenter());
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    

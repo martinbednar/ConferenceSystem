@@ -11,8 +11,11 @@ namespace ConferencySystem.DAL.Data
 
         [StringLength(4000)]
         public string Introduce { get; set; }
-        
+
         public byte[] Photo { get; set; }
+
+        [StringLength(300)]
+        public string PhotoName { get; set; }
 
         [StringLength(4000)]
         public string PhotoLink { get; set; }

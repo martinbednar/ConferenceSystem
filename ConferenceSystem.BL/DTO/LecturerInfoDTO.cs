@@ -13,6 +13,8 @@ namespace ConferencySystem.BL.DTO
 
         public byte[] Photo { get; set; }
 
+        public string PhotoName { get; set; }
+
         [MaxLength(4000, ErrorMessage = "Byla překročena maximální délka odkazu na fotku - maximální délka pole \"Odkaz na fotku\" je 4000 znaků.")]
         public string PhotoLink { get; set; }
 

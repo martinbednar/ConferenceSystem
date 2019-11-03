@@ -136,6 +136,10 @@
     <Compile Include="Migrations\201911011045330_CreateLecurerInfoTableAgain.Designer.cs">
       <DependentUpon>201911011045330_CreateLecurerInfoTableAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911031851548_AddPhotoNameInLecturrInfo.cs" />
+    <Compile Include="Migrations\201911031851548_AddPhotoNameInLecturrInfo.Designer.cs">
+      <DependentUpon>201911031851548_AddPhotoNameInLecturrInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911011045330_CreateLecurerInfoTableAgain.resx">
       <DependentUpon>201911011045330_CreateLecurerInfoTableAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031851548_AddPhotoNameInLecturrInfo.resx">
+      <DependentUpon>201911031851548_AddPhotoNameInLecturrInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

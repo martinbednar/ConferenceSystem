@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -7,9 +8,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
+using DotVVM.BusinessPack.Controls;
 using DotVVM.Framework.Controls;
 using DotVVM.Framework.Hosting;
 using DotVVM.Framework.Runtime.Filters;
+using DotVVM.Framework.Storage;
 using DotVVM.Framework.ViewModel;
 
 namespace ConferencySystem.ViewModels.Lecturer
@@ -39,7 +42,14 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public bool SaveConfirmationDismissed { get; set; } = false;
 
-        public UploadedFilesCollection Files { get; set; }
+        public UploadData Upload { get; set; } = new UploadData();
+
+        private readonly IUploadedFileStorage fileStorage;
+
+        public LecturerInfoViewModel(IUploadedFileStorage storage)
+        {
+            this.fileStorage = storage;
+        }
 
         public override Task PreRender()
         {
@@ -63,7 +73,6 @@ namespace ConferencySystem.ViewModels.Lecturer
                     SelectedBirthDay = "";
                 }
             }
-            Files = new UploadedFilesCollection();
 
 
             RegisterActive = "";
@@ -96,6 +105,36 @@ namespace ConferencySystem.ViewModels.Lecturer
 
             SaveConfirmationDismissed = false;
             SaveConfirmationIsVisible = true;
+        }
+
+        public void ProcessFiles()
+        {
+            var folderPath = GetFolderdPath();
+            var lecturerInfoService = new LecturerInfoService();
+
+
+            // save all files to disk
+            foreach (var file in Upload.Files)
+            {
+                var filePath = Path.Combine(folderPath, file.FileName);
+                fileStorage.SaveAs(file.FileId, filePath);
+                lecturerInfoService.SavePhoto(filePath, CurrentUserId);
+                fileStorage.DeleteFile(file.FileId);
+            }
+            //SaveInfo();
+            //Context.RedirectToRoute("Default");
+        }
+
+        private string GetFolderdPath()
+        {
+            var folderPath = Path.Combine(Context.Configuration.ApplicationPhysicalPath, "temp");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            return folderPath;
         }
 
     }

@@ -46,7 +46,9 @@ namespace ConferencySystem.BL
                 cfg.CreateMap<Constant, ConstantDTO>();
                 cfg.CreateMap<AppUserRole, AppUserRoleDTO>();
                 cfg.CreateMap<AppUserRoleDTO, AppUserRole>();
-                cfg.CreateMap<LecturerInfoDTO, LecturerInfo>();
+                cfg.CreateMap<LecturerInfoDTO, LecturerInfo>()
+                .ForMember(dest => dest.Photo, opt => opt.Ignore())
+                .ForMember(dest => dest.PhotoName, opt => opt.Ignore());
                 cfg.CreateMap<LecturerInfo, LecturerInfoDTO>();
             });
         }

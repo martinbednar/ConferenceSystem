@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -167,6 +168,14 @@ namespace ConferencySystem.BL.Services
             using (var db = new DbContext())
             {
                 return Mapper.Map<Invoice, InvoiceDTO>(db.Invoice.SingleOrDefault(i => i.UserId == userId));
+            }
+        }
+
+        public LecturerInfoDTO GetProfilePhoto(int lecturerInfoId)
+        {
+            using (var db = new DbContext())
+            {
+                return Mapper.Map<LecturerInfo, LecturerInfoDTO>(db.LecturerInfo.SingleOrDefault(i => i.Id == lecturerInfoId));
             }
         }
     }

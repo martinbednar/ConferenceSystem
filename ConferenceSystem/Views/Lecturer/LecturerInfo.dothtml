@@ -1,7 +1,7 @@
 ﻿@viewModel ConferencySystem.ViewModels.Lecturer.LecturerInfoViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
-<dot:Content ContentPlaceHolderID="MainContent">
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
     <form class="form-register">
         <div class="form-register-with-email">
             <div class="form-white-background">
@@ -19,13 +19,16 @@
                             Pište o sobě prosím ve třetí osobě (Jan Novák je absolventem…). Příklady najdete na <a href="https://www.nakopnetesvojiskolu.cz/kopie-z-lektori/" target="_blank">webu konference</a>.
                         </span>
                     </label>
-                </div><br /><br /><br />
+                </div><br /><br /><br /><br />
 
+                <div class="form-row">
+                    <img src="/temp/CollaborationExcel1.png" style="max-width:80%; float:right; margin-right:20px; margin-bottom:10px;" />
+                </div><br />
 
                 <div class="form-row">
                     <label>
-                        <span>Fotografie</span>
-                        <dot:FileUpload UploadedFiles="{value: Files}" AllowMultipleFiles="false" AllowedFileTypes="image/*" MaxFileSize="100" SuccessMessageText="Fotka byla úspěšně nahrána." UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných fotografií: {0}" UploadErrorMessageText="Fotografii se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte fotografii například do svého OneDrive a sdílejte nám ji pomocí odkazu." />
+                        <span style="vertical-align: top;margin-top: 28px;">Fotografie</span>
+                        <bp:FileUpload Data="{value: Upload}" UploadCompleted="{command: ProcessFiles()}" AllowMultipleFiles="false" AllowedFileTypes=".png,.jpg,.jpeg,.bmp,.gif,.tiff,.PNG,.JPG,.JPEG,.BMP,.GIF,.TIFF,.Png,.Jpg,.Jpeg,.Gif,.Tiff" MaxFileSize="100" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných fotografií: {0}" DragFilesHereText="Klikněte sem pro výběr fotografie z počítače nebo fotografii přetáhněte nad toto pole." GenericErrorText="Fotografii se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte fotografii například do svého OneDrive a sdílejte nám ji pomocí odkazu." />
                     </label>
                 </div><br />
 
@@ -144,15 +147,15 @@
                 <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
                 <div class="form-row">
 
-                    <dot:UpdateProgress>
+                    <%--<dot:UpdateProgress>
                         <br />
                         <div class="loader"></div>
                         <br />
-                    </dot:UpdateProgress>
+                    </dot:UpdateProgress>--%>
 
                     <bs:Alert Type="Success" IsDismissible="true" Text="Údaje byly úspěšně uloženy." Visible="{value: SaveConfirmationIsVisible}" IsDismissed="{value: SaveConfirmationDismissed}"></bs:Alert>
 
-                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}"></dot:Button>
+                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}" Enabled="{value: !Upload.IsBusy}" ></dot:Button>
                     <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
                 </div>
             </div>
