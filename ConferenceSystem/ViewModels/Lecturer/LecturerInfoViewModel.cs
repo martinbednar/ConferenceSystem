@@ -65,6 +65,15 @@ namespace ConferencySystem.ViewModels.Lecturer
             }
             Files = new UploadedFilesCollection();
 
+
+            RegisterActive = "";
+            MainPageActive = "";
+            AdminActive = "";
+            CarteringActive = "";
+            WorkshopsActive = "";
+            LecturerInfoActive = "active";
+            LoginActive = "";
+
             return base.PreRender();
         }
 

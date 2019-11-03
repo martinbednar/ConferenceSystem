@@ -8,6 +8,14 @@ namespace ConferencySystem.ViewModels.User
         {
             Context.RedirectToRoute("RegisterForm");
 
+            RegisterActive = "active";
+            MainPageActive = "";
+            AdminActive = "";
+            CarteringActive = "";
+            WorkshopsActive = "";
+            LecturerInfoActive = "";
+            LoginActive = "";
+
             return base.PreRender();
         }
     }

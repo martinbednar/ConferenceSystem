@@ -360,8 +360,15 @@
 
 .form-register-with-email .form-row > label .form-row-note {
     font-weight: normal;
-    width: unset;
-    text-align: center;
-    padding-right: 0px;
+    width: 100%;
+    text-align: right;
+    padding-right: 20px;
     margin-top: 10px;
+}
+
+.form-register-with-email .form-title-row .form-title-row-note {
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
 }

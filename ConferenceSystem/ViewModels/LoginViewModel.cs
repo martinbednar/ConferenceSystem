@@ -23,6 +23,15 @@ namespace ConferencySystem.ViewModels
             {
                 Context.RedirectToRoute("Default");
             }
+            
+            RegisterActive = "";
+            MainPageActive = "";
+            AdminActive = "";
+            CarteringActive = "";
+            WorkshopsActive = "";
+            LecturerInfoActive = "";
+            LoginActive = "active";
+
             return base.PreRender();
         }
 

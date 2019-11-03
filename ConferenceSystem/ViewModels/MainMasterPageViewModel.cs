@@ -11,6 +11,9 @@ namespace ConferencySystem.ViewModels
         public string MainPageActive { get; set; }
         public string AdminActive { get; set; }
         public string CarteringActive { get; set; }
+        public string WorkshopsActive { get; set; }
+        public string LecturerInfoActive { get; set; }
+        public string LoginActive { get; set; }
 
         public string CurrentUserName {
             get { return Context.GetOwinContext().Authentication.User.Claims.Where(c => c.Type == ClaimTypes.GivenName)
@@ -30,6 +33,17 @@ namespace ConferencySystem.ViewModels
         public bool IsSuperAdmin
         {
             get { return Context.GetOwinContext().Authentication.User.IsInRole("super"); }
+        }
+
+        public bool IsParticipant
+        {
+            get { return Context.GetOwinContext().Authentication.User.IsInRole("user"); }
+        }
+
+
+        public bool IsLecturer
+        {
+            get { return Context.GetOwinContext().Authentication.User.IsInRole("lecturer"); }
         }
 
         public void SignOut()

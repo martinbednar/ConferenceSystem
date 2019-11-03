@@ -12,13 +12,14 @@ namespace ConferencySystem.BL.Services
 {
     public class ResetPasswordService
     {
-        public void ResetPassword(int userId, string token, string newPassword)
+        public IdentityResult ResetPassword(int userId, string token, string newPassword)
         {
             AppUserManager userManager = new AppUserManager(new DbContext());
+            userManager.UserValidator = new UserValidator<AppUser, int>(userManager) { AllowOnlyAlphanumericUserNames = false };
             var provider = new DpapiDataProtectionProvider("KonferencniSystem");
             //userManager.UserTokenProvider = new DataProtectorTokenProvider<AppUser, int>(provider.Create("EmailReset"));
             userManager.UserTokenProvider = new EmailTokenProvider<AppUser, int>();
-            userManager.ResetPassword(userId, token, newPassword);
+            return userManager.ResetPassword(userId, token, newPassword);
         }
 
         public void SendResetPasswordEmail(AppUserDTO dataUser)

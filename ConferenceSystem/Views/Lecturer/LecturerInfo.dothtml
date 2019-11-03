@@ -12,8 +12,8 @@
 
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: top; margin-top: 80px;">Medailonek</span>
-                        <dot:TextBox style="font-weight:normal;" rows="10" Text="{value: DataUser.LecturerInfo.Introduce}" Type="MultiLine" />
+                        <span style="vertical-align: top; margin-top: 120px; width: 100px;">Medailonek</span>
+                        <dot:TextBox style="font-weight:normal; width: 375px;" rows="15" Text="{value: DataUser.LecturerInfo.Introduce}" Type="MultiLine" />
                         <span class="form-row-note">
                             Představte se účastníkům - <b>maximálně 250 slov</b>. Prodejte vše, co umíte a co jste dokázali. Text bude zveřejněn u Vašeho profilu na webu konference.<br />
                             Pište o sobě prosím ve třetí osobě (Jan Novák je absolventem…). Příklady najdete na <a href="https://www.nakopnetesvojiskolu.cz/kopie-z-lektori/" target="_blank">webu konference</a>.
@@ -27,6 +27,17 @@
                         <span>Fotografie</span>
                         <dot:FileUpload UploadedFiles="{value: Files}" AllowMultipleFiles="false" AllowedFileTypes="image/*" MaxFileSize="100" SuccessMessageText="Fotka byla úspěšně nahrána." UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných fotografií: {0}" UploadErrorMessageText="Fotografii se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte fotografii například do svého OneDrive a sdílejte nám ji pomocí odkazu." />
                     </label>
+                </div><br />
+
+
+                <div class="form-row">
+                    <label>
+                        <span>Odkaz na fotografii</span>
+                        <dot:TextBox Text="{value: DataUser.LecturerInfo.PhotoLink}" />
+                        <span class="form-row-note">
+                            <b>Nahrajte Vaši fotografii nebo vložte odkaz na její stažení.</b>. Fotografii zveřejníme u Vašeho profilu na webu konference. Prosíme o kvalitní fotografii s dobrým rozlišením, na které je dobře vidět Váš obličej.
+                        </span>
+                    </label>
                 </div>
 
             </div>
@@ -38,28 +49,35 @@
             <div class="form-white-background">
                 <div class="form-title-row">
                     <h1>Údaje pro platbu za Vaši účast</h1>
-                </div>
+                    <div class="form-title-row-note">
+                        Tuto sekci vyplňte, pokud s námi budete uzavírat smlouvu o dílo.
+                    </div>
+                </div><br />
 
-                <div class="form-row">
-                    <label>
-                        <span>Ulice a číslo popisné</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
-                    </label>
-                </div>
+                <div style="background:#E7E7E7;padding-top:20px;padding-bottom:15px;">
+                    <h3 style="margin-top:0px;margin-bottom:20px;">Adresa bydliště</h3>
+                    <div class="form-row">
+                        <label>
+                            <span>Ulice a číslo popisné</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
+                        </label>
+                    </div>
 
-                <div class="form-row">
-                    <label>
-                        <span>Obec</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
-                    </label>
-                </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Obec</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
+                        </label>
+                    </div>
 
-                <div class="form-row">
-                    <label>
-                        <span>PSČ</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
-                    </label>
-                </div>
+                    <div class="form-row">
+                        <label>
+                            <span>PSČ</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
+                        </label>
+                    </div>
+                </div><br /><br />
+
 
                 <div class="form-row">
                     <label>
@@ -84,11 +102,14 @@
                     <label>
                         <span>IČ</span>
                         <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
+                        <span class="form-row-note">
+                            Vyplňte, pokud máte IČ. Jinak nechte prázdné.
+                        </span>
                     </label>
                 </div>
             </div>
-        </div>
-    </form>
+                </div>
+</form>
 
     <form class="form-register">
         <div class="form-register-with-email">
@@ -108,6 +129,9 @@
                     <label>
                         <span>Spolubydlící</span>
                         <dot:TextBox Text="{value: DataUser.LecturerInfo.RoomMate}" />
+                        <span class="form-row-note">
+                            Pokud chcete bydlet s někým z kolegů společně na pokoji, napište prosím jeho jméno.
+                        </span>
                     </label>
                 </div>
             </div>

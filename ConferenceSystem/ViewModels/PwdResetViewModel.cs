@@ -27,8 +27,15 @@ namespace ConferencySystem.ViewModels
                 ErrorMessage = string.Empty;
                 ErrorMessage = null;
                 ResetPasswordService resetPasswordService = new ResetPasswordService();
-                resetPasswordService.ResetPassword(UserId,Token,NewPassword);
-                SuccessMessage = "Heslo bylo úspěšně obnoveno. Nyní se můžete přihlásit s použitím nového hesla.";
+                var res = resetPasswordService.ResetPassword(UserId, Token, NewPassword);
+                if (res.Succeeded )
+                {
+                    SuccessMessage = "Heslo bylo úspěšně obnoveno. Nyní se můžete přihlásit s použitím nového hesla.";
+                }
+                else
+                {
+                    ErrorMessage = "Délka hesla musí být minimálně 6 znaků.";
+                }
             }
         }
     }

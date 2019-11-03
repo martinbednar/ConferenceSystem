@@ -56,7 +56,8 @@
                         <li class="{value: MainPageActive}"><dot:RouteLink Text="Hlavní stránka" RouteName="Default"></dot:RouteLink></li>
                         <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="RegisterForm"></dot:RouteLink></li>
                         <li class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
-                        <li <%--Visible="{value: (!IsAdmin && !IsSuperAdmin)}"--%> class="{value: CarteringActive}"><dot:RouteLink Text="Workshopy" RouteName="WorkshopSelect"></dot:RouteLink></li>
+                        <li Visible="{value: IsParticipant}" class="{value: WorkshopsActive}"><dot:RouteLink Text="Workshopy" RouteName="WorkshopSelect"></dot:RouteLink></li>
+                        <li Visible="{value: IsLecturer}" class="{value: LecturerInfoActive}"><dot:RouteLink Text="Informace o mně" RouteName="LecturerInfo"></dot:RouteLink></li>
                         <%-- <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li> --%>
                         <%-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -99,7 +100,7 @@
                             </ul>
                         </li>
                         <li class="dropdown" Visible="{value: !IsAuthenticated}">
-                            <dot:RouteLink Text="Přihlásit se" RouteName="Login">
+                            <dot:RouteLink class="{value: LoginActive}" Text="Přihlásit se" RouteName="Login">
                         </li>
                         <%--<li>
                             <a href="https://www.skolnilogin.cz/" target="_blank" style="padding:unset"><img src="~/Images/skolnilogin-logo.png" style="float:right; margin-top:6px;" /></a>

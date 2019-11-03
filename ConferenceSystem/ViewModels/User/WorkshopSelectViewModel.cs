@@ -58,8 +58,16 @@ namespace ConferencySystem.ViewModels.User
                     }
                     anyWorkshopRegistered = false;
                 }
-            }              
-            //}
+            }
+
+            RegisterActive = "";
+            MainPageActive = "";
+            AdminActive = "";
+            CarteringActive = "";
+            WorkshopsActive = "active";
+            LecturerInfoActive = "";
+            LoginActive = "";
+
             return base.PreRender();
         }
 
