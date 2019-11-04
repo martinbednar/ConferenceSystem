@@ -34,7 +34,7 @@
                     <div class="form-checkbox" Visible="{value: DataUser.WantCert}">
                         <label class="form-row">
                             <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
-                            <a href="#">Prohlášení o ochraně osobních údajů</a>
+                            <dot:RouteLink RouteName="PrivacyStatement" target="_blank">Prohlášení o ochraně osobních údajů</dot:RouteLink>
                         </label>
                     </div><br Visible="{value: DataUser.WantCert}" />
                     <div class="form-row" Visible="{value: DataUser.WantCert}">
@@ -132,7 +132,7 @@
                 </div>
                 <div class="form-row">
                     <label>
-                        <span>IČ<span style="display:inline; color:red; padding-right:0px; font-size:smaller"> +</span></span>
+                        <span>IČ</span>
                         <dot:TextBox Text="{value: IN}" />
                     </label>
                 </div>

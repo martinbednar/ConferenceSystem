@@ -195,6 +195,7 @@
     <Compile Include="ViewModels\Admin\UserViewModel.cs" />
     <Compile Include="ViewModels\PwdForgottenViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\RegisterFormLecturerViewModel.cs" />
+    <Compile Include="ViewModels\User\PrivacyStatementViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterFormViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterViewModel.cs" />
     <Compile Include="ViewModels\User\RegistrationCompleteViewModel.cs" />
@@ -291,6 +292,7 @@
     <Content Include="Views\Admin\Lecturers.dothtml" />
     <Content Include="Views\Admin\Lecturer.dothtml" />
     <Content Include="Views\Lecturer\LecturerInfo.dothtml" />
+    <Content Include="Views\User\PrivacyStatement.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

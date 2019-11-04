@@ -1,0 +1,25 @@
+﻿@viewModel ConferencySystem.ViewModels.User.PrivacyStatementViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div style="margin:60px;font-style:italic;">
+        <p>Veškeré úkony týkající se OÚ jsou v souladu se zákonem o GDPR. Zámecké návrší zpracovává osobní údaje ve veřejném zájmu a v nezbytném rozsahu pro plnění povinností vyplývajících ze zákona a dalších obecně závazných právních předpisů. OÚ jsou předávány pouze zákonem stanoveným osobám včetně předávání OÚ do jiných států.</p>
+        <br />
+        <p>OÚ (datum narození, místo narození, tituly) budou zpracovávány pouze po nezbytně nutnou dobu za účelem vystavení certifikátů, které zajišťuje NIDV www.nidv.cz.</p>
+        <br />
+        <p>Každý má možnost podat na způsob zpracování OÚ stížnost u dozorového úřadu a má právo požadovat od organizace přístup k osobním údajům, jejich opravu, výmaz, přenos OÚ, omezení zpracování a má právo vnést námitku proti zpracování OÚ.</p>
+        <br />
+        <p>
+            Správce OÚ:<br />
+            Zámecké návrší<br />
+            Sídlo: Jiráskova 133, 570 01 Litomyšl<br />
+            IČ: 71294058<br />
+            DS: jts5rwnj<br />
+            telefon: 777 100 897<br />
+            e-mail: info@zamecke-navrsi.cz
+        </p>
+    </div>
+
+</dot:Content>
+
