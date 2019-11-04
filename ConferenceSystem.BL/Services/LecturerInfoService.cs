@@ -25,7 +25,7 @@ namespace ConferencySystem.BL.Services
 {
     public class LecturerInfoService
     {
-        public LecturerInfoDTO GetLecturerInfo (int userId)
+        public LecturerInfoDTO GetLecturerInfo(int userId)
         {
             using (var db = new DbContext())
             {
@@ -34,17 +34,17 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public int UpdateLecturerInfo (AppUserDTO userData)
+        public int UpdateLecturerInfo(AppUserDTO userData)
         {
             AppUser user = Mapper.Map<AppUserDTO, AppUser>(userData);
 
             using (AppUserManager userManager = new AppUserManager(new DbContext()))
             {
                 userManager.UserValidator =
-                    new UserValidator<AppUser, int>(userManager) {AllowOnlyAlphanumericUserNames = false};
-                
+                    new UserValidator<AppUser, int>(userManager) { AllowOnlyAlphanumericUserNames = false };
+
                 userManager.Create(user, userData.PasswordHash);
-                
+
                 AppUser currentUser = userManager.FindByName(user.UserName);
 
                 userManager.AddToRole(currentUser.Id, "lecturer");
@@ -53,7 +53,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public void SavePhoto (string photoPath, int userId)
+        public void SavePhoto(string photoPath, int userId)
         {
             using (var db = new DbContext())
             {
@@ -63,32 +63,69 @@ namespace ConferencySystem.BL.Services
                 ImageFormat imageFormat = ImageFormat.Jpeg;
                 switch (Path.GetExtension(photoPath).ToLower())
                 {
-                    case "png":
+                    case ".png":
                         imageFormat = ImageFormat.Png;
                         break;
-                    case "bmp":
+                    case ".bmp":
                         imageFormat = ImageFormat.Bmp;
                         break;
-                    case "gif":
+                    case ".gif":
                         imageFormat = ImageFormat.Gif;
                         break;
-                    case "tiff":
+                    case ".tiff":
                         imageFormat = ImageFormat.Tiff;
                         break;
                     default:
                         imageFormat = ImageFormat.Jpeg;
                         break;
                 }
-                
+
                 img.Save(tmpStream, imageFormat);
                 tmpStream.Seek(0, SeekOrigin.Begin);
                 byte[] imgBytes = tmpStream.ToArray();
 
                 var user = db.Users.Find(userId);
                 user.LecturerInfo.Photo = imgBytes;
-                user.LecturerInfo.PhotoName = user.FirstName + " " + user.LastName + "-profilova fotka" + Path.GetExtension(photoPath);
+                user.LecturerInfo.PhotoName = user.FirstName + " " + user.LastName + "-profilova fotka" + Path.GetExtension(photoPath).ToLower();
                 db.SaveChanges();
             }
+        }
+
+        public void LoadPhoto(byte[] imgBytes, string photoPath)
+        {
+            MemoryStream tmpStream = new MemoryStream(imgBytes);
+            Image img = Image.FromStream(tmpStream);
+
+            ImageFormat imageFormat = ImageFormat.Jpeg;
+            switch (Path.GetExtension(photoPath).ToLower())
+            {
+                case ".png":
+                    imageFormat = ImageFormat.Png;
+                    break;
+                case ".bmp":
+                    imageFormat = ImageFormat.Bmp;
+                    break;
+                case ".gif":
+                    imageFormat = ImageFormat.Gif;
+                    break;
+                case ".tiff":
+                    imageFormat = ImageFormat.Tiff;
+                    break;
+                default:
+                    imageFormat = ImageFormat.Jpeg;
+                    break;
+            }
+            //photoPath = System.IO.Path.GetTempPath();
+
+            //img.Save(System.IO.Path.GetTempPath() + "\\myImage.png", ImageFormat.Png);
+            //img.Save(photoPath, imageFormat);
+            //img.Save(System.IO.Path.GetTempPath() + photoName, imageFormat);
+            //img.Save(tmpStream, imageFormat);
+            //using (var fileStream = File.Create(System.IO.Path.GetTempPath() + photoName))
+            //{
+            //    tmpStream.CopyTo(fileStream);
+            //    //CopyStream(tmpStream, fileStream);
+            //}
         }
     }
 }

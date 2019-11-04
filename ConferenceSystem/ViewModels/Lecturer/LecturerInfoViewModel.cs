@@ -46,6 +46,10 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         private readonly IUploadedFileStorage fileStorage;
 
+        public bool ImageUploaded { get; set; }
+
+        public string ImageLocation { get; set; } = System.IO.Path.GetTempPath();
+
         public LecturerInfoViewModel(IUploadedFileStorage storage)
         {
             this.fileStorage = storage;
@@ -72,6 +76,11 @@ namespace ConferencySystem.ViewModels.Lecturer
                     SelectedBirthMonth = "";
                     SelectedBirthDay = "";
                 }
+
+
+                var lecturerInfoService = new LecturerInfoService();
+                lecturerInfoService.LoadPhoto(DataUser.LecturerInfo.Photo, ".\\temp\\"+DataUser.LecturerInfo.PhotoName);
+                ImageUploaded = DataUser.LecturerInfo.Photo != null;
             }
 
 
@@ -121,8 +130,8 @@ namespace ConferencySystem.ViewModels.Lecturer
                 lecturerInfoService.SavePhoto(filePath, CurrentUserId);
                 fileStorage.DeleteFile(file.FileId);
             }
-            //SaveInfo();
-            //Context.RedirectToRoute("Default");
+            SaveInfo();
+            Context.RedirectToRoute("LecturerInfo");
         }
 
         private string GetFolderdPath()

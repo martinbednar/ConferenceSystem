@@ -21,8 +21,8 @@
                     </label>
                 </div><br /><br /><br /><br />
 
-                <div class="form-row">
-                    <img src="/temp/CollaborationExcel1.png" style="max-width:80%; float:right; margin-right:20px; margin-bottom:10px;" />
+                <div class="form-row" style="display:none;" >
+                    <img src="C:\Users\Martin\AppData\Local\Temp\myImage.png" Visible="{value: ImageUploaded}" style="max-width:80%; float:right; margin-right:20px; margin-bottom:10px;" />
                 </div><br />
 
                 <div class="form-row">
