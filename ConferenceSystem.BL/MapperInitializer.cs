@@ -37,7 +37,8 @@ namespace ConferencySystem.BL
                     .ForMember(dest => dest.Logins, opt => opt.Ignore())
                     .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
                     .ForMember(dest => dest.Invoice, opt => opt.Ignore())
-                    .ForMember(dest => dest.LecturerInfo, opt => opt.MapFrom(src => src.LecturerInfo));
+                    .ForMember(dest => dest.LecturerInfo, opt => opt.MapFrom(src => src.LecturerInfo))
+                    .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.Organization));
                 cfg.CreateMap<InvoiceDTO, Invoice>();
                 cfg.CreateMap<Invoice, InvoiceDTO>();
                 cfg.CreateMap<TextDTO, Text>();

@@ -9,7 +9,19 @@ namespace ConferencySystem.ViewModels.User
 {
     public class PrivacyStatementViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
     {
-        
+        public override Task PreRender()
+        {
+            RegisterActive = "";
+            MainPageActive = "";
+            AdminActive = "";
+            CarteringActive = "";
+            WorkshopsActive = "";
+            LecturerInfoActive = "";
+            LoginActive = "";
+            ProfileActive = "";
+
+            return base.PreRender();
+        }
     }
 }
 

@@ -202,6 +202,7 @@
     <Compile Include="ViewModels\Admin\WorkshopOverviewUsersViewModel.cs" />
     <Compile Include="ViewModels\Admin\WorkshopOverviewWorkshopsViewModel.cs" />
     <Compile Include="ViewModels\Admin\WorkshopUserViewModel.cs" />
+    <Compile Include="ViewModels\User\ProfileViewModel.cs" />
     <Compile Include="ViewModels\User\WorkshopSelectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +294,7 @@
     <Content Include="Views\Admin\Lecturer.dothtml" />
     <Content Include="Views\Lecturer\LecturerInfo.dothtml" />
     <Content Include="Views\User\PrivacyStatement.dothtml" />
+    <Content Include="Views\User\Profile.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

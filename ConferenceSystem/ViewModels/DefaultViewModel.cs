@@ -8,6 +8,8 @@ namespace ConferencySystem.ViewModels
     {
         public override Task PreRender()
         {
+            if (IsParticipant) Context.RedirectToRoute("Profile");
+
             RegisterActive = "";
             MainPageActive = "active";
             AdminActive = "";
@@ -15,6 +17,7 @@ namespace ConferencySystem.ViewModels
             WorkshopsActive = "";
             LecturerInfoActive = "";
             LoginActive = "";
+            ProfileActive = "";
 
             return base.PreRender();
         }

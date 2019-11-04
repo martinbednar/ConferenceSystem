@@ -2,6 +2,7 @@ using System.Linq;
 using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Hosting;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ConferencySystem.ViewModels
 {
@@ -14,6 +15,7 @@ namespace ConferencySystem.ViewModels
         public string WorkshopsActive { get; set; }
         public string LecturerInfoActive { get; set; }
         public string LoginActive { get; set; }
+        public string ProfileActive { get; set; }
 
         public string CurrentUserName {
             get { return Context.GetOwinContext().Authentication.User.Claims.Where(c => c.Type == ClaimTypes.GivenName)

@@ -148,6 +148,7 @@
     <Compile Include="DTO\WorkshopDTO.cs" />
     <Compile Include="DTO\WorkshopsBlockDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ProfileService.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\CarteringService.cs" />
     <Compile Include="Services\ConstantService.cs" />

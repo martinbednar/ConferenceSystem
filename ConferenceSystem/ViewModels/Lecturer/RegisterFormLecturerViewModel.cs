@@ -49,6 +49,11 @@ namespace ConferencySystem.ViewModels.User
             RegisterActive = "active";
             MainPageActive = "";
             AdminActive = "";
+            CarteringActive = "";
+            WorkshopsActive = "";
+            LecturerInfoActive = "";
+            LoginActive = "";
+            ProfileActive = "";
 
             return base.PreRender();
         }

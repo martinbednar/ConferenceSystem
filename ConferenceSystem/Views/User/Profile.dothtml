@@ -1,0 +1,226 @@
+﻿@viewModel ConferencySystem.ViewModels.User.ProfileViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Údaje o účastníkovi</h1>
+                </div>
+                <div class="form-checkbox">
+                    <label class="form-checkbox">
+                        <dot:CheckBox Text="NÁHRADNÍK" Checked="{value: DataUser.IsAlternate}" Visible="{value: DataUser.IsAlternate}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Id</span>
+                        <dot:TextBox Text="{value: DataUser.Id}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Čas registrace</span>
+                        <dot:TextBox Text="{value: DataUser.RegisterTimestamp}" ValueType="DateTime" FormatString="g" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Jméno<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataUser.FirstName}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Příjmení<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataUser.LastName}" Enabled="false" />
+                    </label>
+                </div><br />
+
+                <div style="background:lightblue;padding-top:20px;padding-bottom:15px;">
+                    <div class="form-checkbox">
+                        <label class="form-checkbox">
+                            <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
+                            <dot:CheckBox Text="Požaduji vystavení certifikátu" Checked="{value: DataUser.WantCert}" />
+                        </label>
+                    </div><br Visible="{value: DataUser.WantCert}" />
+                    <div class="form-checkbox" Visible="{value: DataUser.WantCert}">
+                        <label class="form-row">
+                            <%--<span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>--%>
+                            <dot:RouteLink RouteName="PrivacyStatement" target="_blank">Prohlášení o ochraně osobních údajů</dot:RouteLink>
+                        </label>
+                    </div><br Visible="{value: DataUser.WantCert}" />
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Titul před jménem</span>
+                            <dot:TextBox Text="{value: DataUser.TitleBefore}" />
+                        </label>
+                    </div>
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Titul za jménem</span>
+                            <dot:TextBox Text="{value: DataUser.TitleAfter}" />
+                        </label>
+                    </div>
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Datum narození<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
+                        </label>
+                    </div>
+                    <div class="form-row" Visible="{value: DataUser.WantCert}">
+                        <label>
+                            <span>Místo narození<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                            <dot:TextBox Text="{value: DataUser.BirthPlace}" />
+                        </label>
+                    </div>
+                </div><br /><br />
+
+                <div class="form-row">
+                    <label>
+                        <span>Email<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataUser.Email}" Type="Email" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Telefonní číslo<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataUser.PhoneNumber}" Type="Telephone" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="radio-button">
+                        <span style="text-align: right; margin-left:40px">Pracovní pozice<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <div style="width:290px;margin:auto">
+                            <dot:RadioButton Text="Ředitel" CheckedItem="{value: DataUser.Position}" CheckedValue="Ředitel" Enabled="false" /><br />
+                            <dot:RadioButton Text="Učitel" CheckedItem="{value: DataUser.Position}" CheckedValue="Učitel" Enabled="false" /><br />
+                            <dot:RadioButton Text="Student" CheckedItem="{value: DataUser.Position}" CheckedValue="Student" Enabled="false" /><br />
+                            <dot:RadioButton Text="Rodič" CheckedItem="{value: DataUser.Position}" CheckedValue="Rodič" Enabled="false" /><br />
+                            <dot:RadioButton Text="Jiné" CheckedItem="{value: DataUser.Position}" CheckedValue="{value: PositionOther}" Enabled="false" /><br />
+                            <dot:TextBox Text="{value: PositionOther}" style="float:left" Enabled="false" />
+                        </div>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: top; margin-top: 12px;">Kde jste se o festivalu dozvěděli?</span>
+                        <dot:TextBox Text="{value: DataUser.InfoFrom}" Type="MultiLine" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: top; margin-top: 12px;">Pro co si na festival jedete?</span>
+                        <dot:TextBox Text="{value: DataUser.WantGet}" Type="MultiLine" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: top; margin-top: 22px;">Poznámka uživatele</span>
+                        <dot:TextBox Text="{value: DataUser.NoteUser}" Type="MultiLine" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Variabilní číslo</span>
+                        <dot:TextBox Text="{value: DataUser.VariableSymbol}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Číslo zálohové faktury</span>
+                        <dot:TextBox Text="{value: DataUser.InvoiceNumber}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Zálohová faktura</span>
+                        <a href="{value: "/attachment/" + DataUser.Id}" >{{value: DataInvoice.FileName}}</a>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Zaplaceno</span>
+                        <dot:TextBox Text="{value: DataUser.PaidDate}" FormatString="d.M.yyyy" Mode="Date" Enabled="false" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Údaje o organizaci</h1>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>IČ</span>
+                        <dot:TextBox Text="{value: DataOrganization.IN}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>DIČ</span>
+                        <dot:TextBox Text="{value: DataOrganization.VATID}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: middle;">Název organizace /<br />jméno<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataOrganization.Name}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: middle;">Ulice a číslo popisné<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataOrganization.BillStreet}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>Obec<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataOrganization.Town}" Enabled="false" />
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span>PSČ<span style="display:inline; color:red; padding-right:0px"> *</span></span>
+                        <dot:TextBox Text="{value: DataOrganization.PostalCode}" Enabled="false" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div style="width:660px; margin:auto;">
+            <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
+                <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
+                <div class="form-row">
+                    <label class="form-checkbox">
+                        <span style="display:inline; color:red; padding-right:0px; margin-bottom: -20px; float:left;"> *</span>
+                        <dot:CheckBox Enabled="false" Text="Souhlasím se zpracováním osobních údajů a s pořizováním audiovizuálního záznamu se svojí osobou za účelem propagace této akce" Checked="{value: DataUser.Agreement}" />
+                    </label>
+                </div>
+                <div class="form-row">
+
+                    <dot:UpdateProgress>
+                        <br />
+                        <div class="loader"></div>
+                        <br />
+                    </dot:UpdateProgress>
+
+                    <bs:Alert Type="Success" IsDismissible="true" Text="Údaje byly úspěšně uloženy." Visible="{value: SaveConfirmationIsVisible}" IsDismissed="{value: SaveConfirmationDismissed}"></bs:Alert>
+
+                    <dot:Button class="btn btn-primary" Text="Uložit změny" Click="{command: SaveUser()}"></dot:Button>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
+                </div>
+            </div>
+        </div>
+    </form>
+</dot:Content>
