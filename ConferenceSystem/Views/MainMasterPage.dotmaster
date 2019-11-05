@@ -81,6 +81,7 @@
                             <ul class="dropdown-menu">
                                 <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Přednášející a lektoři" RouteName="Lecturers"></dot:RouteLink></li>
+                                <li><dot:RouteLink Text="Vystavovatelé, hosté a tým" RouteName="Visitors"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Stravování" RouteName="CarteringOverviewCartering"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Workshopy" RouteName="WorkshopOverviewWorkshop"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Nastavení emailů" RouteName="EmailRegister"></dot:RouteLink></li>

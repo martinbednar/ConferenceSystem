@@ -47,7 +47,11 @@
                     <label style="display: flex;">
                         <span>Fotografie</span>
                         <a href="{value: "/profilephoto/" + DataUser.LecturerInfo.Id}">{{value: DataUser.LecturerInfo.PhotoName}}</a>
-                        <dot:Button Click="{command: DeletePhoto()}" Text="Smazat" class="btn btn-danger active" style="background-color: #C9302C;border: none;width: 80px;color: white;padding: 6px 12px;margin-left: 10px;float: right;" />
+                        <dot:Button Click="{command: DeletePhoto()}" Text="Smazat" class="btn btn-danger active" style="background-color: #C9302C;border: none;width: 80px;color: white;padding: 6px 12px;margin-left: 10px;float: right;">
+                            <PostBack.Handlers>
+                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat svoji fotografii?" />
+                            </PostBack.Handlers>
+                        </dot:Button>
                     </label>
                 </div>
 

@@ -1,0 +1,54 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.VisitorsViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+  
+    <div Visible="{value: IsSuperAdmin || IsAdmin}">
+        <div class="btn-group" role="group" style="margin-left:20px;visibility: hidden;">
+
+            <dot:Button type="button" class="btn btn-default" Text="Přehled"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Text="Fakturační údaje"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Text="Všechny sloupce"></dot:Button>
+        </div>
+        <p style="float:right;font-size:larger;margin-top:8px;margin-right:20px;">Počet zaregistrovaných vystavovatelů, hostů a členů týmu: <b>{{value: TotalUsersCount}}</b></p>
+        <br /><br />
+        <dot:UpdateProgress>
+            <br />
+            <div class="loader"></div>
+            <br />
+        </dot:UpdateProgress>
+        <dot:Button type="button" class="btn btn-default" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}" style="margin-right:20px;float:right;"></dot:Button>
+
+        <br /><br />
+
+        <bp:GridView ID="users" DataSource="{value: Users}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" <%--InlineEditing="true"--%>>
+            <Columns>
+                <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" <%--IsEditable="false"--%> />
+                <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: Email}" />
+                <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: InfoFrom}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" />
+                <bp:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <dot:RouteLink RouteName="Visitor" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </dot:RouteLink>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+                <bp:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <dot:Button ButtonTagName="button" Click="{command: _parent.DeleteUser(Id)}" Enabled="{value: _parent.IsSuperAdmin}">
+                            <PostBack.Handlers>
+                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat zaregistrovaného uživatele?" />
+                            </PostBack.Handlers>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </dot:Button>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+            </Columns>
+        </bp:GridView>
+    </div>
+</dot:Content>

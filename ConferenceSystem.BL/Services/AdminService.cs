@@ -33,6 +33,24 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public void GetVisitors(GridViewDataSet<AppUserDTO> usersDataSet)
+        {
+            using (var db = new DbContext())
+            {
+                var users = db.Users.Where(user => user.Roles.All(role => role.RoleId == 5)).ProjectTo<AppUserDTO>().ToList().OrderBy(u => u.RegisterTimestamp);
+
+                int sequencenumber = 1;
+
+                foreach (var userDTO in users)
+                {
+                    userDTO.SequenceNumber = sequencenumber;
+                    sequencenumber++;
+                }
+
+                usersDataSet.LoadFromQueryable(users.AsQueryable());
+            }
+        }
+
         public void GetLecturers(GridViewDataSet<AppUserDTO> usersDataSet)
         {
             using (var db = new DbContext())

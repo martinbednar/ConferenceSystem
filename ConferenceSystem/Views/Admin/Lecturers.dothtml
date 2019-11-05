@@ -50,7 +50,7 @@
                     <ContentTemplate>
                         <dot:Button ButtonTagName="button" Click="{command: _parent.DeleteUser(Id)}" Enabled="{value: _parent.IsSuperAdmin}">
                             <PostBack.Handlers>
-                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat zaregistrovaného účastníka?" />
+                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat zaregistrovaného lektora?" />
                             </PostBack.Handlers>
                             <span class="glyphicon glyphicon-remove"></span>
                         </dot:Button>

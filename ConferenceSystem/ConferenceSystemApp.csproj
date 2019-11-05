@@ -172,6 +172,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\Admin\VisitorViewModel.cs" />
+    <Compile Include="ViewModels\Admin\VisitorsViewModel.cs" />
     <Compile Include="ViewModels\Admin\ProfilePhotoPresenter.cs" />
     <Compile Include="ViewModels\Admin\AttachmentPresenter.cs" />
     <Compile Include="ViewModels\Admin\CarteringOverviewCarteringViewModel.cs" />
@@ -297,6 +299,8 @@
     <Content Include="Views\User\PrivacyStatement.dothtml" />
     <Content Include="Views\User\Profile.dothtml" />
     <Content Include="Views\Visitor\RegisterFormVisitor.dothtml" />
+    <Content Include="Views\Admin\Visitors.dothtml" />
+    <Content Include="Views\Admin\Visitor.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
