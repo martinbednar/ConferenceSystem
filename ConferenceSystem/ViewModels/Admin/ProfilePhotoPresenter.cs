@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using ConferencySystem.BL.Services;
@@ -14,13 +15,19 @@ namespace ConferencySystem.ViewModels.Admin
         {
             var lecturerInfoId = Convert.ToInt32(context.Parameters["LecturerInfoId"]);
 
+            int currentUserId = Int32.Parse(context.GetOwinContext().Authentication.User.Claims.Where(c => c.Type == ClaimTypes.Sid)
+                   .Select(c => c.Value).SingleOrDefault());
+
             var adminService = new AdminService();
+            var user = adminService.GetUser(currentUserId);
 
-            var profilePhoto = adminService.GetProfilePhoto(lecturerInfoId);
-
-            context.GetOwinContext().Response.Headers["Content-Disposition"] = "attachment; filename=test.png";
+            if ((user.LecturerInfo.Id != lecturerInfoId) && user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3)) context.RedirectToRoute("Default");
             
-            await context.GetOwinContext().Response.WriteAsync(profilePhoto.Photo);
+            var lecturerInfo = adminService.GetLecturerInfo(lecturerInfoId);
+
+            context.GetOwinContext().Response.Headers["Content-Disposition"] = "attachment; filename=" + lecturerInfo.PhotoName;
+            
+            await context.GetOwinContext().Response.WriteAsync(lecturerInfo.Photo);
         }
     }
 }

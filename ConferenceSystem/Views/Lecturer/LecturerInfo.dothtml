@@ -21,25 +21,33 @@
                     </label>
                 </div><br /><br /><br /><br />
 
-                <div class="form-row" style="display:none;" >
+                <div class="form-row" style="display:none;">
                     <img src="C:\Users\Martin\AppData\Local\Temp\myImage.png" Visible="{value: ImageUploaded}" style="max-width:80%; float:right; margin-right:20px; margin-bottom:10px;" />
                 </div><br />
 
-                <div class="form-row">
+                <div class="form-row" Visible="{value: !ImageUploaded}">
                     <label>
                         <span style="vertical-align: top;margin-top: 28px;">Fotografie</span>
                         <bp:FileUpload Data="{value: Upload}" UploadCompleted="{command: ProcessFiles()}" AllowMultipleFiles="false" AllowedFileTypes=".png,.jpg,.jpeg,.bmp,.gif,.tiff,.PNG,.JPG,.JPEG,.BMP,.GIF,.TIFF,.Png,.Jpg,.Jpeg,.Gif,.Tiff" MaxFileSize="100" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných fotografií: {0}" DragFilesHereText="Klikněte sem pro výběr fotografie z počítače nebo fotografii přetáhněte nad toto pole." GenericErrorText="Fotografii se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte fotografii například do svého OneDrive a sdílejte nám ji pomocí odkazu." />
                     </label>
                 </div><br />
 
-
-                <div class="form-row">
+                <div class="form-row" Visible="{value: !ImageUploaded}">
                     <label>
                         <span>Odkaz na fotografii</span>
                         <dot:TextBox Text="{value: DataUser.LecturerInfo.PhotoLink}" />
                         <span class="form-row-note">
                             <b>Nahrajte Vaši fotografii nebo vložte odkaz na její stažení.</b>. Fotografii zveřejníme u Vašeho profilu na webu konference. Prosíme o kvalitní fotografii s dobrým rozlišením, na které je dobře vidět Váš obličej.
                         </span>
+                    </label>
+                </div>
+
+
+                <div class="form-row" Visible="{value: ImageUploaded}">
+                    <label style="display: flex;">
+                        <span>Fotografie</span>
+                        <a href="{value: "/profilephoto/" + DataUser.LecturerInfo.Id}">{{value: DataUser.LecturerInfo.PhotoName}}</a>
+                        <dot:Button Click="{command: DeletePhoto()}" Text="Smazat" class="btn btn-danger active" style="background-color: #C9302C;border: none;width: 80px;color: white;padding: 6px 12px;margin-left: 10px;float: right;" />
                     </label>
                 </div>
 

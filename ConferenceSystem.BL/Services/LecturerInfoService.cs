@@ -127,5 +127,16 @@ namespace ConferencySystem.BL.Services
             //    //CopyStream(tmpStream, fileStream);
             //}
         }
+
+        public void DeletePhoto(int userId)
+        {
+            using (var db = new DbContext())
+            {
+                var user = db.Users.Find(userId);
+                user.LecturerInfo.Photo = null;
+                user.LecturerInfo.PhotoName = "";
+                db.SaveChanges();
+            }
+        }
     }
 }

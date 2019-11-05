@@ -173,7 +173,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public LecturerInfoDTO GetProfilePhoto(int lecturerInfoId)
+        public LecturerInfoDTO GetLecturerInfo(int lecturerInfoId)
         {
             using (var db = new DbContext())
             {

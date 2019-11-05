@@ -48,7 +48,7 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public bool ImageUploaded { get; set; }
 
-        public string ImageLocation { get; set; } = System.IO.Path.GetTempPath();
+        //public string ImageLocation { get; set; } = System.IO.Path.GetTempPath();
 
         public LecturerInfoViewModel(IUploadedFileStorage storage)
         {
@@ -79,8 +79,8 @@ namespace ConferencySystem.ViewModels.Lecturer
 
 
                 var lecturerInfoService = new LecturerInfoService();
-                lecturerInfoService.LoadPhoto(DataUser.LecturerInfo.Photo, ".\\temp\\"+DataUser.LecturerInfo.PhotoName);
-                ImageUploaded = DataUser.LecturerInfo.Photo != null;
+                //lecturerInfoService.LoadPhoto(DataUser.LecturerInfo.Photo, ".\\temp\\"+DataUser.LecturerInfo.PhotoName);
+                ImageUploaded = !(DataUser.LecturerInfo.Photo == null || DataUser.LecturerInfo.Photo.Length == 0);
             }
 
 
@@ -129,10 +129,12 @@ namespace ConferencySystem.ViewModels.Lecturer
                 var filePath = Path.Combine(folderPath, file.FileName);
                 fileStorage.SaveAs(file.FileId, filePath);
                 lecturerInfoService.SavePhoto(filePath, CurrentUserId);
+                DataUser.LecturerInfo.PhotoName = DataUser.FirstName + " " + DataUser.LastName + "-profilova fotka" + Path.GetExtension(filePath).ToLower();
+                ImageUploaded = true;
                 fileStorage.DeleteFile(file.FileId);
             }
-            SaveInfo();
-            Context.RedirectToRoute("LecturerInfo");
+            //SaveInfo();
+            //Context.RedirectToRoute("LecturerInfo");
         }
 
         private string GetFolderdPath()
@@ -147,5 +149,11 @@ namespace ConferencySystem.ViewModels.Lecturer
             return folderPath;
         }
 
+        public void DeletePhoto()
+        {
+            var lecturerInfoService = new LecturerInfoService();
+            lecturerInfoService.DeletePhoto(CurrentUserId);
+            ImageUploaded = false;
+        }
     }
 }
