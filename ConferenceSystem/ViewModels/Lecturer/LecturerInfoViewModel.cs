@@ -55,6 +55,12 @@ namespace ConferencySystem.ViewModels.Lecturer
             this.fileStorage = storage;
         }
 
+        public bool WantAccomodation { get; set; } = false;
+
+        public bool AccomodationFirstNight { get; set; } = false;
+
+        public bool AccomodationSecondNight { get; set; } = false;
+
         public override Task PreRender()
         {
             if (!Context.IsPostBack)
@@ -75,6 +81,17 @@ namespace ConferencySystem.ViewModels.Lecturer
                     SelectedBirthYear = "";
                     SelectedBirthMonth = "";
                     SelectedBirthDay = "";
+                }
+
+                if ((DataUser.LecturerInfo.Accomodation == null) || (DataUser.LecturerInfo.Accomodation == ""))
+                {
+                    WantAccomodation = false;
+                }
+                else
+                {
+                    WantAccomodation = true;
+                    if (DataUser.LecturerInfo.Accomodation.Contains("23.2. - 24.2.2020")) AccomodationFirstNight = true;
+                    if (DataUser.LecturerInfo.Accomodation.Contains("24.2. - 25.2.2020")) AccomodationSecondNight = true;
                 }
 
 
@@ -108,6 +125,28 @@ namespace ConferencySystem.ViewModels.Lecturer
                 DataUser.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay), 0, 0, 0, 0);
             }
 
+            if (WantAccomodation)
+            {
+                if (AccomodationFirstNight && AccomodationSecondNight)
+                {
+                    DataUser.LecturerInfo.Accomodation = "23.2. - 24.2.2020, 24.2. - 25.2.2020";
+                }
+                else
+                {
+                    if (AccomodationFirstNight)
+                    {
+                        DataUser.LecturerInfo.Accomodation = "23.2. - 24.2.2020";
+                    }
+                    if (AccomodationSecondNight)
+                    {
+                        DataUser.LecturerInfo.Accomodation = "24.2. - 25.2.2020";
+                    }
+                }
+            }
+            else
+            {
+                DataUser.LecturerInfo.Accomodation = "";
+            }
 
             var adminService = new AdminService();
             
@@ -154,6 +193,32 @@ namespace ConferencySystem.ViewModels.Lecturer
             var lecturerInfoService = new LecturerInfoService();
             lecturerInfoService.DeletePhoto(CurrentUserId);
             ImageUploaded = false;
+        }
+
+        public void WantAccomodationChanged()
+        {
+            if (WantAccomodation)
+            {
+                AccomodationFirstNight = true;
+                AccomodationSecondNight = true;
+            }
+            else
+            {
+                AccomodationFirstNight = false;
+                AccomodationSecondNight = false;
+            }
+        }
+
+        public void AccomodationDateChanged()
+        {
+            if (!AccomodationFirstNight && !AccomodationSecondNight)
+            {
+                WantAccomodation = false;
+            }
+            else
+            {
+                WantAccomodation = true;
+            }
         }
     }
 }

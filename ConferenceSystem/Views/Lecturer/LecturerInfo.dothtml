@@ -131,12 +131,20 @@
             <div class="form-white-background">
                 <div class="form-title-row">
                     <h1>Ubytování</h1>
-                </div>
+                </div><br />
 
                 <div class="form-row">
-                    <label>
-                        <span>Termíny, pro které chcete zajistit ubytování</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.Accomodation}" />
+                    <label class="radio-button">
+                        <span style="text-align: right; margin-left:80px">Ubytování</span>
+
+                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                            <dot:RadioButton Text="Chci zajistit ubytování:" CheckedItem="{value: WantAccomodation}" CheckedValue="{value: true}" Changed="{command: WantAccomodationChanged()}"></dot:RadioButton>
+                                <div style="width:290px;margin:auto">
+                                    <dot:CheckBox Text="23.2. - 24.2.2020" Checked="{value: AccomodationFirstNight}"  Changed="{command: AccomodationDateChanged()}" /><br />
+                                    <dot:CheckBox Text="24.2. - 25.2.2020" Checked="{value: AccomodationSecondNight}" Changed="{command: AccomodationDateChanged()}" /><br />
+                                </div>
+                            <dot:RadioButton Text="NEchci zajistit ubytování." CheckedItem="{value: WantAccomodation}" CheckedValue="{value: false}"  Changed="{command: WantAccomodationChanged()}"></dot:RadioButton>
+                        </div><br /><br />
                     </label>
                 </div>
 
