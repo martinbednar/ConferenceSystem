@@ -21,7 +21,9 @@ namespace ConferencySystem.ViewModels.Admin
             var adminService = new AdminService();
             var user = adminService.GetUser(currentUserId);
 
-            if ((user.LecturerInfo.Id != lecturerInfoId) && user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3)) context.RedirectToRoute("Default");
+            if (user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3)) {
+                if (user.LecturerInfo.Id != lecturerInfoId) context.RedirectToRoute("Default");
+            }
             
             var lecturerInfo = adminService.GetLecturerInfo(lecturerInfoId);
 

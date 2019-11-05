@@ -24,8 +24,11 @@ namespace ConferencySystem.ViewModels.Admin
             var adminService = new AdminService();
             var user = adminService.GetUser(currentUserId);
 
-            if ((currentUserId != userId) && user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3 ) ) context.RedirectToRoute("Default");
-            
+            if (user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3))
+            {
+                if (userId != currentUserId) context.RedirectToRoute("Default");
+            }
+
             var invoice = adminService.GetInvoice(userId);
 
             context.GetOwinContext().Response.Headers["Content-Disposition"] = "attachment; filename=" + invoice.FileName;
