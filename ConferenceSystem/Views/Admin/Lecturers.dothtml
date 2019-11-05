@@ -9,6 +9,7 @@
 
             <dot:Button type="button" class="btn btn-default" Click="{command: ShowOverview()}" Text="Přehled" Enabled="{value: OverviewEnabled}"></dot:Button>
             <dot:Button type="button" class="btn btn-default" Click="{command: ShowInvoiceColumns()}" Text="Údaje pro platbu" Enabled="{value: InvoiceColumnsEnabled}"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowAccomodation()}" Text="Ubytování" Enabled="{value: AccomodationColumnsEnabled}"></dot:Button>
             <dot:Button type="button" class="btn btn-default" Click="{command: ShowAllColumns()}" Text="Všechny sloupce" Enabled="{value: AllColumnsEnabled}"></dot:Button>
         </div>
         <p style="float:right;font-size:larger;margin-top:8px;margin-right:20px;">Počet zaregistrovaných přednášejících a lektorů: <b>{{value: TotalUsersCount}}</b></p>
@@ -17,7 +18,7 @@
             <br />
             <div class="loader"></div>
             <br />
-        </dot:UpdateProgress>
+        </dot:UpdateProgress><br /><br />
         <dot:Button type="button" class="btn btn-default" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}" style="margin-right:20px;float:right;"></dot:Button>
 
         <br /><br />
@@ -26,13 +27,20 @@
             <Columns>
                 <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" <%--IsEditable="false"--%> />
                 <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" Visible="{value: AllColumns}" />
-                <bp:GridViewTextColumn HeaderText="Jméno, tituly" ValueBinding="{value: TitleBefore + " " + FirstName + " " + LastName + " " + TitleAfter}" AllowSorting="true" />
-                <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: Email}" />
                 <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: PhoneNumber}" />
-                <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: AllColumns}" />
-                <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: AllColumns}" />
-                <bp:GridViewTemplateColumn HeaderText="Profilový obrázek">
+                <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Ulice a číslo popisné" ValueBinding="{value: LecturerInfo.Street}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: LecturerInfo.Town}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: LecturerInfo.PostalCode}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Číslo účtu" ValueBinding="{value: LecturerInfo.AccountNumber}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: LecturerInfo.IN}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
+                <bp:GridViewTextColumn HeaderText="Termín ubytování" ValueBinding="{value: LecturerInfo.Accomodation}" AllowSorting="true" Visible="{value: AccomodationColumns}" />
+                <bp:GridViewTextColumn HeaderText="Spolubydlící" ValueBinding="{value: LecturerInfo.RoomMate}" AllowSorting="true" Visible="{value: AccomodationColumns}" />
+                <bp:GridViewTemplateColumn HeaderText="Profilový obrázek" Visible="{value: OverviewColumns}">
                     <ContentTemplate>
                         <a href="{value: "/profilephoto/" + LecturerInfo.Id}">
                             <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
@@ -41,7 +49,7 @@
                 </bp:GridViewTemplateColumn>
                 <bp:GridViewTemplateColumn>
                     <ContentTemplate>
-                        <dot:RouteLink RouteName="Lecturer" Param-UserId="{value: Id}" Param-OrgId="{value: Organization.Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
+                        <dot:RouteLink RouteName="Lecturer" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
                             <span class="glyphicon glyphicon-edit"></span>
                         </dot:RouteLink>
                     </ContentTemplate>

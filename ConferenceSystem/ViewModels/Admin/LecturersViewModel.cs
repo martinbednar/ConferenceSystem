@@ -21,9 +21,11 @@ namespace ConferencySystem.ViewModels.Admin
         public bool AllColumns { get; set; } = false;
         public bool InvoiceColumns { get; set; } = false;
         public bool OverviewColumns { get; set; } = true;
+        public bool AccomodationColumns { get; set; } = false;
         public bool AllColumnsEnabled { get; set; } = true;
         public bool InvoiceColumnsEnabled { get; set; } = true;
         public bool OverviewEnabled { get; set; } = false;
+        public bool AccomodationColumnsEnabled { get; set; } = true;
 
         public BusinessPackDataSet<AppUserDTO> Users { get; set; } = new BusinessPackDataSet<AppUserDTO>();
 
@@ -50,10 +52,12 @@ namespace ConferencySystem.ViewModels.Admin
             AllColumns = true;
             InvoiceColumns = true;
             OverviewColumns = true;
+            AccomodationColumns = true;
 
             OverviewEnabled = true;
             InvoiceColumnsEnabled = true;
             AllColumnsEnabled = false;
+            AccomodationColumnsEnabled = true;
         }
 
         public void ShowInvoiceColumns()
@@ -61,10 +65,12 @@ namespace ConferencySystem.ViewModels.Admin
             AllColumns = false;
             InvoiceColumns = true;
             OverviewColumns = false;
+            AccomodationColumns = false;
 
             OverviewEnabled = true;
             InvoiceColumnsEnabled = false;
             AllColumnsEnabled = true;
+            AccomodationColumnsEnabled = true;
         }
 
         public void ShowOverview()
@@ -72,10 +78,25 @@ namespace ConferencySystem.ViewModels.Admin
             AllColumns = false;
             InvoiceColumns = false;
             OverviewColumns = true;
+            AccomodationColumns = false;
 
             OverviewEnabled = false;
             InvoiceColumnsEnabled = true;
             AllColumnsEnabled = true;
+            AccomodationColumnsEnabled = true;
+        }
+
+        public void ShowAccomodation()
+        {
+            AllColumns = false;
+            InvoiceColumns = false;
+            OverviewColumns = false;
+            AccomodationColumns = true;
+
+            OverviewEnabled = true;
+            InvoiceColumnsEnabled = true;
+            AllColumnsEnabled = true;
+            AccomodationColumnsEnabled = false;
         }
 
         public void DeleteUser(int id)

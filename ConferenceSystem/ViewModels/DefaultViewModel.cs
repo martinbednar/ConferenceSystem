@@ -9,6 +9,7 @@ namespace ConferencySystem.ViewModels
         public override Task PreRender()
         {
             if (IsParticipant) Context.RedirectToRoute("Profile");
+            if (IsLecturer) Context.RedirectToRoute("LecturerInfo");
 
             RegisterActive = "";
             MainPageActive = "active";
