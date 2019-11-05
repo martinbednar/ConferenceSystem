@@ -152,7 +152,7 @@
     <form class="form-register">
         <div style="width:660px; margin:auto;">
             <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
-                <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
+                <%--<dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />--%>
                 <div class="form-row">
 
                     <%--<dot:UpdateProgress>
@@ -163,7 +163,7 @@
 
                     <bs:Alert Type="Success" IsDismissible="true" Text="Údaje byly úspěšně uloženy." Visible="{value: SaveConfirmationIsVisible}" IsDismissed="{value: SaveConfirmationDismissed}"></bs:Alert>
 
-                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}" Enabled="{value: !Upload.IsBusy}" ></dot:Button>
+                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}" Enabled="{value: !Upload.IsBusy}"></dot:Button>
                     <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
                 </div>
             </div>
