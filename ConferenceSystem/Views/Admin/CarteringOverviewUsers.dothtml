@@ -17,13 +17,16 @@
     <bp:GridView ID="users" DataSource="{value: UsersCartering}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
         <Columns>
             <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Ne - večeře - polévka" ValueBinding="{value: SundaySoup}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - odpo - Coffee Break" ValueBinding="{value: HasSundayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - večeře - polévka" ValueBinding="{value: HasSundaySoup}" />
             <bp:GridViewTextColumn HeaderText="Ne - večeře" ValueBinding="{value: SundayDinner}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Po - oběd - polévka" ValueBinding="{value: MondaySoup}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - dopo - Coffee Break" ValueBinding="{value: HasMondayAMCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - oběd - polévka" ValueBinding="{value: HasMondaySoup}" />
             <bp:GridViewTextColumn HeaderText="Po - oběd" ValueBinding="{value: MondayLunch}" AllowSorting="true" />
-            <bp:GridViewCheckBoxColumn HeaderText="Po - raut" ValueBinding="{value: HasMondayRaut}" />
-            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - polévka" ValueBinding="{value: HasTuesdaySoup}" />
-            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd" ValueBinding="{value: HasTuesdayLunch}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - odpo - Coffee Break" ValueBinding="{value: HasMondayPMCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - večeře - raut" ValueBinding="{value: HasMondayRaut}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - dopo - Coffee Break" ValueBinding="{value: HasTuesdayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - buffet" ValueBinding="{value: HasTuesdayLunch}" />
             <bp:GridViewTemplateColumn>
                 <ContentTemplate>
                     <dot:RouteLink RouteName="CarteringUser" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">

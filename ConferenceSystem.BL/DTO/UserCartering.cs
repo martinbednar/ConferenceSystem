@@ -8,15 +8,23 @@
 
         public string LastName { get; set; }
 
-        public string SundaySoup { get; set; }
+        public bool HasSundayCoffeeBreak { get; set; }
+
+        public bool HasSundaySoup { get; set; }
 
         public string SundayDinner { get; set; }
 
-        public string MondaySoup { get; set; }
+        public bool HasMondayAMCoffeeBreak { get; set; }
+
+        public bool HasMondaySoup { get; set; }
 
         public string MondayLunch { get; set; }
 
+        public bool HasMondayPMCoffeeBreak { get; set; }
+
         public bool HasMondayRaut { get; set; }
+
+        public bool HasTuesdayCoffeeBreak { get; set; }
 
         public bool HasTuesdaySoup { get; set; }
 

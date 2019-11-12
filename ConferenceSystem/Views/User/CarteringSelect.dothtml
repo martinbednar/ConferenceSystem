@@ -3,9 +3,9 @@
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
 
-    <center><h2><br /><br />Výběr jídla zatím není spuštěný. O jeho zahájení Vás budeme informovat emailem.<br /><br /></h2></center>
+    <center Visible="{value: !(IsSuperAdmin || IsAdmin)}"><h2><br /><br />Výběr jídla zatím není spuštěný. O jeho zahájení Vás budeme informovat emailem.<br /><br /></h2></center>
 
-    <div class="form-cartering" style="display:none">
+    <div class="form-cartering" Visible="{value: IsSuperAdmin || IsAdmin}">
         <dot:Repeater DataSource="{value: OutputCategories}">
             <ItemTemplate>
                 <div class="category">
@@ -29,7 +29,7 @@
             <div class="loader"></div>
             <br />
         </dot:UpdateProgress>
-        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="false"></dot:Button></center>
+        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="true"></dot:Button></center>
     </div>
 </dot:Content>
 

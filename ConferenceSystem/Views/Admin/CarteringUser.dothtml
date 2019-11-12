@@ -26,7 +26,7 @@
             <div class="loader" style="z-index: 9999; position: fixed; top: 30%; left: 45%;"></div>
             <br />
         </dot:UpdateProgress>
-        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="{value: false}"></dot:Button></center><%-- IsSuperAdmin || IsAdmin*/ --%>
+        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="{value: true}"></dot:Button></center><%-- IsSuperAdmin || IsAdmin*/ --%>
     </div>
 </dot:Content>
 
