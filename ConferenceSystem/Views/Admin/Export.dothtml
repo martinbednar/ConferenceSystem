@@ -43,13 +43,16 @@
             <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: User.Organization.Town}" />
             <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: User.Organization.PostalCode}" />
 
-            <bp:GridViewTextColumn HeaderText="Ne - večeře - polévka" ValueBinding="{value: Cartering.SundaySoup}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - odpo - Coffee Break" ValueBinding="{value: Cartering.HasSundayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - večeře - polévka" ValueBinding="{value: Cartering.HasSundaySoup}" />
             <bp:GridViewTextColumn HeaderText="Ne - večeře" ValueBinding="{value: Cartering.SundayDinner}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Po - oběd - polévka" ValueBinding="{value: Cartering.MondaySoup}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - dopo - Coffee Break" ValueBinding="{value: Cartering.HasMondayAMCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - oběd - polévka" ValueBinding="{value: Cartering.HasMondaySoup}" />
             <bp:GridViewTextColumn HeaderText="Po - oběd" ValueBinding="{value: Cartering.MondayLunch}" AllowSorting="true" />
-            <bp:GridViewCheckBoxColumn HeaderText="Po - raut" ValueBinding="{value: Cartering.HasMondayRaut}" />
-            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - polévka" ValueBinding="{value: Cartering.HasTuesdaySoup}" />
-            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd" ValueBinding="{value: Cartering.HasTuesdayLunch}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - odpo - Coffee Break" ValueBinding="{value: Cartering.HasMondayPMCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - večeře - raut" ValueBinding="{value: Cartering.HasMondayRaut}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - dopo - Coffee Break" ValueBinding="{value: Cartering.HasTuesdayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - buffet" ValueBinding="{value: Cartering.HasTuesdayLunch}" />
 
             <bp:GridViewTextColumn HeaderText="Workshop1" ValueBinding="{value: Workshops.Block1}" />
             <bp:GridViewTextColumn HeaderText="Přednáška" ValueBinding="{value: Workshops.Lecture}" />

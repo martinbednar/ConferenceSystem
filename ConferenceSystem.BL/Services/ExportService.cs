@@ -63,8 +63,13 @@ namespace ConferencySystem.BL.Services
                             Start = w.WorkshopsBlock.Start,
                             End = w.WorkshopsBlock.End
                         }
-                    }).OrderBy(w => w.WorkshopsBlock.Start)
-                }).Where(user => (user.Id != 2) && (user.Id != 2));
+                    }).OrderBy(w => w.WorkshopsBlock.Start),
+                    Roles = p.Roles.Select(r => new AppUserRoleDTO
+                        {
+                            UserId = r.UserId,
+                            RoleId = r.RoleId,
+                        })
+                }).Where(user => user.Roles.All(role => role.RoleId == 1));
 
                 List<UserCompletInfo> usersCompletInfo = new List<UserCompletInfo>();
 
@@ -72,7 +77,7 @@ namespace ConferencySystem.BL.Services
                 {
                     usersCompletInfo.Add(new UserCompletInfo(user));
                 }
-                
+
                 usersDataSet.LoadFromQueryable(usersCompletInfo.AsQueryable());
             }
         }
