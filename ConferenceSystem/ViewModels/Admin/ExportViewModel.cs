@@ -33,7 +33,7 @@ namespace ConferencySystem.ViewModels.Admin
 
             using (var file = exporter.Export(gridView, Users))
             {
-                Context.ReturnFile(file, "NakopneteSvojiSkolu-KompletniPrehled.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                Context.ReturnFile(file, "NakopneteSvojiSkolu-UcastniciKompletniPrehled.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             }
         }
     }
