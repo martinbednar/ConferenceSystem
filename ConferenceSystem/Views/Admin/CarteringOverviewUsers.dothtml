@@ -26,6 +26,7 @@
             <bp:GridViewCheckBoxColumn HeaderText="Po - odpo - Coffee Break" ValueBinding="{value: HasMondayPMCoffeeBreak}" />
             <bp:GridViewCheckBoxColumn HeaderText="Po - večeře - raut" ValueBinding="{value: HasMondayRaut}" />
             <bp:GridViewCheckBoxColumn HeaderText="Út - dopo - Coffee Break" ValueBinding="{value: HasTuesdayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - polévka" ValueBinding="{value: HasTuesdaySoup}" />
             <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - buffet" ValueBinding="{value: HasTuesdayLunch}" />
             <bp:GridViewTemplateColumn>
                 <ContentTemplate>

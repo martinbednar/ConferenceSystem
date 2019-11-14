@@ -45,7 +45,8 @@ namespace ConferencySystem.ViewModels.Admin
                         HasMondayPMCoffeeBreak = (user.Cartering.Where(c => c.Id == 9).Count() == 0) ? false : true,
                         HasMondayRaut = (user.Cartering.Where(c => c.Id == 10).Count() == 0) ? false : true,
                         HasTuesdayCoffeeBreak = (user.Cartering.Where(c => c.Id == 11).Count() == 0) ? false : true,
-                        HasTuesdayLunch = (user.Cartering.Where(c => c.Id == 15).Count() == 0) ? false : true
+                        HasTuesdaySoup = (user.Cartering.Where(c => c.Id == 15).Count() == 0) ? false : true,
+                        HasTuesdayLunch = (user.Cartering.Where(c => c.Id == 16).Count() == 0) ? false : true
                     });
                 }
             }
