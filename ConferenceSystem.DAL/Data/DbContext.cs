@@ -36,5 +36,7 @@ namespace ConferencySystem.DAL.Data
         public virtual DbSet<Constant> Constant { get; set; }
 
         public virtual DbSet<LecturerInfo> LecturerInfo { get; set; }
+
+        public virtual DbSet<Lecture> Lecture { get; set; }
     }
 }

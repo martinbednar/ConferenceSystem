@@ -39,5 +39,12 @@ namespace ConferencySystem.DAL.Data
 
         [StringLength(400)]
         public string RoomMate { get; set; }
+
+        public virtual ICollection<Lecture> Lectures { get; set; }
+
+        public LecturerInfo()
+        {
+            Lectures = new List<Lecture>();
+        }
     }
 }

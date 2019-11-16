@@ -101,6 +101,7 @@
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbInitializer.cs" />
     <Compile Include="Data\Invoice.cs" />
+    <Compile Include="Data\Lecture.cs" />
     <Compile Include="Data\LecturerInfo.cs" />
     <Compile Include="Data\Organization.cs" />
     <Compile Include="Data\Secrets.cs" />
@@ -140,6 +141,10 @@
     <Compile Include="Migrations\201911031851548_AddPhotoNameInLecturrInfo.Designer.cs">
       <DependentUpon>201911031851548_AddPhotoNameInLecturrInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911161222268_AddLectureEntity.cs" />
+    <Compile Include="Migrations\201911161222268_AddLectureEntity.Designer.cs">
+      <DependentUpon>201911161222268_AddLectureEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911031851548_AddPhotoNameInLecturrInfo.resx">
       <DependentUpon>201911031851548_AddPhotoNameInLecturrInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911161222268_AddLectureEntity.resx">
+      <DependentUpon>201911161222268_AddLectureEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
