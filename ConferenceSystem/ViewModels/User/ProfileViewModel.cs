@@ -79,6 +79,7 @@ namespace ConferencySystem.ViewModels.User
             LecturerInfoActive = "";
             LoginActive = "";
             ProfileActive = "active";
+            LecturerProgramsActive = "";
 
             return base.PreRender();
         }

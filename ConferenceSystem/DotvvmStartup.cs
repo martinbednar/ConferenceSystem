@@ -56,6 +56,7 @@ namespace ConferencySystem
             config.RouteTable.Add("RegisterFormVisitor", "registerformvisitor", "Views/Visitor/RegisterFormVisitor.dothtml");
             config.RouteTable.Add("Visitors", "visitors", "Views/Admin/Visitors.dothtml");
             config.RouteTable.Add("Visitor", "visitor/{UserId}", "Views/Admin/Visitor.dothtml");
+            config.RouteTable.Add("MyLectures", "mylectures", "Views/Lecturer/MyLectures.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    

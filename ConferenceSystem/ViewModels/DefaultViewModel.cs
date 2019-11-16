@@ -20,6 +20,7 @@ namespace ConferencySystem.ViewModels
             LecturerInfoActive = "";
             LoginActive = "";
             ProfileActive = "";
+            LecturerProgramsActive = "";
 
             return base.PreRender();
         }

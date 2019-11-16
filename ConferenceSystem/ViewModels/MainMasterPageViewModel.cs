@@ -16,6 +16,7 @@ namespace ConferencySystem.ViewModels
         public string LecturerInfoActive { get; set; }
         public string LoginActive { get; set; }
         public string ProfileActive { get; set; }
+        public string LecturerProgramsActive { get; set; }
 
         public string CurrentUserName {
             get { return Context.GetOwinContext().Authentication.User.Claims.Where(c => c.Type == ClaimTypes.GivenName)

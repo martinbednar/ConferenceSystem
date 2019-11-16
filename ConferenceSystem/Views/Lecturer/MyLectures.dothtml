@@ -1,0 +1,8 @@
+﻿@viewModel ConferencySystem.ViewModels.Lecturer.MyLecturesViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+
+</dot:Content>
+
