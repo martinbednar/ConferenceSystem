@@ -9,12 +9,14 @@ using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
 using DotVVM.BusinessPack.Controls;
 using DotVVM.Framework.Hosting;
+using DotVVM.Framework.Runtime.Filters;
 using DotVVM.Framework.Storage;
 using DotVVM.Framework.ViewModel;
 
 namespace ConferencySystem.ViewModels.Lecturer
 {
-    public class AddMyLectureViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
+    [Authorize(Roles = new[] { "lecturer" })]
+    public class MyLectureViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
     {
         public LectureDTO DataLecture { get; set; }
 
@@ -27,13 +29,18 @@ namespace ConferencySystem.ViewModels.Lecturer
             }
         }
 
+        public int? LectureId
+        {
+            get { return Convert.ToInt32(Context.Parameters["LectureId"]); }
+        }
+
         public UploadData Upload { get; set; } = new UploadData();
 
         private readonly IUploadedFileStorage fileStorage;
 
-        public bool ImageUploaded { get; set; } = false;
+        public bool PresentationUploaded { get; set; } = false;
 
-        public AddMyLectureViewModel(IUploadedFileStorage storage)
+        public MyLectureViewModel(IUploadedFileStorage storage)
         {
             this.fileStorage = storage;
         }
@@ -43,7 +50,27 @@ namespace ConferencySystem.ViewModels.Lecturer
             if (!Context.IsPostBack)
             {
                 var lectureService = new LectureService();
-                DataLecture = lectureService.CreateNewLecture(CurrentUserId);
+
+                if (LectureId == 0)
+                {
+                    DataLecture = lectureService.CreateNewLecture(CurrentUserId);
+                }
+                else {
+                    var adminService = new AdminService();
+                    var user = adminService.GetUser(CurrentUserId);
+
+                    //Overeni, ze uzivatel chce otevrit svoji prednasku a ne cizi.
+                    if (user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3))
+                    {
+                        var lectures = user.LecturerInfo.Lectures;
+                        if (lectures.Where(l => l.Id == LectureId).Count() == 0) Context.RedirectToRoute("Default");
+                    }
+
+
+                    DataLecture = lectureService.GetLecture(LectureId);
+                }
+                
+                PresentationUploaded = !(DataLecture.Presentation == null || DataLecture.Presentation.Length == 0);
             }
 
 
@@ -73,7 +100,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                 fileStorage.SaveAs(file.FileId, filePath);
                 lectureService.SavePresentation(filePath, DataLecture.Id);
                 DataLecture.PresentationName = file.FileName;
-                ImageUploaded = true;
+                PresentationUploaded = true;
                 fileStorage.DeleteFile(file.FileId);
             }
         }
@@ -95,7 +122,7 @@ namespace ConferencySystem.ViewModels.Lecturer
             var lectureService = new LectureService();
             lectureService.DeletePresentation(DataLecture.Id);
             Upload.Clear();
-            ImageUploaded = false;
+            PresentationUploaded = false;
         }
 
         public void SaveLecture()

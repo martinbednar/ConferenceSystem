@@ -35,7 +35,7 @@
         </bp:GridView>
     </center>
 
-    <center><dot:RouteLink class="btn btn-primary" Text="Přidat přednášku" RouteName="AddMyLecture"></dot:RouteLink></center>
+    <center><dot:RouteLink class="btn btn-primary" Text="Přidat přednášku" RouteName="MyLecture" Param-LectureId="{value: 0}"></dot:RouteLink></center>
 
 
 
@@ -72,7 +72,7 @@
         </bp:GridView>
     </center>
 
-    <center><dot:RouteLink class="btn btn-primary" Text="Přidat workshop / seminář" RouteName="AddMyWorkshop"></dot:RouteLink></center>
+    <center><dot:RouteLink class="btn btn-primary" Text="Přidat workshop / seminář" RouteName="MyWorkshop"></dot:RouteLink></center>
 
 </dot:Content>
 

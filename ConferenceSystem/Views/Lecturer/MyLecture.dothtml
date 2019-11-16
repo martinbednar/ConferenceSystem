@@ -1,4 +1,4 @@
-﻿@viewModel ConferencySystem.ViewModels.Lecturer.AddMyLectureViewModel, ConferencySystem
+﻿@viewModel ConferencySystem.ViewModels.Lecturer.MyLectureViewModel, ConferencySystem
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent">
@@ -26,14 +26,14 @@
                     </label>
                 </div><br /><br /><br /><br />
 
-                <div class="form-row" Visible="{value: !ImageUploaded}">
+                <div class="form-row" Visible="{value: !PresentationUploaded}">
                     <label>
                         <span style="vertical-align: top;margin-top: 28px;">Prezentace</span>
                         <bp:FileUpload Data="{value: Upload}" UploadCompleted="{command: ProcessFiles()}" AllowMultipleFiles="false" AllowedFileTypes=".ppt,.pptx.,.pdf,.PPT,.PPTX,.PDF,.Ppt,.Pptx,.Pdf" MaxFileSize="1000" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných souborů: {0}" DragFilesHereText="Klikněte sem pro výběr souboru z počítače nebo soubor přetáhněte nad toto pole." GenericErrorText="Soubor se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte soubor například do svého OneDrive a sdílejte nám ho pomocí odkazu." />
                     </label>
                 </div><br />
 
-                <div class="form-row" Visible="{value: !ImageUploaded}">
+                <div class="form-row" Visible="{value: !PresentationUploaded}">
                     <label>
                         <span>Odkaz na prezentaci</span>
                         <dot:TextBox Text="{value: DataLecture.PresentationLink}" />
@@ -44,7 +44,7 @@
                 </div>
 
 
-                <div class="form-row" Visible="{value: ImageUploaded}">
+                <div class="form-row" Visible="{value: PresentationUploaded}">
                     <label style="display: flex;">
                         <span>Prezentace</span>
                         <a href="{value: "/presentation/" + DataLecture.Id}">{{value: DataLecture.PresentationName}}</a>

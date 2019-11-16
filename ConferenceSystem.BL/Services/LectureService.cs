@@ -53,6 +53,14 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public LectureDTO GetLecture(int? lectureId)
+        {
+            using (var db = new DbContext())
+            {
+                return Mapper.Map<Lecture, LectureDTO>(db.Lecture.SingleOrDefault(p => p.Id == lectureId));
+            }
+        }
+
         public void DeactivateProgram(int lectureId)
         {
             using (var db = new DbContext())
