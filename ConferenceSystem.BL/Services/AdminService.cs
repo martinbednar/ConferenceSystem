@@ -69,55 +69,6 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-            public void GetLecturersNEW(GridViewDataSet<AppUserDTO> usersDataSet)
-        {
-            using (var db = new DbContext())
-            {
-                var query = db.Users.Select(p => new AppUserDTO()
-                {
-                    Id = p.Id,
-                    RegisterTimestamp = p.RegisterTimestamp,
-                    FirstName = p.FirstName,
-                    LastName = p.LastName,
-                    BirthDate = p.BirthDate,
-                    BirthPlace = p.BirthPlace,
-                    TitleBefore = p.TitleBefore,
-                    TitleAfter = p.TitleAfter,
-                    Email = p.Email,
-                    PhoneNumber = p.PhoneNumber,
-                    Position = p.Position,
-                    Agreement = p.Agreement,
-                    PaidDate = p.PaidDate,
-                    VariableSymbol = p.VariableSymbol,
-                    InfoFrom = p.InfoFrom,
-                    WantGet = p.WantGet,
-                    NoteAdmin = p.NoteAdmin,
-                    NoteUser = p.NoteUser,
-                    IsAlternate = p.IsAlternate,
-                    InvoiceNumber = p.InvoiceNumber,
-                    Organization = new OrganizationDTO()
-                    {
-                        Id = p.Organization.Id,
-                        IN = p.Organization.IN,
-                        VATID = p.Organization.VATID,
-                        Name = p.Organization.Name,
-                        BillStreet = p.Organization.BillStreet,
-                        Town = p.Organization.Town,
-                        PostalCode = p.Organization.PostalCode
-                    }
-                }).Where(user => user.Roles.All(role => role.RoleId == 4));
-
-                List<AppUserDTO> usersCompletInfo = new List<AppUserDTO>();
-
-                foreach (AppUserDTO user in query.ToList())
-                {
-                    usersCompletInfo.Add(Mapper.Map<AppUserDTO, AppUserDTO>(user));
-                }
-
-                usersDataSet.LoadFromQueryable(usersCompletInfo.AsQueryable());
-            }
-        }
-
         public void DeleteUser(int id)
         {
             using (var db = new DbContext())

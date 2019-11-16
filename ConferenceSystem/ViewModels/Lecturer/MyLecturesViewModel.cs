@@ -61,6 +61,7 @@ namespace ConferencySystem.ViewModels.Lecturer
         {
             var lectureService = new LectureService();
             lectureService.DeactivateProgram(id);
+            Context.RedirectToRoute("MyLectures");
         }
     }
 }

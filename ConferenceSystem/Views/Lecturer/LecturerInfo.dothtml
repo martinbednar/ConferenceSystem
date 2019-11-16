@@ -123,8 +123,8 @@
                     </label>
                 </div>
             </div>
-                </div>
-</form>
+        </div>
+    </form>
 
     <form class="form-register">
         <div class="form-register-with-email">
@@ -167,13 +167,13 @@
                 <%--<dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />--%>
                 <div class="form-row">
 
-                    <%--<dot:UpdateProgress>
+                    <dot:UpdateProgress>
                         <br />
                         <div class="loader"></div>
                         <br />
-                    </dot:UpdateProgress>--%>
+                    </dot:UpdateProgress>
 
-                    <bs:Alert Type="Success" IsDismissible="true" Text="Údaje byly úspěšně uloženy." Visible="{value: SaveConfirmationIsVisible}" IsDismissed="{value: SaveConfirmationDismissed}"></bs:Alert>
+                    <bs:Alert Type="Success" IsDismissible="true" Text="Údaje byly úspěšně uloženy. Nyní můžete pokračovat na zadání Vašich programů (odkaz v horní liště)." Visible="{value: SaveConfirmationIsVisible}" IsDismissed="{value: SaveConfirmationDismissed}"></bs:Alert>
 
                     <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveInfo()}" Enabled="{value: !Upload.IsBusy}"></dot:Button>
                     <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>

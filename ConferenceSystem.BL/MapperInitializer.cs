@@ -53,7 +53,9 @@ namespace ConferencySystem.BL
                     .ForMember(dest => dest.Lectures, opt => opt.MapFrom(src => src.Lectures));
                 cfg.CreateMap<LecturerInfo, LecturerInfoDTO>()
                     .ForMember(dest => dest.Lectures, opt => opt.Ignore());
-                cfg.CreateMap<LectureDTO, Lecture>();
+                cfg.CreateMap<LectureDTO, Lecture>()
+                    .ForMember(dest => dest.Presentation, opt => opt.Ignore())
+                    .ForMember(dest => dest.PresentationName, opt => opt.Ignore());
                 cfg.CreateMap<Lecture, LectureDTO>();
             });
         }

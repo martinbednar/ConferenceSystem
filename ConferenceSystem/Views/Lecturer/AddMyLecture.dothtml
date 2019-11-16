@@ -1,0 +1,109 @@
+﻿@viewModel ConferencySystem.ViewModels.Lecturer.AddMyLectureViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Přidat přednášku</h1>
+                </div><br /><br />
+
+                <div class="form-row">
+                    <label>
+                        <span>Název přednášky</span>
+                        <dot:TextBox Text="{value: DataLecture.Name}" />
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: top; margin-top: 120px; width: 100px;">Anotace</span>
+                        <dot:TextBox style="font-weight:normal; width: 375px;" rows="15" Text="{value: DataLecture.Annotation}" Type="MultiLine" />
+                        <span class="form-row-note">
+                            Napište krátkou anotaci k Vaší přednášce. Textem se snažte zaujmout. Nezapomeňte, že cílem konference je především inspirovat a nakopnout. Vzbudit nadšení :-) .
+                        </span>
+                    </label>
+                </div><br /><br /><br /><br />
+
+                <div class="form-row" Visible="{value: !ImageUploaded}">
+                    <label>
+                        <span style="vertical-align: top;margin-top: 28px;">Prezentace</span>
+                        <bp:FileUpload Data="{value: Upload}" UploadCompleted="{command: ProcessFiles()}" AllowMultipleFiles="false" AllowedFileTypes=".ppt,.pptx.,.pdf,.PPT,.PPTX,.PDF,.Ppt,.Pptx,.Pdf" MaxFileSize="1000" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných souborů: {0}" DragFilesHereText="Klikněte sem pro výběr souboru z počítače nebo soubor přetáhněte nad toto pole." GenericErrorText="Soubor se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte soubor například do svého OneDrive a sdílejte nám ho pomocí odkazu." />
+                    </label>
+                </div><br />
+
+                <div class="form-row" Visible="{value: !ImageUploaded}">
+                    <label>
+                        <span>Odkaz na prezentaci</span>
+                        <dot:TextBox Text="{value: DataLecture.PresentationLink}" />
+                        <span class="form-row-note">
+                            <b>Nahrajte Vaši prezentaci nebo vložte odkaz na její stažení.</b>. Pokud chcete předejít redukci velikosti obrazu, připravte své prezentace v poměru 16:9. Prezentace musí být kompatibilní se systémem Windows.
+                        </span>
+                    </label>
+                </div>
+
+
+                <div class="form-row" Visible="{value: ImageUploaded}">
+                    <label style="display: flex;">
+                        <span>Prezentace</span>
+                        <a href="{value: "/presentation/" + DataLecture.Id}">{{value: DataLecture.PresentationName}}</a>
+                        <dot:Button Click="{command: DeletePresentation()}" Text="Smazat" class="btn btn-danger active" style="background-color: #C9302C;border: none;width: 80px;color: white;padding: 6px 12px;margin-left: 10px;float: right;">
+                            <PostBack.Handlers>
+                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat prezentaci k přednášce?" />
+                            </PostBack.Handlers>
+                        </dot:Button>
+                    </label>
+                </div><br /><br /><br /><br /><br />
+
+                <div class="form-row">
+                    <label class="radio-button">
+                        <span style="text-align: right; margin-left:80px;">Mikrofon</span>
+                        <div style="width:100%;margin-left: 70px;margin-top: -28px;">
+                            <dot:RadioButton Text="Chci mikrofon." CheckedItem="{value: DataLecture.Microphone}" CheckedValue="{value: true}"></dot:RadioButton>
+                            <dot:RadioButton Text="NEchci mikrofon." CheckedItem="{value: DataLecture.Microphone}" CheckedValue="{value: false}"></dot:RadioButton>
+                        </div><br /><br />
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label class="radio-button">
+                        <span style="text-align: right; margin-left:80px;">Flipchart</span>
+                        <div style="width:100%;margin-left: 70px;margin-top: -28px;">
+                            <dot:RadioButton Text="Chci flipchart." CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: true}"></dot:RadioButton>
+                            <dot:RadioButton Text="NEchci flipchart." CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: false}"></dot:RadioButton>
+                        </div><br /><br />
+                    </label>
+                </div><br />
+
+                <div class="form-row">
+                    <label>
+                        <span style="vertical-align: top; margin-top: 12px;">Další požadavky k přednášce</span>
+                        <dot:TextBox Text="{value: DataLecture.PlaceRequirements}" Type="MultiLine" />
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div style="width:660px; margin:auto;">
+            <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
+                <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
+                <div class="form-row">
+
+                    <dot:UpdateProgress>
+                        <br />
+                        <div class="loader"></div>
+                        <br />
+                    </dot:UpdateProgress>
+
+                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveLecture()}" Enabled="{value: !Upload.IsBusy}"></dot:Button>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="MyLectures"></dot:RouteLink>
+                </div>
+            </div>
+        </div>
+    </form>
+</dot:Content>
+

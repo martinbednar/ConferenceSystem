@@ -9,6 +9,8 @@ namespace ConferencySystem.BL.DTO
     {
         public int Id { get; set; }
 
+        public bool Active { get; set; }
+
         [MaxLength(50, ErrorMessage = "Byla překročena maximální délka typu vystoupení - maximální délka pole \"Typ vystuopení (přednáška, workshop, seminář)\" je 50 znaků.")]
         public string Type { get; set; }
 

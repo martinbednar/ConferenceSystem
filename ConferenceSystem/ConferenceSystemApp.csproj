@@ -186,6 +186,7 @@
     <Compile Include="ViewModels\Admin\SettingVariablesViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturersViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturerViewModel.cs" />
+    <Compile Include="ViewModels\Lecturer\AddMyLectureViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\LecturerInfoViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\MyLecturesViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
@@ -303,6 +304,7 @@
     <Content Include="Views\Admin\Visitors.dothtml" />
     <Content Include="Views\Admin\Visitor.dothtml" />
     <Content Include="Views\Lecturer\MyLectures.dothtml" />
+    <Content Include="Views\Lecturer\AddMyLecture.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
