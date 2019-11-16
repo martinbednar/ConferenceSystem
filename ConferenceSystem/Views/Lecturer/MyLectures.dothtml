@@ -3,6 +3,64 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
 
+    <center><h2 style="margin-top: 00px;color: #337ab7;">Přednášky</h2></center>
+
+    <bp:GridView ID="lectures" DataSource="{value: MyLectures}" class="table table-bordered" FreezeHeaderRow="true">
+        <Columns>
+            <bp:GridViewTextColumn HeaderText="Název" ValueBinding="{value: Name}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Anotace" ValueBinding="{value: Annotation}" AllowSorting="false" />
+            <bp:GridViewTemplateColumn HeaderText="Editovat">
+                <ContentTemplate>
+                    <dot:RouteLink RouteName="MyLecture" Param-LectureId="{value: Id}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </dot:RouteLink>
+                </ContentTemplate>
+            </bp:GridViewTemplateColumn>
+            <bp:GridViewTemplateColumn HeaderText="Smazat">
+                <ContentTemplate>
+                    <dot:Button ButtonTagName="button" Click="{command: _parent.DeactivateProgram(Id)}">
+                        <PostBack.Handlers>
+                            <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat vybranou přednášku a všechny informace o ní?" />
+                        </PostBack.Handlers>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </dot:Button>
+                </ContentTemplate>
+            </bp:GridViewTemplateColumn>
+        </Columns>
+    </bp:GridView>
+
+    <center><dot:Button class="btn btn-primary" Text="Přidat přednášku" Click="{command: AddLecture()}"></dot:Button></center>
+
+
+
+    <center><h2 style="margin-top: 80px;color: #337ab7;">Workshopy a semináře</h2></center>
+
+    <bp:GridView ID="workshops" DataSource="{value: MyWorkshops}" class="table table-bordered" FreezeHeaderRow="true">
+        <Columns>
+            <bp:GridViewTextColumn HeaderText="Název" ValueBinding="{value: Name}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Typ" ValueBinding="{value: Type}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Anotace" ValueBinding="{value: Annotation}" AllowSorting="false" />
+            <bp:GridViewTemplateColumn HeaderText="Editovat">
+                <ContentTemplate>
+                    <dot:RouteLink RouteName="MyLecture" Param-LectureId="{value: Id}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </dot:RouteLink>
+                </ContentTemplate>
+            </bp:GridViewTemplateColumn>
+            <bp:GridViewTemplateColumn HeaderText="Smazat">
+                <ContentTemplate>
+                    <dot:Button ButtonTagName="button" Click="{command: _parent.DeactivateProgram(Id)}">
+                        <PostBack.Handlers>
+                            <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat vybraný workshop nebo seminář a všechny informace o něm?" />
+                        </PostBack.Handlers>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </dot:Button>
+                </ContentTemplate>
+            </bp:GridViewTemplateColumn>
+        </Columns>
+    </bp:GridView>
+
+    <center><dot:Button class="btn btn-primary" Text="Přidat workshop / seminář" Click="{command: AddWorkshop()}"></dot:Button></center>
 
 </dot:Content>
 

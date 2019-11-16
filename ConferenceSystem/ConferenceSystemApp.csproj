@@ -187,6 +187,7 @@
     <Compile Include="ViewModels\Admin\LecturersViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturerViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\LecturerInfoViewModel.cs" />
+    <Compile Include="ViewModels\Lecturer\MyLecturesViewModel.cs" />
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Visitor\RegisterFormVisitor.dothtml" />
     <Content Include="Views\Admin\Visitors.dothtml" />
     <Content Include="Views\Admin\Visitor.dothtml" />
+    <Content Include="Views\Lecturer\MyLectures.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

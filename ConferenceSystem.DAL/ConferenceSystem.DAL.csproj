@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201911161222268_AddLectureEntity.Designer.cs">
       <DependentUpon>201911161222268_AddLectureEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911161408426_AddColumnActiveForLecture.cs" />
+    <Compile Include="Migrations\201911161408426_AddColumnActiveForLecture.Designer.cs">
+      <DependentUpon>201911161408426_AddColumnActiveForLecture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911161222268_AddLectureEntity.resx">
       <DependentUpon>201911161222268_AddLectureEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911161408426_AddColumnActiveForLecture.resx">
+      <DependentUpon>201911161408426_AddColumnActiveForLecture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

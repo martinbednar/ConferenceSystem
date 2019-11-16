@@ -9,6 +9,8 @@ namespace ConferencySystem.DAL.Data
     {
         public int Id { get; set; }
 
+        public bool Active { get; set; }
+
         [StringLength(50)]
         public string Type { get; set; }
 
