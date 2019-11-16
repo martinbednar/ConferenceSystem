@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,5 +37,7 @@ namespace ConferencySystem.BL.DTO
 
         [MaxLength(400, ErrorMessage = "Byla překročena maximální délka jména Vašeho spolubydlícího - maximální délka pole \"Spolubydlící\" je 400 znaků.")]
         public string RoomMate { get; set; }
+
+        public virtual IEnumerable<LectureDTO> Lectures { get; set; }
     }
 }
