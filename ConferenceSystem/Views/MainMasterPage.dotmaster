@@ -53,7 +53,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li Visible="{value: !IsParticipant}" class="{value: MainPageActive}"><dot:RouteLink Text="Hlavní stránka" RouteName="Default"></dot:RouteLink></li>
+                        <li Visible="{value: false}" class="{value: MainPageActive}"><dot:RouteLink Text="Hlavní stránka" RouteName="Default"></dot:RouteLink></li>
                         <li Visible="{value: IsParticipant}" class="{value: ProfileActive}"><dot:RouteLink Text="Můj profil" RouteName="Profile"></dot:RouteLink></li>
                         <li Visible="{value: IsLecturer}" class="{value: LecturerInfoActive}"><dot:RouteLink Text="Údaje lektora" RouteName="LecturerInfo"></dot:RouteLink></li>
                         <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="RegisterForm"></dot:RouteLink></li>

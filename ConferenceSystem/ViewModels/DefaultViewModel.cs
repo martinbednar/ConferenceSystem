@@ -10,6 +10,7 @@ namespace ConferencySystem.ViewModels
         {
             if (IsParticipant) Context.RedirectToRoute("Profile");
             if (IsLecturer) Context.RedirectToRoute("LecturerInfo");
+            if (IsAdmin || IsSuperAdmin) Context.RedirectToRoute("Users");
 
             RegisterActive = "";
             MainPageActive = "active";
