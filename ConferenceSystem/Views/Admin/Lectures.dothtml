@@ -1,0 +1,93 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.LecturesViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+
+    <div Visible="{value: IsSuperAdmin || IsAdmin}">
+        <div class="btn-group" role="group" style="margin-left:20px">
+
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowOverview()}" Text="Přehled" Enabled="{value: OverviewEnabled}"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowRequirementsColumns()}" Text="Požadavky" Enabled="{value: RequirementsColumnsEnabled}"></dot:Button>
+            <dot:Button type="button" class="btn btn-default" Click="{command: ShowAllColumns()}" Text="Všechny sloupce" Enabled="{value: AllColumnsEnabled}"></dot:Button>
+        </div>
+        <p style="float:right;font-size:larger;margin-top:8px;margin-right:20px;">Počet programů od lektorů: <b>{{value: TotalLecturesCount}}</b></p>
+        <br /><br />
+        <dot:UpdateProgress>
+            <br />
+            <div class="loader"></div>
+            <br />
+        </dot:UpdateProgress><br /><br />
+        <dot:Button type="button" class="btn btn-default" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}" style="margin-right:20px;float:right;"></dot:Button>
+
+        <br /><br />
+
+        <bp:GridView ID="lectures" DataSource="{value: Lectures}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
+            <Columns>
+                <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Typ" ValueBinding="{value: Type}" AllowSorting="true" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Název" ValueBinding="{value: Name}" AllowSorting="true" />
+                <bp:GridViewTemplateColumn HeaderText="Lektor" AllowSorting="true" >
+                    <ContentTemplate>
+                        <u>
+                            <a href="{value: "/lecturer/" + LecturerId}" style="color: blue;">
+                                {{value: LecturerName}}
+                            </a>
+                        </u>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+                <bp:GridViewTextColumn HeaderText="Anotace" ValueBinding="{value: Annotation}" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Cíl programu" ValueBinding="{value: Goal}" Visible="{value: AllColumns}" />
+                <bp:GridViewTextColumn HeaderText="Účastníci si odnesou" ValueBinding="{value: Given}" Visible="{value: AllColumns}" />
+                <bp:GridViewTemplateColumn HeaderText="Prezentace" Visible="{value: OverviewColumns}">
+                    <ContentTemplate>
+                        <a href="{value: "/presentation/" + Id}">
+                            <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
+                        </a>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+                <bp:GridViewTextColumn HeaderText="Odkaz na prezentaci" ValueBinding="{value: PresentationLink}" Visible="{value: AllColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Mikrofon" ValueBinding="{value: Microphone}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Flipchart" ValueBinding="{value: Flipchart}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Židle" ValueBinding="{value: Chairs}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Koberec" ValueBinding="{value: Carpet}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Stoly" ValueBinding="{value: Tables}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Žádné vybavení" ValueBinding="{value: Nothing}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Notebook" ValueBinding="{value: Notebook}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Dataprojektor" ValueBinding="{value: Dataprojector}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Notebook" ValueBinding="{value: Notebook}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTextColumn HeaderText="Port na vlastním notebooku" ValueBinding="{value: NotebookPort}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Reproduktory" ValueBinding="{value: Speakers}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Nakopírovat pracovní listy" ValueBinding="{value: WorklistsCopies}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTemplateColumn HeaderText="Pracovní listy" Visible="{value: RequirementsColumns}">
+                    <ContentTemplate>
+                        <a href="{value: "/worklist/" + Id}">
+                            <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
+                        </a>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+                <bp:GridViewTextColumn HeaderText="Odkaz na pracovní listy" ValueBinding="{value: PresentationLink}" Visible="{value: RequirementsColumns}" />
+
+                <%--<bp:GridViewTemplateColumn>
+                <ContentTemplate>
+                    <dot:RouteLink RouteName="Lecturer" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </dot:RouteLink>
+                </ContentTemplate>
+            </bp:GridViewTemplateColumn>--%>
+                <bp:GridViewTextColumn HeaderText="Další požadavky na prostor" ValueBinding="{value: PlaceRequirements}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTextColumn HeaderText="Další požadavky na vybavení" ValueBinding="{value: EquipmentRequirements}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <dot:Button ButtonTagName="button" Click="{command: _parent.DeleteLecture(Id)}" Enabled="{value: _parent.IsSuperAdmin}">
+                            <PostBack.Handlers>
+                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat program lektora?" />
+                            </PostBack.Handlers>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </dot:Button>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
+            </Columns>
+        </bp:GridView>
+    </div>
+</dot:Content>
+

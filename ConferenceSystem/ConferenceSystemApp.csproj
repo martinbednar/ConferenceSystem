@@ -172,6 +172,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\Admin\LecturesViewModel.cs" />
+    <Compile Include="ViewModels\Admin\WorklistPresenter.cs" />
     <Compile Include="ViewModels\Admin\PresentationPresenter.cs" />
     <Compile Include="ViewModels\Admin\VisitorViewModel.cs" />
     <Compile Include="ViewModels\Admin\VisitorsViewModel.cs" />
@@ -187,6 +189,7 @@
     <Compile Include="ViewModels\Admin\SettingVariablesViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturersViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturerViewModel.cs" />
+    <Compile Include="ViewModels\Lecturer\MyWorkshopViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\MyLectureViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\LecturerInfoViewModel.cs" />
     <Compile Include="ViewModels\Lecturer\MyLecturesViewModel.cs" />
@@ -306,6 +309,8 @@
     <Content Include="Views\Admin\Visitor.dothtml" />
     <Content Include="Views\Lecturer\MyLectures.dothtml" />
     <Content Include="Views\Lecturer\MyLecture.dothtml" />
+    <Content Include="Views\Lecturer\MyWorkshop.dothtml" />
+    <Content Include="Views\Admin\Lectures.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

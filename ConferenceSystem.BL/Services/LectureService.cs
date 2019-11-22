@@ -38,14 +38,33 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public void GetLectures(GridViewDataSet<LectureDTO> lecturesDataSet)
+        {
+            using (var db = new DbContext())
+            {
+                var lectures = db.Lecture.Where(l => l.Active).ProjectTo<LectureDTO>().ToList();
+
+                int sequencenumber = 1;
+
+                foreach (var lectureDTO in lectures)
+                {
+                    lectureDTO.SequenceNumber = sequencenumber;
+                    sequencenumber++;
+                    var lecturer = db.Users.Where(u => u.LecturerInfo.Lectures.Contains(db.Lecture.FirstOrDefault(l => l.Id == lectureDTO.Id))).SingleOrDefault();
+                    lectureDTO.LecturerName = lecturer.TitleBefore + " " + lecturer.FirstName + " " + lecturer.LastName + " " + lecturer.TitleAfter;
+                    lectureDTO.LecturerId = lecturer.Id;
+                }
+
+                lecturesDataSet.LoadFromQueryable(lectures.AsQueryable());
+            }
+        }
+
         public LectureDTO CreateNewLecture(int lecturerId)
         {
             using (var db = new DbContext())
             {
                 var newLecture = new Lecture() {
-                    Active = false,
-                    Type = "přednáška",
-                    Microphone = true
+                    Active = false
                 };
                 db.Users.Find(lecturerId).LecturerInfo.Lectures.Add(newLecture);
                 db.SaveChanges();
@@ -85,6 +104,20 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public void SaveWorklist(string filePath, int lectureId)
+        {
+            using (var db = new DbContext())
+            {
+                byte[] worklistBytes = File.ReadAllBytes(filePath);
+
+                var lecture = db.Lecture.Find(lectureId);
+                lecture.Worklist = worklistBytes;
+                lecture.WorklistName = Path.GetFileName(filePath);
+                lecture.Active = true;
+                db.SaveChanges();
+            }
+        }
+
         public void SaveLecture(LectureDTO dataLecture)
         {
             using (var db = new DbContext())
@@ -103,6 +136,17 @@ namespace ConferencySystem.BL.Services
                 var lecture = db.Lecture.Find(lectureId);
                 lecture.Presentation = null;
                 lecture.PresentationName = "";
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteWorklist(int lectureId)
+        {
+            using (var db = new DbContext())
+            {
+                var lecture = db.Lecture.Find(lectureId);
+                lecture.Worklist = null;
+                lecture.WorklistName = "";
                 db.SaveChanges();
             }
         }

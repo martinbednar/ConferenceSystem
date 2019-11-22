@@ -58,8 +58,10 @@ namespace ConferencySystem
             config.RouteTable.Add("Visitor", "visitor/{UserId}", "Views/Admin/Visitor.dothtml");
             config.RouteTable.Add("MyLectures", "mylectures", "Views/Lecturer/MyLectures.dothtml");
             config.RouteTable.Add("MyLecture", "mylecture/{LectureId}", "Views/Lecturer/MyLecture.dothtml");
-            config.RouteTable.Add("MyWorkshop", "myworkshop/{WorkshopId}", "Views/Lecturer/MyWorkshop.dothtml");
+            config.RouteTable.Add("MyWorkshop", "myworkshop/{LectureId}", "Views/Lecturer/MyWorkshop.dothtml");
             config.RouteTable.Add("PresentationDownload", "presentation/{LectureId}", null, presenterFactory: () => new PresentationPresenter());
+            config.RouteTable.Add("WorklistDownload", "worklist/{LectureId}", null, presenterFactory: () => new WorklistPresenter());
+            config.RouteTable.Add("Lectures", "lectures", "Views/Admin/Lectures.dothtml");
 
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    

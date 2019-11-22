@@ -149,6 +149,18 @@
     <Compile Include="Migrations\201911161408426_AddColumnActiveForLecture.Designer.cs">
       <DependentUpon>201911161408426_AddColumnActiveForLecture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911211920428_AddPropertyNothingToLectue.cs" />
+    <Compile Include="Migrations\201911211920428_AddPropertyNothingToLectue.Designer.cs">
+      <DependentUpon>201911211920428_AddPropertyNothingToLectue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911220902561_AddRelationshipFromLectureToLecturerInfo.cs" />
+    <Compile Include="Migrations\201911220902561_AddRelationshipFromLectureToLecturerInfo.Designer.cs">
+      <DependentUpon>201911220902561_AddRelationshipFromLectureToLecturerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911220909270_RemoveRelationshipFromLectureToLecturerInfo.cs" />
+    <Compile Include="Migrations\201911220909270_RemoveRelationshipFromLectureToLecturerInfo.Designer.cs">
+      <DependentUpon>201911220909270_RemoveRelationshipFromLectureToLecturerInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -179,6 +191,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911161408426_AddColumnActiveForLecture.resx">
       <DependentUpon>201911161408426_AddColumnActiveForLecture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211920428_AddPropertyNothingToLectue.resx">
+      <DependentUpon>201911211920428_AddPropertyNothingToLectue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911220902561_AddRelationshipFromLectureToLecturerInfo.resx">
+      <DependentUpon>201911220902561_AddRelationshipFromLectureToLecturerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911220909270_RemoveRelationshipFromLectureToLecturerInfo.resx">
+      <DependentUpon>201911220909270_RemoveRelationshipFromLectureToLecturerInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

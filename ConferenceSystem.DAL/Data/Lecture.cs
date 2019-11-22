@@ -51,6 +51,8 @@ namespace ConferencySystem.DAL.Data
 
         public bool Tables { get; set; }
 
+        public bool Nothing { get; set; }
+
         public bool Notebook { get; set; }
 
         public bool Dataprojector { get; set; }

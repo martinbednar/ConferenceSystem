@@ -6,7 +6,7 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Přidat přednášku</h1>
+                    <h1>Údaje o přednášce</h1>
                 </div><br /><br />
 
                 <div class="form-row">
@@ -21,7 +21,7 @@
                         <span style="vertical-align: top; margin-top: 120px; width: 100px;">Anotace</span>
                         <dot:TextBox style="font-weight:normal; width: 375px;" rows="15" Text="{value: DataLecture.Annotation}" Type="MultiLine" />
                         <span class="form-row-note">
-                            Napište krátkou anotaci k Vaší přednášce. Textem se snažte zaujmout. Nezapomeňte, že cílem konference je především inspirovat a nakopnout. Vzbudit nadšení :-) .
+                            Napište krátkou anotaci k Vaší přednášce <b>(max. 300 slov)</b>. Textem se snažte zaujmout. Nezapomeňte, že cílem konference je především inspirovat a nakopnout. Vzbudit nadšení :-) .
                         </span>
                     </label>
                 </div><br /><br /><br /><br />

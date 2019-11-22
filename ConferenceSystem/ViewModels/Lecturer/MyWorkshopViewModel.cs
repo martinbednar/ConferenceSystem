@@ -16,7 +16,7 @@ using DotVVM.Framework.ViewModel;
 namespace ConferencySystem.ViewModels.Lecturer
 {
     [Authorize(Roles = new[] { "lecturer" })]
-    public class MyLectureViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
+    public class MyWorkshopViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
     {
         public LectureDTO DataLecture { get; set; }
 
@@ -34,13 +34,17 @@ namespace ConferencySystem.ViewModels.Lecturer
             get { return Convert.ToInt32(Context.Parameters["LectureId"]); }
         }
 
-        public UploadData Upload { get; set; } = new UploadData();
+        public UploadData UploadPresentation { get; set; } = new UploadData();
+
+        public UploadData UploadWorklist { get; set; } = new UploadData();
 
         private readonly IUploadedFileStorage fileStorage;
 
         public bool PresentationUploaded { get; set; } = false;
 
-        public MyLectureViewModel(IUploadedFileStorage storage)
+        public bool WorklistUploaded { get; set; } = false;
+
+        public MyWorkshopViewModel(IUploadedFileStorage storage)
         {
             this.fileStorage = storage;
         }
@@ -54,8 +58,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                 if (LectureId == 0)
                 {
                     DataLecture = lectureService.CreateNewLecture(CurrentUserId);
-                    DataLecture.Type = "přednáška";
-                    DataLecture.Microphone = true;
+                    DataLecture.Type = "workshop";
                 }
                 else {
                     var adminService = new AdminService();
@@ -71,8 +74,9 @@ namespace ConferencySystem.ViewModels.Lecturer
 
                     DataLecture = lectureService.GetLecture(LectureId);
                 }
-                
+
                 PresentationUploaded = !(DataLecture.Presentation == null || DataLecture.Presentation.Length == 0);
+                WorklistUploaded = !(DataLecture.Worklist == null || DataLecture.Worklist.Length == 0);
             }
 
 
@@ -89,22 +93,37 @@ namespace ConferencySystem.ViewModels.Lecturer
             return base.PreRender();
         }
 
-        public void ProcessFiles()
+        public void ProcessFiles(bool isPresentation)
         {
             var folderPath = GetFolderdPath();
             var lectureService = new LectureService();
 
-
-            // save all files to disk
-            foreach (var file in Upload.Files)
+            if (isPresentation)
             {
-                var filePath = Path.Combine(folderPath, file.FileName);
-                fileStorage.SaveAs(file.FileId, filePath);
-                lectureService.SavePresentation(filePath, DataLecture.Id);
-                DataLecture.PresentationName = file.FileName;
-                PresentationUploaded = true;
-                fileStorage.DeleteFile(file.FileId);
+                foreach (var file in UploadPresentation.Files)
+                {
+                    var filePath = Path.Combine(folderPath, file.FileName);
+                    fileStorage.SaveAs(file.FileId, filePath);
+                    lectureService.SavePresentation(filePath, DataLecture.Id);
+                    DataLecture.PresentationName = file.FileName;
+                    PresentationUploaded = true;
+                    fileStorage.DeleteFile(file.FileId);
+                }
             }
+            else
+            {
+                foreach (var file in UploadWorklist.Files)
+                {
+                    var filePath = Path.Combine(folderPath, file.FileName);
+                    fileStorage.SaveAs(file.FileId, filePath);
+                    lectureService.SaveWorklist(filePath, DataLecture.Id);
+                    DataLecture.WorklistName = file.FileName;
+                    WorklistUploaded = true;
+                    fileStorage.DeleteFile(file.FileId);
+                }
+            }
+            UploadPresentation.Clear();
+            UploadWorklist.Clear();
         }
 
         private string GetFolderdPath()
@@ -119,12 +138,21 @@ namespace ConferencySystem.ViewModels.Lecturer
             return folderPath;
         }
 
-        public void DeletePresentation()
+        public void DeleteFile(bool isPresentation)
         {
             var lectureService = new LectureService();
-            lectureService.DeletePresentation(DataLecture.Id);
-            Upload.Clear();
-            PresentationUploaded = false;
+            if (isPresentation)
+            {
+                lectureService.DeletePresentation(DataLecture.Id);
+                PresentationUploaded = false;
+                UploadPresentation.Clear();
+            }
+            else
+            {
+                lectureService.DeleteWorklist(DataLecture.Id);
+                WorklistUploaded = false;
+                UploadWorklist.Clear();
+            }
         }
 
         public void SaveLecture()
