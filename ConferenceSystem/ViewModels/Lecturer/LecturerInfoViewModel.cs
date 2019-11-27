@@ -61,6 +61,8 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public bool AccomodationSecondNight { get; set; } = false;
 
+        public bool FormIsEmpty { get; set; } = false;
+
         public override Task PreRender()
         {
             if (!Context.IsPostBack)
@@ -96,9 +98,10 @@ namespace ConferencySystem.ViewModels.Lecturer
 
 
                 var lecturerInfoService = new LecturerInfoService();
-                //lecturerInfoService.LoadPhoto(DataUser.LecturerInfo.Photo, ".\\temp\\"+DataUser.LecturerInfo.PhotoName);
-                ImageUploaded = !(DataUser.LecturerInfo.Photo == null || DataUser.LecturerInfo.Photo.Length == 0);
+                ImageUploaded = !(DataUser.LecturerInfo.PhotoName == null || DataUser.LecturerInfo.PhotoName == "");
             }
+
+            FormIsEmpty = DataUser.LecturerInfo.Introduce == null || DataUser.LecturerInfo.Introduce == "";
 
 
             RegisterActive = "";

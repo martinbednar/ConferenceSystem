@@ -7,6 +7,9 @@
             <div class="form-white-background">
                 <div class="form-title-row">
                     <h1>Údaje o workshopu / semináři</h1>
+                    <div class="form-title-row-note">
+                        Zadejte v případě, že se zúčastníte festivalu jako lektor.
+                    </div>
                 </div><br /><br />
 
                 <div class="form-row">
@@ -44,8 +47,9 @@
                             Napište krátkou anotaci k Vašemu programu <b>(max. 300 slov)</b>. Textem se snažte zaujmout. Nezapomeňte, že cílem konference je především inspirovat a nakopnout. Vzbudit nadšení :-) .
                         </span>
                     </label>
-                </div><br />
-                <div class="form-row">
+                </div><br /><br />
+
+                <%-- <div class="form-row">
                     <label>
                         <span style="vertical-align: top; margin-top: 12px;">Co je cílem programu?</span>
                         <dot:TextBox Text="{value: DataLecture.Goal}" Type="MultiLine" />
@@ -53,18 +57,19 @@
                             Jedna až dvě věty.
                         </span>
                     </label>
-                </div><br />
+                </div><br /> --%>
+
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: top; margin-top: 12px;">Co si účastníci odnesou&nbsp;/&nbsp;dostanou?</span>
-                        <dot:TextBox Text="{value: DataLecture.Given}" Type="MultiLine" />
+                        <span style="vertical-align: top; margin-top: 17px;">Cíl programu</span>
+                        <dot:TextBox Text="{value: DataLecture.Goal}" Type="MultiLine" />
                         <span class="form-row-note">
-                            Jedna až dvě věty.
+                            <b>Co si  účastníci odnesou/dostanou/vyzkoušejí si?&nbsp;-&nbsp;Co je cílem?</b><br />Jedna až dvě věty.
                         </span>
                     </label>
                 </div><br /><br /><br /><br /><br />
 
-                <div class="form-row" Visible="{value: !PresentationUploaded}">
+                <%-- <div class="form-row" Visible="{value: !PresentationUploaded}">
                     <label>
                         <span style="vertical-align: top;margin-top: 28px;">Prezentace</span>
                         <bp:FileUpload Data="{value: UploadPresentation}" UploadCompleted="{command: ProcessFiles(true)}" AllowMultipleFiles="false" AllowedFileTypes=".ppt,.pptx.,.pdf,.PPT,.PPTX,.PDF,.Ppt,.Pptx,.Pdf" MaxFileSize="1000" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných souborů: {0}" DragFilesHereText="Klikněte sem pro výběr souboru z počítače nebo soubor přetáhněte nad toto pole." GenericErrorText="Soubor se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte soubor například do svého OneDrive a sdílejte nám ho pomocí odkazu." />
@@ -92,7 +97,7 @@
                             </PostBack.Handlers>
                         </dot:Button>
                     </label>
-                </div><br /><br /><br /><br /><br />
+                </div><br /><br /><br /><br /><br /> --%>
 
             </div>
         </div>
@@ -139,6 +144,9 @@
                     <label>
                         <span style="vertical-align: top; margin-top: 2px;">Vaše další&nbsp;/&nbsp;upřesňující požadavky na prostor </span>
                         <dot:TextBox Text="{value: DataLecture.PlaceRequirements}" Type="MultiLine" />
+                        <span class="form-row-note">
+                            Popište uspořádání prostoru a Vaše další případné požadavky na prostor (např. velikost místnosti, uspořádání židlí a stolů, počty židlí a stolů, apod.).
+                        </span>
                     </label>
                 </div>
             </div>
@@ -156,108 +164,113 @@
                     <label class="radio-button">
                         <span style="text-align: right; margin-left:0px;">Nic nepotřebuji,<br />vše si dovezu</span>
                         <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Nothing}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Nothing}" CheckedValue="{value: false}"></dot:RadioButton>
+                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Nothing}" CheckedValue="{value: true}" Changed="{command: EquipementChanged()}"></dot:RadioButton>
+                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Nothing}" CheckedValue="{value: false}" Changed="{command: EquipementChanged()}"></dot:RadioButton>
                         </div><br /><br />
                     </label>
                 </div><br />
 
-                <div class="form-row">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Flipchart s papíry a fixami</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: false}"></dot:RadioButton>
-                        </div><br /><br />
-                    </label>
-                </div><br />
+                      <div Visible="{value: !DataLecture.Nothing}">
+                          <div class="form-row">
+                              <label class="radio-button">
+                                  <span style="text-align: right; margin-left:0px;">Flipchart s papíry a fixami</span>
+                                  <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                                      <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: true}"></dot:RadioButton>
+                                      <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: false}"></dot:RadioButton>
+                                  </div><br /><br />
+                              </label>
+                          </div><br />
 
-                <div class="form-row">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Notebook</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Notebook}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Notebook}" CheckedValue="{value: false}"></dot:RadioButton>
-                        </div><br /><br />
-                    </label>
-                </div><br />
+                          <div class="form-row">
+                              <label class="radio-button">
+                                  <span style="text-align: right; margin-left:0px;">Potřebuji půjčit notebook</span>
+                                  <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                                      <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Notebook}" CheckedValue="{value: true}"></dot:RadioButton>
+                                      <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Notebook}" CheckedValue="{value: false}"></dot:RadioButton>
+                                  </div><br /><br />
+                              </label>
+                          </div><br />
 
-                <div class="form-row">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Dataprojektor</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Dataprojector}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Dataprojector}" CheckedValue="{value: false}"></dot:RadioButton>
-                        </div><br /><br />
-                    </label>
-                </div><br />
+                          <div class="form-row">
+                              <label class="radio-button">
+                                  <span style="text-align: right; margin-left:0px;">Dataprojektor</span>
+                                  <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                                      <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Dataprojector}" CheckedValue="{value: true}"></dot:RadioButton>
+                                      <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Dataprojector}" CheckedValue="{value: false}"></dot:RadioButton>
+                                  </div><br /><br />
+                              </label>
+                          </div><br />
 
-                <div class="form-row" Visible="{value: !DataLecture.Notebook && DataLecture.Dataprojector}">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">V případě vlastního<br />notebooku - připojení<br />dataprojektoru přes</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="HDMI" CheckedItem="{value: DataLecture.NotebookPort}" CheckedValue="{value: "HDMI"}"></dot:RadioButton>
-                            <dot:RadioButton Text="VGA" CheckedItem="{value: DataLecture.NotebookPort}" CheckedValue="{value: "VGA"}"></dot:RadioButton>
-                        </div><br /><br />
-                    </label>
-                </div><br />
+                          <div class="form-row" Visible="{value: DataLecture.Dataprojector}">
+                              <label class="radio-button">
+                                  <span style="text-align: right; margin-left:0px;"><%-- V případě vlastního<br />notebooku - připojení<br />dataprojektoru přes --%></span>
+                                  <div style="width:110%;margin-left: -50px;margin-top: -60px;">
+                                      <dot:RadioButton Text="Budu mít vlastní notebook a potřebuji HDMI připojení." CheckedItem="{value: DataLecture.NotebookPort}" CheckedValue="{value: "Budu mít vlastní notebook a potřebuji HDMI připojení."}"></dot:RadioButton><br />
+                                      <dot:RadioButton Text="Budu mít vlastní notebook a potřebuji VGA připojení." CheckedItem="{value: DataLecture.NotebookPort}" CheckedValue="{value: "Budu mít vlastní notebook a potřebuji VGA připojení."}"></dot:RadioButton><br />
+                                      <dot:RadioButton Text="Počítám s půjčeným notebookem." CheckedItem="{value: DataLecture.NotebookPort}" CheckedValue="{value: "Počítám s půjčeným notebookem."}"></dot:RadioButton>
+                                  </div><br /><br />
+                              </label>
+                          </div>
 
-                <div class="form-row">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Reproduktory</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Speakers}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Speakers}" CheckedValue="{value: false}"></dot:RadioButton>
-                        </div><br /><br />
-                    </label>
-                </div><br />
+                          <div class="form-row">
+                              <label class="radio-button">
+                                  <span style="text-align: right; margin-left:0px;">Reproduktory</span>
+                                  <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                                      <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Speakers}" CheckedValue="{value: true}"></dot:RadioButton>
+                                      <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Speakers}" CheckedValue="{value: false}"></dot:RadioButton>
+                                  </div><br /><br />
+                              </label>
+                          </div><br />
 
-                <div class="form-row">
-                    <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Nakopírované pracovní listy</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.WorklistsCopies}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.WorklistsCopies}" CheckedValue="{value: false}"></dot:RadioButton>
-                        </div><br /><br />
-                    </label>
-                </div><br /><div Visible="{value: DataLecture.WorklistsCopies}"><br /><br /></div>
-
-
-                <div class="form-row" Visible="{value: !WorklistUploaded && DataLecture.WorklistsCopies}">
-                    <label>
-                        <span style="vertical-align: top;margin-top: 28px;">Pracovní listy</span>
-                        <bp:FileUpload Data="{value: UploadWorklist}" UploadCompleted="{command: ProcessFiles(false)}" AllowMultipleFiles="false" AllowedFileTypes=".doc,.docx,.ppt,.pptx.,.pdf,.DOC,.DOCX,.PPT,.PPTX,.PDF,.Doc,.Docx,.Ppt,.Pptx,.Pdf" MaxFileSize="500" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných souborů: {0}" DragFilesHereText="Klikněte sem pro výběr souboru z počítače nebo soubor přetáhněte nad toto pole." GenericErrorText="Soubor se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte soubor například do svého OneDrive a sdílejte nám ho pomocí odkazu." />
-                    </label>
-                </div><br />
-
-                <div class="form-row" Visible="{value: !WorklistUploaded && DataLecture.WorklistsCopies}">
-                    <label>
-                        <span>Odkaz na prezentaci</span>
-                        <dot:TextBox Text="{value: DataLecture.WorklistLink}" />
-                        <span class="form-row-note">
-                            <b>Nahrajte soubor, který si přejete nakopírovat pro každého účastníka programu, nebo vložte odkaz pro jeho stažení.</b>
-                        </span>
-                    </label>
-                </div>
+                          <div class="form-row">
+                              <label class="radio-button">
+                                  <span style="text-align: right; margin-left:0px;">Nakopírované pracovní listy</span>
+                                  <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                                      <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.WorklistsCopies}" CheckedValue="{value: true}"></dot:RadioButton>
+                                      <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.WorklistsCopies}" CheckedValue="{value: false}"></dot:RadioButton>
+                                  </div><br /><br />
+                              </label>
+                          </div><br /><div Visible="{value: DataLecture.WorklistsCopies}"><br /><br /></div>
 
 
-                <div class="form-row" Visible="{value: WorklistUploaded && DataLecture.WorklistsCopies}">
-                    <label style="display: flex;">
-                        <span>Pracovní listy</span>
-                        <a href="{value: "/worklist/" + DataLecture.Id}">{{value: DataLecture.WorklistName}}</a>
-                        <dot:Button Click="{command: DeleteFile(false)}" Text="Smazat" class="btn btn-danger active" style="background-color: #C9302C;border: none;width: 80px;color: white;padding: 6px 12px;margin-left: 10px;float: right;">
-                            <PostBack.Handlers>
-                                <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat pracovní list k přednášce?" />
-                            </PostBack.Handlers>
-                        </dot:Button>
-                    </label>
-                </div><div Visible="{value: DataLecture.WorklistsCopies}"><br /><br /><br /><br /><br /></div>
+                          <div class="form-row" Visible="{value: !WorklistUploaded && DataLecture.WorklistsCopies}">
+                              <label>
+                                  <span style="vertical-align: top;margin-top: 28px;">Pracovní listy</span>
+                                  <bp:FileUpload Data="{value: UploadWorklist}" UploadCompleted="{command: ProcessFiles(false)}" AllowMultipleFiles="false" AllowedFileTypes=".doc,.docx,.ppt,.pptx.,.pdf,.DOC,.DOCX,.PPT,.PPTX,.PDF,.Doc,.Docx,.Ppt,.Pptx,.Pdf" MaxFileSize="500" UploadButtonText="Nahrát" NumberOfFilesIndicatorText="Počet nahraných souborů: {0}" DragFilesHereText="Klikněte sem pro výběr souboru z počítače nebo soubor přetáhněte nad toto pole." GenericErrorText="Soubor se nepodařilo nahrát. Zkuste to ještě jednou nebo nahrajte soubor například do svého OneDrive a sdílejte nám ho pomocí odkazu." />
+                              </label>
+                          </div><br />
 
+                          <div class="form-row" Visible="{value: !WorklistUploaded && DataLecture.WorklistsCopies}">
+                              <label>
+                                  <span>Odkaz na pracovní listy</span>
+                                  <dot:TextBox Text="{value: DataLecture.WorklistLink}" />
+                                  <span class="form-row-note">
+                                      <b>Nahrajte pracovní listy nebo vložte odkaz pro jejich stažení (nejpozději 17. února 2020).</b> Pro každého účastníka připravíme jednu kopii.
+                                  </span>
+                              </label>
+                          </div>
+
+
+                          <div class="form-row" Visible="{value: WorklistUploaded && DataLecture.WorklistsCopies}">
+                              <label style="display: flex;">
+                                  <span>Pracovní listy</span>
+                                  <a href="{value: "/worklist/" + DataLecture.Id}">{{value: DataLecture.WorklistName}}</a>
+                                  <dot:Button Click="{command: DeleteFile(false)}" Text="Smazat" class="btn btn-danger active" style="background-color: #C9302C;border: none;width: 80px;color: white;padding: 6px 12px;margin-left: 10px;float: right;">
+                                      <PostBack.Handlers>
+                                          <dot:ConfirmPostBackHandler Message="Skutečně chcete smazat pracovní list k přednášce?" />
+                                      </PostBack.Handlers>
+                                  </dot:Button>
+                              </label>
+                          </div><div Visible="{value: DataLecture.WorklistsCopies}"><br /><br /><br /><br /><br /></div>
+                      </div>
 
                 <div class="form-row">
                     <label>
                         <span style="vertical-align: top; margin-top: 0px;">Vaše další&nbsp;/&nbsp;upřesňující požadavky na vybavení </span>
                         <dot:TextBox Text="{value: DataLecture.EquipmentRequirements}" Type="MultiLine" />
+                        <span class="form-row-note">
+                            Např. papíry, psací potřeby, apod.
+                        </span>
                     </label>
                 </div>
             </div>

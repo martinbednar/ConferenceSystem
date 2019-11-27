@@ -10,7 +10,7 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1 style="border-bottom-color:lightcoral;">Údaje o přednášejícím</h1>
+                    <h1 style="border-bottom-color:lightcoral;">Údaje o přednášejícím&nbsp;/&nbsp;lektorovi</h1>
                 </div>
                 <div class="form-row">
                     <label>
@@ -72,7 +72,7 @@
                 <div class="form-row">
                     <p style="font-size:small; font-weight:normal; float:right;">Pomocí emailu a hesla se budete přihlašovat do tohoto Konferenčního systému.</p>
                     <label>
-                        <span style="vertical-align: middle;">Email<span style="display:inline; color:red; padding-right:0px"> *</span><br /><span style="font-weight:normal;font-size:smaller;">(pro komunikaci s vámi)</span></span>
+                        <span style="vertical-align: middle;">Email<span style="display:inline; color:red; padding-right:0px"> *</span><br /><span style="font-weight:normal;font-size:smaller;">(pro komunikaci s Vámi)</span></span>
                         <dot:TextBox Text="{value: DataUser.Email}" Type="Email" />
                     </label>
                 </div>
@@ -90,7 +90,7 @@
                 </div><br />
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: middle;">Telefonní číslo<span style="display:inline; color:red; padding-right:0px"> *</span><br /><span style="font-weight:normal;font-size:smaller;">(pro komunikaci s vámi)</span></span>
+                        <span style="vertical-align: middle;">Telefonní číslo<span style="display:inline; color:red; padding-right:0px"> *</span><br /><span style="font-weight:normal;font-size:smaller;">(pro komunikaci s Vámi)</span></span>
                         <dot:TextBox Text="{value: DataUser.PhoneNumber}" Type="Telephone" />
                     </label>
                 </div>

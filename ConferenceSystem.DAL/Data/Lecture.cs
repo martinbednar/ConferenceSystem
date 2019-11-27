@@ -28,7 +28,8 @@ namespace ConferencySystem.DAL.Data
         [StringLength(4000)]
         public string PresentationLink { get; set; }
 
-        public bool Microphone { get; set; }
+        [StringLength(50)]
+        public string Microphone { get; set; }
 
         public bool Flipchart { get; set; }
 
@@ -57,7 +58,7 @@ namespace ConferencySystem.DAL.Data
 
         public bool Dataprojector { get; set; }
 
-        [StringLength(15)]
+        [StringLength(100)]
         public string NotebookPort { get; set; }
 
         public bool Speakers { get; set; }

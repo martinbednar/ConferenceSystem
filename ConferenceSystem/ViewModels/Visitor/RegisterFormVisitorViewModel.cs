@@ -26,7 +26,7 @@ namespace ConferencySystem.ViewModels.Visitor
             /*Context.RedirectToRoute("Register");*/
             if (!Context.IsPostBack)
             {
-                DataUser = new AppUserDTO() { PhoneNumber="0" };
+                DataUser = new AppUserDTO() { PhoneNumber="0", InfoFrom= "" };
             }
 
             RegisterActive = "active";
@@ -119,7 +119,15 @@ namespace ConferencySystem.ViewModels.Visitor
                     }
                     else
                     {
-                        RegisterUser();
+                        if (DataUser.InfoFrom.Length == 0)
+                        {
+                            Alert = true;
+                            AlertValue = "Vyplňte pole \"Organizace\", které je povinné.";
+                        }
+                        else
+                        {
+                            RegisterUser();
+                        }
                     }
                 }
             }

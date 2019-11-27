@@ -78,7 +78,7 @@ namespace ConferencySystem.ViewModels.Admin
 
 
                 var lecturerInfoService = new LecturerInfoService();
-                ImageUploaded = !(DataUser.LecturerInfo.Photo == null || DataUser.LecturerInfo.Photo.Length == 0);
+                ImageUploaded = !(DataUser.LecturerInfo.PhotoName == null || DataUser.LecturerInfo.PhotoName == "");
             }
 
             return base.PreRender();

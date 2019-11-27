@@ -38,6 +38,9 @@ namespace ConferencySystem.BL.DTO
         [MaxLength(400, ErrorMessage = "Byla překročena maximální délka jména Vašeho spolubydlícího - maximální délka pole \"Spolubydlící\" je 400 znaků.")]
         public string RoomMate { get; set; }
 
+        [MaxLength(100, ErrorMessage = "Byla překročena maximální délka typu honoráře - maximální délka pole \"Honorář\" je 100 znaků.")]
+        public string Fee { get; set; }
+
         public virtual IEnumerable<LectureDTO> Lectures { get; set; }
     }
 }

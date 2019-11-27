@@ -55,7 +55,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                 {
                     DataLecture = lectureService.CreateNewLecture(CurrentUserId);
                     DataLecture.Type = "přednáška";
-                    DataLecture.Microphone = true;
+                    DataLecture.Microphone = "do ruky";
                 }
                 else {
                     var adminService = new AdminService();
@@ -72,7 +72,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                     DataLecture = lectureService.GetLecture(LectureId);
                 }
                 
-                PresentationUploaded = !(DataLecture.Presentation == null || DataLecture.Presentation.Length == 0);
+                PresentationUploaded = !(DataLecture.PresentationName == null || DataLecture.PresentationName == "");
             }
 
 

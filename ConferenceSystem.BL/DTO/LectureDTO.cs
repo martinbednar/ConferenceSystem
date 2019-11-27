@@ -30,7 +30,8 @@ namespace ConferencySystem.BL.DTO
         [MaxLength(4000, ErrorMessage = "Byla překročena maximální délka odkazu na prezentaci - maximální délka pole \"Odkaz na prezentaci\" je 4000 znaků.")]
         public string PresentationLink { get; set; }
 
-        public bool Microphone { get; set; }
+        [MaxLength(50, ErrorMessage = "Byla překročena maximální délka typu mikrofonu - maximální délka pole \"Typ mikrofonu\" je 50 znaků.")]
+        public string Microphone { get; set; }
 
         public bool Flipchart { get; set; }
 
@@ -59,7 +60,7 @@ namespace ConferencySystem.BL.DTO
 
         public bool Dataprojector { get; set; }
 
-        [MaxLength(15, ErrorMessage = "Byla překročena maximální délka názvu grafického portu vlastního notebooku - maximální délka pole \"Grafický port vlastního notebooku (HDMI, VGA, DisplayPort)\" je 15 znaků.")]
+        [MaxLength(100, ErrorMessage = "Byla překročena maximální délka názvu grafického portu vlastního notebooku - maximální délka pole \"Grafický port vlastního notebooku (HDMI, VGA, DisplayPort)\" je 100 znaků.")]
         public string NotebookPort { get; set; }
 
         public bool Speakers { get; set; }

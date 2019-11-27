@@ -161,6 +161,18 @@
     <Compile Include="Migrations\201911220909270_RemoveRelationshipFromLectureToLecturerInfo.Designer.cs">
       <DependentUpon>201911220909270_RemoveRelationshipFromLectureToLecturerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911261939037_HigherLimitForNotebookPort.cs" />
+    <Compile Include="Migrations\201911261939037_HigherLimitForNotebookPort.Designer.cs">
+      <DependentUpon>201911261939037_HigherLimitForNotebookPort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911271604100_AddTypeOfPaymentToLecturerInfo.cs" />
+    <Compile Include="Migrations\201911271604100_AddTypeOfPaymentToLecturerInfo.Designer.cs">
+      <DependentUpon>201911271604100_AddTypeOfPaymentToLecturerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911271725437_ChangeTypeOfMicrophoneToString.cs" />
+    <Compile Include="Migrations\201911271725437_ChangeTypeOfMicrophoneToString.Designer.cs">
+      <DependentUpon>201911271725437_ChangeTypeOfMicrophoneToString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -200,6 +212,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911220909270_RemoveRelationshipFromLectureToLecturerInfo.resx">
       <DependentUpon>201911220909270_RemoveRelationshipFromLectureToLecturerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261939037_HigherLimitForNotebookPort.resx">
+      <DependentUpon>201911261939037_HigherLimitForNotebookPort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911271604100_AddTypeOfPaymentToLecturerInfo.resx">
+      <DependentUpon>201911271604100_AddTypeOfPaymentToLecturerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911271725437_ChangeTypeOfMicrophoneToString.resx">
+      <DependentUpon>201911271725437_ChangeTypeOfMicrophoneToString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

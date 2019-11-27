@@ -7,6 +7,9 @@
             <div class="form-white-background">
                 <div class="form-title-row">
                     <h1>Údaje o přednášce</h1>
+                    <div class="form-title-row-note">
+                        Zadejte v případě, že se zúčastníte festivalu jako přednášející.
+                    </div>
                 </div><br /><br />
 
                 <div class="form-row">
@@ -38,7 +41,7 @@
                         <span>Odkaz na prezentaci</span>
                         <dot:TextBox Text="{value: DataLecture.PresentationLink}" />
                         <span class="form-row-note">
-                            <b>Nahrajte Vaši prezentaci nebo vložte odkaz na její stažení.</b>. Pokud chcete předejít redukci velikosti obrazu, připravte své prezentace v poměru 16:9. Prezentace musí být kompatibilní se systémem Windows.
+                            <b>Nahrajte Vaši prezentaci nebo vložte odkaz na její stažení (nejpozději 17. února 2020)</b>. Pokud chcete předejít redukci velikosti obrazu, připravte své prezentace v poměru 16:9. Prezentace musí být kompatibilní se systémem Windows.
                         </span>
                     </label>
                 </div>
@@ -59,14 +62,14 @@
                 <div class="form-row">
                     <label class="radio-button">
                         <span style="text-align: right; margin-left:80px;">Mikrofon</span>
-                        <div style="width:100%;margin-left: 70px;margin-top: -28px;">
-                            <dot:RadioButton Text="Chci mikrofon." CheckedItem="{value: DataLecture.Microphone}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NEchci mikrofon." CheckedItem="{value: DataLecture.Microphone}" CheckedValue="{value: false}"></dot:RadioButton>
+                        <div style="width:100%;margin-left: 70px;margin-top: -31px;">
+                            <dot:RadioButton Text="Do ruky." CheckedItem="{value: DataLecture.Microphone}" CheckedValue="{value: "do ruky"}"></dot:RadioButton><br />
+                            <dot:RadioButton Text="Na hlavu." CheckedItem="{value: DataLecture.Microphone}" CheckedValue="{value: "na hlavu"}"></dot:RadioButton>
                         </div><br /><br />
                     </label>
                 </div>
 
-                <div class="form-row">
+                <%-- <div class="form-row">
                     <label class="radio-button">
                         <span style="text-align: right; margin-left:80px;">Flipchart</span>
                         <div style="width:100%;margin-left: 70px;margin-top: -28px;">
@@ -74,11 +77,11 @@
                             <dot:RadioButton Text="NEchci flipchart." CheckedItem="{value: DataLecture.Flipchart}" CheckedValue="{value: false}"></dot:RadioButton>
                         </div><br /><br />
                     </label>
-                </div><br />
+                </div> --%><br />
 
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: top; margin-top: 12px;">Další požadavky k přednášce</span>
+                        <span style="vertical-align: top; margin-top: 12px;">Vaše další požadavky k přednášce</span>
                         <dot:TextBox Text="{value: DataLecture.PlaceRequirements}" Type="MultiLine" />
                     </label>
                 </div>

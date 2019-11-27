@@ -45,7 +45,7 @@
                 </div><br /><br />
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: top; margin-top: 12px;">Organizace</span>
+                        <span style="vertical-align: top; margin-top: 12px;">Organizace<span style="display:inline; color:red; padding-right:0px"> *</span></span>
                         <dot:TextBox Text="{value: DataUser.InfoFrom}" />
                         <span class="form-row-note">
                             <b>Jménem které organizace / firmy stravování objednáváte.</b><br />

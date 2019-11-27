@@ -47,7 +47,7 @@ namespace ConferencySystem.BL.Services
             using (var db = new DbContext())
             {
                 var user = db.Users.Find(userId);
-                user.LecturerInfo = new LecturerInfo();
+                user.LecturerInfo = new LecturerInfo() { Fee = "Bez nároku na honorář" };
                 db.SaveChanges();
             }
         }

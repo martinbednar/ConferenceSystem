@@ -32,6 +32,7 @@
                 <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: PhoneNumber}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: OverviewColumns}" />
+                <bp:GridViewTextColumn HeaderText="Honorář" ValueBinding="{value: LecturerInfo.Fee}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
                 <bp:GridViewTextColumn HeaderText="Ulice a číslo popisné" ValueBinding="{value: LecturerInfo.Street}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
                 <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: LecturerInfo.Town}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
                 <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: LecturerInfo.PostalCode}" AllowSorting="true" Visible="{value: InvoiceColumns}" />

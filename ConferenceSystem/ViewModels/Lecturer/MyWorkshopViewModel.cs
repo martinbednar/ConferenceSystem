@@ -75,8 +75,8 @@ namespace ConferencySystem.ViewModels.Lecturer
                     DataLecture = lectureService.GetLecture(LectureId);
                 }
 
-                PresentationUploaded = !(DataLecture.Presentation == null || DataLecture.Presentation.Length == 0);
-                WorklistUploaded = !(DataLecture.Worklist == null || DataLecture.Worklist.Length == 0);
+                PresentationUploaded = !(DataLecture.PresentationName == null || DataLecture.PresentationName == "");
+                WorklistUploaded = !(DataLecture.WorklistName == null || DataLecture.WorklistName == "");
             }
 
 
@@ -160,6 +160,19 @@ namespace ConferencySystem.ViewModels.Lecturer
             var lectureService = new LectureService();
             lectureService.SaveLecture(DataLecture);
             Context.RedirectToRoute("MyLectures");
+        }
+
+        public void EquipementChanged()
+        {
+            if (DataLecture.Nothing)
+            {
+                DataLecture.Flipchart = false;
+                DataLecture.Notebook = false;
+                DataLecture.Dataprojector = false;
+                DataLecture.NotebookPort = "";
+                DataLecture.Speakers = false;
+                DataLecture.WorklistsCopies = false;
+            }
         }
     }
 }

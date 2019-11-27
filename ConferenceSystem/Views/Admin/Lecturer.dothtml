@@ -7,7 +7,7 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Údaje o přednášejícím</h1>
+                    <h1 style="border-bottom-color:lightcoral;">Údaje o přednášejícím&nbsp;/&nbsp;lektorovi</h1>
                 </div>
                 <div class="form-row">
                     <label>
@@ -77,7 +77,7 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Základní údaje</h1>
+                    <h1 style="border-bottom-color:lightcoral;">Základní údaje</h1>
                 </div><br /><br />
 
 
@@ -127,68 +127,7 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Údaje pro platbu za Vaši účast</h1>
-                </div><br />
-
-                <div style="background:#E7E7E7;padding-top:20px;padding-bottom:15px;">
-                    <h3 style="margin-top:0px;margin-bottom:20px;">Adresa bydliště</h3>
-                    <div class="form-row">
-                        <label>
-                            <span>Ulice a číslo popisné</span>
-                            <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
-                        </label>
-                    </div>
-
-                    <div class="form-row">
-                        <label>
-                            <span>Obec</span>
-                            <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
-                        </label>
-                    </div>
-
-                    <div class="form-row">
-                        <label>
-                            <span>PSČ</span>
-                            <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
-                        </label>
-                    </div>
-                </div><br /><br />
-
-
-                <div class="form-row">
-                    <label>
-                        <span>Datum narození</span>
-                        <%--<span>{{value: DataUser.BirthDate}}</span>--%>
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
-                        <%--  <bs:DateTimePicker style="display: block; margin: 0 auto; width: 230px; height:42px; float:right" SelectedDate="{value: BirthDate}" FormatString="d" Mode="Date" /> --%>
-                    </label>
-                    <%--{{value: SelectedBirthDay}}.{{value: SelectedBirthMonth}}.{{value SelectedBirthYear}}--%>
-                </div>
-
-                <div class="form-row">
-                    <label>
-                        <span>Číslo účtu</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.AccountNumber}" />
-                    </label>
-                </div>
-
-                <div class="form-row">
-                    <label>
-                        <span>IČ</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
-                    </label>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <form class="form-register">
-        <div class="form-register-with-email">
-            <div class="form-white-background">
-                <div class="form-title-row">
-                    <h1>Ubytování</h1>
+                    <h1 style="border-bottom-color:lightcoral;">Ubytování a stravování</h1>
                 </div><br />
 
                 <div class="form-row">
@@ -217,6 +156,77 @@
     </form>
 
     <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1 style="border-bottom-color:lightcoral;">Údaje pro platbu za Vaše vystoupení na konferenci</h1>
+                </div><br />
+
+                <div class="form-row">
+                    <label class="radio-button-left" style="margin-left: 20px;">
+                        <dot:RadioButton Text="Na konferenci vystoupím bez nároku na honorář." CheckedItem="{value: DataUser.LecturerInfo.Fee}" CheckedValue="{value: "Bez nároku na honorář"}"></dot:RadioButton><br />
+                        <dot:RadioButton Text="Za svoje vystoupení pošlu fakturu." CheckedItem="{value: DataUser.LecturerInfo.Fee}" CheckedValue="{value: "Faktura"}"></dot:RadioButton><br />
+                        <dot:RadioButton Text="Uzavřu s vámi smlouvu o dílo." CheckedItem="{value: DataUser.LecturerInfo.Fee}" CheckedValue="{value: "Smlouva o dílo"}"></dot:RadioButton>
+                    </label>
+                </div>
+
+                <div Visible="{value: DataUser.LecturerInfo.Fee == "Smlouva o dílo"}">
+                    <div style="background:#E7E7E7;padding-top:20px;padding-bottom:15px;">
+                        <h3 style="margin-top:0px;margin-bottom:20px;">Adresa bydliště</h3>
+                        <div class="form-row">
+                            <label>
+                                <span>Ulice a číslo popisné</span>
+                                <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                <span>Obec</span>
+                                <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                <span>PSČ</span>
+                                <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
+                            </label>
+                        </div>
+                    </div><br /><br />
+
+
+                    <div class="form-row">
+                        <label>
+                            <span>Datum narození</span>
+                            <%--<span>{{value: DataUser.BirthDate}}</span>--%>
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
+                            <%--  <bs:DateTimePicker style="display: block; margin: 0 auto; width: 230px; height:42px; float:right" SelectedDate="{value: BirthDate}" FormatString="d" Mode="Date" /> --%>
+                        </label>
+                        <%--{{value: SelectedBirthDay}}.{{value: SelectedBirthMonth}}.{{value SelectedBirthYear}}--%>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Číslo účtu</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.AccountNumber}" />
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>IČ</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
         <div style="width:660px; margin:auto;">
             <div class="form-white-background" style="box-shadow:0px 0px 0px 0; padding:0px 80px">
                 <dot:ValidationSummary class="text-danger" IncludeErrorsFromChildren="true" />
@@ -235,7 +245,7 @@
                     </dot:UpdateProgress>
 
                     <dot:Button class="btn btn-primary" Text="Uložit změny" Click="{command: SaveUser()}" Enabled="{value: IsSuperAdmin || IsAdmin}"></dot:Button>
-                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Users"></dot:RouteLink>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Lecturers"></dot:RouteLink>
                 </div>
             </div>
         </div>

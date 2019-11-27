@@ -2,7 +2,13 @@
 @masterPage Views/MainMasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
-    <form class="form-register">
+    <center>
+        <div class="alert alert-info" role="alert" style="width: 70%; margin-bottom: 0px; margin-top: 30px;" Visible="{value: FormIsEmpty}">
+            Veškeré další údaje můžete doplnit později po přihlášení do systému (<a href="https://konferencnisystem.azurewebsites.net/" target="_blank">https://konferencnisystem.azurewebsites.net/</a>).
+        </div>
+    </center>
+
+    <form class="form-register" style="margin-top: 0px;">
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
@@ -16,7 +22,7 @@
                         <dot:TextBox style="font-weight:normal; width: 375px;" rows="15" Text="{value: DataUser.LecturerInfo.Introduce}" Type="MultiLine" />
                         <span class="form-row-note">
                             Představte se účastníkům - <b>maximálně 250 slov</b>. Prodejte vše, co umíte a co jste dokázali. Text bude zveřejněn u Vašeho profilu na webu konference.<br />
-                            Pište o sobě prosím ve třetí osobě (Jan Novák je absolventem…). Příklady najdete na <a href="https://www.nakopnetesvojiskolu.cz/kopie-z-lektori/" target="_blank">webu konference</a>.
+                            Pište o sobě prosím ve třetí osobě (Jan Novák je absolventem…). Příklady najdete na <a href="http://www.nakopnetesvojiskolu.cz/cs/m-4-prednasejici" target="_blank">webu konference</a>.
                         </span>
                     </label>
                 </div><br /><br /><br /><br />
@@ -63,87 +69,22 @@
         <div class="form-register-with-email">
             <div class="form-white-background">
                 <div class="form-title-row">
-                    <h1>Údaje pro platbu za Vaši účast</h1>
+                    <h1>Ubytování a stravování</h1>
                     <div class="form-title-row-note">
-                        Tuto sekci vyplňte, pokud s námi budete uzavírat smlouvu o dílo.
+                        Budete naším hostem, proto za Vás budeme ubytování a stravování po celou dobu Vašeho pobytu hradit my.
                     </div>
-                </div><br />
-
-                <div style="background:#E7E7E7;padding-top:20px;padding-bottom:15px;">
-                    <h3 style="margin-top:0px;margin-bottom:20px;">Adresa bydliště</h3>
-                    <div class="form-row">
-                        <label>
-                            <span>Ulice a číslo popisné</span>
-                            <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
-                        </label>
-                    </div>
-
-                    <div class="form-row">
-                        <label>
-                            <span>Obec</span>
-                            <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
-                        </label>
-                    </div>
-
-                    <div class="form-row">
-                        <label>
-                            <span>PSČ</span>
-                            <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
-                        </label>
-                    </div>
-                </div><br /><br />
-
-
-                <div class="form-row">
-                    <label>
-                        <span>Datum narození</span>
-                        <%--<span>{{value: DataUser.BirthDate}}</span>--%>
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
-                        <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
-                        <%--  <bs:DateTimePicker style="display: block; margin: 0 auto; width: 230px; height:42px; float:right" SelectedDate="{value: BirthDate}" FormatString="d" Mode="Date" /> --%>
-                    </label>
-                    <%--{{value: SelectedBirthDay}}.{{value: SelectedBirthMonth}}.{{value SelectedBirthYear}}--%>
-                </div>
-
-                <div class="form-row">
-                    <label>
-                        <span>Číslo účtu</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.AccountNumber}" />
-                    </label>
-                </div>
-
-                <div class="form-row">
-                    <label>
-                        <span>IČ</span>
-                        <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
-                        <span class="form-row-note">
-                            Vyplňte, pokud máte IČ. Jinak nechte prázdné.
-                        </span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <form class="form-register">
-        <div class="form-register-with-email">
-            <div class="form-white-background">
-                <div class="form-title-row">
-                    <h1>Ubytování</h1>
                 </div><br />
 
                 <div class="form-row">
                     <label class="radio-button">
                         <span style="text-align: right; margin-left:80px">Ubytování</span>
-
                         <div style="width:100%;margin-left: 70px;margin-top: -19px;">
                             <dot:RadioButton Text="Chci zajistit ubytování:" CheckedItem="{value: WantAccomodation}" CheckedValue="{value: true}" Changed="{command: WantAccomodationChanged()}"></dot:RadioButton>
-                                <div style="width:290px;margin:auto">
-                                    <dot:CheckBox Text="23.2. - 24.2.2020" Checked="{value: AccomodationFirstNight}"  Changed="{command: AccomodationDateChanged()}" /><br />
-                                    <dot:CheckBox Text="24.2. - 25.2.2020" Checked="{value: AccomodationSecondNight}" Changed="{command: AccomodationDateChanged()}" /><br />
-                                </div>
-                            <dot:RadioButton Text="NEchci zajistit ubytování." CheckedItem="{value: WantAccomodation}" CheckedValue="{value: false}"  Changed="{command: WantAccomodationChanged()}"></dot:RadioButton>
+                            <div style="width:290px;margin:auto">
+                                <dot:CheckBox Text="23.2. - 24.2.2020" Checked="{value: AccomodationFirstNight}" Changed="{command: AccomodationDateChanged()}" /><br />
+                                <dot:CheckBox Text="24.2. - 25.2.2020" Checked="{value: AccomodationSecondNight}" Changed="{command: AccomodationDateChanged()}" /><br />
+                            </div>
+                            <dot:RadioButton Text="NEchci zajistit ubytování." CheckedItem="{value: WantAccomodation}" CheckedValue="{value: false}" Changed="{command: WantAccomodationChanged()}"></dot:RadioButton>
                         </div><br /><br />
                     </label>
                 </div>
@@ -156,6 +97,80 @@
                             Pokud chcete bydlet s někým z kolegů společně na pokoji, napište prosím jeho jméno.
                         </span>
                     </label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-register">
+        <div class="form-register-with-email">
+            <div class="form-white-background">
+                <div class="form-title-row">
+                    <h1>Údaje pro platbu za Vaše vystoupení na konferenci</h1>
+                </div><br />
+
+                <div class="form-row">
+                    <label class="radio-button-left" style="margin-left: 20px;">
+                        <dot:RadioButton Text="Na konferenci vystoupím bez nároku na honorář." CheckedItem="{value: DataUser.LecturerInfo.Fee}" CheckedValue="{value: "Bez nároku na honorář"}"></dot:RadioButton><br />
+                        <dot:RadioButton Text="Za svoje vystoupení pošlu fakturu." CheckedItem="{value: DataUser.LecturerInfo.Fee}" CheckedValue="{value: "Faktura"}"></dot:RadioButton><br />
+                        <dot:RadioButton Text="Uzavřu s vámi smlouvu o dílo." CheckedItem="{value: DataUser.LecturerInfo.Fee}" CheckedValue="{value: "Smlouva o dílo"}"></dot:RadioButton>
+                    </label>
+                </div>
+
+                <div Visible="{value: DataUser.LecturerInfo.Fee == "Smlouva o dílo"}">
+                    <div style="background:#E7E7E7;padding-top:20px;padding-bottom:15px;">
+                        <h3 style="margin-top:0px;margin-bottom:20px;">Adresa bydliště</h3>
+                        <div class="form-row">
+                            <label>
+                                <span>Ulice a číslo popisné</span>
+                                <dot:TextBox Text="{value: DataUser.LecturerInfo.Street}" />
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                <span>Obec</span>
+                                <dot:TextBox Text="{value: DataUser.LecturerInfo.Town}" />
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                <span>PSČ</span>
+                                <dot:TextBox Text="{value: DataUser.LecturerInfo.PostalCode}" />
+                            </label>
+                        </div>
+                    </div><br /><br />
+
+
+                    <div class="form-row">
+                        <label>
+                            <span>Datum narození</span>
+                            <%--<span>{{value: DataUser.BirthDate}}</span>--%>
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthDay}" SelectedValue="{value: SelectedBirthDay}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthMonth}" SelectedValue="{value: SelectedBirthMonth}" />
+                            <dot:ComboBox style="color: #5f5f5f;box-sizing: border-box;box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);padding: 12px 18px;border: 1px solid #dbdbdb;" DataSource="{value: DateProcessing.BirthYear}" SelectedValue="{value: SelectedBirthYear}" /><br />
+                            <%--  <bs:DateTimePicker style="display: block; margin: 0 auto; width: 230px; height:42px; float:right" SelectedDate="{value: BirthDate}" FormatString="d" Mode="Date" /> --%>
+                        </label>
+                        <%--{{value: SelectedBirthDay}}.{{value: SelectedBirthMonth}}.{{value SelectedBirthYear}}--%>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Číslo účtu</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.AccountNumber}" />
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>IČ</span>
+                            <dot:TextBox Text="{value: DataUser.LecturerInfo.IN}" />
+                            <span class="form-row-note">
+                                Vyplňte, pokud máte IČ. Jinak nechte prázdné.
+                            </span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

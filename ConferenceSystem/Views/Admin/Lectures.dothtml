@@ -26,7 +26,7 @@
                 <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Typ" ValueBinding="{value: Type}" AllowSorting="true" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Název" ValueBinding="{value: Name}" AllowSorting="true" />
-                <bp:GridViewTemplateColumn HeaderText="Lektor" AllowSorting="true" >
+                <bp:GridViewTemplateColumn HeaderText="Lektor" AllowSorting="true">
                     <ContentTemplate>
                         <u>
                             <a href="{value: "/lecturer/" + LecturerId}" style="color: blue;">
@@ -37,7 +37,6 @@
                 </bp:GridViewTemplateColumn>
                 <bp:GridViewTextColumn HeaderText="Anotace" ValueBinding="{value: Annotation}" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Cíl programu" ValueBinding="{value: Goal}" Visible="{value: AllColumns}" />
-                <bp:GridViewTextColumn HeaderText="Účastníci si odnesou" ValueBinding="{value: Given}" Visible="{value: AllColumns}" />
                 <bp:GridViewTemplateColumn HeaderText="Prezentace" Visible="{value: OverviewColumns}">
                     <ContentTemplate>
                         <a href="{value: "/presentation/" + Id}">
@@ -46,16 +45,15 @@
                     </ContentTemplate>
                 </bp:GridViewTemplateColumn>
                 <bp:GridViewTextColumn HeaderText="Odkaz na prezentaci" ValueBinding="{value: PresentationLink}" Visible="{value: AllColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Mikrofon" ValueBinding="{value: Microphone}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Flipchart" ValueBinding="{value: Flipchart}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTextColumn HeaderText="Mikrofon" ValueBinding="{value: Microphone}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Židle" ValueBinding="{value: Chairs}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Koberec" ValueBinding="{value: Carpet}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Stoly" ValueBinding="{value: Tables}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Žádné vybavení" ValueBinding="{value: Nothing}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Flipchart" ValueBinding="{value: Flipchart}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Notebook" ValueBinding="{value: Notebook}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Dataprojektor" ValueBinding="{value: Dataprojector}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Notebook" ValueBinding="{value: Notebook}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewTextColumn HeaderText="Port na vlastním notebooku" ValueBinding="{value: NotebookPort}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTextColumn HeaderText="Port pro připojení notebooku" ValueBinding="{value: NotebookPort}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Reproduktory" ValueBinding="{value: Speakers}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Nakopírovat pracovní listy" ValueBinding="{value: WorklistsCopies}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewTemplateColumn HeaderText="Pracovní listy" Visible="{value: RequirementsColumns}">
