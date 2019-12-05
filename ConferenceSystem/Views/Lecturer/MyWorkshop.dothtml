@@ -47,7 +47,7 @@
                             Napište krátkou anotaci k Vašemu programu <b>(max. 300 slov)</b>. Textem se snažte zaujmout. Nezapomeňte, že cílem konference je především inspirovat a nakopnout. Vzbudit nadšení :-) .
                         </span>
                     </label>
-                </div><br /><br />
+                </div><br /><br /><br />
 
                 <%-- <div class="form-row">
                     <label>
@@ -61,11 +61,11 @@
 
                 <div class="form-row">
                     <label>
-                        <span style="vertical-align: top; margin-top: 17px;">Cíl programu</span>
-                        <dot:TextBox Text="{value: DataLecture.Goal}" Type="MultiLine" />
+                        <%-- <span style="vertical-align: top; margin-top: 17px;">Cíl programu</span> --%>
                         <span class="form-row-note">
                             <b>Co si  účastníci odnesou/dostanou/vyzkoušejí si?&nbsp;-&nbsp;Co je cílem?</b><br />Jedna až dvě věty.
                         </span>
+                        <dot:TextBox Text="{value: DataLecture.Goal}" Type="MultiLine" style="float: right; margin-right: 20px; width: 375px; margin-top: 10px;" />
                     </label>
                 </div><br /><br /><br /><br /><br />
 
@@ -112,7 +112,17 @@
 
                 <div class="form-row">
                     <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Židle pro každého účastníka</span>
+                        <span style="text-align: right; margin-left:0px;">Stoly pro psaní a židle</span>
+                        <div style="width:100%;margin-left: 70px;margin-top: -19px;">
+                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Tables}" CheckedValue="{value: true}"></dot:RadioButton>
+                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Tables}" CheckedValue="{value: false}"></dot:RadioButton>
+                        </div><br /><br />
+                    </label>
+                </div><br />
+
+                <div class="form-row">
+                    <label class="radio-button">
+                        <span style="text-align: right; margin-left:0px;">Židle pro sezení</span>
                         <div style="width:100%;margin-left: 70px;margin-top: -19px;">
                             <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Chairs}" CheckedValue="{value: true}"></dot:RadioButton>
                             <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Chairs}" CheckedValue="{value: false}"></dot:RadioButton>
@@ -122,20 +132,20 @@
 
                 <div class="form-row">
                     <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Sezení na zemi na koberci</span>
+                        <span style="text-align: right; margin-left:0px;">Prázdný prostor pro pohyb<br />a židle (židle do kruhu)</span>
                         <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Carpet}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Carpet}" CheckedValue="{value: false}"></dot:RadioButton>
+                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.OpenSpace}" CheckedValue="{value: true}"></dot:RadioButton>
+                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.OpenSpace}" CheckedValue="{value: false}"></dot:RadioButton>
                         </div><br /><br />
                     </label>
                 </div><br />
 
                 <div class="form-row">
                     <label class="radio-button">
-                        <span style="text-align: right; margin-left:0px;">Stoly</span>
+                        <span style="text-align: right; margin-left:0px;">Prázdný prostor<br />pro sezení na koberci</span>
                         <div style="width:100%;margin-left: 70px;margin-top: -19px;">
-                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Tables}" CheckedValue="{value: true}"></dot:RadioButton>
-                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Tables}" CheckedValue="{value: false}"></dot:RadioButton>
+                            <dot:RadioButton Text="ANO" CheckedItem="{value: DataLecture.Carpet}" CheckedValue="{value: true}"></dot:RadioButton>
+                            <dot:RadioButton Text="NE" CheckedItem="{value: DataLecture.Carpet}" CheckedValue="{value: false}"></dot:RadioButton>
                         </div><br /><br />
                     </label>
                 </div><br />

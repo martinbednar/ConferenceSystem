@@ -50,6 +50,8 @@ namespace ConferencySystem.DAL.Data
 
         public bool Carpet { get; set; }
 
+        public bool OpenSpace { get; set; }
+
         public bool Tables { get; set; }
 
         public bool Nothing { get; set; }

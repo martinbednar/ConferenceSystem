@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201911271725437_ChangeTypeOfMicrophoneToString.Designer.cs">
       <DependentUpon>201911271725437_ChangeTypeOfMicrophoneToString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912050918057_AddOpenSpaceAttributToLectureEntity.cs" />
+    <Compile Include="Migrations\201912050918057_AddOpenSpaceAttributToLectureEntity.Designer.cs">
+      <DependentUpon>201912050918057_AddOpenSpaceAttributToLectureEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -221,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911271725437_ChangeTypeOfMicrophoneToString.resx">
       <DependentUpon>201911271725437_ChangeTypeOfMicrophoneToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912050918057_AddOpenSpaceAttributToLectureEntity.resx">
+      <DependentUpon>201912050918057_AddOpenSpaceAttributToLectureEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

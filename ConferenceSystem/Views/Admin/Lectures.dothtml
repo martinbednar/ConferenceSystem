@@ -46,9 +46,10 @@
                 </bp:GridViewTemplateColumn>
                 <bp:GridViewTextColumn HeaderText="Odkaz na prezentaci" ValueBinding="{value: PresentationLink}" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Mikrofon" ValueBinding="{value: Microphone}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Židle" ValueBinding="{value: Chairs}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Koberec" ValueBinding="{value: Carpet}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewCheckBoxColumn HeaderText="Stoly" ValueBinding="{value: Tables}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Stoly+židle" ValueBinding="{value: Tables}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Pouze židle" ValueBinding="{value: Chairs}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Židle do kruhu" ValueBinding="{value: OpenSpace}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewCheckBoxColumn HeaderText="Sezení na koberci" ValueBinding="{value: Carpet}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Žádné vybavení" ValueBinding="{value: Nothing}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Flipchart" ValueBinding="{value: Flipchart}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Notebook" ValueBinding="{value: Notebook}" Visible="{value: RequirementsColumns}" />
