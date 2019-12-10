@@ -157,5 +157,19 @@ namespace ConferencySystem.BL.Services
                 return Mapper.Map<LecturerInfo, LecturerInfoDTO>(db.LecturerInfo.SingleOrDefault(i => i.Id == lecturerInfoId));
             }
         }
+
+        public LecturerInfoDTO GetLecturerPhoto(int lecturerInfoId)
+        {
+            using (var db = new DbContext())
+            {
+                var lecturerInfo = db.LecturerInfo.Find(lecturerInfoId);
+
+                return new LecturerInfoDTO()
+                {
+                    PhotoName = lecturerInfo.PhotoName,
+                    Photo = lecturerInfo.Photo
+                };
+            }
+        }
     }
 }

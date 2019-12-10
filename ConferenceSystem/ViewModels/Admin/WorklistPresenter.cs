@@ -27,7 +27,7 @@ namespace ConferencySystem.ViewModels.Admin
             }
 
             var lectureService = new LectureService();
-            var lecture = lectureService.GetLecture(lectureId);
+            var lecture = lectureService.GetLectureWorklist(lectureId);
 
             context.GetOwinContext().Response.Headers["Content-Disposition"] = "attachment; filename=" + lecture.WorklistName;
             

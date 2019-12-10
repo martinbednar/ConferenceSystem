@@ -25,7 +25,7 @@ namespace ConferencySystem.ViewModels.Admin
                 if (user.LecturerInfo.Id != lecturerInfoId) context.RedirectToRoute("Default");
             }
             
-            var lecturerInfo = adminService.GetLecturerInfo(lecturerInfoId);
+            var lecturerInfo = adminService.GetLecturerPhoto(lecturerInfoId);
 
             context.GetOwinContext().Response.Headers["Content-Disposition"] = "attachment; filename=" + lecturerInfo.PhotoName;
             

@@ -80,6 +80,34 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public LectureDTO GetLecturePresentation(int? lectureId)
+        {
+            using (var db = new DbContext())
+            {
+                var lecture = db.Lecture.Find(lectureId);
+
+                return new LectureDTO()
+                {
+                    PresentationName = lecture.PresentationName,
+                    Presentation = lecture.Presentation
+                };
+            }
+        }
+
+        public LectureDTO GetLectureWorklist(int? lectureId)
+        {
+            using (var db = new DbContext())
+            {
+                var lecture = db.Lecture.Find(lectureId);
+
+                return new LectureDTO()
+                {
+                    WorklistName = lecture.WorklistName,
+                    Worklist = lecture.Worklist
+                };
+            }
+        }
+
         public void DeactivateProgram(int lectureId)
         {
             using (var db = new DbContext())
