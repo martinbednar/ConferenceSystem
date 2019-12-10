@@ -74,6 +74,14 @@ namespace ConferencySystem.BL.Services
             using (var db = new DbContext())
             {
                 var user = db.Users.Find(id);
+                if (user.LecturerInfo != null)
+                {
+                    foreach (var lecture in user.LecturerInfo.Lectures)
+                    {
+                        db.Lecture.Remove(lecture);
+                    }
+                    db.LecturerInfo.Remove(user.LecturerInfo);
+                }
                 db.Users.Remove(user);
                 db.SaveChanges();
             }
