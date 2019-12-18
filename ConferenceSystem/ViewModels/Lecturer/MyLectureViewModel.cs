@@ -29,7 +29,7 @@ namespace ConferencySystem.ViewModels.Lecturer
             }
         }
 
-        public int? LectureId
+        public int LectureId
         {
             get { return Convert.ToInt32(Context.Parameters["LectureId"]); }
         }

@@ -75,7 +75,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public LectureDTO GetLecture(int? lectureId)
+        public LectureDTO GetLecture(int lectureId)
         {
             using (var db = new DbContext())
             {
@@ -83,7 +83,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public LectureDTO GetLecturePresentation(int? lectureId)
+        public LectureDTO GetLecturePresentation(int lectureId)
         {
             using (var db = new DbContext())
             {
@@ -97,7 +97,7 @@ namespace ConferencySystem.BL.Services
             }
         }
 
-        public LectureDTO GetLectureWorklist(int? lectureId)
+        public LectureDTO GetLectureWorklist(int lectureId)
         {
             using (var db = new DbContext())
             {
