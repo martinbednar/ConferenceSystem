@@ -221,6 +221,13 @@
     box-shadow: 10px 10px 40px 10px grey;
 }
 
+.overcontent {
+    z-index: 9999;
+    position: fixed;
+    top: 35%;
+    left: 46%;
+}
+
 @media (max-width: 900px) {
     .form-register {
         margin: 20px auto;

@@ -46,7 +46,7 @@
             <Columns>
                 <bp:GridViewTextColumn HeaderText="Název" ValueBinding="{value: Name}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Typ" ValueBinding="{value: Type}" AllowSorting="true" />
-                <bp:GridViewTextColumn HeaderText="Název prezentace" ValueBinding="{value: PresentationName}" AllowSorting="true" />
+                <bp:GridViewTextColumn HeaderText="Název pracovních listů" ValueBinding="{value: WorklistName}" AllowSorting="true" />
                 <bp:GridViewTemplateColumn HeaderText="Editovat">
                     <ContentTemplate>
                         <center>

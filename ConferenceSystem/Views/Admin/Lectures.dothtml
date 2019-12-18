@@ -59,7 +59,7 @@
                 <bp:GridViewTextColumn HeaderText="Port pro připojení notebooku" ValueBinding="{value: NotebookPort}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Reproduktory" ValueBinding="{value: Speakers}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewCheckBoxColumn HeaderText="Nakopírovat pracovní listy" ValueBinding="{value: WorklistsCopies}" Visible="{value: RequirementsColumns}" />
-                <bp:GridViewTemplateColumn HeaderText="Pracovní listy" Visible="{value: RequirementsColumns}">
+                <bp:GridViewTemplateColumn HeaderText="Pracovní listy" Visible="{value: OverviewColumns}">
                     <ContentTemplate>
                         <a href="{value: "/worklist/" + Id}" Visible="{value: !(WorklistName == null || WorklistName == "")}">
                             <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
@@ -67,16 +67,18 @@
                     </ContentTemplate>
                 </bp:GridViewTemplateColumn>
                 <bp:GridViewTextColumn HeaderText="Odkaz na pracovní listy" ValueBinding="{value: PresentationLink}" Visible="{value: RequirementsColumns}" />
-
-                <%--<bp:GridViewTemplateColumn>
-                <ContentTemplate>
-                    <dot:RouteLink RouteName="Lecturer" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
-                        <span class="glyphicon glyphicon-edit"></span>
-                    </dot:RouteLink>
-                </ContentTemplate>
-            </bp:GridViewTemplateColumn>--%>
                 <bp:GridViewTextColumn HeaderText="Další požadavky na prostor" ValueBinding="{value: PlaceRequirements}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewTextColumn HeaderText="Další požadavky na vybavení" ValueBinding="{value: EquipmentRequirements}" Visible="{value: RequirementsColumns}" />
+                <bp:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <dot:RouteLink RouteName="MyLecture" Param-LectureId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}" Visible="{value: Type == "přednáška"}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </dot:RouteLink>
+                        <dot:RouteLink RouteName="MyWorkshop" Param-LectureId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}" Visible="{value: (Type == "seminář" || Type == "workshop")}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </dot:RouteLink>
+                    </ContentTemplate>
+                </bp:GridViewTemplateColumn>
                 <bp:GridViewTemplateColumn>
                     <ContentTemplate>
                         <dot:Button ButtonTagName="button" Click="{command: _parent.DeleteLecture(Id)}" Enabled="{value: _parent.IsSuperAdmin}">

@@ -98,12 +98,13 @@
 
                     <dot:UpdateProgress>
                         <br />
-                        <div class="loader"></div>
+                        <div class="loader overcontent"></div>
                         <br />
                     </dot:UpdateProgress>
 
                     <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveLecture()}" Enabled="{value: !Upload.IsBusy && SaveEnabled}"></dot:Button>
-                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="MyLectures"></dot:RouteLink>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="MyLectures" Visible="{value: IsLecturer}"></dot:RouteLink>
+                    <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="Lectures" Visible="{value: IsSuperAdmin || IsAdmin}"></dot:RouteLink>
                 </div>
             </div>
         </div>

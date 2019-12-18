@@ -15,7 +15,7 @@ using DotVVM.Framework.ViewModel;
 
 namespace ConferencySystem.ViewModels.Lecturer
 {
-    [Authorize(Roles = new[] { "lecturer" })]
+    [Authorize(Roles = new[] { "lecturer", "super", "admin" })]
     public class MyWorkshopViewModel : ConferencySystem.ViewModels.MainMasterPageViewModel
     {
         public LectureDTO DataLecture { get; set; }
@@ -163,7 +163,14 @@ namespace ConferencySystem.ViewModels.Lecturer
         {
             var lectureService = new LectureService();
             lectureService.SaveLecture(DataLecture);
-            Context.RedirectToRoute("MyLectures");
+            if (IsLecturer)
+            {
+                Context.RedirectToRoute("MyLectures");
+            }
+            else
+            {
+                Context.RedirectToRoute("Lectures");
+            }
         }
 
         public void EquipementChanged()
