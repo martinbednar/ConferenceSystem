@@ -30,6 +30,7 @@
                 <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: Email}" />
                 <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: PhoneNumber}" />
+                <bp:GridViewTextColumn HeaderText="Medailonek" ValueBinding="{value: LecturerInfo.Introduce}" Visible="{value: AllColumns}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: NoteUser}" AllowSorting="true" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: NoteAdmin}" AllowSorting="true" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Honorář" ValueBinding="{value: LecturerInfo.Fee}" AllowSorting="true" Visible="{value: InvoiceColumns}" />
@@ -43,7 +44,7 @@
                 <bp:GridViewTextColumn HeaderText="Spolubydlící" ValueBinding="{value: LecturerInfo.RoomMate}" AllowSorting="true" Visible="{value: AccomodationColumns}" />
                 <bp:GridViewTemplateColumn HeaderText="Profilový obrázek" Visible="{value: OverviewColumns}">
                     <ContentTemplate>
-                        <a href="{value: "/profilephoto/" + LecturerInfo.Id}">
+                        <a href="{value: "/profilephoto/" + LecturerInfo.Id}" Visible="{value: !(LecturerInfo.PhotoName == null || LecturerInfo.PhotoName == "")}">
                             <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
                         </a>
                     </ContentTemplate>

@@ -102,7 +102,7 @@
                         <br />
                     </dot:UpdateProgress>
 
-                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveLecture()}" Enabled="{value: !Upload.IsBusy}"></dot:Button>
+                    <dot:Button class="btn btn-primary" Text="Uložit" Click="{command: SaveLecture()}" Enabled="{value: !Upload.IsBusy && SaveEnabled}"></dot:Button>
                     <dot:RouteLink class="btn btn-default" Text="Zrušit" RouteName="MyLectures"></dot:RouteLink>
                 </div>
             </div>

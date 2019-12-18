@@ -51,8 +51,11 @@ namespace ConferencySystem.BL.Services
                     lectureDTO.SequenceNumber = sequencenumber;
                     sequencenumber++;
                     var lecturer = db.Users.Where(u => u.LecturerInfo.Lectures.Contains(db.Lecture.FirstOrDefault(l => l.Id == lectureDTO.Id))).SingleOrDefault();
-                    lectureDTO.LecturerName = lecturer.TitleBefore + " " + lecturer.FirstName + " " + lecturer.LastName + " " + lecturer.TitleAfter;
-                    lectureDTO.LecturerId = lecturer.Id;
+                    if (lecturer != null)
+                    {
+                        lectureDTO.LecturerName = lecturer.TitleBefore + " " + lecturer.FirstName + " " + lecturer.LastName + " " + lecturer.TitleAfter;
+                        lectureDTO.LecturerId = lecturer.Id;
+                    }
                 }
 
                 lecturesDataSet.LoadFromQueryable(lectures.AsQueryable());

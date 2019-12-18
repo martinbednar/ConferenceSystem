@@ -76,10 +76,7 @@ namespace ConferencySystem.BL.Services
                 var user = db.Users.Find(id);
                 if (user.LecturerInfo != null)
                 {
-                    foreach (var lecture in user.LecturerInfo.Lectures)
-                    {
-                        db.Lecture.Remove(lecture);
-                    }
+                    db.Lecture.RemoveRange(user.LecturerInfo.Lectures);
                     db.LecturerInfo.Remove(user.LecturerInfo);
                 }
                 db.Users.Remove(user);

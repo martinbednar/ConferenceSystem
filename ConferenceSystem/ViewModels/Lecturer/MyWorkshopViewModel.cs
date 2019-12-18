@@ -44,6 +44,8 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public bool WorklistUploaded { get; set; } = false;
 
+        public bool SaveEnabled { get; set; } = true;
+
         public MyWorkshopViewModel(IUploadedFileStorage storage)
         {
             this.fileStorage = storage;
@@ -95,6 +97,7 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public void ProcessFiles(bool isPresentation)
         {
+            SaveEnabled = false;
             var folderPath = GetFolderdPath();
             var lectureService = new LectureService();
 
@@ -122,6 +125,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                     fileStorage.DeleteFile(file.FileId);
                 }
             }
+            SaveEnabled = true;
             UploadPresentation.Clear();
             UploadWorklist.Clear();
         }

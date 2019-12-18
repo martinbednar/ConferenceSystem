@@ -40,6 +40,8 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public bool PresentationUploaded { get; set; } = false;
 
+        public bool SaveEnabled { get; set; } = true;
+
         public MyLectureViewModel(IUploadedFileStorage storage)
         {
             this.fileStorage = storage;
@@ -91,6 +93,7 @@ namespace ConferencySystem.ViewModels.Lecturer
 
         public void ProcessFiles()
         {
+            SaveEnabled = false;
             var folderPath = GetFolderdPath();
             var lectureService = new LectureService();
 
@@ -105,6 +108,7 @@ namespace ConferencySystem.ViewModels.Lecturer
                 PresentationUploaded = true;
                 fileStorage.DeleteFile(file.FileId);
             }
+            SaveEnabled = true;
         }
 
         private string GetFolderdPath()

@@ -26,6 +26,8 @@
                 <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Typ" ValueBinding="{value: Type}" AllowSorting="true" Visible="{value: OverviewColumns}" />
                 <bp:GridViewTextColumn HeaderText="Název" ValueBinding="{value: Name}" AllowSorting="true" />
+                <%-- Sloupec jenom kvůli exportu (při exportu se neexportuje vlastní sloupec (Template Column). --%>
+                <bp:GridViewTextColumn HeaderText="Lektor (jméno)" ValueBinding="{value: LecturerName}" AllowSorting="true" Visible="{value: false}" />
                 <bp:GridViewTemplateColumn HeaderText="Lektor" AllowSorting="true">
                     <ContentTemplate>
                         <u>
@@ -39,7 +41,7 @@
                 <bp:GridViewTextColumn HeaderText="Cíl programu" ValueBinding="{value: Goal}" Visible="{value: AllColumns}" />
                 <bp:GridViewTemplateColumn HeaderText="Prezentace" Visible="{value: OverviewColumns}">
                     <ContentTemplate>
-                        <a href="{value: "/presentation/" + Id}">
+                        <a href="{value: "/presentation/" + Id}" Visible="{value: !(PresentationName == null || PresentationName == "")}">
                             <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
                         </a>
                     </ContentTemplate>
@@ -59,7 +61,7 @@
                 <bp:GridViewCheckBoxColumn HeaderText="Nakopírovat pracovní listy" ValueBinding="{value: WorklistsCopies}" Visible="{value: RequirementsColumns}" />
                 <bp:GridViewTemplateColumn HeaderText="Pracovní listy" Visible="{value: RequirementsColumns}">
                     <ContentTemplate>
-                        <a href="{value: "/worklist/" + Id}">
+                        <a href="{value: "/worklist/" + Id}" Visible="{value: !(WorklistName == null || WorklistName == "")}">
                             <center><span class="btn btn-default">Stáhnout <span class="glyphicon glyphicon-download-alt"></span></span></center>
                         </a>
                     </ContentTemplate>
