@@ -160,6 +160,17 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public void updateLecturerOfLecture(int lectureId, int newLecturerId)
+        {
+            using (var db = new DbContext())
+            {
+                var lecture = db.Lecture.Find(lectureId);
+                db.LecturerInfo.SingleOrDefault(i => i.Lectures.Any(l => l.Id == lecture.Id)).Lectures.Remove(lecture);
+                db.Users.SingleOrDefault(u => u.Id == newLecturerId).LecturerInfo.Lectures.Add(lecture);
+                db.SaveChanges();
+            }
+        }
+
         public void DeletePresentation(int lectureId)
         {
             using (var db = new DbContext())
@@ -179,6 +190,21 @@ namespace ConferencySystem.BL.Services
                 lecture.Worklist = null;
                 lecture.WorklistName = "";
                 db.SaveChanges();
+            }
+        }
+
+        public AppUserDTO GetLecturerOfLecture(int lectureId)
+        {
+            using (var db = new DbContext())
+            {
+                var lecture = db.Lecture.Find(lectureId);
+
+                //var lecturerInfo = db.LecturerInfo.Where(i => i.Lectures.Any(l => l.Id == lecture.Id));
+                var lecturer = Mapper.Map<AppUser, AppUserDTO>(db.Users.Where(u => u.LecturerInfo.Lectures.Any(l => l.Id == lecture.Id)).SingleOrDefault());
+                //var lecturerInfo = db.LecturerInfo.SingleOrDefault(i => i.Lectures.Select(l => l.Id == lecture.Id).FirstOrDefault());
+                //var lecturerInfo = db.LecturerInfo.SingleOrDefault(i => i.Lectures.Contains(lecture));
+                //var lecturer = Mapper.Map<AppUser, AppUserDTO>(db.Users.SingleOrDefault(u => u.LecturerInfo == lecturerInfo));
+                return lecturer;
             }
         }
     }

@@ -10,7 +10,21 @@
                     <div class="form-title-row-note">
                         Zadejte v případě, že se zúčastníte festivalu jako lektor.
                     </div>
-                </div><br /><br />
+                </div><br />
+
+                <div class="form-row" Visible="{value: IsSuperAdmin || IsAdmin}" Enabled="{value: IsSuperAdmin || IsAdmin}">
+                    <label>
+                        <span style="margin-top: 9px;">Lektor</span>
+                        <bp:DropDownList DataSource="{value: Lecturers}"
+                                         SelectedValue="{value: SelectedLecturer}"
+                                         ItemTextBinding="{value: TitleBefore + " " + FirstName + " " + LastName + " " + TitleAfter}"
+                                         ItemKeyBinding="{value: Id}"
+                                         Placeholder="Vyberte lektora."
+                                         AllowUnselect="false"
+                                         class="dropdown"
+                                         Changed="{Command: ChangeLecturer()}" />
+                    </label>
+                </div><br />
 
                 <div class="form-row">
                     <label class="radio-button">

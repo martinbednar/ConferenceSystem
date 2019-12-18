@@ -16,12 +16,15 @@
             <br />
             <div class="loader"></div>
             <br />
-        </dot:UpdateProgress><br /><br />
+        </dot:UpdateProgress><br />
+
+        <div style="float:left;margin-left:20px;"><a href="/mylecture/0" class="btn btn-primary" style="margin-right:5px;">Přidat přednášku</a><a href="/myworkshop/0" class="btn btn-primary" style="margin-left:5px;margin-right:5px;">Přidat workshop / seminář</a><a href="/registerformlecturer" class="btn btn-default" style="margin-left:5px;">Zaregistrovat nového lektora</a></div>
+
         <dot:Button type="button" class="btn btn-default" Text="Exportovat do Excelu" Click="{command: ExportToExcel()}" style="margin-right:20px;float:right;"></dot:Button>
 
         <br /><br />
 
-        <bp:GridView ID="lectures" DataSource="{value: Lectures}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" >
+        <bp:GridView ID="lectures" DataSource="{value: Lectures}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true">
             <Columns>
                 <bp:GridViewTextColumn HeaderText="" ValueBinding="{value: SequenceNumber}" AllowSorting="true" />
                 <bp:GridViewTextColumn HeaderText="Typ" ValueBinding="{value: Type}" AllowSorting="true" Visible="{value: OverviewColumns}" />

@@ -12,6 +12,20 @@
                     </div>
                 </div><br /><br />
 
+                <div class="form-row" Visible="{value: IsSuperAdmin || IsAdmin}" Enabled="{value: IsSuperAdmin || IsAdmin}">
+                    <label>
+                        <span style="margin-top: 9px;">Přednášející</span>
+                        <bp:DropDownList DataSource="{value: Lecturers}"
+                                         SelectedValue="{value: SelectedLecturer}"
+                                         ItemTextBinding="{value: TitleBefore + " " + FirstName + " " + LastName + " " + TitleAfter}"
+                                         ItemKeyBinding="{value: Id}"
+                                         AllowUnselect="false"
+                                         Placeholder="Vyberte přednášejícího."
+                                         class="dropdown"
+                                         Changed="{Command: ChangeLecturer()}" />
+                    </label>
+                </div>
+
                 <div class="form-row">
                     <label>
                         <span>Název přednášky</span>

@@ -69,6 +69,14 @@ namespace ConferencySystem.BL.Services
             }
         }
 
+        public List<AppUserDTO> GetLecturers()
+        {
+            using (var db = new DbContext())
+            {
+                return db.Users.Where(user => user.Roles.All(role => role.RoleId == 4)).ProjectTo<AppUserDTO>().OrderBy(u => u.RegisterTimestamp).ToList();
+            }
+        }
+
         public void DeleteUser(int id)
         {
             using (var db = new DbContext())

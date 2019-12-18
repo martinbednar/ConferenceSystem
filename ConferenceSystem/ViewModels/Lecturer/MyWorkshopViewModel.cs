@@ -50,29 +50,46 @@ namespace ConferencySystem.ViewModels.Lecturer
         {
             this.fileStorage = storage;
         }
+        public AppUserDTO SelectedLecturer { get; set; }
+
+        public List<AppUserDTO> Lecturers { get; set; }
+
 
         public override Task PreRender()
         {
             if (!Context.IsPostBack)
             {
                 var lectureService = new LectureService();
+                var adminService = new AdminService();
+
+                Lecturers = adminService.GetLecturers();
+                var currentUser = adminService.GetUser(CurrentUserId);
+                SelectedLecturer = currentUser;
 
                 if (LectureId == 0)
                 {
-                    DataLecture = lectureService.CreateNewLecture(CurrentUserId);
+                    if (IsAdmin || IsSuperAdmin)
+                    {
+                        SelectedLecturer = Lecturers.First();
+                        DataLecture = lectureService.CreateNewLecture(SelectedLecturer.Id);
+                    }
+                    else
+                    {
+                        DataLecture = lectureService.CreateNewLecture(CurrentUserId);
+                    }
                     DataLecture.Type = "workshop";
                 }
                 else {
-                    var adminService = new AdminService();
-                    var user = adminService.GetUser(CurrentUserId);
-
                     //Overeni, ze uzivatel chce otevrit svoji prednasku a ne cizi.
-                    if (user.Roles.All(role => role.RoleId != 2 && role.RoleId != 3))
+                    if (currentUser.Roles.All(role => role.RoleId != 2 && role.RoleId != 3))
                     {
-                        var lectures = user.LecturerInfo.Lectures;
+                        var lectures = currentUser.LecturerInfo.Lectures;
                         if (lectures.Where(l => l.Id == LectureId).Count() == 0) Context.RedirectToRoute("Default");
                     }
-
+                    else
+                    {
+                        SelectedLecturer = lectureService.GetLecturerOfLecture(LectureId);
+                    }
 
                     DataLecture = lectureService.GetLecture(LectureId);
                 }
@@ -183,6 +200,15 @@ namespace ConferencySystem.ViewModels.Lecturer
                 DataLecture.NotebookPort = "";
                 DataLecture.Speakers = false;
                 DataLecture.WorklistsCopies = false;
+            }
+        }
+
+        public void ChangeLecturer()
+        {
+            if (IsSuperAdmin || IsAdmin)
+            {
+                var lectureService = new LectureService();
+                lectureService.updateLecturerOfLecture(DataLecture.Id, SelectedLecturer.Id);
             }
         }
     }
