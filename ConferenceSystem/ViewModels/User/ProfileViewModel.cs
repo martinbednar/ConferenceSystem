@@ -9,7 +9,7 @@ using DotVVM.Framework.Runtime.Filters;
 
 namespace ConferencySystem.ViewModels.User
 {
-    [Authorize(Roles = new[] { "user" })]
+    [Authorize(Roles = new[] { "user", "alternate" })]
     public class ProfileViewModel : MainMasterPageViewModel
     {
         public AppUserDTO DataUser { get; set; }

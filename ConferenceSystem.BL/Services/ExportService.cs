@@ -69,7 +69,7 @@ namespace ConferencySystem.BL.Services
                             UserId = r.UserId,
                             RoleId = r.RoleId,
                         })
-                }).Where(user => user.Roles.All(role => role.RoleId == 1));
+                }).Where(user => user.Roles.All(role => (role.RoleId == 1) || (role.RoleId == 6)));
 
                 List<UserCompletInfo> usersCompletInfo = new List<UserCompletInfo>();
 

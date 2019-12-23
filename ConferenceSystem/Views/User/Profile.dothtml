@@ -123,25 +123,25 @@
                         <dot:TextBox Text="{value: DataUser.NoteUser}" Type="MultiLine" Enabled="false" />
                     </label>
                 </div>
-                <div class="form-row">
+                <div class="form-row" Visible="{value: !DataUser.IsAlternate}">
                     <label>
                         <span>Variabilní číslo</span>
                         <dot:TextBox Text="{value: DataUser.VariableSymbol}" Enabled="false" />
                     </label>
                 </div>
-                <div class="form-row">
+                <div class="form-row" Visible="{value: !DataUser.IsAlternate}">
                     <label>
                         <span>Číslo zálohové faktury</span>
                         <dot:TextBox Text="{value: DataUser.InvoiceNumber}" Enabled="false" />
                     </label>
                 </div>
-                <div class="form-row">
+                <div class="form-row" Visible="{value: !DataUser.IsAlternate}">
                     <label>
                         <span>Zálohová faktura</span>
                         <a href="{value: "/attachment/" + DataUser.Id}" >{{value: DataInvoice.FileName}}</a>
                     </label>
                 </div>
-                <div class="form-row">
+                <div class="form-row" Visible="{value: !DataUser.IsAlternate}">
                     <label>
                         <span>Zaplaceno</span>
                         <dot:TextBox Text="{value: DataUser.PaidDate}" FormatString="d.M.yyyy" Mode="Date" Enabled="false" />

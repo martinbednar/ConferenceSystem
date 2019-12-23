@@ -19,7 +19,7 @@ namespace ConferencySystem.BL.Services
         {
             using (var db = new DbContext())
             {
-                var users = db.Users.Where(user => user.Roles.All(role => role.RoleId == 1)).ProjectTo<AppUserDTO>().ToList();
+                var users = db.Users.Where(user => user.Roles.All(role => (role.RoleId == 1) || (role.RoleId == 6))).ProjectTo<AppUserDTO>().ToList();
 
                 int sequencenumber = 1;
 

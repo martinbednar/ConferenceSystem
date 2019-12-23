@@ -36,7 +36,15 @@ namespace ConferencySystem.BL.Services
                 
                 AppUser currentUser = userManager.FindByName(user.UserName);
 
-                userManager.AddToRole(currentUser.Id, "user");
+                var constantService = new ConstantService();
+                if (GetUsers().Count <= constantService.GetConstant(1).Value)
+                {
+                    userManager.AddToRole(currentUser.Id, "user");
+                }
+                else
+                {
+                    userManager.AddToRole(currentUser.Id, "alternate");
+                }
 
                 return currentUser.Id;
             }
@@ -66,10 +74,8 @@ namespace ConferencySystem.BL.Services
                     FileBytes = PdfSharpConvert(CreateHtmlInvoice(addedUser, organizationData)),
                     UserId = addedUser.Id
                 };
-
-                var constantService = new ConstantService();
-
-                if (GetUsers().Count > constantService.GetConstant(1).Value)
+                
+                if (addedUser.Roles.Any(r => r.RoleId == 6))
                 {
                     addedUser.IsAlternate = true;
                 }

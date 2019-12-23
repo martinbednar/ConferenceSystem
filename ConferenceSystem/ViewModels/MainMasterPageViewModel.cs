@@ -49,6 +49,12 @@ namespace ConferencySystem.ViewModels
             get { return Context.GetOwinContext().Authentication.User.IsInRole("lecturer"); }
         }
 
+
+        public bool IsAlternate
+        {
+            get { return Context.GetOwinContext().Authentication.User.IsInRole("alternate"); }
+        }
+
         public void SignOut()
         {
             Context.GetAuthentication().SignOut();
