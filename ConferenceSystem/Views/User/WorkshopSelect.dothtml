@@ -3,14 +3,14 @@
 
 <dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
 
-    <center><h2><br /><br />Přihlašování na workshopy a přednášky zatím není spuštěné. O jeho zahájení Vás budeme informovat emailem.<br /><br /></h2></center>
+    <center style="display:none"><h2><br /><br />Přihlašování na workshopy a přednášky zatím není spuštěné. O jeho zahájení Vás budeme informovat emailem.<br /><br /></h2></center>
 
     <dot:UpdateProgress>
         <br />
         <div class="loader" style="z-index: 9999; position: fixed; top: 30%; left: 45%;"></div>
         <br />
     </dot:UpdateProgress>
-    <div class="form-workshop" style="display:none">
+    <div class="form-workshop">
         <div class="alert alert-danger" Visible="{value: Alert}" style="position:fixed;top:85%;left:15%;width:70%;z-index:9999;text-align:center;font-size:large;box-shadow: 0px 0px 100px 90px white;">
             Chyba při registraci - kapacita požadovaného workshopu je již pravděpodobně naplněna!
         </div>
@@ -35,10 +35,10 @@
                                             <span style="font-size:17px;color:#2e6da4">{{value: Name}}</span><br />
                                             <span style="font-style:italic">{{value: Presenter}}</span>
                                         </div>
-                                        <span style="float:right;margin:10px">{{value: Capacity}}</span>
+                                        <span style="float:right;margin:10px">{{value: Capacity - NumberOfRegistered}}</span>
                                     </div>
                                     <div style="float:right;width:20%">
-                                        <dot:Button Text="Přihlásit" style="margin:3px;" Click="{command: _parent2.Register(_this.Id)}" class="btn btn-primary" Visible="{value: !Registered && !_parent.AnyWorkshopRegistered && (Capacity > 0)}" Enabled="{value: _parent2.RegistrationEnabled}"></dot:Button>
+                                        <dot:Button Text="Přihlásit" style="margin:3px;" Click="{command: _parent2.Register(_this.Id)}" class="btn btn-primary" Visible="{value: !Registered && !_parent.AnyWorkshopRegistered && (NumberOfRegistered < Capacity)}" Enabled="{value: _parent2.RegistrationEnabled}"></dot:Button>
                                         <dot:Button Text="Odhlásit" style="margin:3px;" Click="{command: _parent2.Unregister(_this.Id)}" class="btn btn-default" Visible="{value: Registered}" Enabled="{value: _parent2.RegistrationEnabled}"></dot:Button>
                                     </div>
                                 </div>

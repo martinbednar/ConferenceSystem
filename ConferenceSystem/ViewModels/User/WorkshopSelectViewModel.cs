@@ -26,7 +26,7 @@ namespace ConferencySystem.ViewModels.User
 
         public bool Alert { get; set; } = false;
 
-        public Boolean RegistrationEnabled { get; set; } = false;//DateTime.Now >= new DateTime(2019,01,30,17,00,00);
+        public Boolean RegistrationEnabled { get; set; } = true;//DateTime.Now >= new DateTime(2019,01,30,17,00,00);
 
         public override Task PreRender()
         {
@@ -75,8 +75,8 @@ namespace ConferencySystem.ViewModels.User
 
          public void Register(int workshopId)
         {
-            var workshopService = new WorkshopService();
-            if(!workshopService.RegisterWorkshop(CurrentUserId, workshopId))
+            //var workshopService = new WorkshopService();
+            if(!WorkshopService.RegisterWorkshop(CurrentUserId, workshopId))
             {
                 Alert = true;
             }

@@ -59,8 +59,8 @@ namespace ConferencySystem.ViewModels.Admin
 
         public void Register(int workshopId)
         {
-            var workshopService = new WorkshopService();
-            if (!workshopService.RegisterWorkshop(CurrentUserId, workshopId))
+            //var workshopService = new WorkshopService();
+            if (!WorkshopService.RegisterWorkshop(CurrentUserId, workshopId))
             {
                 Alert = true;
             }

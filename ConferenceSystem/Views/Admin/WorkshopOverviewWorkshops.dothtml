@@ -43,7 +43,7 @@
                                                 </dot:Repeater>
                                             </span>
                                         </div>
-                                        <span style="float:right;margin:10px"><b>{{value: Capacity}}</b><br /><br />{{value: NumberOfRegistered}}</span>
+                                        <span style="float:right;margin:10px"><b>{{value: Capacity - NumberOfRegistered}}</b><br /><br />{{value: NumberOfRegistered}}</span>
                                     </div>
                                 </div>
                             </ItemTemplate>

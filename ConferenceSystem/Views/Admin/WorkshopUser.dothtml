@@ -32,10 +32,10 @@
                                             <span style="font-size:17px;color:#2e6da4">{{value: Name}}</span><br />
                                             <span style="font-style:italic">{{value: Presenter}}</span>
                                         </div>
-                                        <span style="float:right;margin:10px">{{value: Capacity}}</span>
+                                        <span style="float:right;margin:10px">{{value: Capacity - NumberOfRegistered}}</span>
                                     </div>
                                     <div style="float:right;width:20%">
-                                        <dot:Button Text="Přihlásit" style="margin:3px;" Click="{command: _parent2.Register(_this.Id)}" class="btn btn-primary" Visible="{value: !Registered && !_parent.AnyWorkshopRegistered && (Capacity > 0)}" Enabled="false"></dot:Button>
+                                        <dot:Button Text="Přihlásit" style="margin:3px;" Click="{command: _parent2.Register(_this.Id)}" class="btn btn-primary" Visible="{value: !Registered && !_parent.AnyWorkshopRegistered && (NumberOfRegistered < Capacity)}" Enabled="true"></dot:Button>
                                         <dot:Button Text="Odhlásit" style="margin:3px;" Click="{command: _parent2.Unregister(_this.Id)}" class="btn btn-default" Visible="{value: Registered}" Enabled="false"></dot:Button>
                                     </div>
                                 </div>
