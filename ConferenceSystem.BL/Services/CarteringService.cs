@@ -121,8 +121,14 @@ namespace ConferencySystem.BL.Services
                         {
                             Name = c.Name,
                             Id = c.Id
+                        }),
+                    Roles = p.Roles
+                        .Select(r => new AppUserRoleDTO
+                        {
+                            UserId = r.UserId,
+                            RoleId = r.RoleId,
                         })
-                });
+                }).Where(user => user.Roles.All(role => role.RoleId != 6));
 
                 return query.ToList();
             }

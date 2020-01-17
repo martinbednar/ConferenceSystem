@@ -25,11 +25,12 @@ namespace ConferencySystem.ViewModels.Admin
                 var carteringService = new CarteringService();
                 var users = carteringService.GetUsersOverview();
 
+                UsersCartering.PagingOptions.PageSize = 500;
+                UsersCartering.SortingOptions.SortExpression = nameof(UserCartering.Id);
+                UsersCartering.SortingOptions.SortDescending = false;
+
                 foreach (AppUserDTO user in users)
                 {
-                    UsersCartering.PagingOptions.PageSize = 500;
-                    UsersCartering.SortingOptions.SortExpression = nameof(UserCartering.Id);
-                    UsersCartering.SortingOptions.SortDescending = false;
 
                     UsersCartering.Items.Add(new UserCartering()
                     {
