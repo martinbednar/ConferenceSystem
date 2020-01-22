@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using ConferencySystem.BL.DTO;
 using ConferencySystem.BL.Services;
@@ -90,19 +91,28 @@ namespace ConferencySystem.ViewModels.Admin
             }
             else
             {
-                DataUser.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay),0,0,0,0);
+                DataUser.BirthDate = new DateTime(Int32.Parse(SelectedBirthYear), Int32.Parse(DateProcessing.MonthToDb(SelectedBirthMonth)), Int32.Parse(SelectedBirthDay), 0, 0, 0, 0);
             }
 
 
             var adminService = new AdminService();
 
-            if (UserId != null)
+            var dataUserOld = adminService.GetUser(UserId.Value);
+            if (dataUserOld.PaidDate == null && DataUser.PaidDate != null)
             {
-                var dataUserOld = adminService.GetUser(UserId.Value);
-                if (dataUserOld.PaidDate == null && DataUser.PaidDate != null)
-                {
-                    sendEmail();
-                }
+                sendEmail();
+            }
+
+            var oldRoleId = dataUserOld.Roles.SingleOrDefault().RoleId;
+
+            if ((oldRoleId == 6) && !DataUser.IsAlternate)
+            {
+                adminService.changeUserRole(DataUser.Id, oldRoleId, "user");
+            }
+
+            if ((oldRoleId != 6) && DataUser.IsAlternate)
+            {
+                adminService.changeUserRole(DataUser.Id, oldRoleId, "alternate");
             }
 
             adminService.SaveUser(DataUser);

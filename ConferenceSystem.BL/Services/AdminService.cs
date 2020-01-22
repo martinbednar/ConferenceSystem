@@ -6,9 +6,11 @@ using System.Security.Claims;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ConferencySystem.BL.DTO;
+using ConferencySystem.BL.Services.UserManagment;
 using ConferencySystem.DAL.Data;
 using ConferencySystem.DAL.Data.UserIdentity;
 using DotVVM.Framework.Controls;
+using Microsoft.AspNet.Identity;
 using DbContext = ConferencySystem.DAL.Data.DbContext;
 
 namespace ConferencySystem.BL.Services
@@ -174,6 +176,21 @@ namespace ConferencySystem.BL.Services
                     PhotoName = lecturerInfo.PhotoName,
                     Photo = lecturerInfo.Photo
                 };
+            }
+        }
+
+        public void changeUserRole(int userId, int oldRoleId, string newRoleName)
+        {
+            var db = new DbContext();
+            var oldRoleName = db.Roles.Find(oldRoleId).Name;
+
+            using (AppUserManager userManager = new AppUserManager(new DbContext()))
+            {
+                userManager.UserValidator =
+                    new UserValidator<AppUser, int>(userManager) { AllowOnlyAlphanumericUserNames = false };
+
+                userManager.RemoveFromRole(userId, oldRoleName);
+                userManager.AddToRole(userId, newRoleName);
             }
         }
     }
