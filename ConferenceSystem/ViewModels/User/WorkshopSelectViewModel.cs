@@ -26,10 +26,12 @@ namespace ConferencySystem.ViewModels.User
 
         public bool Alert { get; set; } = false;
 
-        public Boolean RegistrationEnabled { get; set; } = DateTime.Now >= new DateTime(2020,01,27,17,00,00);
+        public bool RegistrationEnabled { get; set; }
 
         public override Task PreRender()
         {
+            RegistrationEnabled = DateTime.Now >= new DateTime(2020, 01, 29, 17, 00, 00) || base.IsAdmin || base.IsSuperAdmin;
+
             var workshopService = new WorkshopService();
             WorkshopsBlocks = workshopService.GetWorkshopsBlocks(CurrentUserId);
 

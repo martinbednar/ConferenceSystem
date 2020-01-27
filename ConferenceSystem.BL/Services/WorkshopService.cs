@@ -117,7 +117,7 @@ namespace ConferencySystem.BL.Services
                             UserId = r.UserId,
                             RoleId = r.RoleId,
                         })
-                }).Where(user => user.Roles.All(role => role.RoleId == 1));
+                }).Where(user => user.Roles.All(role => (role.RoleId == 1) || (role.RoleId == 2) || (role.RoleId == 3)));
 
                 List<UserWorkshops> usersWorkshops = new List<UserWorkshops>();
                 List<IEnumerable<WorkshopDTO>> workshopsBlocks = new List<IEnumerable<WorkshopDTO>>();
@@ -126,7 +126,7 @@ namespace ConferencySystem.BL.Services
                 {
                     workshopsBlocks.Clear();
                     workshopsBlocks.Add(user.Workshops.Where(w => w.WorkshopsBlock.Id == 1));
-                    workshopsBlocks.Add(user.Workshops.Where(w => w.WorkshopsBlock.Id == 4));
+                    workshopsBlocks.Add(user.Workshops.Where(w => w.WorkshopsBlock.Id == 6));
                     workshopsBlocks.Add(user.Workshops.Where(w => w.WorkshopsBlock.Id == 2));
                     workshopsBlocks.Add(user.Workshops.Where(w => w.WorkshopsBlock.Id == 3));
                     usersWorkshops.Add(new UserWorkshops()
@@ -135,7 +135,7 @@ namespace ConferencySystem.BL.Services
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         Block1 = (workshopsBlocks[0].Count() == 0) ? "" : ((workshopsBlocks[0].Count() > 1) ? "!!!CHYBA!!!" : workshopsBlocks[0].FirstOrDefault().Name),
-                        Lecture = (workshopsBlocks[1].Count() == 0) ? "" : ((workshopsBlocks[1].Count() > 1) ? "!!!CHYBA!!!" : workshopsBlocks[1].FirstOrDefault().Name),
+                        EduBreak = (workshopsBlocks[1].Count() == 0) ? "" : ((workshopsBlocks[1].Count() > 1) ? "!!!CHYBA!!!" : workshopsBlocks[1].FirstOrDefault().Name),
                         Block2 = (workshopsBlocks[2].Count() == 0) ? "" : ((workshopsBlocks[2].Count() > 1) ? "!!!CHYBA!!!" : workshopsBlocks[2].FirstOrDefault().Name),
                         Block3 = (workshopsBlocks[3].Count() == 0) ? "" : ((workshopsBlocks[3].Count() > 1) ? "!!!CHYBA!!!" : workshopsBlocks[3].FirstOrDefault().Name)
                     });

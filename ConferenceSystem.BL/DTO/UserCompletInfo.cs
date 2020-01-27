@@ -39,7 +39,7 @@ namespace ConferencySystem.BL.DTO
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Block1 = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 1).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 1).First().Name,
-                Lecture = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 4).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 4).First().Name,
+                EduBreak = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 6).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 6).First().Name,
                 Block2 = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 2).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 2).First().Name,
                 Block3 = (user.Workshops.Where(w => w.WorkshopsBlock.Id == 3).Count() == 0) ? "" : user.Workshops.Where(w => w.WorkshopsBlock.Id == 3).First().Name
             };

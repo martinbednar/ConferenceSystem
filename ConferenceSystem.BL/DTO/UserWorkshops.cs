@@ -10,7 +10,7 @@
 
         public string Block1 { get; set; }
 
-        public string Lecture { get; set; }
+        public string EduBreak { get; set; }
 
         public string Block2 { get; set; }
 

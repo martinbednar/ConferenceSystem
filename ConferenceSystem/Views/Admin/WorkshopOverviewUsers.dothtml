@@ -18,7 +18,7 @@
         <Columns>
             <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: FirstName + " " + LastName}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Workshop 1" ValueBinding="{value: Block1}" AllowSorting="true" />
-            <%-- <bp:GridViewTextColumn HeaderText="Přednáška" ValueBinding="{value: Lecture}" AllowSorting="true" /> --%>
+            <bp:GridViewTextColumn HeaderText="EDU Break" ValueBinding="{value: EduBreak}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Workshop 2" ValueBinding="{value: Block2}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Workshop 3" ValueBinding="{value: Block3}" AllowSorting="true" />
             <bp:GridViewTemplateColumn>

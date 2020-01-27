@@ -59,7 +59,7 @@
                         <li Visible="{value: IsLecturer}" class="{value: LecturerProgramsActive}"><dot:RouteLink Text="Moje programy" RouteName="MyLectures"></dot:RouteLink></li>
                         <%-- <li Visible="{value: !IsAuthenticated}" class="{value: RegisterActive}"><dot:RouteLink Text="Registrace" RouteName="RegisterForm"></dot:RouteLink></li> --%>
                         <li Visible="{value: IsAuthenticated && !IsAlternate}" class="{value: CarteringActive}"><dot:RouteLink Text="Stravování" RouteName="CarteringSelect"></dot:RouteLink></li>
-                        <li Visible="{value: IsParticipant}" class="{value: WorkshopsActive}"><dot:RouteLink Text="Workshopy" RouteName="WorkshopSelect"></dot:RouteLink></li>
+                        <li Visible="{value: IsParticipant || IsAdmin || IsSuperAdmin}" class="{value: WorkshopsActive}"><dot:RouteLink Text="Workshopy" RouteName="WorkshopSelect"></dot:RouteLink></li>
                         <%-- <li><dot:RouteLink Text="Účastníci" RouteName="Users"></dot:RouteLink></li> --%>
                         <%-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
