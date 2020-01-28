@@ -55,7 +55,7 @@
             <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - buffet" ValueBinding="{value: Cartering.HasTuesdayLunch}" />
 
             <bp:GridViewTextColumn HeaderText="Workshop1" ValueBinding="{value: Workshops.Block1}" />
-            <bp:GridViewTextColumn HeaderText="Přednáška" ValueBinding="{value: Workshops.Lecture}" />
+            <bp:GridViewTextColumn HeaderText="Přednáška" ValueBinding="{value: Workshops.EduBreak}" />
             <bp:GridViewTextColumn HeaderText="Workshop2" ValueBinding="{value: Workshops.Block2}" />
             <bp:GridViewTextColumn HeaderText="Workshop3" ValueBinding="{value: Workshops.Block3}" />
         </Columns>
