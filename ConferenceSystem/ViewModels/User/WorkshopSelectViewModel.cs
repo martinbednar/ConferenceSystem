@@ -25,8 +25,9 @@ namespace ConferencySystem.ViewModels.User
         public List<WorkshopsBlockDTO> WorkshopsBlocks { get; set; }
 
         public bool Alert { get; set; } = false;
+        public bool AlertDismissed { get; set; } = false;
 
-        public bool RegistrationEnabled { get; set; }
+        public bool RegistrationEnabled { get; set; } = false;
 
         public override Task PreRender()
         {
@@ -80,6 +81,7 @@ namespace ConferencySystem.ViewModels.User
             //var workshopService = new WorkshopService();
             if(!WorkshopService.RegisterWorkshop(CurrentUserId, workshopId))
             {
+                AlertDismissed = false;
                 Alert = true;
             }
         }
