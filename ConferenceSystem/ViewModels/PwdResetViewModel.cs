@@ -24,7 +24,6 @@ namespace ConferencySystem.ViewModels
             }
             else
             {
-                ErrorMessage = string.Empty;
                 ErrorMessage = null;
                 ResetPasswordService resetPasswordService = new ResetPasswordService();
                 var res = resetPasswordService.ResetPassword(UserId, Token, NewPassword);
@@ -34,7 +33,7 @@ namespace ConferencySystem.ViewModels
                 }
                 else
                 {
-                    ErrorMessage = "Délka hesla musí být minimálně 6 znaků.";
+                    ErrorMessage = "Při obnově hesla nastala chyba. Zkuste to prosím znovu, případně nás kontaktujte.";
                 }
             }
         }
