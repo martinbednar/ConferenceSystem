@@ -14,7 +14,7 @@
     <br />
     <br />
 
-    <bp:GridView ID="users" DataSource="{value: Users}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" Visible="{value: false}">
+    <bp:GridView ID="users" DataSource="{value: Users}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" Visible="{value: true}">
         <Columns>
             <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: User.Id}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: User.RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" />
