@@ -25,11 +25,11 @@
             <%-- <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: User.BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Místo narození" ValueBinding="{value: User.BirthPlace}" AllowSorting="true" /> --%>
             <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: User.Email}" />
+            <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: User.InfoFrom}" AllowSorting="true" />
             <%-- <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: User.PhoneNumber}" />
             <bp:GridViewTextColumn HeaderText="Pracovní pozice" ValueBinding="{value: User.Position}" AllowSorting="true" /> --%>
             <bp:GridViewCheckBoxColumn HeaderText="Souhlas se zpracováním osobních údajů" ValueBinding="{value: User.Agreement}" />
-            <%-- <bp:GridViewTextColumn HeaderText="Kde jste se o festivalu dozvěděli?" ValueBinding="{value: User.InfoFrom}" AllowSorting="true" />
-            <bp:GridViewTextColumn HeaderText="Pro co si na festival jedete?" ValueBinding="{value: User.WantGet}" AllowSorting="true" /> --%>
+            <%-- <bp:GridViewTextColumn HeaderText="Pro co si na festival jedete?" ValueBinding="{value: User.WantGet}" AllowSorting="true" /> --%>
             <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: User.NoteUser}" AllowSorting="true" />
             <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: User.NoteAdmin}" AllowSorting="true" />
             <%-- <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: User.VariableSymbol}" AllowSorting="true" />

@@ -98,12 +98,12 @@ namespace ConferencySystem.BL.Services
                     TitleBefore = p.TitleBefore,
                     TitleAfter = p.TitleAfter,
                     Email = p.Email,
-                    PhoneNumber = p.PhoneNumber,
+                    //PhoneNumber = p.PhoneNumber,
                     //Position = p.Position,
                     Agreement = p.Agreement,
                     //PaidDate = p.PaidDate,
                     //VariableSymbol = p.VariableSymbol,
-                    //InfoFrom = p.InfoFrom,
+                    InfoFrom = p.InfoFrom,
                     //WantGet = p.WantGet,
                     NoteAdmin = p.NoteAdmin,
                     NoteUser = p.NoteUser,
@@ -194,6 +194,19 @@ namespace ConferencySystem.BL.Services
                         Town = p.Organization.Town,
                         PostalCode = p.Organization.PostalCode
                     },*/
+                    LecturerInfo = new LecturerInfoDTO()
+                    {
+                        Id = p.LecturerInfo.Id,
+                        Introduce = p.LecturerInfo.Introduce,
+                        Fee = p.LecturerInfo.Fee,
+                        Street = p.LecturerInfo.Street,
+                        Town = p.LecturerInfo.Town,
+                        PostalCode = p.LecturerInfo.PostalCode,
+                        AccountNumber = p.LecturerInfo.AccountNumber,
+                        IN = p.LecturerInfo.IN,
+                        Accomodation = p.LecturerInfo.Accomodation,
+                        RoomMate = p.LecturerInfo.RoomMate
+                    },
                     Cartering = p.Cartering.Select(c => new CarteringDTO()
                     {
                         Id = c.Id,
