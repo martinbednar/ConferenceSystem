@@ -8,7 +8,7 @@ using DotVVM.Framework.Runtime.Filters;
 namespace ConferencySystem.ViewModels.Admin
 {
     [Authorize(Roles = new[] { "admin", "super" })]
-    public class ExportViewModel : MainMasterPageViewModel
+    public class ExportUsersViewModel : MainMasterPageViewModel
     {
         public GridViewUserSettings UserSettings { get; set; }
 
@@ -21,7 +21,7 @@ namespace ConferencySystem.ViewModels.Admin
 
             Users.PagingOptions.PageSize = 500;
 
-            exportService.GetAllData(Users);
+            exportService.GetAllUsersData(Users);
 
             return base.PreRender();
         }

@@ -36,7 +36,9 @@ namespace ConferencySystem
             config.RouteTable.Add("WorkshopOverviewUsers", "workshopoverviewusers", "Views/Admin/WorkshopOverviewUsers.dothtml");
             config.RouteTable.Add("WorkshopOverviewWorkshop", "workshopoverviewworkshop", "Views/Admin/WorkshopOverviewWorkshops.dothtml");
             config.RouteTable.Add("CarteringUser", "carteringuser/{UserId}", "Views/Admin/CarteringUser.dothtml");
-            config.RouteTable.Add("Export", "export", "Views/Admin/Export.dothtml");
+            config.RouteTable.Add("ExportUsers", "exportusers", "Views/Admin/ExportUsers.dothtml");
+            config.RouteTable.Add("ExportVisitors", "exportvisitors", "Views/Admin/ExportVisitors.dothtml");
+            config.RouteTable.Add("ExportLecturers", "exportlecturers", "Views/Admin/ExportLecturers.dothtml");
             config.RouteTable.Add("RegisterForm", "registerform", "Views/User/RegisterForm.dothtml");
             config.RouteTable.Add("WorkshopUser", "workshopuser/{UserId}", "Views/Admin/WorkshopUser.dothtml");
             config.RouteTable.Add("PwdReset", "password/reset", "Views/PwdReset.dothtml");

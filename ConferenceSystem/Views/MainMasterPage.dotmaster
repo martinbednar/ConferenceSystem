@@ -88,7 +88,9 @@
                                 <li><dot:RouteLink Text="Programy od lektorů" RouteName="Lectures"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Nastavení emailů" RouteName="EmailRegister"></dot:RouteLink></li>
                                 <li><dot:RouteLink Text="Nastavení proměnných" RouteName="SettingVariables"></dot:RouteLink></li>
-                                <li><dot:RouteLink Text="Kompletní export účastníků" RouteName="Export"></dot:RouteLink></li>
+                                <li><dot:RouteLink Text="Kompletní export účastníků" RouteName="ExportUsers"></dot:RouteLink></li>
+                                <li><dot:RouteLink Text="Kompletní export přednášejících a lektorů" RouteName="ExportLecturers"></dot:RouteLink></li>
+                                <li><dot:RouteLink Text="Kompletní export vystavovatelů, hostů a týmu" RouteName="ExportVisitors"></dot:RouteLink></li>
                             </ul>
                         </li>
                         <li class="dropdown" Visible="{value: IsAuthenticated}>

@@ -172,6 +172,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\Admin\ExportLecturersViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ExportVisitorsViewModel.cs" />
     <Compile Include="ViewModels\Admin\LecturesViewModel.cs" />
     <Compile Include="ViewModels\Admin\WorklistPresenter.cs" />
     <Compile Include="ViewModels\Admin\PresentationPresenter.cs" />
@@ -196,7 +198,7 @@
     <Compile Include="ViewModels\PwdResetViewModel.cs" />
     <Compile Include="ViewModels\User\CarteringSelectViewModel.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
-    <Compile Include="ViewModels\Admin\ExportViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ExportUsersViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainMasterPageViewModel.cs" />
     <Compile Include="ViewModels\Admin\UsersViewModel.cs" />
@@ -288,7 +290,7 @@
     <Content Include="Views\Admin\WorkshopOverviewWorkshops.dothtml" />
     <Content Include="Views\Admin\CarteringOverviewCartering.dothtml" />
     <Content Include="Views\Admin\CarteringUser.dothtml" />
-    <Content Include="Views\Admin\Export.dothtml" />
+    <Content Include="Views\Admin\ExportUsers.dothtml" />
     <Content Include="Views\User\RegisterForm.dothtml" />
     <Content Include="Views\Admin\WorkshopUser.dothtml" />
     <Content Include="Views\PwdReset.dothtml" />
@@ -311,6 +313,8 @@
     <Content Include="Views\Lecturer\MyLecture.dothtml" />
     <Content Include="Views\Lecturer\MyWorkshop.dothtml" />
     <Content Include="Views\Admin\Lectures.dothtml" />
+    <Content Include="Views\Admin\ExportVisitors.dothtml" />
+    <Content Include="Views\Admin\ExportLecturers.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,65 @@
+﻿@viewModel ConferencySystem.ViewModels.Admin.ExportVisitorsViewModel, ConferencySystem
+@masterPage Views/MainMasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Enabled="false">
+    <dot:UpdateProgress>
+        <br />
+        <div class="loader"></div>
+        <br />
+    </dot:UpdateProgress>
+    <br /><br />
+    <center>
+        <dot:Button type="button" ButtonTagName="button" class="btn btn-default" Click="{command: ExportToExcel()}">Exportovat všechna data o vystavovatelích, hostech a týmu do Excelu</dot:Button>
+    </center>
+    <br />
+    <br />
+
+    <bp:GridView ID="users" DataSource="{value: Users}" class="table table-bordered" UserSettings="{value: UserSettings}" FreezeHeaderRow="true" Visible="{value: true}">
+        <Columns>
+            <bp:GridViewTextColumn HeaderText="Id" ValueBinding="{value: User.Id}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Čas registrace" ValueBinding="{value: User.RegisterTimestamp}" ValueType="DateTime" FormatString="d.M.yyyy HH:mm:ss" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Titul/y před jménem" ValueBinding="{value: User.TitleBefore}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Jméno" ValueBinding="{value: User.FirstName}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Příjmení" ValueBinding="{value: User.LastName}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Titul/y za jménem" ValueBinding="{value: User.TitleAfter}" AllowSorting="true" />
+            <%-- <bp:GridViewTextColumn HeaderText="Datum narození" ValueBinding="{value: User.BirthDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Místo narození" ValueBinding="{value: User.BirthPlace}" AllowSorting="true" /> --%>
+            <bp:GridViewTextColumn HeaderText="Email" ValueBinding="{value: User.Email}" />
+            <%-- <bp:GridViewTextColumn HeaderText="Telefonní číslo" ValueBinding="{value: User.PhoneNumber}" />
+            <bp:GridViewTextColumn HeaderText="Pracovní pozice" ValueBinding="{value: User.Position}" AllowSorting="true" /> --%>
+            <bp:GridViewCheckBoxColumn HeaderText="Souhlas se zpracováním osobních údajů" ValueBinding="{value: User.Agreement}" />
+            <%-- <bp:GridViewTextColumn HeaderText="Kde jste se o festivalu dozvěděli?" ValueBinding="{value: User.InfoFrom}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Pro co si na festival jedete?" ValueBinding="{value: User.WantGet}" AllowSorting="true" /> --%>
+            <bp:GridViewTextColumn HeaderText="Poznámka uživatele" ValueBinding="{value: User.NoteUser}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Poznámka administrátora" ValueBinding="{value: User.NoteAdmin}" AllowSorting="true" />
+            <%-- <bp:GridViewTextColumn HeaderText="Variabilní číslo" ValueBinding="{value: User.VariableSymbol}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Číslo faktury" ValueBinding="{value: User.InvoiceNumber}" AllowSorting="true" />
+            <bp:GridViewTextColumn HeaderText="Zaplaceno" ValueBinding="{value: User.PaidDate}" ValueType="DateTime" FormatString="d.M.yyyy" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Náhradník" ValueBinding="{value: User.IsAlternate}" />
+            <bp:GridViewTextColumn HeaderText="Organizace" ValueBinding="{value: User.Organization.Name}" />
+            <bp:GridViewTextColumn HeaderText="IČ" ValueBinding="{value: User.Organization.IN}" />
+            <bp:GridViewTextColumn HeaderText="DIČ" ValueBinding="{value: User.Organization.VATID}" />
+            <bp:GridViewTextColumn HeaderText="Ulice a číslo popisné" ValueBinding="{value: User.Organization.BillStreet}" />
+            <bp:GridViewTextColumn HeaderText="Obec" ValueBinding="{value: User.Organization.Town}" />
+            <bp:GridViewTextColumn HeaderText="PSČ" ValueBinding="{value: User.Organization.PostalCode}" /> --%>
+
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - odpo - Coffee Break" ValueBinding="{value: Cartering.HasSundayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Ne - večeře - polévka" ValueBinding="{value: Cartering.HasSundaySoup}" />
+            <bp:GridViewTextColumn HeaderText="Ne - večeře" ValueBinding="{value: Cartering.SundayDinner}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - dopo - Coffee Break" ValueBinding="{value: Cartering.HasMondayAMCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - oběd - polévka" ValueBinding="{value: Cartering.HasMondaySoup}" />
+            <bp:GridViewTextColumn HeaderText="Po - oběd" ValueBinding="{value: Cartering.MondayLunch}" AllowSorting="true" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - odpo - Coffee Break" ValueBinding="{value: Cartering.HasMondayPMCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Po - večeře - raut" ValueBinding="{value: Cartering.HasMondayRaut}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - dopo - Coffee Break" ValueBinding="{value: Cartering.HasTuesdayCoffeeBreak}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - polévka" ValueBinding="{value: Cartering.HasTuesdaySoup}" />
+            <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - buffet" ValueBinding="{value: Cartering.HasTuesdayLunch}" />
+
+            <%-- <bp:GridViewTextColumn HeaderText="Workshop1" ValueBinding="{value: Workshops.Block1}" />
+            <bp:GridViewTextColumn HeaderText="EduBreak" ValueBinding="{value: Workshops.EduBreak}" />
+            <bp:GridViewTextColumn HeaderText="Workshop2" ValueBinding="{value: Workshops.Block2}" />
+            <bp:GridViewTextColumn HeaderText="Workshop3" ValueBinding="{value: Workshops.Block3}" /> --%>
+        </Columns>
+    </bp:GridView>
+</dot:Content>
+
