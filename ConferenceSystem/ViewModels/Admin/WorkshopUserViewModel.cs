@@ -7,7 +7,7 @@ using DotVVM.Framework.Runtime.Filters;
 
 namespace ConferencySystem.ViewModels.Admin
 {
-    [Authorize(Roles = new[] { "admin", "super" })]
+    [Authorize(Roles = new[] { /*"admin",*/ "super" })]
     public class WorkshopUserViewModel : MainMasterPageViewModel
     {
         public int CurrentUserId

@@ -9,7 +9,7 @@ using DotVVM.Framework.Runtime.Filters;
 
 namespace ConferencySystem.ViewModels.Admin
 {
-    [Authorize(Roles = new[] { "admin", "super" })]
+    [Authorize(Roles = new[] { /*"admin",*/ "super" })]
     public class CarteringUserViewModel : MainMasterPageViewModel
     {
         public int UserId

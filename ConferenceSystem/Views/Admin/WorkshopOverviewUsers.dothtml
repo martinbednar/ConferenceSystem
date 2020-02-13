@@ -23,7 +23,7 @@
             <bp:GridViewTextColumn HeaderText="Workshop 3" ValueBinding="{value: Block3}" AllowSorting="true" />
             <bp:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <dot:RouteLink RouteName="WorkshopUser" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
+                    <dot:RouteLink RouteName="WorkshopUser" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin }">
                         <span class="glyphicon glyphicon-edit"></span>
                     </dot:RouteLink>
                 </ContentTemplate>

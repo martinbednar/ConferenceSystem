@@ -30,7 +30,7 @@
             <bp:GridViewCheckBoxColumn HeaderText="Út - oběd - buffet" ValueBinding="{value: HasTuesdayLunch}" />
             <bp:GridViewTemplateColumn>
                 <ContentTemplate>
-                    <dot:RouteLink RouteName="CarteringUser" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin || _parent.IsAdmin}">
+                    <dot:RouteLink RouteName="CarteringUser" Param-UserId="{value: Id}" Enabled="{value: _parent.IsSuperAdmin }">
                         <span class="glyphicon glyphicon-edit"></span>
                     </dot:RouteLink>
                 </ContentTemplate>
