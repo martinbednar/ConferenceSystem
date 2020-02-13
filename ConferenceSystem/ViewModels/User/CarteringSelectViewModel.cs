@@ -24,8 +24,12 @@ namespace ConferencySystem.ViewModels.User
 
         public CarteringDTO[] DataCartering { get; set; }
 
+        public bool CarteringSelectEnabled { get; set; } = false;
+
         public override Task PreRender()
         {
+            CarteringSelectEnabled = DateTime.Now <= new DateTime(2020, 02, 13, 11, 00, 00);
+
             if (!Context.IsPostBack)
             {
                 var carteringService = new CarteringService();

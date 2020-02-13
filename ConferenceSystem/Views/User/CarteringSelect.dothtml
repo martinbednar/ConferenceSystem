@@ -29,13 +29,13 @@
 
         <div class="category" style="border-top: none;">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[0].Name}" Checked="{value: OutputCategories[0].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[0])}">
+                <dot:CheckBox Text="{value: OutputCategories[0].Name}" Checked="{value: OutputCategories[0].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[0])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[0].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[0].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[0].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[0].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[0].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -43,13 +43,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[1].Name}" Checked="{value: OutputCategories[1].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[1])}">
+                <dot:CheckBox Text="{value: OutputCategories[1].Name}" Checked="{value: OutputCategories[1].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[1])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[1].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[1].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[1].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[1].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[1].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -57,13 +57,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[2].Name}" Checked="{value: OutputCategories[2].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[2])}">
+                <dot:CheckBox Text="{value: OutputCategories[2].Name}" Checked="{value: OutputCategories[2].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[2])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[2].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[2].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[2].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[2].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[2].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -73,13 +73,13 @@
 
         <div class="category" style="border-top: none;">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[3].Name}" Checked="{value: OutputCategories[3].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[3])}">
+                <dot:CheckBox Text="{value: OutputCategories[3].Name}" Checked="{value: OutputCategories[3].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[3])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[3].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[3].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[3].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[3].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[3].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -87,13 +87,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[4].Name}" Checked="{value: OutputCategories[4].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[4])}">
+                <dot:CheckBox Text="{value: OutputCategories[4].Name}" Checked="{value: OutputCategories[4].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[4])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[4].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[4].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[4].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[4].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[4].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -101,13 +101,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[5].Name}" Checked="{value: OutputCategories[5].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[5])}">
+                <dot:CheckBox Text="{value: OutputCategories[5].Name}" Checked="{value: OutputCategories[5].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[5])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[5].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[5].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[5].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[5].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[5].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -115,13 +115,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[6].Name}" Checked="{value: OutputCategories[6].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[6])}">
+                <dot:CheckBox Text="{value: OutputCategories[6].Name}" Checked="{value: OutputCategories[6].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[6])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[6].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[6].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[6].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[6].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[6].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -129,13 +129,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[7].Name}" Checked="{value: OutputCategories[7].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[7])}">
+                <dot:CheckBox Text="{value: OutputCategories[7].Name}" Checked="{value: OutputCategories[7].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[7])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[7].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[7].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[7].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[7].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[7].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -145,13 +145,13 @@
 
         <div class="category" style="border-top: none;">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[8].Name}" Checked="{value: OutputCategories[8].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[8])}">
+                <dot:CheckBox Text="{value: OutputCategories[8].Name}" Checked="{value: OutputCategories[8].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[8])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[8].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[8].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[8].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[8].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[8].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -159,13 +159,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[9].Name}" Checked="{value: OutputCategories[9].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[9])}">
+                <dot:CheckBox Text="{value: OutputCategories[9].Name}" Checked="{value: OutputCategories[9].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[9])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[9].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[9].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[9].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[9].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[9].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -173,13 +173,13 @@
 
         <div class="category">
             <div class="category-name" class="checkbox-inline">
-                <dot:CheckBox Text="{value: OutputCategories[10].Name}" Checked="{value: OutputCategories[10].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[10])}">
+                <dot:CheckBox Text="{value: OutputCategories[10].Name}" Checked="{value: OutputCategories[10].CategoryChecked}" Changed="{command: CategoryCheckedChanged(OutputCategories[10])}" Enabled="{value: CarteringSelectEnabled}">
                 </dot:CheckBox>
             </div>
             <div class="category-choices" class="radio-inline">
                 <dot:Repeater DataSource="{value: OutputCategories[10].Choices}">
                     <ItemTemplate>
-                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[10].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[10].CategoryChecked}" style="font-weight:normal;" /><br />
+                        <dot:RadioButton Text="{value: _this}" CheckedItem="{value: _root.OutputCategories[10].ChosenOption}" CheckedValue="{value: _this}" Enabled="{value: _root.OutputCategories[10].CategoryChecked && _root.CarteringSelectEnabled}" style="font-weight:normal;" /><br />
                     </ItemTemplate>
                 </dot:Repeater>
             </div>
@@ -191,7 +191,7 @@
             <div class="loader"></div>
             <br />
         </dot:UpdateProgress>
-        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="true"></dot:Button></center>
+        <center><dot:Button Text="Uložit" Click="{command: SaveCartering()}" class="btn btn-primary" style="margin-top: 20px" Enabled="{value: CarteringSelectEnabled}"></dot:Button></center>
     </div>
 </dot:Content>
 

@@ -31,7 +31,7 @@ namespace ConferencySystem.ViewModels.User
 
         public override Task PreRender()
         {
-            RegistrationEnabled = DateTime.Now >= new DateTime(2020, 01, 29, 17, 00, 00) || base.IsAdmin || base.IsSuperAdmin;
+            RegistrationEnabled = DateTime.Now <= new DateTime(2020, 02, 13, 11, 00, 00);
 
             var workshopService = new WorkshopService();
             WorkshopsBlocks = workshopService.GetWorkshopsBlocks(CurrentUserId);
