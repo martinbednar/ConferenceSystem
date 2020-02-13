@@ -10,7 +10,7 @@
             dotvvm.viewModels.root.viewModel.Body(contentFromEditor)
         });
     </dot:InlineScript>
-    
+
     <div class="btn-group" role="group" style="margin-left:20px">
         <dot:RouteLink class="btn btn-default" Text="Email po registraci" RouteName="EmailRegister" Enabled="true"></dot:RouteLink>
         <dot:RouteLink class="btn btn-default" Text="Email po registraci - naplněná kapacita" RouteName="EmailRegisterFull" Enabled="true"></dot:RouteLink>
@@ -88,6 +88,66 @@
         <tr>
             <td>{Email}</td>
             <td>Email uživatele</td>
+        </tr>
+        <tr>
+            <td>{HasSundayCoffeeBreak}</td>
+            <td>Odpolední Cofee break (neděle) (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{HasSundaySoup}</td>
+            <td>Večeře – polévka: Jemný brokolicový krém (1p,7) (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{SundayDinner}</td>
+            <td>Večeře – hlavní chod</td>
+        </tr>
+        <tr>
+            <td>{HasMondayAMCoffeeBreak}</td>
+            <td>Dopolední Coffee break (pondělí) (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{HasMondaySoup}</td>
+            <td>Oběd – polévka: Zeleninový krém se zázvorem (1p,7,9) (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{MondayLunch}</td>
+            <td>Oběd – hlavní chod</td>
+        </tr>
+        <tr>
+            <td>{HasMondayPMCoffeeBreak}</td>
+            <td>Odpolední Cofee break (pondělí) (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{HasMondayRaut}</td>
+            <td>Večeře: Raut (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{HasTuesdayCoffeeBreak}</td>
+            <td>Dopolední Cofee break (úterý) (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{HasTuesdaySoup}</td>
+            <td>Oběd – polévka: Kulajda (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{HasTuesdayLunch}</td>
+            <td>Oběd: Studený buffet (Ano/Ne)</td>
+        </tr>
+        <tr>
+            <td>{Block1}</td>
+            <td>Workshop - Blok 1</td>
+        </tr>
+        <tr>
+            <td>{EduBreak}</td>
+            <td>EduBreak</td>
+        </tr>
+        <tr>
+            <td>{Block2}</td>
+            <td>Workshop - Blok 2</td>
+        </tr>
+        <tr>
+            <td>{Block3}</td>
+            <td>Workshop - Blok 3</td>
         </tr>
     </table>--%>
 
